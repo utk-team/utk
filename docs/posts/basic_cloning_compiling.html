@@ -1,0 +1,151 @@
+		<div id="post">
+			<h2> README </h2>
+			
+			<h1>Cloning the repository</h1>
+			
+			<pre>
+<cli>git clone https://github.com/utk-team/utk.git</cli></pre>
+			<p></p>
+			
+			<h1> Compiling the code </h1>
+			
+			<pre>
+<cli>cd utk/src
+mkdir build
+cd build
+cmake ..
+make</cli></pre>
+<p></p>
+			
+			<p>By default, no external library is needed to compile UTK. Tools that require 
+			extrernal libraries are therefore not compiled. To compile such tools, one can use the
+			<name>ccmake</name> tool, to activate the required external libraries, before running 
+			cmake and make again. For example, to run the spectral test, 
+			one needs to activate the FFTW and CIMG libraries.
+			</p>
+			
+			<h1> Using the code </h1>
+			
+			<p>The UTK library contains a series of executables to evaluate and generate
+			point sets, organized as follows (from the build folder): </p>
+			
+			<p>
+			<font size="3">bin/ <br/>
+			<font size="1">--------</font> discrepancy/ <br/>
+			
+			<font size="1">------------------------</font> BoundariesStarDiscrepancy_fromfile_*d* <font size="2">(Code from <a href="https://dl.acm.org/citation.cfm?id=2799596">[Thiemard01]</a> )<br/> </font>
+			
+			<font size="1">------------------------</font>  CenteredL2Discrepancy_fromfile_*d*
+			<font size="2"> (computes the exact centered l_2 star discrepancy of an input point set 
+			<a href="https://pdfs.semanticscholar.org/d573/926238e766d29da8b406d725cc50c21cb7ed.pdf">[Hickernell98]</a>)</font> <br/>
+			
+			<font size="1">------------------------</font>  GeneralizedL2Discrepancy_fromfile_*d*
+			<font size="2"> (computes the exact generalized l_2 star discrepancy of an input point set 
+			<a href="https://pdfs.semanticscholar.org/d573/926238e766d29da8b406d725cc50c21cb7ed.pdf">[Hickernell98]</a>) </font> <br/>
+			
+			<font size="1">------------------------</font>  L2Discrepancy_fromfile_*d*
+			<font size="2">(computes the exact l_2 star discrepancy of a point set) </font> <br/>
+			
+			<font size="1">------------------------</font>  StarDiscrepancy_fromfile_*d*
+			<font size="2"> (computes the exact l_infinite star discrepancy of a point set) </font> <br/>
+			
+			<font size="1">------------------------</font>  SymmetricL2Discrepancy_fromfile_*d*
+			<font size="2"> (computes the exact symmetric l_2 star discrepancy of an input point set
+			<a href="https://pdfs.semanticscholar.org/d573/926238e766d29da8b406d725cc50c21cb7ed.pdf">[Hickernell98]</a>) </font> <br/>
+			
+			<font size="1">------------------------</font>  UnanchoredL2Discrepancy_fromfile_*d*
+			<font size="2"> (computes the exact unanchored l_2 star discrepancy of an input point set 
+			<a href="https://pdfs.semanticscholar.org/d573/926238e766d29da8b406d725cc50c21cb7ed.pdf">[Hickernell98]</a>) </font>  <br/>
+			
+			
+			<font size="1">--------</font> integration/ <br/>
+			
+			<font size="1">------------------------</font> IntegrationCenteredGaussian_fromfile_*d* <font size="2">(integrates a 2D gaussian with mean at 0.5,0.5 with an input point set)</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationCorneredGaussian_fromfile_*d* <font size="2">(integrates a 2D gaussian with mean at 0,0 with an input point set)</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationGaussian_fromfile_*d* <font size="2">(integrates a parametrable 2D gaussian (but without analytic value) with an input point set)</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationNSphere_fromfile_*d* <font size="2">(integrates a N-dimensional spjere with an input point set)</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationImage2D_fromfile_*d* <font size="2">(integrates a 2D image (.exr ideally) with an input point set) [CIMG Required]</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationBoxArrangement_fromfile_*d* <font size="2">(integrates an analytical box arrangement with an input point set) [CGAL Required]</font><br/>
+			
+			<font size="1">------------------------</font> IntegrationTriangleArrangement_fromfile_*d* <font size="2">(integrates an analytical triangle arrangement with an input point set) [CGAL Required]</font><br/>
+			
+			
+			<font size="1">--------</font>  samplers/ <br/>
+			
+			<font size="1">------------------------</font> AAPatterns_2dd <font size="2">([xxxxxxxx])</font> <br/>
+			
+			<font size="1">------------------------</font> CMJ_2dd <font size="2">([Kensler03])</font><br/>
+			
+			<font size="1">------------------------</font> DartThrowing_2dd <font size="2">(naive)</font><br/>
+			
+			<font size="1">------------------------</font> FastPoisson_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Faure_2d* <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Forced Random_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Halton_*dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Hammersley_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> LDBN_2d* <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Nieddereiter_*d* <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> NRooks_*dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Owen_*dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Penrose_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Rank1_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> RegularGrid_*dd <br/>
+			
+			<font size="1">------------------------</font> Sobol_2dd <font size="2">([xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> SobolIndices_*d* <font size="2">(Polynomials as parameters, indices from [xxxxxxxx])</font><br/>
+			
+			<font size="1">------------------------</font> Stratified_*dd <br/>
+			
+			<font size="1">------------------------</font> Whitenoise_*dd <br/>
+			
+			
+			<font size="1">--------</font>  spectral/ <br/>
+			
+			<font size="1">------------------------</font> stkfourier_2dd <font size="2">(Discrete Fourier Trabsform, only 2D) [FFTW and CIMG Required]</font><br/>
+			
+			
+			<font size="1">--------</font>  statistics/ <br/>
+
+			<font size="1">------------------------</font> computeMinDist_2dd <font size="2">(returns the minimal distance between pairs of samples)</font><br/>
+			
+			<font size="1">------------------------</font> computePCF_2dd <font size="2">(computes the PCF of a 2D point set [Oztirelli])</font><br/>
+
+			
+			<font size="1">--------</font>  render/ <br/>
+
+			<font size="1">------------------------</font> zoneplate_fromfile_2dd <font size="2">(reconstructs a zoneplate using a Mitchell filter and samples from an input point set) [CIMG Required]</font> <br/>
+
+			<font size="1">--------</font>  utils/ <br/>
+			
+			<font size="1">------------------------</font> draw_fromfile_2dd <font size="2">(draws a 2D point set to a .ps/.tikz file)</font> <br/>
+
+			</font>
+			</p>
+			
+			<p>Note that this list is not exaustive, the library may contain other tools,
+			that are not listed here and they are still in an early version.</p>
+			
+			<p> To get the list of parameters for each executable, one can use the <name>-h</name> option. For example with the whitenoise sampler 
+			<pre><cli>./bin/samplers/Whitenoise_2dd -h </cli></pre>
+			</p>
+			
+			
+		        
+		</div>
