@@ -74,7 +74,7 @@ void ParamParser_getopt::addLongOption(char* arg_name, void* arg_variable, int h
 	l.display = arg_display;
 	long_options.push_back(l);
 	
- 	full_help_msg += std::string("    --") + std::string(l.name) + std::string(" ") + help_msg + std::string("\n");
+ 	full_help_msg += std::string("\t--") + std::string(l.name) + std::string(" ") + help_msg + std::string("\n");
 }
 
 void ParamParser_getopt::addShortOption(char arg_name, void* arg_variable, int has_arg, void (*arg_assign) (void*, char*), void (*arg_display) (void*), std::string help_msg, std::string display_name)
@@ -90,7 +90,7 @@ void ParamParser_getopt::addShortOption(char arg_name, void* arg_variable, int h
 	
 	std::string name_tmp("a");
 	name_tmp[0] = arg_name;
-	full_help_msg += std::string("    -") + name_tmp + std::string(" ") + help_msg + std::string("\n");
+	full_help_msg += std::string("\t-") + name_tmp + std::string(" ") + help_msg + std::string("\n");
 }
 
 void ParamParser_getopt::displayState()

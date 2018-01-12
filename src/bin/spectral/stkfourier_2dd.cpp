@@ -66,6 +66,7 @@ int main(int argc, char** argv)
 	Histogram1dd radial_data;
 	Histogram2dd spectrum_data;
 	Histogram2dd power_spectrum_data;
+	Histogram2dd image_spectrum_data;
 	
 	int nb = 0;
 	int ptssize = 0;
@@ -124,6 +125,37 @@ int main(int argc, char** argv)
 			}
 		}
 		
+		if(image_spectrum_data.size() == 0)
+		{
+			image_spectrum_data.resize(fourier.power_spectrum_data.size());
+			for(uint i=0; i<fourier.power_spectrum_data.size(); i++)
+			{
+				image_spectrum_data[i] = fourier.power_spectrum_data[i];
+				if( fourier.power_spectrum_data[i].second > 2 )
+						image_spectrum_data[i].second = 2;
+					else if( fourier.power_spectrum_data[i].second < 0 )
+						image_spectrum_data[i].second = 0;
+					else 
+						image_spectrum_data[i].second = fourier.power_spectrum_data[i].second;
+			}
+		}
+		else
+		{
+			if(fourier.power_spectrum_data.size() != power_spectrum_data.size())
+				WARNING("Ignoring fourier spectrum in averaging as it is of a different size");
+			else {
+				for(uint i=0; i<fourier.power_spectrum_data.size(); i++)
+				{
+					if( fourier.power_spectrum_data[i].second > 2 )
+						image_spectrum_data[i].second += 2;
+					else if( fourier.power_spectrum_data[i].second < 0 )
+						image_spectrum_data[i].second += 0;
+					else 
+						image_spectrum_data[i].second += fourier.power_spectrum_data[i].second;
+				}
+			}
+		}
+		
 		nb++;
 		
 		pts.clear();
@@ -146,6 +178,7 @@ int main(int argc, char** argv)
 		{
 			spectrum_data[i].second /= (double)nb;
 			power_spectrum_data[i].second /= (double)nb;
+			image_spectrum_data[i].second /= (double)nb;
 		}
 	}
 	
@@ -183,17 +216,15 @@ int main(int argc, char** argv)
 	
 	if(!param_power_img.empty())
 	{
-		uint m_res = sqrt(power_spectrum_data.size());
+		uint m_res = sqrt(image_spectrum_data.size());
 		CImg<unsigned char> spectrum(m_res, m_res, 1);
 		for(uint i=0; i<m_res; i++)
+		{
 		for(uint j=0; j<m_res; j++)
 		{
-			double val = power_spectrum_data[j*m_res+i].second;
-
-			if(val > 2) val = 2;
-			if(val < 0) val = 0;
-				
+			double val = image_spectrum_data[j*m_res+i].second;
 			spectrum.atXY(i, j) =  (val/2.0) * 255;
+		}
 		}
 		spectrum.save( param_power_img.c_str() );
 	}
