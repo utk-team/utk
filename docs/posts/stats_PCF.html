@@ -1,0 +1,139 @@
+		<div id="post">
+		
+			<h2> Point Correlation Function </h2>
+			
+			<table class="files">
+			<tr>
+				<td class="files" valign="middle">Files</td>
+				<td class="files" valign="middle">
+					src/bin/statistics/computePCF_2dd.cpp<br/>
+					src/statistics/PCF.hpp
+				</td>
+			</tr>
+			</table>
+			
+			<h1>Description</h1>
+			
+			<p>
+			The Pair Correlation Function expresses the distribution of distances between pairs of 
+			points in a point set. Intuitively, it expresses the number of
+			samples that are at a distance r from a "typical" sample.
+			<a href="https://graphics.ethz.ch/publications/papers/paperOzt12b.php">Oztireli</a> devised a simplified estimator for this measure in the
+			particular case of isotropic and stationary point processes. It's this function that is 
+			implemented here.
+			</p>
+			
+			<h1>Execution</h1>
+			
+			<p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	--silent 	Silent mode
+	-h		Displays this help message
+	-i <string> 		the input pointset
+	-o <string> 		the output PCF
+	--rmin <double=0.01> 	the minimum radius
+	--rmax <double=0.15> 	the maximal radius
+	--sigma <double=0.1> 	the sigma of the gaussian used for smoothing
+	--nbbins <uint=200> 	the number of histogram bins
+	--unnorm-dist 	does not normalize the distances in the PCF
+				</pre>
+			<p>
+			<p> 
+			When computing a PCF on a normalized pointset, the normalization is done dividing the distances by R, R being the
+			maximal packing density of 2D spheres (<a href="http://mathworld.wolfram.com/HyperspherePacking.html">http://mathworld.wolfram.com/HyperspherePacking.html</a>).
+			If normalization is active, rmin and rmax are normalized too, this means that <b>the values given as parameters for rmin and rmax are not considered normalized</b>.
+			</p>
+			
+			<p>To compute the PCF of a 2D pointset, we can use the following 
+			client line command:
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i toto.dat -o pcf.dat
+			</cli></pre>
+			</p>
+			
+			<p>
+			Or the following C++ code:
+			<pre><code>
+<b>PCF</b> pcf_engine;
+<b>Pointset< 2, double, Point<2, double> ></b> pts; <em>//we assume pts is filled</em>
+<b>Histogram1dd</b> pcf_data;
+
+<b>bool</b> normalize = true;
+<b>double</b> R = 2.0 * sqrt( 1.0 / (2.0*sqrt(3.0)*pts.size()) );
+<b>double</b> smoothing = 0.1*d;
+<em>//To start as close as possible from 0 without introducing smoothing artefacts</em>
+<b>double</b> rmin = 1.5*smoothing;
+<em>//Default value assume normalization as we do not know the unnormalized distances between samples</em>
+<b>double</b> rmax = 2.5*d;
+pcf_engine.compute< 2, double, Point<2, double> >(pts, pcf_data, rmin, rmax, nbbins, smoothing, normalize);
+			</code></pre>
+			</p>
+			
+			<p>
+			Note that this code only works for 2D point sets.
+			</p>
+			
+			<h1>Results</h1>
+
+			<table style="width:60%">
+			<tr>
+				<td><img class="mylogo" width="150" src="data/pcf/pointset.png"></td>
+				<td>From the following pointset <br/><a href="data/pcf/bnot_1024.dat">bnot_1024.dat</a></td>
+			</tr>
+			</table> 
+			 
+			</p>
+			
+			<p> -> Normalized and Unnormalized Data</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_norm.png"><br/>
+			</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat --unnorm-dist
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_unnorm.png"><br/>
+			</p>
+			
+			<p> -> Changing the rmin, rmax parameters</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat --rmin 0.03 --rmax 0.06 --unnorm-dist
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_rmin003_rmax006_unnorm.png"><br/>
+			</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat --rmin 0.03 --rmax 0.06
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_rmin003_rmax006_norm.png"><br/>
+			</p>
+			
+			<p> -> Changing smoothness, note that as sigma changes, so does the Y axis</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat --sigma 0.001
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_sigma0001.png"><br/>
+			</p>
+			
+			<p>
+			<pre><cli>
+./bin/statistics/computePCF_2dd -i bnot_1024.dat -o pcf.dat --sigma 0.3
+			</cli></pre>
+			<img width="512" src="data/pcf/pcf_sigma03.png"><br/>
+			</p>
+
+
+
+		</div>

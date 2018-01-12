@@ -1,0 +1,71 @@
+		<div id="post">
+			<h2> Histogram Compare </h2>
+			
+			<table class="files">
+			<tr>
+				<td class="files" valign="middle">Files</td>
+				<td class="files" valign="middle">
+					src/bin/utils/histogram_compare_2dd.cpp<br/>
+				</td>
+			</tr>
+			</table>
+			
+			<h1>Description</h1>
+			
+			<p>
+				An executable that returns the maximal distance (Linf distance) and the sum of squared distances (L2 distance)
+				between two 2D histograms.
+		    </p>
+		    
+		    <h1> Execution </h1>
+		    
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	--h1 	 <string> Histogram 1
+	--h2 	 <string> Histogram 2
+				</pre>
+			</p>
+
+			<p> 
+			Note that the comparison between histograms can only be performed
+			if both histograms contain the same number of bins, with the same x coordinates.
+			</p>
+			
+			<p>To compute the difference between 2 histograms, we can use the following 
+			client line command:
+			<pre><cli>
+./bin/utils/histogram_compare_2dd --h1 pcf.dat --h2 pcf2.dat
+			</cli></pre>
+			</p>
+			
+			<p>
+			Or the following C++ code:
+			<pre><code>
+<b>Histogram1dd</b> histo1;
+<b>Histogram1dd</b> histo2;
+<em>//we assume histograms are filled</em>
+
+<b>double</b> l2, linf;
+histo1.Linf(histo2, linf);
+histo1.L2(histo2, l2);
+			</code></pre>
+			</p>
+		        
+		        
+		    <h1> Results </h1>
+		    
+		    <p>For the following histogram, representing PCFs:
+		    <img width="512" src="data/histo_cmp/pcfs.png">
+		    </p>
+		    
+		    <pre><cli>
+./bin/utils/histogram_compare_2dd --h1 pcf.dat --h2 pcf2.dat
+Distance between Histograms:
+		Linf:0.0884439
+		L2:0.225963
+			</cli></pre>
+			
+		        
+		</div>

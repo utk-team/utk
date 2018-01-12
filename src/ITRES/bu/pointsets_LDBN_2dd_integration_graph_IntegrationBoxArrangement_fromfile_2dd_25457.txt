@@ -1,0 +1,17 @@
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+

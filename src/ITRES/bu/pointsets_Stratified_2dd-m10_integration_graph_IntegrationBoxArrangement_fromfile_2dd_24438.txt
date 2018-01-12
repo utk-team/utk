@@ -1,0 +1,6 @@
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+184900		162.279		0.0273904		162.051		162.619		162.218		0.0282944		10
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+262144		162.254		0.00864999		162.123		162.437		162.218		0.00908608		10
+#Nbpts		#Mean		#Var		#Min		#Max		#Analytical		#MSE		#NbPtsets
+369664		162.25		0.0054907		162.169		162.386		162.218		0.00594173		10
