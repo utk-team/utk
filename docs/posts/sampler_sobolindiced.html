@@ -1,0 +1,105 @@
+<div id="post">
+			<h2> Sampler Sobol Indiced </h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/samplers/SamplerSobolIndices.hpp<br/>
+					src/bin/samplers/SobolIndices_*d*.cpp.cpp
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+The Sobol sequence. Samples are generated from a binary product between the binary representation of their index and a matrix, 
+generated from primitive polynomials. The primitive polynomials are indiced based on <a href="https://oeis.org/A058943">OEIS</a>
+			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
+			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
+		    </p>
+
+		    <h1> Execution </h1>
+
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
+	--silent 			Silent mode
+	-h 				Displays this help message
+	--cp 				Randomize using cranley patterson
+	--xor 				Randomize using xor
+	-x &lsaquo;uint=1&rsaquo;	Sobol Indice on X dimension
+	-y &lsaquo;uint=2&rsaquo;	Sobol Indice on Y dimension
+			</pre>
+			</p>
+
+			<p>To generate a 2D point set of 1024 samples with a sobolindiced distribution, we can use the following
+			client line command:
+			<pre><cli>
+./bin/samplers/SobolIndices_2dd -n 1024 -o toto.dat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>PointsetWriter< 2, double, Point<2, double> ></b> writer;
+writer.open("toto.dat");
+<b>Pointset< 2, double, Point<2, double> ></b> pts;
+<b>SamplerSobolIndices</b> s;
+<b>unsigned int</b> param_nbsamples = 1024;
+<b>int</b> sobolIdX = 1;
+<b>int</b> sobolIdY = 2;
+<b>int</b> indices[2] = {sobolIdX, sobolIdY};
+s.setIndices(indices, 2);
+s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
+writer.writePointset(pts);
+writer.close();
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+			<pre><cli>
+./bin/samplers/SobolIndices_2dd -o sobolindiced_1024.edat -n 1024
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/sobolindiced/sobolindiced_1024.edat">sobolindiced_1024.edat</a></td>
+					<td>Pointset<br/><a href="data/sobolindiced/sobolindiced_1024.png"><img class="mylogo" width="150" src="data/sobolindiced/sobolindiced_1024.png"></a></td>
+					<td>Fourier<br/><a href="data/sobolindiced/sobolindiced_1024_fourier.png"><img class="mylogo" width="150" src="data/sobolindiced/sobolindiced_1024_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./bin/samplers/SobolIndices_2dd -o sobolindiced_4096.edat -n 4096
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/sobolindiced/sobolindiced_4096.edat">sobolindiced_4096.edat</a></td>
+					<td>Pointset<br/><a href="data/sobolindiced/sobolindiced_4096.png"><img class="mylogo" width="150" src="data/sobolindiced/sobolindiced_4096.png"></a></td>
+					<td>Fourier<br/><a href="data/sobolindiced/sobolindiced_4096_fourier.png"><img class="mylogo" width="150" src="data/sobolindiced/sobolindiced_4096_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./bin/samplers/SobolIndices_2dd -x 3 -y 4 -o sobolindiced_34_1024.edat -n 1024
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/sobolindiced_34/sobolindiced_34_1024.edat">sobolindiced_34_1024.edat</a></td>
+					<td>Pointset<br/><a href="data/sobolindiced_34/sobolindiced_34_1024.png"><img class="mylogo" width="150" src="data/sobolindiced_34/sobolindiced_34_1024.png"></a></td>
+					<td>Fourier<br/><a href="data/sobolindiced_34/sobolindiced_34_1024_fourier.png"><img class="mylogo" width="150" src="data/sobolindiced_34/sobolindiced_34_1024_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./bin/samplers/SobolIndices_2dd -x 5 -y 6 -o sobolindiced_56_1024.edat -n 1024
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/sobolindiced_56/sobolindiced_56_1024.edat">sobolindiced_56_1024.edat</a></td>
+					<td>Pointset<br/><a href="data/sobolindiced_56/sobolindiced_56_1024.png"><img class="mylogo" width="150" src="data/sobolindiced_56/sobolindiced_56_1024.png"></a></td>
+					<td>Fourier<br/><a href="data/sobolindiced_56/sobolindiced_56_1024_fourier.png"><img class="mylogo" width="150" src="data/sobolindiced_56/sobolindiced_56_1024_fourier.png"></a></td>
+				</tr>
+			</table>
