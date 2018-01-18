@@ -6,6 +6,9 @@
 #include <random>
 #include <chrono>
 #include <fstream>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
 
 #include "../utils.hpp"
 
@@ -39,6 +42,7 @@ public:
 
 	SamplerLDBN() { 
 		setTileSize(128);
+		setChunkSize(16);
 		srand(time(NULL));
 	}
 
@@ -49,6 +53,10 @@ public:
 		maxval = 1u << (tablebit+10);
 		one=tablesize*tablesize;
 		scl = 1.0 / (double)maxval;
+	}
+	void setChunkSize(uint arg_chunk)
+	{
+		chunksize = arg_chunk;
 	}
 	void setPermutFile(std::string arg_filename)
 	{
@@ -75,7 +83,17 @@ public:
 	bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned long long int arg_points)
 	{
 		if(permut_filename.empty())
-			setPermutFile(std::string(UTK_DATA_PATH)+"/LDBN/tables_BlueNoise/tilesize_128/chunksize_m016.dat");
+		{
+			std::stringstream ss_tilesize;
+			ss_tilesize << std::setfill('0') << std::setw(3) << tablesize;
+			
+			std::stringstream ss_chunksize;
+			ss_chunksize << std::setfill('0') << std::setw(3) << chunksize;
+
+			std::string permut_file=std::string(UTK_DATA_PATH)+"/LDBN/tables_BlueNoise/tilesize_" + ss_tilesize.str() + "/chunksize_m" + ss_chunksize.str() + ".dat";
+			setPermutFile(permut_file);
+		}
+			
 		
 		if (!arg_pts.empty())
 		{
@@ -147,6 +165,7 @@ public:
 protected:
 	std::vector< Point<2, double> > O, s;
 	
+	uint chunksize;
 	uint tablesize;
 	uint tablebit;
 	uint maxval;

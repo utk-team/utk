@@ -21,8 +21,10 @@ int main(int argc, char** argv)
 	initParserSampler(&parser);
 	std::string permut_file;
 	uint tilesize = 128;
-	parser.addShortOption('d', &permut_file, 1, assignString, displayString, "<string>\t\t\tFile containing the permutations", "Permutations");
-	parser.addShortOption('t', &tilesize, 1, assignUInt, displayUInt, "<uint>\t\t\tThe size of the permutation tile", "Tile size");
+	uint chunksize = 16;
+	parser.addShortOption('d', &permut_file, 1, assignString, displayString, "[string]\t\t\tFile containing the permutations", "Permutations");
+	parser.addShortOption('t', &tilesize, 1, assignUInt, displayUInt, "[uint=128]\t\t\tThe size of the permutation tile", "Tile size");
+	parser.addShortOption('c', &chunksize, 1, assignUInt, displayUInt, "[uint=16]\t\t\tThe size of the permutation chunk", "Chunk size");
 	
 	//PARSING
 	parser.parse(argc, argv);
@@ -49,9 +51,16 @@ int main(int argc, char** argv)
 		return 1;
 	}*/
 	
+	sampler.setChunkSize(chunksize);
 	sampler.setTileSize(tilesize);
+	
 	if(!permut_file.empty())
+	{
 		sampler.setPermutFile(permut_file);
+		WARNING("Make sure the chunk and tile size are consistent with the chosen permutation file ...");
+	}
+	else
+		WARNING("No permutation file given, I'll try to deduce one from tilesize and chunksize.");
 	
 	PointsetWriter<D, T, P> writer;
 	writer.open(param_output.c_str());

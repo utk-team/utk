@@ -17,13 +17,11 @@ int main(int argc, char** argv)
 	ParamParser_getopt parser;
 	S sampler;
 	
-	int basis = 3;
+	int basis = 2;
 	//PARSE PARAM
 	initParserSampler(&parser);
-	parser.addShortOption('b', &basis, 1, assignInt, displayInt, (char*)"<uint=3>\tBasis", (char*)"Basis");
+	parser.addShortOption('b', &basis, 1, assignInt, displayInt, (char*)"<uint=2>\tBasis", (char*)"Basis");
 	
-	//PARSE PARAM
-	initParserSampler(&parser);
 	//PARSING
 	parser.parse(argc, argv);
 	

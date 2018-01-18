@@ -1292,7 +1292,7 @@ protected:
 
 public:
 
-	SamplerNiederreiter() { m_basis=3; }
+	SamplerNiederreiter() { m_basis=2; }
 	
 	void setBasis(uint arg_basis) { m_basis = arg_basis; }
 
