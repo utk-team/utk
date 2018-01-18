@@ -14,11 +14,11 @@ Kensler, A. (2013). Correlated multi-jittered sampling. Pixar Tech Report
 namespace utk
 {
 
-class SamplerCMJ
+class SamplerMultiJitter
 {
 public:
 
-    SamplerCMJ() { setRandomSeedTime(); }
+    SamplerMultiJitter() { setRandomSeedTime(); }
 
 	void setRandomSeed( long unsigned int arg_seed ) { m_mersenneTwister.seed(arg_seed); }
 	void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
@@ -28,19 +28,19 @@ public:
     {
 		if (!arg_pts.empty())
 		{
-			WARNING("SamplerCMJ::generateSamples the pointset to fill is not empty, clearing it ...");
+			WARNING("SamplerMultiJitter::generateSamples the pointset to fill is not empty, clearing it ...");
 			arg_pts.clear();
 		}
 		
 		if (D != 2)
 		{
-			WARNING("SamplerCMJ::generateSamples is only a 2D sampler ...");
+			WARNING("SamplerMultiJitter::generateSamples is only a 2D sampler ...");
 			return false;
 		}
 
 		if (!isFloatingType<T>())
 		{
-			ERROR("SamplerCMJ::generateSamples generates samples in [0, 1]^d, can only run with points of type float or double");
+			ERROR("SamplerMultiJitter::generateSamples generates samples in [0, 1]^d, can only run with points of type float or double");
 			return false;
 		}
 		
@@ -69,7 +69,7 @@ public:
         
         //Shuffle it
         //on x
-        /*for(int j=0; j<n; j++)
+        for(int j=0; j<n; j++)
         {
             for(int i=0; i<n; i++)
             {
@@ -85,7 +85,7 @@ public:
 				float k = i + getRandom01() * (n-i);
                 std::swap(p[j*n+i].pos()[1], p[j*n+(int)k].pos()[1]);
             }
-        }*/
+        }
 
         for(unsigned int a=0; a<arg_points; a++)
             arg_pts.push_back(p[a]);

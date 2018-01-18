@@ -10,7 +10,7 @@ using namespace utk;
 typedef double T;
 #define D 2
 typedef Point<D, T> P;
-typedef SamplerCMJ S;
+typedef SamplerMultiJitter S;
 
 int main(int argc, char** argv)
 {

@@ -86,11 +86,11 @@
 										<li>
 											<a href="wip.html" style="color:black">Other</a>
 											<ul>
-												<li><a href="wip.html" style="color:black">CMJ</a></li>
+												<li><a href="sampler_cmj.html">CMJ</a></li>
 												<li><a href="sampler_hexagonal_grid.html">Hexagonal Grid</a></li>
 												<li><a href="wip.html" style="color:black">Korobov</a></li>
-												<li><a href="wip.html" style="color:black">Multi Jitter</a></li>
-												<li><a href="wip.html" style="color:black">N-Rooks</a></li>
+												<li><a href="sampler_multijitter.html">Multi Jitter</a></li>
+												<li><a href="sampler_nrooks.html">N-Rooks</a></li>
 												<li><a href="wip.html" style="color:black">Rank 1</a></li>
 												<li><a href="sampler_regular_grid.html">Regular Grid</a></li>
 												<li><a href="wip.html" style="color:black">Single Peak</a></li>
@@ -174,20 +174,20 @@
 				</div>
 		</div>
 <div id="post">
-			<h2> Sampler dart_throwing_relaxed </h2>
+			<h2> Sampler N-Rooks </h2>
 			<table class=files>
 			<tr>
 				<td class=files valign=middle>Files</td>
 				<td class=files valign=middle>
-					src/samplers/SamplerDartThrowing.hpp<br/>
-					src/bin/samplers/DartThrowing_2dd.cpp.cpp
+					src/samplers/SamplerNRooks.hpp<br/>
+					src/bin/samplers/NRooks_*dd.cpp.cpp
 				</td>
 			</tr>
 			</table>
 
 			<h1>Description</h1>
 			<p>
-A naive (relaxed) dart throwing algorithm.
+The N-Rooks sampler.
 			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
 			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
 		    </p>
@@ -205,14 +205,13 @@ A naive (relaxed) dart throwing algorithm.
 	-h 				Displays this help message
 	--cp 				Randomize using cranley patterson
 	--xor 				Randomize using xor
-	--relaxed 				Use relaxed dart throwing
 			</pre>
 			</p>
 
-			<p>To generate a 2D point set of 1024 samples with a dart_throwing_relaxed distribution, we can use the following
+			<p>To generate a 2D point set of 1024 samples with a nrooks distribution, we can use the following
 			client line command:
 			<pre><cli>
-./bin/samplers/DartThrowing_2dd --relaxed -n 1024 -o toto.dat
+./bin/samplers/NRooks_2dd -n 1024 -o toto.dat
 			</cli></pre>
 			</p>
 
@@ -222,7 +221,7 @@ A naive (relaxed) dart throwing algorithm.
 <b>PointsetWriter< 2, double, Point<2, double> ></b> writer;
 writer.open("toto.dat");
 <b>Pointset< 2, double, Point<2, double> ></b> pts;
-<b>SamplerDartThrowing</b> s;
+<b>SamplerNRooks</b> s;
 <b>unsigned int</b> param_nbsamples = 1024;
 s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
 writer.writePointset(pts);
@@ -233,23 +232,23 @@ writer.close();
 			<h1> Results </h1>
 
 			<pre><cli>
-./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_1024.edat -n 1024
+./bin/samplers/NRooks_2dd -o nrooks_1024.edat -n 1024
 			</cli></pre>
 			<table style="width:100%">
 				<tr class="images">
-					<td>File<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_1024.edat">dart_throwing_relaxed_1024.edat</a></td>
-					<td>Pointset<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_1024.png"><img class="mylogo" width="150" src="data/dart_throwing_relaxed/dart_throwing_relaxed_1024.png"></a></td>
-					<td>Fourier<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_1024_fourier.png"><img class="mylogo" width="150" src="data/dart_throwing_relaxed/dart_throwing_relaxed_1024_fourier.png"></a></td>
+					<td>File<br/><a href="data/nrooks/nrooks_1024.edat">nrooks_1024.edat</a></td>
+					<td>Pointset<br/><a href="data/nrooks/nrooks_1024.png"><img class="mylogo" width="150" src="data/nrooks/nrooks_1024.png"></a></td>
+					<td>Fourier<br/><a href="data/nrooks/nrooks_1024_fourier.png"><img class="mylogo" width="150" src="data/nrooks/nrooks_1024_fourier.png"></a></td>
 				</tr>
 			</table>
 			<pre><cli>
-./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_4096.edat -n 4096
+./bin/samplers/NRooks_2dd -o nrooks_4096.edat -n 4096
 			</cli></pre>
 			<table style="width:100%">
 				<tr class="images">
-					<td>File<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_4096.edat">dart_throwing_relaxed_4096.edat</a></td>
-					<td>Pointset<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_4096.png"><img class="mylogo" width="150" src="data/dart_throwing_relaxed/dart_throwing_relaxed_4096.png"></a></td>
-					<td>Fourier<br/><a href="data/dart_throwing_relaxed/dart_throwing_relaxed_4096_fourier.png"><img class="mylogo" width="150" src="data/dart_throwing_relaxed/dart_throwing_relaxed_4096_fourier.png"></a></td>
+					<td>File<br/><a href="data/nrooks/nrooks_4096.edat">nrooks_4096.edat</a></td>
+					<td>Pointset<br/><a href="data/nrooks/nrooks_4096.png"><img class="mylogo" width="150" src="data/nrooks/nrooks_4096.png"></a></td>
+					<td>Fourier<br/><a href="data/nrooks/nrooks_4096_fourier.png"><img class="mylogo" width="150" src="data/nrooks/nrooks_4096_fourier.png"></a></td>
 				</tr>
 			</table>
 <!-- Footer -->
