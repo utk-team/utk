@@ -18,10 +18,11 @@ namespace utk
 
 	public:
 
-		SamplerDartThrowing() { setRandomSeedTime(); }
+		SamplerDartThrowing() { setRandomSeedTime(); m_relaxed=false; }
 
 		void setRandomSeed(long unsigned int arg_seed) { m_mersenneTwister.seed(arg_seed); }
 		void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
+		void setRelaxed(bool arg_relaxed) { m_relaxed = arg_relaxed; }
 		
 		template<unsigned int D, typename T, typename P>
 		bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned int arg_points)
@@ -71,9 +72,19 @@ namespace utk
 			P p;
 			for(uint i=0; i<arg_points; ++i)
 			{
+				int iter = 1;
 				bool accept=false;
 				while( ! accept )
 				{
+					double current_dist = distDT;
+					if(m_relaxed)
+					{
+						if(iter%1000 == 0)
+						{
+							current_dist *= 0.9;
+						}
+					}
+						
 					for(uint d=0; d<D; d++)
 						p.pos()[d] = getRandom01();
 					
@@ -89,9 +100,10 @@ namespace utk
 						}
 						dist = sqrt(dist);
 						
-						if ( dist < distDT )
+						if ( dist < current_dist )
 							accept = false;
 					}
+					iter++;
 				}
 				arg_pts.push_back(p);
 				std::cout << i << " / " << arg_points << "\r";
@@ -106,6 +118,8 @@ namespace utk
 		{
 			return (double)m_mersenneTwister() / (double)m_mersenneTwister.max();
 		}
+		
+		bool m_relaxed;
 
 	};
 

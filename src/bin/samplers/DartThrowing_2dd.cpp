@@ -16,14 +16,21 @@ int main(int argc, char** argv)
 {
 	ParamParser_getopt parser;
 	S sampler;
+	
+	bool param_relaxed=false;
 
 	//PARSE PARAM
 	initParserSampler(&parser);
+	
+	parser.addLongOption((char*)"relaxed", &param_relaxed, 0, assignBoolTrue, displayBool, "\t\t\t\tUse relaxed dart throwing", "Relaxed");
+	
 	//PARSING
 	parser.parse(argc, argv);
 
 	if(!dealParamParserSampler(&parser))
 		return 0;
+	
+	sampler.setRelaxed(param_relaxed);
 	
 	if(param_randxor)
 	{
