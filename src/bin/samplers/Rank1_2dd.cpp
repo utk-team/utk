@@ -17,8 +17,12 @@ int main(int argc, char** argv)
 	ParamParser_getopt parser;
 	S sampler;
 	
+	bool param_fibo=false;
+	
 	//PARSE PARAM
 	initParserSampler(&parser);
+	
+	parser.addLongOption((char*)"fibonacci", &param_fibo, 0, assignBoolTrue, displayBool, (char*)"\t\t\tUses the fibonnacci sequence as indices", (char*)"Fibonnacci");
 	//PARSING
 	parser.parse(argc, argv);
 	
@@ -30,6 +34,8 @@ int main(int argc, char** argv)
 		ERROR("Cannot randomize using xor a set of floating point samples");
 		return false;
 	}
+	
+	sampler.setFibonnacci(param_fibo);
 	
 	PointsetWriter<D, T, P> writer;
 	writer.open(param_output.c_str());

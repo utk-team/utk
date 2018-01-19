@@ -330,7 +330,9 @@ class SamplerRank1
 
 	public:
 
-		SamplerRank1() { exhaustSearch=false; }
+		SamplerRank1() { exhaustSearch=false; m_fibonnacci=false; }
+		
+		void setFibonnacci(bool arg_fibonnacci) { m_fibonnacci=arg_fibonnacci; }
 		
 		template<unsigned int D, typename T, typename P>
 		bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned int arg_points)
@@ -361,7 +363,27 @@ class SamplerRank1
 			arg_pts.toricity = 1;
 			
 			std::vector<nsrank1::Point> pts;
-			pts = nsrank1::general_rank1_lattices(arg_points, exhaustSearch);
+			
+			if(!m_fibonnacci)
+				pts = nsrank1::general_rank1_lattices(arg_points, exhaustSearch);
+			else
+			{
+				int fib_lvl0 = 0;
+				int fib_lvl1 = 1;
+				int fib_lvl2 = 1;
+				int i = 2;
+				while(fib_lvl2 < arg_points)
+				{
+					fib_lvl0 = fib_lvl1;
+					fib_lvl1 = fib_lvl2;
+					fib_lvl2 = fib_lvl0 + fib_lvl1;
+					i++;
+				}
+				if(std::abs(fib_lvl2 - (int)arg_points) < std::abs(fib_lvl1 - (int)arg_points))
+					pts = nsrank1::fibonacci_rank1_lattices(i);
+				else
+					pts = nsrank1::fibonacci_rank1_lattices(i-1);
+			}
 			
 			arg_pts.resize(pts.size());
 			for(int i=0; i<pts.size(); i++)
@@ -375,6 +397,7 @@ class SamplerRank1
 
 	protected:
 	bool exhaustSearch;
+	bool m_fibonnacci;
 };
 
 } //end namespace utk

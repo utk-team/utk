@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	initParserSampler(&parser);
 	//PARSING
 	uint generator_a = 3;
-	parser.addShortOption('a', &generator_a, 1, assignUInt, displayUInt, "<uint=3>\t\t\tThe generator value", "Generator");
+	parser.addShortOption('a', &generator_a, 1, assignUInt, displayUInt, "[uint=3]\t\t\tThe generator value, should be prime relatively to the number of samples", "Generator");
 
 	parser.parse(argc, argv);
 	
