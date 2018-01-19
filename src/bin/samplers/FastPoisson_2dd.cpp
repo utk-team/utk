@@ -18,20 +18,18 @@ int main(int argc, char** argv)
 	S sampler;
 	
 	std::string param_method;
-	bool param_maximize = false;
 	int param_multiplier = false;
 	int param_minmaxthrows = 1000;
 	double param_radius;
-	int param_relax_iter = 0;
 	bool param_tiled = false;
 	
 	//PARSE PARAM
 	initParserSampler(&parser);
-	parser.addLongOption((char*)"method", &param_method, 1, assignString, displayString, (char*)"\t<string> The method to use to generate the samples (DartThrowing | Pure | LinearPure)", (char*)"Method");
-	parser.addLongOption((char*)"maximize", &param_maximize, 0, assignBoolTrue, displayBool, (char*)"\tIf set, maximize point set after sampling", (char*)"Maximize");
+	parser.addLongOption((char*)"method", &param_method, 1, assignString, displayString, (char*)"\t[string=DartThrowing] The method to use to generate the samples (DartThrowing|Pure|LinearPure)", (char*)"Method");
+	//parser.addLongOption((char*)"maximize", &param_maximize, 0, assignBoolTrue, displayBool, (char*)"\tIf set, maximize point set after sampling", (char*)"Maximize");
 	parser.addLongOption((char*)"minmaxthrows", &param_minmaxthrows, 1, assignInt, displayInt, (char*)"\t [int=100] set minimum number of maximum throws for DartThrowing sampler", (char*)"MinMaxThrows");
 	parser.addLongOption((char*)"mult", &param_multiplier, 1, assignInt, displayInt, (char*)"\t [int=1] set multiplier for DartThrowing sampler", (char*)"Multiplier");
-	parser.addLongOption((char*)"relax", &param_relax_iter, 1, assignInt, displayInt, (char*)"\t [int=0] apply the specified number of relaxations after sampling", (char*)"Relax Iterations");
+	//parser.addLongOption((char*)"relax", &param_relax_iter, 1, assignInt, displayInt, (char*)"\t [int=0] apply the specified number of relaxations after sampling", (char*)"Relax Iterations");
 	parser.addLongOption((char*)"tiled", &param_tiled, 0, assignBoolTrue, displayBool, (char*)"\tIf set, use tiled domain", (char*)"Tiled");
 	//parser.addLongOption((char*)"radius", &param_radius, 1, assignDouble, displayDouble, (char*)"\t [double=0.1] the radius", (char*)"Radius");
 
@@ -69,11 +67,11 @@ int main(int argc, char** argv)
 		return false;
 	}
 	
-	sampler.setMaximize(param_maximize);
+	sampler.setMaximize(false);
 	sampler.setMethod(param_method);
 	sampler.setMultiplier(param_multiplier);
 	sampler.setRadius(param_radius);
-	sampler.setRelaxIter(param_relax_iter);
+	sampler.setRelaxIter(0);
 	sampler.setTiled(param_tiled);
 	
 	PointsetWriter<D, T, P> writer;
