@@ -24,7 +24,8 @@
 	}
 	
 	table.files, td.files {
-		border: 1px solid gray;
+		padding: 15px;
+		border: 1px dotted gray;
 		text-align: center;
 	}
 	
@@ -1872,7 +1873,7 @@
 
 		a:hover {
 			color: #37c0fb;
-			border-bottom-color: transparent;
+			border-bottom: dotted 1px;
 		}
 
 	strong, b {
@@ -1895,7 +1896,6 @@
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-			color: inherit;
 			text-decoration: none;
 		}
 
