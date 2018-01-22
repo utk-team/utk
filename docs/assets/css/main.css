@@ -1867,7 +1867,7 @@
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 		color: #37c0fb;
 		text-decoration: none;
-		border-bottom: dotted 1px;
+		border-bottom: none;
 	}
 
 		a:hover {
@@ -1928,7 +1928,7 @@
 
 	hr {
 		border-top: solid 1px #e0e0e0;
-		border: 0;
+		border-width: 1px;
 		margin-bottom: 1.5em;
 	}
 

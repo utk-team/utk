@@ -170,113 +170,186 @@
 
 				</div>
 		</div>
-		<div id="post">
-			<h2> Minimal Distance </h2>
-			
-			<table class="files">
+<div id="post">
+		<h2>Samplers</h2>
+		
+		Low Discrepancy Samplers
+		<hr>
+		<table style="width:100%" cellspacing="30">
 			<tr>
-				<td class="files" valign="middle">Files</td>
-				<td class="files" valign="middle">
-					src/bin/statistics/computeMinDist_2dd.cpp<br/>
-					src/statistics/MinimalDistance.hpp
+				<td align=center>
+					<p> Faure <br/>
+					<a href="sampler_faure.html">
+					<img width="170" src="data/faure/faure_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Halton <br/>
+					<a href="sampler_halton.html">
+					<img width="170" src="data/halton/halton_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Hammersley <br/>
+					<a href="sampler_hammersley.html">
+					<img width="170" src="data/hammersley/hammersley_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> LDBN <br/>
+					<a href="sampler_ldbn.html">
+					<img width="170" src="data/ldbn/ldbn_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Niederreiter <br/>
+					<a href="sampler_niederreiter.html">
+					<img width="170" src="data/nieddereiter/nieddereiter_1024.png"/>
+					</a>
+					</p>
 				</td>
 			</tr>
-			</table>
 			
-			
-			<h1>Description</h1>
-			
-			<p>
-				The minimal distance between samples is computed by taking all distances between pairs of samples
-				and keeping the minimum. Maximizing this distance can be a way to improve the quality of
-				a point set. 
-		    </p>
-		    
-		    <h1> Execution </h1>
-		    
-		    <p>
-				Parameters:<br/>
-				<pre>
-	[HELP]
-	--silent 		Silent mode
-	-h <string>		Displays this help message
-	-i <string> the input pointset
-	--non-toric does not compute toric distances
-				</pre>
-			</p>
-
-			<p> 
-			Note that by default the program computes the toric minimal distance between
-			2D samples. The minimal distance is a measure that is only valid when performed
-			over several realisations of a sampler. Hence, the executable returns a
-			variance, minimal, maximal and average of all minimal distances of all point sets
-			is the input file.
-			</p>
-			
-			<p>To compute the minimal distance from a file containing one or several 2D point sets, we can use the following 
-			client line command:
-			<pre><cli>
-./bin/statistics/computeMinDist_2dd -i toto.dat
-			</cli></pre>
-			</p>
-			
-			<p>
-			Or to compute the min distance of a single point set, one can use the following C++ code:
-			<pre><code>
-<b>MinimalDistance</b> md_engine;
-<b>Pointset< 2, double, Point<2, double> ></b> pts;
-<b>bool</b> toric = true;
-<em>//we assume pts is filled</em>
-
-<b>double</b> mindist;
-md_engine.compute<2, double, Point<2, double> >(pts, toric, mindist);
-			</code></pre>
-			</p>
-		        
-		        
-		    <h1> Results </h1>
-		    
-		    <table style="width:60%">
 			<tr>
-				<td><img class="mylogo" width="150" src="data/mindist/pointset.png"></td>
-				<td>From 10 realisations of the random sampler <br/><a href="data/mindist/whitenoise_m10_256.dat">whitenoise_m10_256.dat</a></td>
+				<td align=center>
+					<p> Owen <br/>
+					<a href="sampler_owen.html">
+					<img width="170" src="data/owen/owen_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Sobol (code from <a href="http://web.maths.unsw.edu.au/~fkuo/sobol/">[JK03]</a>) <br/>
+					<a href="sampler_sobolkuo.html">
+					<img width="170" src="data/sobolkuo/sobolkuo_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Sobol (Original) <br/>
+					<a href="sampler_sobolindiced.html">
+					<img width="170" src="data/sobolindiced/sobolindiced_1024.png"/>
+					</a>
+					</p>
+				</td>
 			</tr>
-			</table> 
-			
-		    <pre><cli>
-./bin/statistics/computeMinDist_2dd -i whitenoise_m10_256.dat
-#Samples	#Avg MinDist	#Var MinDist	#Max MinDist	#Min MinDist
-256	0.00348864	1.39075e-06	0.00514913	0.00122
-
-			</cli></pre>
-			
-			<pre><cli>
-./bin/statistics/computeMinDist_2dd -i whitenoise_m10_256.dat --non-toric
-#Samples	#Avg MinDist	#Var MinDist	#Max MinDist	#Min MinDist
-256	0.00351797	1.5076e-06	0.00544248	0.00122
-			</cli></pre>
-			
-			<p></p>
-			<table style="width:60%">
+		</table>
+		
+		
+		
+		Blue Noise Samplers
+		<hr>
+		<table style="width:100%" cellspacing="30">
 			<tr>
-				<td><img class="mylogo" width="150" src="data/mindist/pointset_2.png"></td>
-				<td>From a single realisations of the Sobol sequence, with integer samples <br/><a href="data/mindist/sobol_256.edat">sobol_256.edat</a></td>
+				<td align=center>
+					<p> AA Patterns <br/>
+					<a href="sampler_aapatterns.html">
+					<img width="170" src="data/aapatterns/aapatterns_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> ART <br/>
+					<a href="wip.html">
+					<img width="170" src="data/WIP.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Forced Random <br/>
+					<a href="sampler_wip.html">
+					<img width="170" src="data/WIP.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> FPO <br/>
+					<a href="wip.html">
+					<img width="170" src="data/WIP.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> LDBN <br/>
+					<a href="sampler_ldbn.html">
+					<img width="170" src="data/ldbn/ldbn_1024.png"/>
+					</a>
+					</p>
+				</td>
 			</tr>
-			</table>
 			
-			<p>Note that in this case, we have to use a .edat file to store our samples, otherwise the size of the domain
-			is unknown and therefore we cannot provide toric distances.</p>
-			
-			<pre><cli>
-./bin/statistics/computeMinDist_2dd -i sobol_256.edat
-#Samples	#Avg MinDist	#Var MinDist	#Max MinDist	#Min MinDist
-256	1.41421	0	1.41421	1.41421
+			<tr>
+				<td align=center>
+					<p> Owen <br/>
+					<a href="sampler_penrose.html">
+					<img width="170" src="data/penrose/penrose_1024.png"/>
+					</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+		
+		
+		
+		Poisson Samplers
+		<hr>
+		<table style="width:100%" cellspacing="30">
+			<tr>
+				<td align=center>
+					<p> Dart Throwing <br/>
+					<a href="sampler_dart_throwing.html">
+					<img width="170" src="data/dart_throwing/dart_throwing_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Fast Poisson <br/>
+					<a href="sampler_fastpoisson.html">
+					<img width="170" src="data/fastpoisson/fastpoisson_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td> <img width="170" src="data/empty.png"/> </td>
+				<td> <img width="170" src="data/empty.png"/> </td>
+				<td> <img width="170" src="data/empty.png"/> </td>
+			</tr>
+		</table>
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		Poisson Samplers
+		<ul>
+			<li><a href="sampler_dart_throwing.html">Dart Throwing</a></li>
+			<li><a href="sampler_fastpoisson.html">Fast Poisson</a></li>
 
-			</cli></pre>
-			
-		        
-		</div>
-<!-- Footer -->
+		</ul>
+		
+		Other Samplers
+		<ul>
+			<li><a href="sampler_cmj.html">CMJ</a></li>
+			<li><a href="sampler_hexagonal_grid.html">Hexagonal Grid</a></li>
+			<li><a href="sampler_korobov.html">Korobov</a></li>
+			<li><a href="sampler_multijitter.html">Multi Jitter</a></li>
+			<li><a href="sampler_nrooks.html">N-Rooks</a></li>
+			<li><a href="sampler_rank1.html">Rank 1</a></li>
+			<li><a href="sampler_regular_grid.html">Regular Grid</a></li>
+			<li><a href="sampler_singlepeak.html">Single Peak</a></li>
+			<li><a href="sampler_step.html">Step</a></li>
+			<li><a href="sampler_stratified.html">Stratified</a></li>
+			<li><a href="sampler_whitenoise.html">Whitenoise</a></li>
+		</ul>
+		
+	</div><!-- Footer -->
 		<div id="page-wrapper">
 				<div id="footer">
 					<!-- Icons -->
