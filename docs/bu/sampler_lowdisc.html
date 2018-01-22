@@ -25,32 +25,30 @@
 										<li><a href="wip.html" style="color:black">The Pointset Class</a></li>
 										<li><a href="wip.html" style="color:black">The IO Class</a></li>
 										<li><a href="wip.html" style="color:black">The Histogram Class</a></li>
-									</ul>
-								</li>
-								
-								<li>
-									<a href="io_format.html">I/O Formats</a>
-									<ul>
-										<li><a href="io_ascii.html">ASCII</a>
+										<li><a href="io_format.html">I/O Formats</a>
 											<ul>
-												<li><a href="io_dat.html">.dat</a></li>
-												<li><a href="io_edat.html">.edat</a></li>
+												<li><a href="io_ascii.html">ASCII</a>
+													<ul>
+														<li><a href="io_dat.html">.dat</a></li>
+														<li><a href="io_edat.html">.edat</a></li>
+													</ul>
+												</li>
+												<li><a href="io_binary.html">Binary</a>
+													<ul>
+														<li><a href="io_bin.html">.bin</a></li>
+														<li><a href="io_ebin.html">.ebin</a></li>
+													</ul>
+												</li>
+												<li><a href="io_graphic.html">Graphic</a>
+													<ul>
+														<li><a href="wip.html" style="color:black">.png</a></li>
+														<li><a href="io_ps.html">.ps</a></li>
+														<li><a href="io_tikz.html">.tex (tikz)</a></li>
+													</ul>
+												</li>
+												
 											</ul>
 										</li>
-										<li><a href="io_binary.html">Binary</a>
-											<ul>
-												<li><a href="io_bin.html">.bin</a></li>
-												<li><a href="io_ebin.html">.ebin</a></li>
-											</ul>
-										</li>
-										<li><a href="io_graphic.html">Graphic</a>
-											<ul>
-												<li><a href="wip.html" style="color:black">.png</a></li>
-												<li><a href="io_ps.html">.ps</a></li>
-												<li><a href="io_tikz.html">.tex (tikz)</a></li>
-											</ul>
-										</li>
-										
 									</ul>
 								</li>
 								
@@ -171,17 +169,73 @@
 				</div>
 		</div>
 <div id="post">
-		Low discrepancy Samplers
-		<ul>
-			<li><a href="sampler_faure.html">Faure</a></li>
-			<li><a href="sampler_halton.html">Halton</a></li>
-			<li><a href="sampler_hammersley.html">Hammersley</a></li>
-			<li><a href="sampler_ldbn.html">LDBN</a></li>
-			<li><a href="sampler_niederreiter.html">Niederreiter</a></li>
-			<li><a href="sampler_owen.html">Owen</a></li>
-			<li><a href="sampler_sobolkuo.html">Sobol</a></li>
-			<li><a href="sampler_sobolindiced.html">Sobol Indiced</a></li>
-		</ul>
+		
+		Low Discrepancy Samplers
+		<hr>
+		<table style="width:100%" cellspacing="30">
+			<tr>
+				<td align=center>
+					<p> Faure <br/>
+					<a href="sampler_faure.html">
+					<img width="170" src="data/faure/faure_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Halton <br/>
+					<a href="sampler_halton.html">
+					<img width="170" src="data/halton/halton_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Hammersley <br/>
+					<a href="sampler_hammersley.html">
+					<img width="170" src="data/hammersley/hammersley_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> LDBN <br/>
+					<a href="sampler_ldbn.html">
+					<img width="170" src="data/ldbn/ldbn_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Niederreiter <br/>
+					<a href="sampler_niederreiter.html">
+					<img width="170" src="data/nieddereiter/nieddereiter_1024.png"/>
+					</a>
+					</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align=center>
+					<p> Owen <br/>
+					<a href="sampler_owen.html">
+					<img width="170" src="data/owen/owen_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Sobol (code from <a href="http://web.maths.unsw.edu.au/~fkuo/sobol/">[JK03]</a>) <br/>
+					<a href="sampler_sobolkuo.html">
+					<img width="170" src="data/sobolkuo/sobolkuo_1024.png"/>
+					</a>
+					</p>
+				</td>
+				<td align=center>
+					<p> Sobol (Original) <br/>
+					<a href="sampler_sobolindiced.html">
+					<img width="170" src="data/sobolindiced/sobolindiced_1024.png"/>
+					</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+		
 	</div><!-- Footer -->
 		<div id="page-wrapper">
 				<div id="footer">
