@@ -1,0 +1,80 @@
+<div id="post">
+			<h2> Sampler Genetic Owen </h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/samplers/SamplerGeneticOwen.hpp<br/>
+					src/bin/samplers/GeneticOwen_2dd.cpp.cpp
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+			Owen's scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1.
+			This leads to 2^N possible trees in each dimension, which is too computationnally expensive for an exhaustive search. This sampler thus
+			uses genetic algorithms to try and find the best possible tree generating Blue Noise sets. However, the algorithm is too naive to generate good
+			Blue Noise sets for more than 128 samples.
+		    </p>
+
+		    <h1> Execution </h1>
+		    
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
+	--silent 			Silent mode
+	-h 				Displays this help message
+	--cp 				Randomize using cranley patterson
+	--xor 				Randomize using xor
+	--iter [int=1000]		the number of iterations
+			</pre>
+			</p>
+
+			<p>To generate a 2D point set of 1024 samples with a genetic_owen distribution, we can use the following
+			client line command:
+			<pre><cli>
+./bin/samplers/GeneticOwen_2dd --iter 200 -n 1024 -o toto.dat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>PointsetWriter< 2, double, Point<2, double> ></b> writer;
+writer.open("toto.dat");
+<b>Pointset< 2, double, Point<2, double> ></b> pts;
+<b>SamplerGeneticOwen</b> s;
+<b>unsigned int</b> param_nbsamples = 1024;
+s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
+writer.writePointset(pts);
+writer.close();
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+			<pre><cli>
+./bin/samplers/GeneticOwen_2dd --iter 200 -o genetic_owen_64.edat -n 64
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/genetic_owen/genetic_owen_64.edat">genetic_owen_64.edat</a></td>
+					<td>Pointset<br/><a href="data/genetic_owen/genetic_owen_64.png"><img class="mylogo" width="150" src="data/genetic_owen/genetic_owen_64.png"></a></td>
+					<td>Fourier<br/><a href="data/genetic_owen/genetic_owen_64_fourier.png"><img class="mylogo" width="150" src="data/genetic_owen/genetic_owen_64_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./bin/samplers/GeneticOwen_2dd --iter 200 -o genetic_owen_128.edat -n 128
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/genetic_owen/genetic_owen_128.edat">genetic_owen_128.edat</a></td>
+					<td>Pointset<br/><a href="data/genetic_owen/genetic_owen_128.png"><img class="mylogo" width="150" src="data/genetic_owen/genetic_owen_128.png"></a></td>
+					<td>Fourier<br/><a href="data/genetic_owen/genetic_owen_128_fourier.png"><img class="mylogo" width="150" src="data/genetic_owen/genetic_owen_128_fourier.png"></a></td>
+				</tr>
+			</table>

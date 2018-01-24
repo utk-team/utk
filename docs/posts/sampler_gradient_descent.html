@@ -1,0 +1,92 @@
+<div id="post">
+			<h2> Sampler Gradient Descent </h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/samplers/SamplerGradientDescent.hpp<br/>
+					src/bin/samplers/GradientDescent_2dd.cpp.cpp
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+			This sampler optimizes a given input sampler to minimize its Generalized L2 discrepancy, using gradient descent.
+		    </p>
+
+		    <h1> Execution </h1>
+
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
+	--silent 			Silent mode
+	-h 				Displays this help message
+	--cp 				Randomize using cranley patterson
+	--xor 				Randomize using xor
+	-i [string]			The pointset to optimize
+			</pre>
+			</p>
+
+			<p>To optimize the discrepancy of a 2D point set using gradient descent, we can use the following
+			client line command:
+			<pre><cli>
+./bin/samplers/GradientDescent_2dd -i bnot128.dat -o toto.dat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>PointsetWriter< 2, double, Point<2, double> ></b> writer;
+writer.open("toto.dat");
+<b>Pointset< 2, double, Point<2, double> ></b> pts;
+<b>SamplerGradientDescent</b> s;
+s.setInputPointset("bnot128.dat");
+s.generateSamples< 2, double, Point<2, double> >(pts);
+writer.writePointset(pts);
+writer.close();
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+			<pre><cli>
+./bin/samplers/GradientDescent_2dd -i bnot128.dat -o optimbnot_128.edat
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>Initial File<br/><a href="data/gradient_descent/bnot128.dat">bnot128.dat</a></td>
+					<td>Initial Pointset<br/><a href="data/gradient_descent/bnot128.png"><img class="mylogo" width="150" src="data/gradient_descent/bnot128.png"></a></td>
+					<td>Initial Fourier<br/><a href="data/gradient_descent/bnot128_fourier.png"><img class="mylogo" width="150" src="data/gradient_descent/bnot128_fourier.png"></a></td>
+				</tr>
+				<tr class="images">
+					<td>Optimized File<br/><a href="data/gradient_descent/optimbnot_128.edat">optimbnot_128.edat</a></td>
+					<td>Optimized Pointset<br/><a href="data/gradient_descent/optimbnot_128.png"><img class="mylogo" width="150" src="data/gradient_descent/optimbnot_128.png"></a></td>
+					<td>Optimized Fourier<br/><a href="data/gradient_descent/optimbnot_128_fourier.png"><img class="mylogo" width="150" src="data/gradient_descent/optimbnot_128_fourier.png"></a></td>
+				</tr>
+			</table>
+			
+			
+			<pre><cli>
+./bin/samplers/GradientDescent_2dd -i bnot1024.dat -o optimbnot_1024.edat
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>Initial File<br/><a href="data/gradient_descent/bnot1024.dat">bnot1024.dat</a></td>
+					<td>Initial Pointset<br/><a href="data/gradient_descent/bnot1024.png"><img class="mylogo" width="150" src="data/gradient_descent/bnot1024.png"></a></td>
+					<td>Initial Fourier<br/><a href="data/gradient_descent/bnot1024_fourier.png"><img class="mylogo" width="150" src="data/gradient_descent/bnot1024_fourier.png"></a></td>
+				</tr>
+				<tr class="images">
+					<td>Optimized File<br/><a href="data/gradient_descent/optimbnot_1024.edat">optimbnot_1024.edat</a></td>
+					<td>Optimized Pointset<br/><a href="data/gradient_descent/optimbnot_1024.png"><img class="mylogo" width="150" src="data/gradient_descent/optimbnot_1024.png"></a></td>
+					<td>Optimized Fourier<br/><a href="data/gradient_descent/optimbnot_1024_fourier.png"><img class="mylogo" width="150" src="data/gradient_descent/optimbnot_1024_fourier.png"></a></td>
+				</tr>
+			</table>
+			
+			<p>Discrepancy Graph</p>
+			<a href="data/gradient_descent/graphl2.png"><img width="512" src="data/gradient_descent/graphl2.png"></a>

@@ -105,70 +105,6 @@ SET(SRCs
 	TKSNetsMMD_2dd
 	
 	ART_2dd
-	
-	BNOT_2dd
-	
-	CVT_2dd
-	
-	CapCVT_2dd
-	
-	FPO_2dd
-	
-	#Experimental
-	
-	#GenerativeMatrix_2dd
-	#BNOTSpp_2dd
-
-# 	Nebraska_2dd
-#
-# 	DigitalSequence_2dd
-#
-# 	SamplerBNLDMicroJittSobol2Dx2D_2dd
-# 	SamplerBNLDMicroJittSobol2Dx2D_2di
-# 	SamplerBNLDMicroJittSobol2Dx2D_4dd
-# 	SamplerBNLDMicroJittSobol2Dx2D_4di
-#
-# 	SamplerBNLDMicroJittSobolND_2dd
-# 	SamplerBNLDMicroJittSobolND_4dd
-# 	SamplerBNLDMicroJittSobolND_4di
-#
-# 	SamplerDartThrowing_2dd
-#
-# 	DTDyadic_2dd
-#
-# 	SobolPhiN_2dd
-#
-# 	TiledBasedLDSequence_2dd
-# 	TiledBasedLDSequence_2di
-#
-
-	#Victor06022017_2dd
-	#Victor06022017_2di
-	#Victor06022017_4dd
-	#Victor06022017_4di
-
-	#Victor06022017_generator_2d
-	
-# 	VictorNDGenetic_06022017_2dd
-# 	VictorNDGenetic_06022017_3dd
-# 	VictorNDGenetic_06022017_3di
-# 	VictorNDGenetic_06022017_4dd
-# 	VictorNDGenetic_06022017_4di
-# 
-# 	Victor2D2D_06022017_2dd
-# 	Victor2D2D_06022017_2di
-# 	Victor2D2D_06022017_4dd
-# 	
-# 	Victor2D2DGenetic_06022017_2dd
-# 	Victor2D2DGenetic_06022017_4dd
-# 	Victor2D2DGenetic_06022017_10dd
-# 	
-# 	Victor2D2Dfullpcf_06022017_2dd
-# 	
-# 	Victor2D2DOwen_06022017_6dd
-# 	Victor2D2DOwen_06022017_10dd
-# 	Victor2DOwen_06022017_4dd
-# 	Victor2DOwen_06022017_10dd
 
 	)
 FOREACH(FILE ${SRCs})
@@ -179,6 +115,21 @@ FOREACH(FILE ${SRCs})
 					LIBRARY DESTINATION lib
 					ARCHIVE DESTINATION lib)
 ENDFOREACH(FILE)
+
+
+#Gradient Descent
+add_executable(GradientDescent_2dd
+			GradientDescent_2dd.cpp
+			../../../externals/dCpp/dCpp.cpp
+			../../../externals/dCpp/operators.cpp
+			../../../externals/dCpp/tau.cpp
+			../../../externals/dCpp/var.cpp
+			${UTK_FILES})
+target_link_libraries ( GradientDescent_2dd ${LINK} ${LINK_TBB} )
+install(TARGETS GradientDescent_2dd
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
 
 
 #FastPoisson

@@ -48,7 +48,7 @@ public:
 		
 		for(int d=0; d<D; d++)
 			permutation_tree[d].resize(tree_size);
-		//std::cout << tree_size << " flags required for " << arg_points << " samples" << std::endl;
+		std::cout << tree_size << " flags required for " << arg_points << " samples" << std::endl;
 		
 		optimizePermutationTrees<D>(arg_pts_int, permutation_tree);
 		
@@ -173,7 +173,8 @@ protected:
 		
 		for(int i=0; i<NB_ITER; i++)
 		{
-			//if(best_tree.score > 3.6) break;
+			//if(tree_size==15 && best_tree.score > 3.6) break;
+			
 			std::cout << "Iter " << i << " / " << NB_ITER << " - Score " << best_tree.score <<  "          \r" << std::flush;
 			for(int j=i; j<NB_ITER; j++)
 			{
