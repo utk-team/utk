@@ -13,7 +13,6 @@ using namespace utk;
 int main(int argc, char** argv)
 {
 	ParamParser_getopt parser;
-	IntegrationTriangleArrangement2D boxes;
 	
 	std::string param_raster="";
 
@@ -23,6 +22,8 @@ int main(int argc, char** argv)
 	
 	if(!dealParamParserIntegration(&parser))
 		return 0;
+	
+	IntegrationTriangleArrangement2D boxes;
 	
 	if(param_raster.empty())
 		boxes.setRasterizationFalse();

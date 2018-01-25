@@ -1,5 +1,5 @@
 Project(UnicornTK)
-cmake_minimum_required (VERSION 3.1)
+cmake_minimum_required (VERSION 2.8)
 
 
 #### C++11
@@ -94,6 +94,8 @@ endif(USE_BOOST)
 
 if(USE_CGAL)
 	message(STATUS "Including CGAL")
+	message(STATUS "In case of issue, you can download the CGAL library, compile it, and then use it by changing the CGAL_DIR
+	with the ccmake tool.")
 	find_package(CGAL REQUIRED)
 	find_package(GMP REQUIRED)
 	

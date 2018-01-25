@@ -3,7 +3,7 @@
 
 #include "../io/messageStream.hpp"
 #include "../pointsets/Pointset.hpp"
-#include "arrangements/BoxComplex.hpp"
+#include "arrangements/BoxesAligned.hpp"
 #include <cmath>
 #include <array>
 
@@ -14,8 +14,11 @@ class IntegrationBoxArrangement2D
 {
 public:
   IntegrationBoxArrangement2D() { rasterize_arrangement=false; raster_file=""; 
+	  std::cout << "Generate arrangement ..." << std::endl;
 	  arrangement.generateTriangles(1234, (std::string(UTK_DATA_PATH)+"/luminance_hdr/hdr002.dat").c_str());
+	  std::cout << "Compute Enveloppe ..." << std::endl;
 	  arrangement.computeEnveloppe();
+	  std::cout << "Compute analytical integration ..." << std::endl;
 	  analytic_value_precompute = arrangement.exact_integration();
   }
   

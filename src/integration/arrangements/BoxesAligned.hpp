@@ -16,10 +16,10 @@ public:
 		load_histogram(histogram_lumi);
 		//load_orientations(0, 3.14159, 0, 0.1);
 		
-		generateVeryLowFreq(drand48()*200, seed);
-		generateLowFreq(drand48()*1000, seed);
-		generateMidFreq(drand48()*2000, seed);
-		generateHighFreq(drand48()*4000, seed);
+		generateVeryLowFreq(drand48()*100, seed);
+		generateLowFreq(drand48()*500, seed);
+		generateMidFreq(drand48()*1000, seed);
+		generateHighFreq(drand48()*2000, seed);
 		//generateVeryHighFreq(drand48()*8000, seed);
 	}
 private:
