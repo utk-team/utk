@@ -63,14 +63,14 @@ public:
 };
 std::ostream& operator<<(std::ostream& os, const IntegrationStatistics& e) 
 { 
-	os << "#Nbpts\t\t#Mean\t\t#Var\t\t#Min\t\t#Max\t\t#Analytical\t\t#MSE\t\t#NbPtsets" << std::endl;
-	os << e.nbpts << "\t\t";
-	os << e.mean_integration << "\t\t";
-	os << e.var_integration << "\t\t";
-	os << e.min_integration << "\t\t";
-	os << e.max_integration << "\t\t";
+	os << "#Nbpts\t#Mean\t\t#Var\t#Min\t\t#Max\t\t#Analytical\t#MSE\t\t#NbPtsets" << std::endl;
+	os << e.nbpts << "\t";
+	os << e.mean_integration << "\t";
+	os << e.var_integration << "\t";
+	os << e.min_integration << "\t";
+	os << e.max_integration << "\t";
 	os << e.ana_value << "\t\t";
-	os << e.mse_integration << "\t\t";
+	os << e.mse_integration << "\t";
 	os << e.iter;
 	return os; 
 }

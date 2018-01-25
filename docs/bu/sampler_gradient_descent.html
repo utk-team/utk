@@ -73,7 +73,9 @@
 											<a href="sampler_bn_poisson.html">Blue Noise / Poisson</a>
 											<ul>
 												<li><a href="sampler_aapatterns.html">AA Patterns</a></li>
-												<li><a href="wip.html" style="color:black">ART</a></li>
+												<li><a href="sampler_art.html">ART</a></li>
+												<li><a href="wip.html" style="color:black">CCVT</a></li>
+												<li><a href="wip.html" style="color:black">CapCVT</a></li>
 												<li><a href="sampler_dart_throwing.html">Dart Throwing</a></li>
 												<li><a href="sampler_fastpoisson.html">Fast Poisson</a></li>
 												<li><a href="sampler_forced_random.html">Forced Random</a></li>
@@ -192,6 +194,7 @@
 			<h1>Description</h1>
 			<p>
 			This sampler optimizes a given input sampler to minimize its Generalized L2 discrepancy, using gradient descent.
+			This optimizing is very slow and therefore can hardly be performed on more than 4k samples.
 		    </p>
 
 		    <h1> Execution </h1>

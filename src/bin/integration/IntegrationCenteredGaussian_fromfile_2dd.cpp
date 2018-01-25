@@ -6,8 +6,9 @@
 
 #include "runIntegration.hpp"
 
-//#include "../../../externals/CImg-1.6.9/CImg.h"
-//using namespace cimg_library;
+#ifdef CIMG_ON
+#include "../../../externals/CImg-1.6.9/CImg.h"
+#endif
 
 #define D 2
 
@@ -20,7 +21,11 @@ int main(int argc, char** argv)
 
 	bool param_output_func=false;
 	parser.addLongOption((char*)"outputfunc", &param_output_func, 0, assignBoolTrue, displayBool, (char*)"Outputs the integrated function in func.dat (plottable with gnuplot)", (char*)"Output Func");
-	
+#ifdef CIMG_ON
+	using namespace cimg_library;
+	bool param_output_img=false;
+	parser.addLongOption((char*)"outputimg", &param_output_img, 0, assignBoolTrue, displayBool, (char*)"Outputs the integrated function in func.png", (char*)"Output Img");
+#endif
 	
 	initParserIntegration(&parser);
 	
@@ -100,27 +105,26 @@ int main(int argc, char** argv)
 		}
 		
 		file.close();
-		
-		/*CImg<double> m_image_bw;
-		m_image_bw = CImg<double>(512, 512, 1, 1);
-		double ming = 10000;
-		double maxg = 0;
-		for(int i=0; i<512; i++)
-		for(int j=0; j<512; j++)
-		{
-			Point<2, double> pt; pt.pos()[0] = (double)i/512.0; pt.pos()[1] = (double)j/512.0;
-			double g = gauss.sampleIntegrand(pt);
-			if(g > maxg) maxg = g;
-			if(g < ming) ming = g;
-		    m_image_bw.atXY(i, j) = g;
-		}
-		for(int i=0; i<512; i++)
-		for(int j=0; j<512; j++)
-		{
-		    m_image_bw.atXY(i, j) = ((m_image_bw.atXY(i, j) - ming)/(maxg-ming))*255.0;
-		}
-		m_image_bw.save("centered_gauss.png");*/
 	}
+#ifdef CIMG_ON
+	if(param_output_img)
+	{
+		CImg<double> m_image_rgb(1024, 1024, 1, 3);
+		
+		for(double i=0; i<=1; i+=1.0/1024.0)
+		{
+			for(double j=0; j<=1; j+=1.0/1024.0)
+			{
+				Point<2, double> pt; pt.pos()[0] = i; pt.pos()[1] = j;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 0) = gauss.sampleIntegrand(pt)*255;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 1) = gauss.sampleIntegrand(pt)*255;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 2) = gauss.sampleIntegrand(pt)*255;
+			}
+		}
+		
+		m_image_rgb.save("func.png");
+	}
+#endif
 	
 	return 0;
 }

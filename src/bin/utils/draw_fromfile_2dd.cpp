@@ -70,27 +70,47 @@ int main(int argc, char** argv)
 	PointsetReader<2, double, Point<2, double>> pts_reader;
 	pts_reader.open(param_input);
 	
+	int iter = 0;
 	Pointset<2, double, Point<2, double> > pts;
-	Pointset<2, double, Point<2, double> > pts2;
-	pts_reader.readPointset(pts);
+	while(pts_reader.readPointset(pts))
+	{
+		Pointset<2, double, Point<2, double> > pts2;
+		pts.normalizePositions(pts2);
+		
+		PointsetIllustrator<2, double, Point<2, double>> illu;
+		
+		illu.setBorderSize(offsetsize);
+		illu.setNumbered(numbering);
+		illu.setFontSize(fontsize);
+		illu.setTiled(tiled);
+		illu.setPointRadius(radius);
+		
+		std::string basename = getBasename(param_output);
+		std::string ext = getExt(param_output, "");
+		std::string num = "";
+		
+		if(iter != 0)
+		{
+			std::stringstream ss;
+			ss << iter;
+			num = ss.str();
+		}
+		
+		std::string filename = std::string(basename + num + ext);
+		std::cout << basename << " + " << num << " + " << ext << std::endl;
+		std::cout << filename << std::endl;
+
+		illu.open(filename);
+		illu.setColor(1, 0, 0);
+		if(drawborder)
+			illu.drawRectangle(offsetsize, offsetsize, 1-2*offsetsize, 1-2*offsetsize, 0.0025);
+		illu.drawPointset(pts2);
+		
+		illu.close();
+		iter++;
+	}
+	
 	pts_reader.close();
-	pts.normalizePositions(pts2);
-	
-	PointsetIllustrator<2, double, Point<2, double>> illu;
-	
-	/*illu.setBoundingBox(resolution);*/
-	illu.setBorderSize(offsetsize);
-	illu.setNumbered(numbering);
-	illu.setFontSize(fontsize);
-	illu.setTiled(tiled);
-	illu.setPointRadius(radius);
-	illu.open(param_output);
-	illu.setColor(0, 0, 0);
-	if(drawborder)
-		illu.drawRectangle(offsetsize, offsetsize, 1-2*offsetsize, 1-2*offsetsize, 0.0025);
-	illu.drawPointset(pts2);
-	
-	illu.close();
 	
 	
 	return 0;

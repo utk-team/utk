@@ -1,0 +1,107 @@
+<div id="post">
+			<h2> Integration n-Sphere </h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/integration/IntegrationNSphere.hpp<br/>
+					src/bin/integration/IntegrationNSphere_fromfile_2dd.cpp.cpp
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+toto
+			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
+			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
+		    </p>
+
+		    <h1> Execution </h1>
+
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	--radius <double>	Sets the radius of the n_sphere. Must be in ]0, 0.5[
+	--outputfunc Outputs the integrated function in func.dat (plottable with gnuplot)
+	--outputimg Outputs the integrated function in func.png
+	-h <string>		Displays this help message
+	-i <string>		The input pointsets
+	-o <string>		The output integration results
+	-s <uint>		The number of samples to use
+	--silent 		Silent mode
+	--brute 		Output brute values instead of computing the statistics
+			</pre>
+			</p>
+
+			<p>To integrate over a function using an input 2D point set, we can use the following
+			client line command:
+			<pre><cli>
+./bin/integration/IntegrationNSphere_fromfile_2dd -i toto.dat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>n-Sphere</b> integration_test;
+<b>IntegrationStatistics</b> stats;
+<b>Pointset< D, double, Point<D, double> ></b> pts;
+//We assume pts is filled
+stats.nbpts = pts.size();
+
+//Can be done several times if we need to average over
+//several stochastic pointsets
+<b>double</b> analytical = 0;
+<b>double</b> integration = 0;
+integration_test.compute< D, double, Point<D, double> >(pts, integration, analytical)
+stats.setAnalytical(analytical);
+stats.addValue(integration);
+
+stats.computeStatistics();
+std::cout << stats << std::endl;
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+Stochastic sampler
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_256.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+256	0.193359	4.83195e-05	0.179688	0.203125	0.19635		5.24286e-05	10
+</pre></cli>
+<p align="center">
+<a href="data/n-Sphere/integration_1_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_256.png"></a>
+<a href="data/n-Sphere/integration_2_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_256.png"></a>
+<a href="data/n-Sphere/integration_3_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_256.png"></a>
+</p>
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_1024.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+1024	0.197754	4.71539e-06	0.194336	0.202148	0.19635		6.21609e-06	10
+</pre></cli>
+<p align="center">
+<a href="data/n-Sphere/integration_1_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_1024.png"></a>
+<a href="data/n-Sphere/integration_2_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_1024.png"></a>
+<a href="data/n-Sphere/integration_3_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_1024.png"></a>
+</p>
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_4096.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+4096	0.196582	5.80152e-07	0.195312	0.197754	0.19635		5.76188e-07	10
+</pre></cli>
+<p align="center">
+<a href="data/n-Sphere/integration_1_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_4096.png"></a>
+<a href="data/n-Sphere/integration_2_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_4096.png"></a>
+<a href="data/n-Sphere/integration_3_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_4096.png"></a>
+</p>
+Deterministic sampler
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i sobol_1024.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+1024	0.203125	0	0.203125	0.203125	0.19635		4.59068e-05	1
+</pre></cli>
+<p align="center"><a href="data/n-Sphere/integration_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1024.png"></a><p>
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i sobol_4096.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+4096	0.196289	0	0.196289	0.196289	0.19635		3.65763e-09	1
+</pre></cli>
+<p align="center"><a href="data/n-Sphere/integration_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_4096.png"></a><p>

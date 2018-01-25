@@ -6,6 +6,10 @@
 
 #include "runIntegration.hpp"
 
+#ifdef CIMG_ON
+#include "../../../externals/CImg-1.6.9/CImg.h"
+#endif
+
 #define D 2
 
 using namespace utk;
@@ -27,7 +31,11 @@ int main(int argc, char** argv)
 	parser.addLongOption((char*)"meany", &param_mean_y, 1, assignDouble, displayDouble, (char*)"<double=0.5>\tSets the y value for the mean of the gaussian", (char*)"Mean Y");
 	
 	parser.addLongOption((char*)"outputfunc", &param_output_func, 0, assignBoolTrue, displayBool, (char*)"Outputs the integrated function in func.dat (plottable with gnuplot)", (char*)"Output Func");
-	
+#ifdef CIMG_ON
+	using namespace cimg_library;
+	bool param_output_img=false;
+	parser.addLongOption((char*)"outputimg", &param_output_img, 0, assignBoolTrue, displayBool, (char*)"Outputs the integrated function in func.png", (char*)"Output Img");
+#endif
 	
 	initParserIntegration(&parser);
 	
@@ -113,6 +121,25 @@ int main(int argc, char** argv)
 		
 		file.close();
 	}
+#ifdef CIMG_ON
+	if(param_output_img)
+	{
+		CImg<double> m_image_rgb(1024, 1024, 1, 3);
+		
+		for(double i=0; i<=1; i+=1.0/1024.0)
+		{
+			for(double j=0; j<=1; j+=1.0/1024.0)
+			{
+				Point<2, double> pt; pt.pos()[0] = i; pt.pos()[1] = j;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 0) = gauss.sampleIntegrand(pt)*255;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 1) = gauss.sampleIntegrand(pt)*255;
+				m_image_rgb.atXYZC(i*1024, j*1024, 0, 2) = gauss.sampleIntegrand(pt)*255;
+			}
+		}
+		
+		m_image_rgb.save("func.png");
+	}
+#endif
 	
 	return 0;
 }
