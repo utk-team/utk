@@ -120,11 +120,13 @@
 								</li>
 								
 								<li>
-									<a href="wip.html" style="color:black">Integration</a>
+									<a href="integration.html">Integration</a>
 									<ul>
-										<li><a href="wip.html" style="color:black">NSpheres</a></li>
-										<li><a href="wip.html" style="color:black">Gaussian</a></li>
-										<li><a href="wip.html" style="color:black">Image</a></li>
+										<li><a href="integration_n-Sphere.html">NSpheres</a></li>
+										<li><a href="integration_centered_gaussian.html">Centered Gaussian</a></li>
+										<li><a href="integration_cornered_gaussian.html">Cornered Gaussian</a></li>
+										<li><a href="integration_gaussian.html">Gaussian</a></li>
+										<li><a href="integration_image.html">Image</a></li>
 										<li><a href="wip.html" style="color:black">Random Arrangement</a></li>
 										<li><a href="wip.html" style="color:black">Aligned Arrangement</a></li>
 									</ul>
@@ -186,31 +188,31 @@
 				<td class=files valign=middle>Files</td>
 				<td class=files valign=middle>
 					src/integration/IntegrationNSphere.hpp<br/>
-					src/bin/integration/IntegrationNSphere_fromfile_2dd.cpp.cpp
+					src/bin/integration/IntegrationNSphere_fromfile_*d*.cpp.cpp
 				</td>
 			</tr>
 			</table>
 
 			<h1>Description</h1>
 			<p>
-toto
-			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
-			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
-		    </p>
-
+			This test uses an input pointset to approximate the area of a n dimensional sphere using a Monte Carlo estimator.
+			Note that the sphere is centered at 0^D (points are scaled to [-0.5, 0.5]^D), has a value of 1 inside, and 0 outside. 
+			This test is shown here in 2D but it exists also in 3D and 4D.
+			</p>
+			
 		    <h1> Execution </h1>
 
 		    <p>
 				Parameters:<br/>
 				<pre>
 	[HELP]
-	--radius <double>	Sets the radius of the n_sphere. Must be in ]0, 0.5[
-	--outputfunc Outputs the integrated function in func.dat (plottable with gnuplot)
-	--outputimg Outputs the integrated function in func.png
-	-h <string>		Displays this help message
-	-i <string>		The input pointsets
-	-o <string>		The output integration results
-	-s <uint>		The number of samples to use
+	--radius [double=0.25]	Sets the radius of the n_sphere. Must be in ]0, 0.5[
+	--outputfunc 	Outputs the integrated function in func.dat (plottable with gnuplot)
+	--outputimg 	Outputs the integrated function in func.png
+	-h [string]		Displays this help message
+	-i [string]		The input pointsets
+	-o [string]		The output integration results
+	-s [uint]		The number of samples to read (if integrating from a sequence)
 	--silent 		Silent mode
 	--brute 		Output brute values instead of computing the statistics
 			</pre>
@@ -226,7 +228,7 @@ toto
 			<p>
 			Or one can use the following C++ code:
 			<pre><code>
-<b>n-Sphere</b> integration_test;
+<b>IntegrationNSphere</b> integration_test;
 <b>IntegrationStatistics</b> stats;
 <b>Pointset< D, double, Point<D, double> ></b> pts;
 //We assume pts is filled
@@ -249,32 +251,32 @@ std::cout << stats << std::endl;
 
 Stochastic sampler
 <pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_256.dat
-#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
-256	0.193359	4.83195e-05	0.179688	0.203125	0.19635		5.24286e-05	10
+#Nbpts	#Mean		#Var		#Min		#Max		#Analytical	#MSE		#NbPtsets
+256	0.197266	2.11928e-05	0.191406	0.203125	0.19635		1.99127e-05	10
 </pre></cli>
 <p align="center">
 <a href="data/n-Sphere/integration_1_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_256.png"></a>
 <a href="data/n-Sphere/integration_2_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_256.png"></a>
 <a href="data/n-Sphere/integration_3_256.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_256.png"></a>
-</p>
+ ... </p>
 <pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_1024.dat
-#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
-1024	0.197754	4.71539e-06	0.194336	0.202148	0.19635		6.21609e-06	10
+#Nbpts	#Mean		#Var		#Min		#Max		#Analytical	#MSE		#NbPtsets
+1024	0.198926	1.0607e-05	0.194336	0.205078	0.19635		1.61833e-05	10
 </pre></cli>
 <p align="center">
 <a href="data/n-Sphere/integration_1_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_1024.png"></a>
 <a href="data/n-Sphere/integration_2_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_1024.png"></a>
 <a href="data/n-Sphere/integration_3_1024.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_1024.png"></a>
-</p>
+ ... </p>
 <pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i stratified_4096.dat
-#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
-4096	0.196582	5.80152e-07	0.195312	0.197754	0.19635		5.76188e-07	10
+#Nbpts	#Mean		#Var		#Min		#Max		#Analytical	#MSE		#NbPtsets
+4096	0.196167	1.02321e-06	0.194336	0.197998	0.19635		9.54216e-07	10
 </pre></cli>
 <p align="center">
 <a href="data/n-Sphere/integration_1_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_1_4096.png"></a>
 <a href="data/n-Sphere/integration_2_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_2_4096.png"></a>
 <a href="data/n-Sphere/integration_3_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_3_4096.png"></a>
-</p>
+ ... </p>
 Deterministic sampler
 <pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd -i sobol_1024.dat
 #Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
@@ -286,7 +288,17 @@ Deterministic sampler
 4096	0.196289	0	0.196289	0.196289	0.19635		3.65763e-09	1
 </pre></cli>
 <p align="center"><a href="data/n-Sphere/integration_4096.png"><img class="mylogo" width="256" src="data/n-Sphere/integration_4096.png"></a><p>
-<!-- Footer -->
+Changing Radius
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd --radius 0.1 -i sobol_1024.dat
+#Nbpts	#Mean		#Var	#Min		#Max		#Analytical	#MSE		#NbPtsets
+1024	0.0332031	0	0.0332031	0.0332031	0.0314159	3.19408e-06	1
+</pre></cli>
+<p align="center"><a href="data/n-Sphere_rad_01/integration_1024.png"><img class="mylogo" width="256" src="data/n-Sphere_rad_01/integration_1024.png"></a><p>
+<pre><cli>./bin/integration/IntegrationNSphere_fromfile_2dd --radius 0.4 -i sobol_1024.dat
+#Nbpts	#Mean	#Var	#Min	#Max	#Analytical	#MSE		#NbPtsets
+1024	0.50293	0	0.50293	0.50293	0.502655	7.55496e-08	1
+</pre></cli>
+<p align="center"><a href="data/n-Sphere_rad_04/integration_1024.png"><img class="mylogo" width="256" src="data/n-Sphere_rad_04/integration_1024.png"></a><p><!-- Footer -->
 		<div id="page-wrapper">
 				<div id="footer">
 					<!-- Icons -->

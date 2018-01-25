@@ -63,15 +63,30 @@ public:
 };
 std::ostream& operator<<(std::ostream& os, const IntegrationStatistics& e) 
 { 
-	os << "#Nbpts\t#Mean\t\t#Var\t#Min\t\t#Max\t\t#Analytical\t#MSE\t\t#NbPtsets" << std::endl;
-	os << e.nbpts << "\t";
-	os << e.mean_integration << "\t";
-	os << e.var_integration << "\t";
-	os << e.min_integration << "\t";
-	os << e.max_integration << "\t";
-	os << e.ana_value << "\t\t";
-	os << e.mse_integration << "\t";
-	os << e.iter;
+	if(e.var_integration == 0)
+	{
+		os << "#Nbpts\t#Mean\t\t#Var\t#Min\t\t#Max\t\t#Analytical\t#MSE\t\t#NbPtsets" << std::endl;
+		os << e.nbpts << "\t";
+		os << e.mean_integration << "\t";
+		os << e.var_integration << "\t";
+		os << e.min_integration << "\t";
+		os << e.max_integration << "\t";
+		os << e.ana_value << "\t\t";
+		os << e.mse_integration << "\t";
+		os << e.iter;
+	}
+	else
+	{
+		os << "#Nbpts\t#Mean\t\t#Var\t\t#Min\t\t#Max\t\t#Analytical\t#MSE\t\t#NbPtsets" << std::endl;
+		os << e.nbpts << "\t";
+		os << e.mean_integration << "\t";
+		os << e.var_integration << "\t";
+		os << e.min_integration << "\t";
+		os << e.max_integration << "\t";
+		os << e.ana_value << "\t\t";
+		os << e.mse_integration << "\t";
+		os << e.iter;
+	}
 	return os; 
 }
 
