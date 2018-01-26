@@ -65,10 +65,10 @@ std::ostream& operator<<(std::ostream& os, const DiscrepancyStatistics& e)
 
 int initParserDiscrepancy(utk::ParamParser* parser)
 {
-	parser->addShortOption('h', &param_help, 0, utk::assignBoolTrue, NULL, "<string>\t\tDisplays this help message");
-	parser->addShortOption('i', &param_input, 1, utk::assignString, utk::displayString, "<string>\t\tThe input pointsets", "Input");
-	parser->addShortOption('o', &param_output, 1, utk::assignString, utk::displayString, "<string>\t\tThe output discrepancies", "Output");
-	parser->addShortOption('s', &param_nbpts, 1, utk::assignInt, utk::displayInt, "<uint>\t\tThe number of samples to read from the file", "NbPts");
+	parser->addShortOption('h', &param_help, 0, utk::assignBoolTrue, NULL, "[string]\t\tDisplays this help message");
+	parser->addShortOption('i', &param_input, 1, utk::assignString, utk::displayString, "[string]\t\tThe input pointsets", "Input");
+	parser->addShortOption('o', &param_output, 1, utk::assignString, utk::displayString, "[string]\t\tThe output discrepancies", "Output");
+	parser->addShortOption('s', &param_nbpts, 1, utk::assignInt, utk::displayInt, "[uint]\t\tThe number of samples to read (if computing from a sequence)", "NbPts");
 	parser->addLongOption((char*)"silent", &param_verbose, 0, utk::assignBoolFalse, utk::displayBool, (char*)"\t\tSilent mode", (char*)"Verbose");
 	parser->addLongOption((char*)"brute", &param_brute, 0, utk::assignBoolTrue, utk::displayBool, (char*)"\t\tOutput brute values instead of computing the statistics", (char*)"Brute");
     
