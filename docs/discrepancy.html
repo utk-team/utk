@@ -181,127 +181,18 @@
 
 				</div>
 		</div>
-<div id="post">
-			<h2> Boundaries Linf Discrepancy </h2>
-			<table class=files>
-			<tr>
-				<td class=files valign=middle>Files</td>
-				<td class=files valign=middle>
-					src/discrepancy/BoundariesStarDiscrepancy.hpp.hpp<br/>
-					src/bin/discrepancy/BoundariesStarDiscrepancy_2dd.cpp.cpp
-				</td>
-			</tr>
-			</table>
-
-			<h1>Description</h1>
-			<p>
-			Code from <a href="https://www.sciencedirect.com/science/article/pii/S0885064X01906004">[Thi01]</a>. 
-			This tool approximates upper and lower boundaries on the Linf discrepancy. As those approximations can be
-			computed faster than the true value, it allows to approximate the Linf discrepancy of higher dimensional point sets.
-		    </p>
-
-		    <h1> Execution </h1>
-
-		    <p>
-				Parameters:<br/>
-				<pre>
-	[HELP]
-	-h [string]		Displays this help message
-	-i [string]		The input pointsets
-	-o [string]		The output discrepancies
-	-s [uint]		The number of samples to read (if computing from a sequence)
-	--silent 		Silent mode
-	--brute 		Output brute values instead of computing the statistics
-	--epsilon [double]	Sets the epsilon to use for the boundary computation. Must be in [0, 1]
-	--epsilon-auto 		Automatically sets the epsilon as log(N)^(d-1)/N
-			</pre>
-			</p>
-
-			<p>To evaluate the discrepancy of an input 2D point set, one can use the following
-			client line command:
-			<pre><cli>
-./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i toto.dat
-			</cli></pre>
-			</p>
-
-			<p>
-			Or one can use the following C++ code:
-			<pre><code>
-<b>BoundariesStarDiscrepancy.hpp</b> discrepancy_test;
-<b>DiscrepancyStatistics</b> statsBoundMin;
-<b>DiscrepancyStatistics</b> statsBoundMax;
-<b>Pointset< D, double, Point<D, double> ></b> pts;
-//We assume pts is filled
-statsBoundMin.nbpts = pts.size();
-
-
-//Can be done several times if we need to average over
-//several stochastic pointsets
-<b>std::array<double, 2></b> discrepancy;
-disc.compute< D, double, Point<D, double> >(pts, param_epsilon, discrepancy)
-statsBoundMin.addValue(discrepancy[0]);
-statsBoundMax.addValue(discrepancy[1]);
-
-statsBoundMin.computeStatistics();
-std::cout << statsBoundMin << std::endl;
-statsBoundMax.computeStatistics();
-std::cout << statsBoundMax << std::endl;
-			</code></pre>
-			</p>
-
-			<h1> Results </h1>
-Illustration graph with the Whitenoise and the Halton sampler.
-<p align="center"><a href="data/boundaries_linf_disc/boundaries_star_discrepancy.png"><img class="mylogo" width="512" src="data/boundaries_linf_disc/boundaries_star_discrepancy.png"></a><p>
-
-Stochastic sampler
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i stratified_256.dat
-#Nbpts 	Epsilon	MinBoundMin	MaxBoundMax	Iter
-256 	0.01 	0.027214 	0.0516146 	10
-</pre></cli>
-<a href="data/boundaries_linf_disc001/stratified_256_1.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_256_1.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_256_2.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_256_2.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_256_3.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_256_3.png"></a>
- ... </p>
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i stratified_1024.dat
-#Nbpts	Epsilon	MinBoundMin	MaxBoundMax	Iter
-1024	0.01	0.0107846	0.0238923	10
-</pre></cli>
-<a href="data/boundaries_linf_disc001/stratified_1024_1.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_1024_1.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_1024_2.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_1024_2.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_1024_3.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_1024_3.png"></a>
- ... </p>
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i stratified_4096.dat
-#Nbpts 	Epsilon	MinBoundMin	MaxBoundMax	Iter
-4096	0.01	0.00359415	0.0142907	10
-</pre></cli>
-<a href="data/boundaries_linf_disc001/stratified_4096_1.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_4096_1.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_4096_2.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_4096_2.png"></a>
-<a href="data/boundaries_linf_disc001/stratified_4096_3.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/stratified_4096_3.png"></a>
- ... </p>
-Deterministic sampler
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i sobol_1024.dat
-#Nbpts 	Epsilon	MinBoundMin	MaxBoundMax	Iter
-1024	0.01	0.00356102	0.0133135	1
-</pre></cli>
-<p align="center"><a href="data/boundaries_linf_disc001/sobol_1024.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/sobol_1024.png"></a><p>
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.01 -i sobol_4096.dat
-#Nbpts 	Epsilon	MinBoundMin	MaxBoundMax	Iter
-4096	0.01	0.00103152	0.0110033	1
-</pre></cli>
-<p align="center"><a href="data/boundaries_linf_disc001/sobol_4096.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc001/sobol_4096.png"></a><p>
-
-Changing the Epsilon
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.1 -i sobol_4096.dat
-#Nbpts	Epsilon	MinBoundMin	MaxBoundMax	Iter
-4096	0.1	0.000883877	0.100749	1
-</pre></cli>
-<p align="center"><a href="data/boundaries_linf_disc01/sobol_4096.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc01/sobol_4096.png"></a><p>
-<pre><cli>./bin/discrepancy/BoundariesStarDiscrepancy_fromfile_2dd --epsilon 0.005 -i sobol_4096.dat
-#Nbpts	Epsilon	MinBoundMin	MaxBoundMax	Iter
-4096	0.005	0.00124788	0.0059875	1
-</pre></cli>
-<p align="center"><a href="data/boundaries_linf_disc0005/sobol_4096.png"><img class="mylogo" width="256" src="data/boundaries_linf_disc0005/sobol_4096.png"></a><p>
-<!-- Footer -->
+	<div id="post">
+		Binary output
+		<ul>
+			<li><a href="discrepancy_star_disc.html">Linf</a></li>
+			<li><a href="discrepancy_l2_disc.html">L2</a></li>
+			<li><a href="discrepancy_generalized_l2_disc.html">Generalized L2</a></li>
+			<li><a href="discrepancy_centered_l2_disc.html">Centered L2</a></li>
+			<li><a href="discrepancy_unanchored_l2_disc.html">Unanchored L2</a></li>
+			<li><a href="discrepancy_symmetric_l2_disc.html">Symmetric L2</a></li>
+			<li><a href="discrepancy_boundaries_linf_disc.html">Boundaries Linf</a></li>
+		</ul>
+	</div><!-- Footer -->
 		<div id="page-wrapper">
 				<div id="footer">
 					<!-- Icons -->
