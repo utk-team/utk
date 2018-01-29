@@ -98,12 +98,12 @@ if(USE_CGAL)
 	with the ccmake tool.")
 	find_package(CGAL REQUIRED)
 	find_package(GMP REQUIRED)
-	
+
 	include( ${CGAL_USE_FILE} )
 	include_directories(
 		${CGAL_INCLUDE_DIRS}
 		${CGAL_3RD_PARTY_INCLUDE_DIRS})
-		
+
 	SET(LINK_CGAL ${CGAL_LIBRARIES} ${CGAL_3RD_PARTY_LIBRARIES} ${GMP_LIBRARY})
 	message(STATUS "CGAL OK")
 endif(USE_CGAL)
@@ -124,4 +124,8 @@ endif(USE_CGAL)
 set(UTK_FILES "")
 
 add_subdirectory(bin)
-#add_subdirectory(unit-tests)
+
+ENABLE_TESTING()
+include(CTest)
+message(STATUS "Build test files ENABLED")
+add_subdirectory(unit-tests)

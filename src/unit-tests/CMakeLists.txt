@@ -4,7 +4,7 @@ SET(SRCs
 	testIO_EDAT
 	testIO_BIN
 	testIO_EBIN
-	
+
 	testSampler_stratified
 	testSampler_whitenoise
 	testSampler_sobol
@@ -12,6 +12,7 @@ SET(SRCs
 
 FOREACH(FILE ${SRCs})
   add_executable(${FILE} ${FILE} ${UTK_FILES})
+	add_test(${FILE} ${FILE})
   target_link_libraries ( ${FILE} ${LINK} )
-  
+
 ENDFOREACH(FILE)
