@@ -1,0 +1,45 @@
+language: cpp
+dist: trusty
+sudo: false
+
+compiler:
+  - gcc
+  - clang
+
+os:
+  - linux
+  - osx
+
+cache: apt
+
+
+addons:
+  apt:
+   sources:
+    - deadsnakes
+    - ubuntu-toolchain-r-test
+   packages:
+    - graphviz
+
+before_install:
+
+
+########
+# Deps.
+########
+before_script:
+
+
+############
+# Main rules
+############
+script:
+  - cd src; mkdir build ; cd build
+  - cmake ..
+  - make
+
+
+###########
+## Building the documentation
+###########
+after_success:
