@@ -1,4 +1,4 @@
-#include "  parameters/ParamParser_getopt.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
 #include "../discrepancy/L2Discrepancy.hpp"
 #include "../io/fileIO.hpp"
 #include <chrono>
