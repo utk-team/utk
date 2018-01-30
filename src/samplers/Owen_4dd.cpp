@@ -1,6 +1,6 @@
-#include "../../samplers/SamplerOwenSobol.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerOwenSobol.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"
@@ -122,9 +122,9 @@ int main(int argc, char** argv)
 
 /***
 
-#include "../../samplers/SamplerSobolIndices.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerSobolIndices.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

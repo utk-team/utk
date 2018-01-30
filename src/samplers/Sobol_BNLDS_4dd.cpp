@@ -1,7 +1,7 @@
-#include "../../samplers/SamplerBNLDS.hpp"
-#include "../../samplers/SamplerSobolIndices.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerBNLDS.hpp"
+#include "SamplerSobolIndices.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

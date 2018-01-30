@@ -1,6 +1,6 @@
-#include "../../samplers/SamplerFaure.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerFaure.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

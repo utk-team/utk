@@ -1,6 +1,6 @@
-#include "../../samplers/SamplerHaltonSpp.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerHaltonSpp.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

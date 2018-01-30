@@ -1,7 +1,7 @@
-#include "../../samplers/SamplerAAPatterns.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../io/imageIO.hpp"
+#include "SamplerAAPatterns.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
+#include "../io/imageIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

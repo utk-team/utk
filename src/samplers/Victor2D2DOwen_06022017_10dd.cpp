@@ -1,6 +1,6 @@
-#include "../../samplers/SamplerVictor2D2DOwen_06020217.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerVictor2D2DOwen_06020217.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

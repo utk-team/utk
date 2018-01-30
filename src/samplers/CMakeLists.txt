@@ -120,10 +120,10 @@ ENDFOREACH(FILE)
 #Gradient Descent
 #add_executable(GradientDescent_2dd
 #			GradientDescent_2dd.cpp
-#			../../../externals/dCpp/dCpp.cpp
-#			../../../externals/dCpp/operators.cpp
-##			../../../externals/dCpp/tau.cpp
-#			../../../externals/dCpp/var.cpp
+#			../../externals/dCpp/dCpp.cpp
+#			../../externals/dCpp/operators.cpp
+##			../../externals/dCpp/tau.cpp
+#			../../externals/dCpp/var.cpp
 #			${UTK_FILES})
 #target_link_libraries ( GradientDescent_2dd ${LINK} ${LINK_TBB} )
 #install(TARGETS GradientDescent_2dd

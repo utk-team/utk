@@ -1,6 +1,6 @@
 #include "SamplerBNLDS.hpp"
 #include "../parameters/ParamParser_getopt.hpp"
-#include "../io/fileIO.hpp"
+#include "../fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

@@ -1,6 +1,6 @@
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../discrepancy/GeneralizedL2Discrepancy.hpp"
-#include "../../io/fileIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../discrepancy/GeneralizedL2Discrepancy.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runDiscrepancy.hpp"

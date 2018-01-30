@@ -1,6 +1,6 @@
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../discrepancy/BoundariesStarDiscrepancy.hpp"
-#include "../../io/fileIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "BoundariesStarDiscrepancy.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runDiscrepancy.hpp"

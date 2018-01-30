@@ -1,6 +1,6 @@
-#include "../../samplers/SamplerVictor2D2D_06022017_genetic.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
+#include "SamplerVictor2D2D_06022017_genetic.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

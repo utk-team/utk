@@ -5,7 +5,7 @@
 #include "../pointsets/Pointset.hpp"
 #include "SamplerSobolIndices.hpp"
 #include "SamplerBNLDS/SamplerBNLDS_LUT_GPU.hpp"
-#include "../io/imageIO.hpp"
+#include "../imageIO.hpp"
 #include <stack>
 #include <queue>
 #include <chrono>

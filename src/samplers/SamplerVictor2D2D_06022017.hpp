@@ -5,7 +5,7 @@
 #include "../pointsets/Pointset.hpp"
 #include "SamplerSobolIndices.hpp"
 #include "SamplerVictor_06022017/SamplerVictor2D2D_06022017_LUT.hpp"
-#include "../io/imageIO.hpp"
+#include "../imageIO.hpp"
 #include <stack>
 #include <queue>
 #include <chrono>

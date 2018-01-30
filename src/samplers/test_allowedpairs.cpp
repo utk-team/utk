@@ -1,5 +1,5 @@
 #include <fstream>
-#include "../../pointsets/Pointset.hpp"
+#include "../pointsets/Pointset.hpp"
 
 /*int main(int argc, char** argv)
 {
@@ -54,12 +54,12 @@
 
 
 
-#include "../../samplers/SamplerSobolIndices.hpp"
-#include "../../samplers/SamplerVanDerCorput.hpp"
-#include "../../samplers/SamplerHammersley.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../io/imageIO.hpp"
+#include "SamplerSobolIndices.hpp"
+#include "SamplerVanDerCorput.hpp"
+#include "SamplerHammersley.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
+#include "../io/imageIO.hpp"
 #include <chrono>
 
 #include "runSampler.hpp"

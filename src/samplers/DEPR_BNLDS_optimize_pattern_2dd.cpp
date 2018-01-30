@@ -1,7 +1,7 @@
 #include <iostream>
 #include <bitset>
-#include "../../pointsets/Pointset.hpp"
-#include "../../io/fileIO.hpp"
+#include "../pointsets/Pointset.hpp"
+#include "../io/fileIO.hpp"
 
 #include <boost/compute/algorithm/transform.hpp>
 #include <boost/compute/algorithm/sort.hpp>

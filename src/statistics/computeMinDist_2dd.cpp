@@ -1,7 +1,7 @@
-#include "../../statistics/MinimalDistance.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../io/histogramIO.hpp"
+#include "../statistics/MinimalDistance.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
+#include "../io/histogramIO.hpp"
 #include <chrono>
 
 using namespace utk;

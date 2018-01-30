@@ -1,4 +1,4 @@
-#include "../../samplers/SamplerVictor2DOwen_06022017.hpp"
+#include "SamplerVictor2DOwen_06022017.hpp"
 #include "../../parameters/ParamParser_getopt.hpp"
 #include "../../io/fileIO.hpp"
 #include <chrono>

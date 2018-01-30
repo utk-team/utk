@@ -1,7 +1,7 @@
- #include "../../parameters/ParamParser_getopt.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../io/histogramIO.hpp"
-#include "../../io/imageIO.hpp"
+ #include "../parameters/ParamParser_getopt.hpp"
+#include "../io/fileIO.hpp"
+#include "../io/histogramIO.hpp"
+#include "../io/imageIO.hpp"
 #include <chrono>
 #include <fstream>
 

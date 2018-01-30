@@ -1,6 +1,6 @@
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../integration/IntegrationNSphere.hpp"
-#include "../../io/fileIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../integration/IntegrationNSphere.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 #include <fstream>
 

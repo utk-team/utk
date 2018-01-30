@@ -1,4 +1,4 @@
-#include "../../samplers/SamplerVictorND_06022017_genetic.hpp"
+#include "SamplerVictorND_06022017_genetic.hpp"
 #include "../../parameters/ParamParser_getopt.hpp"
 #include "../../io/fileIO.hpp"
 #include <chrono>

@@ -1,4 +1,4 @@
-#include "../../samplers/SamplerVictor2D2D_06022017_fullpcf.hpp"
+#include "SamplerVictor2D2D_06022017_fullpcf.hpp"
 #include "../../parameters/ParamParser_getopt.hpp"
 #include "../../io/fileIO.hpp"
 #include <chrono>

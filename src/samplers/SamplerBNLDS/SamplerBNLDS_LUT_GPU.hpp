@@ -1,13 +1,13 @@
 #ifndef _UTK_BNLDS_LUT_06022017_
 #define _UTK_BNLDS_LUT_06022017_
 
-#include "../../utils.hpp"
-#include "../../pointsets/Pointset.hpp"
-#include "../../pointsets/Histogram.hpp"
+#include "../utils.hpp"
+#include "../pointsets/Pointset.hpp"
+#include "../pointsets/Histogram.hpp"
 #include "../SamplerSobolIndices.hpp"
-#include "../../io/histogramIO.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../statistics/PCF.hpp"
+#include "../io/histogramIO.hpp"
+#include "../io/fileIO.hpp"
+#include "../statistics/PCF.hpp"
 #include "SamplerBNLDS_GPU_optim.hpp"
 #include <map>
 #include <cstdlib>
@@ -148,7 +148,7 @@ public:
 		return true;
 	}
 	
-	#define PCF_FILE "../../data/BNLDS/PCF/pcfLDBN1024.dat"
+	#define PCF_FILE "../data/BNLDS/PCF/pcfLDBN1024.dat"
 	bool computeAnOptimizedPermut(SamplerBNLDS_LUT_Key<D>& key, Vector<D, unsigned long long int>& resulting_permut)
 	{
 		/*int id = drand48()*10000;
@@ -160,7 +160,7 @@ public:
 		file.close();
 		
 		std::stringstream cmd;
-		cmd << "./bin/samplers/BNLDS_optimize_pattern_2dd " << filename.str() << " ../../data/BNLDS/PCF/pcfLDBN1024.dat";
+		cmd << "./bin/samplers/BNLDS_optimize_pattern_2dd " << filename.str() << " ../data/BNLDS/PCF/pcfLDBN1024.dat";
 		std::cout << cmd.str() << std::endl;
 		system(cmd.str().c_str());
 		

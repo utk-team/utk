@@ -1,13 +1,13 @@
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../integration/IntegrationCorneredGaussian2D.hpp"
-#include "../../io/fileIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../integration/IntegrationCorneredGaussian2D.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 #include <fstream>
 
 #include "runIntegration.hpp"
 
 #ifdef CIMG_ON
-#include "../../../externals/CImg-1.6.9/CImg.h"
+#include "../../externals/CImg-1.6.9/CImg.h"
 #endif
 
 #define D 2

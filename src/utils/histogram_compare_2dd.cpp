@@ -1,5 +1,5 @@
-#include "../../io/histogramIO.hpp"
-#include "../../parameters/ParamParser_getopt.hpp"
+#include "../io/histogramIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
 
 #include <iostream>
 
