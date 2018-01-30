@@ -1,5 +1,5 @@
-#include "../../parameters/ParamParser.hpp"
-#include "../../io/messageStream.hpp"
+#include "../parameters/ParamParser.hpp"
+#include "../io/messageStream.hpp"
 
 bool param_help = false;
 bool param_verbose = true;

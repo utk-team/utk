@@ -1,13 +1,13 @@
 #ifndef _UTK_BNLDS_LUT_06022017_
 #define _UTK_BNLDS_LUT_06022017_
 
-#include "../utils.hpp"
-#include "../pointsets/Pointset.hpp"
-#include "../pointsets/Histogram.hpp"
+#include "../../utils.hpp"
+#include "../../pointsets/Pointset.hpp"
+#include "../../pointsets/Histogram.hpp"
 #include "../SamplerSobolIndices.hpp"
-#include "../io/histogramIO.hpp"
-#include "../io/fileIO.hpp"
-#include "../statistics/PCF.hpp"
+#include "../../io/histogramIO.hpp"
+#include "../../io/fileIO.hpp"
+#include "../../statistics/PCF.hpp"
 #include <map>
 #include <cstdlib>
 
