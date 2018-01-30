@@ -29,7 +29,7 @@ before_install:
 # Deps.
 ########
 before_script:
-   - if [ $TRAVIS_OS_NAME == osx ]; then brew install fftw; fi
+   - if [ $TRAVIS_OS_NAME == osx ]; then brew install fftw; echo "All deps ok."; fi
 
 
 ############
