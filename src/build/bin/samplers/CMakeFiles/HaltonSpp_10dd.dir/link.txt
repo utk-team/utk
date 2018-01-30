@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/HaltonSpp_10dd.dir/HaltonSpp_10dd.cpp.o  -o HaltonSpp_10dd 

@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Whitenoise_3dd.dir/Whitenoise_3dd.cpp.o  -o Whitenoise_3dd 

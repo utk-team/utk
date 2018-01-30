@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/L2Discrepancy_fromfile_3dd.dir/L2Discrepancy_fromfile_3dd.cpp.o  -o L2Discrepancy_fromfile_3dd 

@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Fattal_2dd.dir/__/__/samplers/SamplerFattal/bimage/bimage.cc.o CMakeFiles/Fattal_2dd.dir/__/__/samplers/SamplerFattal/npde/tensor2d.cc.o CMakeFiles/Fattal_2dd.dir/Fattal_2dd.cpp.o  -o Fattal_2dd 

@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/draw_subset_fromfile_2dd.dir/draw_subset_fromfile_2dd.cpp.o  -o draw_subset_fromfile_2dd 
