@@ -2,9 +2,9 @@
 #include <boost/compute/core.hpp>
 #include <vector>
 #include <boost/concept_check.hpp>
-#include "../../pointsets/Pointset.hpp"
-#include "../../io/fileIO.hpp"
-#include "../../io/histogramIO.hpp"
+#include "../pointsets/Pointset.hpp"
+#include "../io/fileIO.hpp"
+#include "../io/histogramIO.hpp"
 
 #include <boost/compute/algorithm/transform.hpp>
 #include <boost/compute/algorithm/sort.hpp>

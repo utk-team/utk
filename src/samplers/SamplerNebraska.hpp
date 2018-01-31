@@ -3,7 +3,7 @@
 
 #include "../utils.hpp"
 #include "../pointsets/Pointset.hpp"
-#include "../io/imageIO.hpp"
+#include "../imageIO.hpp"
 #include <cstdlib>
 #include <random>
 #include <chrono>

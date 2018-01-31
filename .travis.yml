@@ -20,7 +20,6 @@ addons:
     - ubuntu-toolchain-r-test
    packages:
     - graphviz
-    - tbb
     - libfftw3-dev
 
 before_install:
@@ -30,15 +29,15 @@ before_install:
 # Deps.
 ########
 before_script:
-   - if [ $TRAVIS_OS_NAME == osx ]; then brew install tbb fftw; fi
+   - if [ $TRAVIS_OS_NAME == osx ]; then brew install fftw; echo "All deps ok."; fi
 
 
 ############
 # Main rules
 ############
 script:
-  - cd src; mkdir build ; cd build
-  - cmake .. -DUSE_TBB=true -DUSE_FFTW=true
+  - mkdir build ; cd build
+  - cmake .. -DUSE_FFTW=true
   - make
   - make test
 

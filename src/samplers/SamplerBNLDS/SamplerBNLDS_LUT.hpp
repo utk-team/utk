@@ -102,7 +102,7 @@ double maximalMinimumDistance(Pointset<D, uint, Point<D, uint> > pts) {
 	return sqrt(mindist);
 }
 
-#define PCF_FILE "../../data/BNLDS/PCF/pcfLDBN1024.dat"
+#define PCF_FILE "../data/BNLDS/PCF/pcfLDBN1024.dat"
 template<uint D>
 double PCFDistance(Pointset<D, uint, Point<D, uint> > pts) 
 {
