@@ -283,7 +283,7 @@ writer.close();
 			</table>
 			
 			<pre><cli>
-./src/spectral/Fourier_2dd -i penrose4096.dat -P fourier.png --Rdat radial.dat --domain 2
+./src/spectral/Fourier_2dd -i penrose4096.dat -P fourier_domain2.png --Rdat radial_domain2.dat --domain 2
 			</cli></pre>
 			<table style="width:100%">
 				<tr class="images">
@@ -292,6 +292,19 @@ writer.close();
 					<td>Radial<br/>
 					<a href="data/fourier/radial_domain2.png"><img class="mylogo" width="150" src="data/fourier/radial_domain2.png"></a><br/>
 					<a href="data/fourier/radial_domain2.dat">radial_domain2.dat</a></td>
+				</tr>
+			</table>
+			
+			<pre><cli>
+./src/spectral/Fourier_2dd -i penrose4096.dat -P fourier_log.png --Rdat radial_log.dat --log-bins
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/fourier/penrose4096.dat">penrose4096.dat</a></td>
+					<td>Fourier<br/><a href="data/fourier/fourier_log.png"><img class="mylogo" width="150" src="data/fourier/fourier_log.png"></a></td>
+					<td>Radial<br/>
+					<a href="data/fourier/radial_log.png"><img class="mylogo" width="150" src="data/fourier/radial_log.png"></a><br/>
+					<a href="data/fourier/radial_log.dat">radial_log.dat</a></td>
 				</tr>
 			</table>
 <!-- Footer -->
