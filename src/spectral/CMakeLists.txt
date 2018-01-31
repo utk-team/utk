@@ -13,7 +13,7 @@ ENDFOREACH(FILE)
 if(USE_CIMG AND USE_FFTW)
 SET(SRCs
 
-	stkfourier_2dd
+	Fourier_2dd
 
 	)
 

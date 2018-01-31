@@ -1,6 +1,6 @@
-#include "../../parameters/ParamParser_getopt.hpp"
-#include "../../integration/IntegrationImage2D.hpp"
-#include "../../io/fileIO.hpp"
+#include "../parameters/ParamParser_getopt.hpp"
+#include "../integration/IntegrationImage2D.hpp"
+#include "../io/fileIO.hpp"
 #include <chrono>
 #include <fstream>
 

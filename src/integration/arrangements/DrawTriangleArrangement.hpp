@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
-#include "../pointsets/Vector.hpp"
+#include "../../pointsets/Vector.hpp"
 
 namespace utk
 {

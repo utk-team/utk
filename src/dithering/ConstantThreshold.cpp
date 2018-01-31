@@ -1,5 +1,5 @@
-#include "../../../externals/CImg-1.6.9/CImg.h"
-#include "../../parameters/ParamParser_getopt.hpp"
+#include "../../externals/CImg-1.6.9/CImg.h"
+#include "../parameters/ParamParser_getopt.hpp"
 
 using namespace utk;
 using namespace cimg_library;
