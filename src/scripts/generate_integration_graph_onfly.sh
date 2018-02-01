@@ -200,6 +200,18 @@ generate_plot ()
 
 	gnuplot gnuplot_${ID}.txt
 	rm gnuplot_${ID}.txt
+	
+	
+	echo "set logscale xy" >> gnuplot_${ID}.txt
+	echo "set terminal pngcairo fontscale 1.0 dashed size 1000, 700" >> gnuplot_${ID}.txt
+	echo "set xlabel \"number of points\"" >> gnuplot_${ID}.txt
+	echo "set output \"${INTEGRATION_VAR_PNG}\"" >> gnuplot_${ID}.txt
+	echo "plot \"${INTEGRATION_GRAPH}\" u 1:3 w lp title \"$SAMPLER_NAME Variance integration\" lw 2" >> gnuplot_${ID}.txt
+	echo "set output \"${INTEGRATION_VAR_PNG}\"" >> gnuplot_${ID}.txt
+	echo "replot 1/(x*sqrt(x)) lt 3 lc rgb \"green\", 1/x lt 3 lc rgb \"blue\"" >> gnuplot_${ID}.txt
+
+	gnuplot gnuplot_${ID}.txt
+	rm gnuplot_${ID}.txt
 }
 
 ################################################################
@@ -209,7 +221,8 @@ generate_plot ()
 get_parameters
 
 INTEGRATION_GRAPH=pointsets_${SAMPLER_NAME}_integration_graph_${INTEGRATION_NAME}_${ID}.txt
-INTEGRATION_PNG=pointsets_${SAMPLER_NAME}_integration_graph_${INTEGRATION_NAME}_${ID}.png
+INTEGRATION_PNG=pointsets_${SAMPLER_NAME}_mse_integration_graph_${INTEGRATION_NAME}_${ID}.png
+INTEGRATION_VAR_PNG=pointsets_${SAMPLER_NAME}_var_integration_graph_${INTEGRATION_NAME}_${ID}.png
 TMPFILE=`date "+%d-%m-%y-"`"-generate_integration_onfly-"${SAMPLER_NAME}"-"${INTEGRATION_NAME}"-"${VALMIN}"-"${VALMAX}"-"${VALSTEP}"_${ID}.txt"
 
 start_time=$(date +'%s')
