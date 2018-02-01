@@ -97,11 +97,9 @@ int main(int argc, char** argv)
 		}
 		
 		std::string filename = std::string(basename + num + ext);
-		std::cout << basename << " + " << num << " + " << ext << std::endl;
-		std::cout << filename << std::endl;
 
 		illu.open(filename);
-		illu.setColor(1, 0, 0);
+		illu.setColor(0, 0, 0);
 		if(drawborder)
 			illu.drawRectangle(offsetsize, offsetsize, 1-2*offsetsize, 1-2*offsetsize, 0.0025);
 		illu.drawPointset(pts2);
