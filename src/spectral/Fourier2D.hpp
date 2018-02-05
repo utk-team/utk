@@ -96,7 +96,7 @@ public:
 		for(uint y = 0; y < m_res; y++)
 		for(uint x = 0; x < m_res; x++)
 		{
-			HistogramNDValue<2, double, double> val;
+			HistogramValue<2, double, double> val;
 			val.first[0] = 2*( (double)x/(double)m_res * m_domain ) - m_domain;
 			val.first[1] = 2*( (double)y/(double)m_res * m_domain ) - m_domain;
 			
@@ -138,7 +138,7 @@ public:
 		for(uint i=1; i<nbbins; i++)
 		{
 			double r = i*bin_width;
-			HistogramNDValue<1, double, double> val;
+			HistogramValue<1, double, double> val;
 			val.first[0]  = (r/max_r * (double)m_domain);
 			val.second = histo_values[i]/histo_count[i];
 			radial_data[i-1] = val;
