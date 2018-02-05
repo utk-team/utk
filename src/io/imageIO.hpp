@@ -20,6 +20,10 @@ static inline std::string getExtImageIO(std::string f, std::string default_value
 	return f.substr(pos_ext);
 }
 
+/**
+ * \class PointsetIllustrator
+ * \brief Outputs an image from a point set.
+*/
 template <unsigned int D, typename T, typename P>
 class PointsetIllustrator
 {

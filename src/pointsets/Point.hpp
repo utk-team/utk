@@ -9,6 +9,12 @@
 namespace utk
 {
 
+/**
+ * \class Point
+ * \brief A D-dimensional sample with coordinates of type T
+ * \details This class includes functions and operator to 
+ * facilitate the manipulation of points in a point set.
+*/
 template <unsigned int D, typename T>
 class Point
 {

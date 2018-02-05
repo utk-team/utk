@@ -15,7 +15,7 @@ public:
 	HistogramReader_DAT() {}
 	virtual ~HistogramReader_DAT() {}
 	
-	virtual bool readHistogram(HistogramND<D, T0, T1>& arg_histo) 
+	virtual bool readHistogram(Histogram<D, T0, T1>& arg_histo) 
 	{
 		if(this->m_istream.eof())
 			return false;
@@ -35,7 +35,7 @@ public:
 				arg_histo.clear();
 			}
 			
-			HistogramNDValue<D, T0, T1> ndval;
+			HistogramValue<D, T0, T1> ndval;
 			std::stringstream ss;
 			ss.str(line);
 			for(uint d=0; d<D; d++)
@@ -53,7 +53,7 @@ public:
 };
 
 template <uint D, typename T0, typename T1>
-bool sortHistoOnX(const HistogramNDValue<D, T0, T1>& v1, const HistogramNDValue<D, T0, T1>& v2)
+bool sortHistoOnX(const HistogramValue<D, T0, T1>& v1, const HistogramValue<D, T0, T1>& v2)
 {
 	if(v1.first[0] == v2.first[0])
 		return v1.first[1] < v2.first[1];
@@ -68,7 +68,7 @@ public:
 	HistogramWriter_DAT() { first=true; }
 	virtual ~HistogramWriter_DAT() {}
 	
-	virtual bool writeHistogram(const HistogramND<D, T0, T1>& arg_histo) 
+	virtual bool writeHistogram(const Histogram<D, T0, T1>& arg_histo) 
 	{
 		this->m_ostream.precision(10);
 		

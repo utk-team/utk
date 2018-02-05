@@ -24,13 +24,7 @@ int main(int argc, char** argv)
 	
 	if(!dealParamParserSampler(&parser))
 		return 0;
-	
-	if(param_randxor)
-	{
-		ERROR("Cannot randomize using xor a set of floating point samples");
-		return false;
-	}
-	
+
 	PointsetWriter<D, T, P> writer;
 	writer.open(param_output.c_str());
 	while(param_nbrealisations>0)

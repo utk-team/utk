@@ -10,8 +10,13 @@
 namespace utk
 {
 
+/**
+ * \class Vector
+ * \brief A D-dimensional vector of values of type T
+*/
 template <uint D, typename T>
-class Vector{
+class Vector
+{
 private:
 	
 public:	

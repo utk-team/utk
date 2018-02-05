@@ -7,8 +7,6 @@ unsigned long long int param_nbsamples = 1024;
 bool param_display_help = false;
 std::string param_output="output_pts.dat";
 bool param_verbose = true;
-bool param_randcp = false;
-bool param_randxor = false;
 
 
 int initParserSampler(utk::ParamParser* parser)
@@ -20,9 +18,6 @@ int initParserSampler(utk::ParamParser* parser)
 	
 	parser->addLongOption((char*)"silent", &param_verbose, 0, utk::assignBoolFalse, utk::displayBool, "\t\t\tSilent mode", "Verbose" );
 	parser->addShortOption('h', &param_display_help, 0, utk::assignBoolTrue, NULL, "\t\t\t\tDisplays this help message");
-	
-	parser->addLongOption((char*)"cp", &param_randcp, 0, utk::assignBoolTrue, NULL, "\t\t\t\tRandomize using cranley patterson");
-	parser->addLongOption((char*)"xor", &param_randxor, 0, utk::assignBoolTrue, NULL, "\t\t\t\tRandomize using xor");
     
     return 0;
 }
@@ -44,9 +39,6 @@ int dealParamParserSampler(utk::ParamParser* parser)
 	{
 		parser->displayState();
 	}
-	if(param_randcp && param_randxor)
-	{
-		WARNING("Both xor and cranley patterson shift required, applying xor before cranley patterson");
-	}
+
 	return 1;
 }

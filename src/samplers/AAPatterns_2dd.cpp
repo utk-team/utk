@@ -40,12 +40,6 @@ int main(int argc, char** argv)
 	}
 	sampler.setVectorFile(param_vectorfile);
 	
-	if(param_randxor)
-	{
-		ERROR("Cannot randomize using xor a set of floating point samples");
-		return -1;
-	}
-	
 	PointsetWriter<D, T, P> writer;
 	writer.open(param_output.c_str());
 	while(param_nbrealisations>0)
@@ -60,14 +54,6 @@ int main(int argc, char** argv)
 		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double> >(t2 - t1);
 		if(param_verbose)
 			std::cout << std::fixed << std::setprecision(5) << "Generated " << pts.size() << " samples in " << time_span.count() << " secs" << std::endl;
-		
-		if(param_randcp)
-		{	
-			Vector<D, double> cp;
-			for(int i=0; i<D; i++)
-				cp = drand48();
-			pts.cranley_patterson(cp);
-		}
 		
 		//WRITE
 		writer.writePointset(pts);

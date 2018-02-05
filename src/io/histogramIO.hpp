@@ -11,6 +11,10 @@
 namespace utk
 {
 
+/**
+ * \class HistogramWriter
+ * \brief Outputs an histogram in ascii mode.
+*/
 template <uint D, typename T0, typename T1>
 class HistogramWriter
 {
@@ -34,7 +38,7 @@ public:
 		return m_writer->open(arg_filename.c_str());
 	}
 	
-	virtual bool writeHistogram(const HistogramND<D, T0, T1>& arg_histo) { return m_writer->writeHistogram(arg_histo); }
+	virtual bool writeHistogram(const Histogram<D, T0, T1>& arg_histo) { return m_writer->writeHistogram(arg_histo); }
 	
 	void close()
 	{
@@ -48,6 +52,11 @@ private:
 	HistogramWriter_Model<D, T0, T1>* m_writer;
 };
 
+
+/**
+ * \class HistogramReader
+ * \brief Fills an instance of the Histogram class from an ascii file.
+*/
 template <uint D, typename T0, typename T1>
 class HistogramReader
 {
@@ -71,7 +80,7 @@ public:
 		return m_reader->open(arg_filename.c_str());
 	}
 	
-	virtual bool readHistogram(HistogramND<D, T0, T1>& arg_histo) { return m_reader->readHistogram(arg_histo); }
+	virtual bool readHistogram(Histogram<D, T0, T1>& arg_histo) { return m_reader->readHistogram(arg_histo); }
 	
 	void close()
 	{

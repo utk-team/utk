@@ -22,7 +22,7 @@ public:
 		return m_istream.is_open();
 	}
 	
-	virtual bool readHistogram(HistogramND<D, T0, T1>& arg_histo) { return false; }
+	virtual bool readHistogram(Histogram<D, T0, T1>& arg_histo) { return false; }
 	
 	virtual void close()
 	{
@@ -48,7 +48,7 @@ public:
 		return m_ostream.is_open();
 	}
 	
-	virtual bool writeHistogram(const HistogramND<D, T0, T1>& arg_histo) { return false; }
+	virtual bool writeHistogram(const Histogram<D, T0, T1>& arg_histo) { return false; }
 	
 	virtual void close()
 	{

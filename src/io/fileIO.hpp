@@ -14,6 +14,10 @@
 namespace utk
 {
 
+/**
+ * \class PointsetWriter
+ * \brief Outputs an ascii or binary point set
+*/
 template <unsigned int D, typename T, typename P>
 class PointsetWriter
 {
@@ -76,6 +80,11 @@ private:
 	}
 };
 
+
+/**
+ * \class PointsetReader
+ * \brief Fills an instance of the Pointset class from an ascii or binary file.
+*/
 template <unsigned int D, typename T, typename P>
 class PointsetReader
 {

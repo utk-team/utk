@@ -1,7 +1,7 @@
 add_subdirectory(samplers)
 add_subdirectory(discrepancy)
 add_subdirectory(integration)
-#add_subdirectory(randomization)
+add_subdirectory(scrambling)
 add_subdirectory(utils)
 add_subdirectory(statistics)
 add_subdirectory(spectral)

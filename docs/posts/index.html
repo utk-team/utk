@@ -1,0 +1,69 @@
+<div id="post">
+			<h2> Uni{corn|form} Tool Kit </h2>
+			
+			<p>
+			The UTK tool kit aims at providing executables to generate
+			and analyze point set. It is originally meant to help researchers
+			developing sampling patterns in a numerical integration using Monte Carlo estimators.
+			More precisely, it was developped with the precise question of
+			optimizing image synthesis via Path tracing algorithms.
+			</p>
+			
+			<h1>Clone and Build</h1>
+			
+			<p>UTK is hosted on a git repository.
+			To install it, the first step is to clone the repository on your computer.
+			This can be done using the following command line:
+			<pre><cli>
+git clone https://github.com/utk-team/utk.git
+			</cli></pre>
+			</p>
+			
+			<p>The code can be build on a Linux or a Mac environement.
+			The Windows build is not yet supported.
+			To build it, one can use the following commands,
+			assumming the current working directory is the cloned
+			utk repository.
+			<pre><cli>
+mkdir build
+cd build
+cmake ..
+make
+			</cli></pre>
+			</p>
+			
+			<h1>External libraries</h1>
+			
+			The UTK repository provides the files for two external libraries:
+			<ul>
+				<li>CImg (for image processing)
+				<li>dCpp (for automatic differentiation).
+			</ul>
+			
+			It may also require several other librairies, namely:
+			<ul>
+				<li>CGAL (to generate analytical shapes arrangements)
+				<li>FFTW3 (to compute fourier spectras)
+			</ul>
+			
+			<p>Finally, it also strongly relies on the Gnuplot framework to generate
+			graphs.</p>
+			
+			<p>Note that none of those libraries are mandatory. When building the UTK framework, 
+			the external dependancies can be either activated or deactivated.
+			Each tool of this framework is compiled independentely. 
+			If a dependancy is marked as unrequired, all the tools that do not require
+			this dependancy are still compiled.</p>
+			
+			<p>Originally, only CImg and dCpp are activated, since they are very light libraries
+			and are provided with the framework.</p>
+			
+			<p>
+			To activate or deactivate a library, one can either edit the file
+<name>utk/CMakeLists.txt</name>
+			to set to true/false the variables [LIBRARY]_ON.
+			Or one can use the following command 
+			<name>ccmake ..</name> from the build repository to edit the compilation options.
+			</p>
+</div>
+			

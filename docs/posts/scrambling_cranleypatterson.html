@@ -1,0 +1,74 @@
+<div id="post">
+			<h2> Scrambling Cranley Patterson </h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/scrambling/ScramblingCranleyPatterson.hpp<br/>
+					src/scrambling/CranleyPatterson_*d*.cpp
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+			Randomize a point set.
+			Picks D random values wich are each added to the D^th coordinate of each sample of the input point set.
+			If the point gets outside the domain, it is torically duplicated.
+			</p>
+
+		    <h1> Execution </h1>
+
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	-i [string]	Input file
+	-o [string=output_pts.dat]	Output file
+	--silent 			Silent mode
+	-h 				Displays this help message
+			</pre>
+			</p>
+
+			<p>To generate a 2D point set of 1024 samples with a whitenoise distribution, we can use the following
+			client line command:
+			<pre><cli>
+./src/scrambling/CranleyPatterson_2dd -i pointset.edat -o scrambledset.edat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>ScramblingCranleyPatterson</b> scrambler;
+<b>Pointset< D, T, P ></b> pts;
+<b>Pointset< D, T, P ></b> pts_scrambled;
+//we assume pts is filled
+scrambler.scramble< D, T, P >(pts, pts_scrambled);
+<b>PointsetWriter< D, T, P ></b> writer;
+writer.open("scrambledset.edat");
+writer.writePointset(pts_scrambled);
+writer.close();
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+			<pre><cli>
+./src/scrambling/CranleyPatterson_2di -i sobol_m3_1024.edat -o scrambled.edat
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>Input<br/>
+					<a href="data/cranleypatterson/sobol_1024.edat">sobol_m3_1024.edat</a><br/>
+					<a href="data/cranleypatterson/sobol_1024.png"><img class="mylogo" width="300" src="data/cranleypatterson/sobol_1024.png"></a>
+					</td>
+				</tr>
+				<tr class="images">
+					<td>Output<br/>
+					<a href="data/cranleypatterson/scrambled_m3.edat">scrambled_m3.edat</a><br/>
+					<a href="data/cranleypatterson/scrambled1.png"><img class="mylogo" width="300" src="data/cranleypatterson/scrambled1.png"></a>
+					<a href="data/cranleypatterson/scrambled2.png"><img class="mylogo" width="300" src="data/cranleypatterson/scrambled2.png"></a>
+					<a href="data/cranleypatterson/scrambled3.png"><img class="mylogo" width="300" src="data/cranleypatterson/scrambled3.png"></a>
+				</tr>
+			</table>

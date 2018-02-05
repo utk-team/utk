@@ -40,14 +40,6 @@ int main(int argc, char** argv)
 		if(param_verbose)
 			std::cout << std::fixed << std::setprecision(5) << "Generated " << pts.size() << " samples in " << time_span.count() << " secs" << std::endl;
 		
-		if(param_randcp)
-		{	
-			Vector<D, double> cp;
-			for(int i=0; i<D; i++)
-				cp = drand48();
-			pts.cranley_patterson(cp);
-		}
-		
 		//WRITE
 		writer.writePointset(pts);
 		param_nbrealisations--;
