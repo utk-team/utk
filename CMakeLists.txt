@@ -20,7 +20,8 @@ set(USE_CIMG 0 CACHE BOOL "Using CIMG library")
 set(USE_FFTW 0 CACHE BOOL "Using FFTW3 library")
 set(USE_MPFR 0 CACHE BOOL "Using MPFR library")
 set(USE_BOOST 0 CACHE BOOL "Using Boost Compute library")
-set(USE_CGAL 0 CACHE BOOL "Using CGAL library")
+set(USE_CGAL 0 CACHE BOOL "Using CGAL library version 3")
+set(USE_CGALv2 0 CACHE BOOL "Using CGAL library version 2")
 #set(USE_GLM 1 CACHE BOOL "Using GLM library")
 #set(USE_FLANN 1 CACHE BOOL "Using FLANN library"
 
@@ -92,7 +93,7 @@ if(USE_BOOST)
 	message(STATUS "Boost Compute OK")
 endif(USE_BOOST)
 
-if(USE_CGAL)
+if(USE_CGAL OR USE_CGALv2)
 	message(STATUS "Including CGAL")
 	message(STATUS "In case of issue, you can download the CGAL library, compile it, and then use it by changing the CGAL_DIR
 	with the ccmake tool.")
@@ -106,7 +107,8 @@ if(USE_CGAL)
 
 	SET(LINK_CGAL ${CGAL_LIBRARIES} ${CGAL_3RD_PARTY_LIBRARIES} ${GMP_LIBRARY})
 	message(STATUS "CGAL OK")
-endif(USE_CGAL)
+endif(USE_CGAL OR USE_CGALv2)
+
 
 # if(USE_GLM)
 # 	message(STATUS "Including GLM")

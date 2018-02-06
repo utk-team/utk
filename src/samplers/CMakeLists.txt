@@ -160,7 +160,7 @@ install(TARGETS ForcedRandom_2dd
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
 			
-if(USE_CGAL)
+if(USE_CGALv2)
 INCLUDE_DIRECTORIES(SamplerCapCVT/)
 file(GLOB SOURCES SamplerCapCVT/Geex/basics/*.c*  ${SOURCES} )
 file(GLOB SOURCES SamplerCapCVT/Geex/mathematics/*.c*  ${SOURCES} )
@@ -228,7 +228,7 @@ install(TARGETS CVT_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
-endif(USE_CGAL)
+endif(USE_CGALv2)
 			
 
 
