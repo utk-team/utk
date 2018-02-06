@@ -36,12 +36,12 @@
 	
 	pre { 
 		margin: 0;
-		padding: 0;
-		border: 0;
+		padding: 20px;
+		border: solid gray 1px;
 		font-size: 80%;
 		font: monospace;
 		vertical-align: baseline;
-		background: hsl(63, 100%, 89%);
+		background: #e2f0f6; /*hsl(63, 100%, 89%);*/
 	}
 	
 	name { 
@@ -57,11 +57,11 @@
 	
 	code { 
 		white-space: pre-wrap;
-		background: hsl(63, 100%, 89%);
+		background: #e2f0f6; /*hsl(63, 100%, 89%);*/
 	}
 	
 	cli { 
-		background: hsl(63, 100%, 89%);
+		background: #e2f0f6; /*hsl(63, 100%, 89%);*/
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
