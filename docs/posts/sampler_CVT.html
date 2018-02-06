@@ -1,0 +1,91 @@
+<div id="post">
+			<h2> Sampler CVT <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a></h2>
+			<table class=files>
+			<tr>
+				<td class=files valign=middle>Files</td>
+				<td class=files valign=middle>
+					src/samplers/SamplerCapCVT.hpp<br/>
+					src/samplers/CVT_2dd.cpp<br/>
+					src/samplers/SamplerCapCVT/*
+				</td>
+			</tr>
+			</table>
+
+			<h1>Description</h1>
+			<p>
+			Implementation of the CVT sampler from <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a>.
+			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
+			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
+		    </p>
+
+		    <h1> Execution </h1>
+
+		    <p>
+				Parameters:<br/>
+				<pre>
+	[HELP]
+	--boundary [string]		The file with the boundary of the domain
+	--iter [int]		The numer of iterations
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
+	--silent 			Silent mode
+	-h 				Displays this help message
+			</pre>
+			</p>
+
+			<p>To generate a 2D point set of 1024 samples with a CCVT distribution, we can use the following
+			client line command:
+			<pre><cli>
+./src/samplers/CVT_2dd -n 1024 -o toto.dat
+			</cli></pre>
+			</p>
+
+			<p>
+			Or one can use the following C++ code:
+			<pre><code>
+<b>PointsetWriter< 2, double, Point<2, double> ></b> writer;
+writer.open("toto.dat");
+<b>Pointset< 2, double, Point<2, double> ></b> pts;
+<b>SamplerCapCVT.</b> s;
+<b>uint</b> nbIter=100;
+s.setIterations(nbIter);
+<b>unsigned int</b> param_nbsamples = 1024;
+s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
+writer.writePointset(pts);
+writer.close();
+			</code></pre>
+			</p>
+
+			<h1> Results </h1>
+
+			<pre><cli>
+./src/samplers/CCVT_2dd -o CVT_1024.edat -n 1024
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/CVT/CVT_1024.edat">CCVT_1024.edat</a></td>
+					<td>Pointset<br/><a href="data/CVT/CVT_1024.png"><img class="mylogo" width="150" src="data/CVT/CVT_1024.png"></a></td>
+					<td>Fourier<br/><a href="data/CVT/CVT_1024_fourier.png"><img class="mylogo" width="150" src="data/CVT/CVT_1024_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./src/samplers/CCVT_2dd -o CVT_4096.edat -n 4096
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/CVT/CVT_4096.edat">CCVT_4096.edat</a></td>
+					<td>Pointset<br/><a href="data/CVT/CVT_4096.png"><img class="mylogo" width="150" src="data/CVT/CVT_4096.png"></a></td>
+					<td>Fourier<br/><a href="data/CVT/CVT_4096_fourier.png"><img class="mylogo" width="150" src="data/CVT/CVT_4096_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./src/samplers/CVT_2dd --iter 10 -o CVT_2_4096.edat -n 4096
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/CVT_2/CVT_2_4096.edat">CVT_2_4096.edat</a></td>
+					<td>Pointset<br/><a href="data/CVT_2/CVT_2_4096.png"><img class="mylogo" width="150" src="data/CVT_2/CVT_2_4096.png"></a></td>
+					<td>Fourier<br/><a href="data/CVT_2/CVT_2_4096_fourier.png"><img class="mylogo" width="150" src="data/CVT_2/CVT_2_4096_fourier.png"></a></td>
+				</tr>
+			</table>

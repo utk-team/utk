@@ -1,0 +1,42 @@
+/* Source file for Meyer and Pion's FPG (Filtered Predicate Generator) */
+/* mcc -semistatic side2.mcc > side2_static_filter.h                   */
+/* then edit generated file to add int& s_result, int& s_denom to list */
+/* of arguments, and remove declaration for s_result and s_denom in    */
+/* function body.                                                      */ 
+
+
+        int side2(
+            double p1x, double p1y, double p1z,
+            double p2x, double p2y, double p2z,
+            double p3x, double p3y, double p3z,
+            double q1x, double q1y, double q1z,
+            double q2x, double q2y, double q2z
+        )
+            group p1x p2x p3x q1x q2x ;
+            group p1y p2y p3y q1y q2y ;
+            group p1z p2z p3z q1z q2z ;
+        {
+            double t17 = 1*(q2z-q1z);
+            double t18 = 1*(q2y-q1y);
+            double t19 = 1*(q2x-q1x);
+            double t20 = 1*(p1z-p3z);
+            double t21 = 1*(p1y-p3y);
+            double t22 = 1*(p1x-p3x);
+            double denom = (t19*t22+t18*t21+t17*t20);
+            int s_denom = sign(denom) ;
+            double t28 = 1*(p1x-p2x);
+            double t27 = (1*p1x)-(2*q1x);
+            double t26 = 1*(p1y-p2y);
+            double t25 = (1*p1y)-(2*q1y);
+            double t24 = 1*(p1z-p2z);
+            double t23 = (1*p1z)-(2*q1z);
+	    
+            double result = 
+                (t28*t19+t26*t18+t24*t17) * 
+                ( (1*p3x+t27)*t22+(1*p3y+t25)*t21 + (1*p3z+t23)*t20 ) +
+                ( t28 * (-1*p2x-t27) + t26*(-1*p2y-t25)+t24*(-1*p2z-t23) ) * denom;
+		
+            int s_result = sign(result) ;
+
+            return 0 ;
+        }

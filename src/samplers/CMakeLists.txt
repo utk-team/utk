@@ -159,6 +159,77 @@ install(TARGETS ForcedRandom_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
+			
+if(USE_CGAL)
+INCLUDE_DIRECTORIES(SamplerCapCVT/)
+file(GLOB SOURCES SamplerCapCVT/Geex/basics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/mathematics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/numerics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/symbolics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/properties/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/combinatorics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/graphics/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/CVT/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/image/*.c*  ${SOURCES} )
+INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/)
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/zlib/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/gzstream/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/png/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/GLsdk/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/pbuffer/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/glut_viewer/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/glu/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/misc/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/LBFGSB/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/HLBFGS/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/METIS/*.c*  ${SOURCES} )
+INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/tsANN/include)
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tsANN/src/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tetgen/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/AntTweakBar/*.c*  ${SOURCES} )
+INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/AntTweakBar/include)
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/LMBM/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/f2c/src/libF77/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/f2c/src/libI77/*.c*  ${SOURCES} )
+INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/f2c/include)
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/bluemath/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/rand48/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tinyxml/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party2/geodesic/*.c*  ${SOURCES} )
+file(GLOB SOURCES SamplerCapCVT/Geex/third_party2/lodepng/*.c*  ${SOURCES} )
+LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/src/samplers/SamplerCapCVT/Geex/third_party/AntTweakBar/lib)
+ADD_LIBRARY(geex ${SOURCES} ${HeaderFiles})
+
+file(GLOB CapCVT_SOURCES SamplerCapCVT/gx_capcvt2d/generated/*.c*  ${CapCVT_SOURCES} )
+add_executable(CapCVT_2dd
+			SamplerCapCVT/gx_capcvt2d/cvt.cpp
+			SamplerCapCVT/gx_capcvt2d/delaunay.cpp
+			SamplerCapCVT/gx_capcvt2d/delaunay_cvt.cpp
+			SamplerCapCVT/gx_capcvt2d/polygons.cpp
+			${CapCVT_SOURCES}
+			CapCVT_2dd.cpp
+			${UTK_FILES})
+target_link_libraries ( CapCVT_2dd ${LINK} ${LINK_TBB} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
+install(TARGETS CapCVT_2dd
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)	
+			
+add_executable(CVT_2dd
+			SamplerCapCVT/gx_capcvt2d/cvt.cpp
+			SamplerCapCVT/gx_capcvt2d/delaunay.cpp
+			SamplerCapCVT/gx_capcvt2d/delaunay_cvt.cpp
+			SamplerCapCVT/gx_capcvt2d/polygons.cpp
+			${CapCVT_SOURCES}
+			CVT_2dd.cpp
+			${UTK_FILES})
+target_link_libraries ( CVT_2dd ${LINK} ${LINK_TBB} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
+install(TARGETS CVT_2dd
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
+endif(USE_CGAL)
+			
 
 
 # if(USE_CIMG)

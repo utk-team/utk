@@ -70,8 +70,8 @@
 											<ul>
 												<li><a href="sampler_aapatterns.html">AA Patterns</a></li>
 												<li><a href="sampler_art.html">ART</a></li>
-												<li><a href="wip.html" style="color:black">CCVT</a></li>
-												<li><a href="wip.html" style="color:black">CapCVT</a></li>
+												<li><a href="sampler_CVT.html">CVT</a></li>
+												<li><a href="sampler_CapCVT.html">CapCVT</a></li>
 												<li><a href="sampler_dart_throwing.html">Dart Throwing</a></li>
 												<li><a href="sampler_fastpoisson.html">Fast Poisson</a></li>
 												<li><a href="sampler_forced_random.html">Forced Random</a></li>
@@ -275,7 +275,9 @@ writer.close();
 			
 			<p>Changing the initial Sobol sequence</p>
 			<pre><cli>
-./src/samplers/BNLDS_2dd --sobolD0 3 --sobolD1 7 --lut-in ../data/BNLDS/factorK_4/Sobol_37/allPermutsCache_Sobol+OptPerms_3_7_00000.dat -o BNLDS_2_4096.edat -n 4096
+./src/samplers/BNLDS_2dd --sobolD0 3 --sobolD1 7 \
+--lut-in ../data/BNLDS/factorK_4/Sobol_37/allPermutsCache_Sobol+OptPerms_3_7_00000.dat \
+-o BNLDS_2_4096.edat -n 4096
 			</cli></pre>
 			<table style="width:100%">
 				<tr class="images">
@@ -287,7 +289,9 @@ writer.close();
 			
 			<p>Changing the K factor</p>
 			<pre><cli>
-./src/samplers/BNLDS_2dd -K 8 --sobolD0 1 --sobolD1 2 --lut-in ../data/BNLDS/factorK_8/fastoptim_lut_sobol1_2_k8_lvlmax3_sampler_BNLDS_optimizer_PCF_RandomOpti_2dd.dat -o BNLDS_3_4096.edat -n 4096
+./src/samplers/BNLDS_2dd -K 8 --sobolD0 1 --sobolD1 2 \
+--lut-in ../data/BNLDS/factorK_8/fastoptim_lut_sobol1_2_k8_lvlmax3_sampler_BNLDS_optimizer_PCF_RandomOpti_2dd.dat \
+-o BNLDS_3_4096.edat -n 4096
 			</cli></pre>
 			<table style="width:100%">
 				<tr class="images">

@@ -1,0 +1,24 @@
+/* Source file for Meyer and Pion's FPG (Filtered Predicate Generator) */
+/* mcc -semistatic side1.mcc > side1_static_filter.h                   */
+
+        int side1(
+            double p1x, double p1y, double p1z,
+            double p2x, double p2y, double p2z,
+            double qx,  double qy,  double qz
+        ) 
+        group p1x p2x qx ;
+        group p1y p2y qy ;
+        group p1z p2z qz ;
+        {
+
+            double v1x = p1x - p2x ;
+            double v1y = p1y - p2y ;
+            double v1z = p1z - p2z ;
+            
+            double v2x = (2*qx) - (1*(p1x + p2x)) ;
+            double v2y = (2*qy) - (1*(p1y + p2y)) ;
+            double v2z = (2*qz) - (1*(p1z + p2z)) ;
+            
+	    double result = (v1x*v2x) + (v1y*v2y) + (v1z*v2z) ; 
+            return sign(result) ;
+        }
