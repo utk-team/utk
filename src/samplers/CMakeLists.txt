@@ -209,7 +209,7 @@ add_executable(CapCVT_2dd
 			${CapCVT_SOURCES}
 			CapCVT_2dd.cpp
 			${UTK_FILES})
-target_link_libraries ( CapCVT_2dd ${LINK} ${LINK_TBB} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
+target_link_libraries ( CapCVT_2dd ${LINK} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
 install(TARGETS CapCVT_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
@@ -223,8 +223,18 @@ add_executable(CVT_2dd
 			${CapCVT_SOURCES}
 			CVT_2dd.cpp
 			${UTK_FILES})
-target_link_libraries ( CVT_2dd ${LINK} ${LINK_TBB} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
+target_link_libraries ( CVT_2dd ${LINK} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
 install(TARGETS CVT_2dd
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
+			
+add_executable(FPO_2dd
+			SamplerFPO/DT.cpp
+			FPO_2dd.cpp
+			${UTK_FILES})
+target_link_libraries ( FPO_2dd ${LINK})
+install(TARGETS FPO_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)

@@ -67,6 +67,16 @@ public:
 		}
 		return true;
 	}
+	
+	void setUnitToroidalDomain()
+	{
+		for(int d=0; d<D; d++)
+		{
+			domain.pMin.pos()[d] = 0;
+			domain.pMax.pos()[d] = 1;
+		}
+		toricity=1;
+	}
 
 	Domain<P> domain;
 	int toricity;
