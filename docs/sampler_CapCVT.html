@@ -75,7 +75,7 @@
 												<li><a href="sampler_dart_throwing.html">Dart Throwing</a></li>
 												<li><a href="sampler_fastpoisson.html">Fast Poisson</a></li>
 												<li><a href="sampler_forced_random.html">Forced Random</a></li>
-												<li><a href="wip.html" style="color:black">FPO</a></li>
+												<li><a href="sampler_FPO.html">FPO</a></li>
 												<li><a href="sampler_ldbn.html">LDBN</a></li>
 												<li><a href="sampler_penrose.html">Penrose</a></li>
 											</ul>
@@ -188,7 +188,7 @@
 				</div>
 		</div>
 <div id="post">
-			<h2> Sampler CapCVT </h2>
+			<h2> Sampler CapCVT <a href="https://dl.acm.org/citation.cfm?id=2360839">[CYC12]</a></h2>
 			<table class=files>
 			<tr>
 				<td class=files valign=middle>Files</td>
@@ -202,6 +202,7 @@
 
 			<h1>Description</h1>
 			<p>
+			Implementation of the CapCVT sampler from <a href="https://dl.acm.org/citation.cfm?id=2360839">[CYC12]</a>.
 			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
 			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
 		    </p>
@@ -213,7 +214,7 @@
 				<pre>
 	[HELP]
 	--boundary [string]		The file with the boundary of the domain
-	--iter [int]		The numer of iterations
+	--iter [int]			The number of iterations
 	--lambda [float]		 The lambda value
 	-o [string=output_pts.dat]	Output file
 	-m [int=1]			Number of poinset realisations

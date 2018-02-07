@@ -75,7 +75,7 @@
 												<li><a href="sampler_dart_throwing.html">Dart Throwing</a></li>
 												<li><a href="sampler_fastpoisson.html">Fast Poisson</a></li>
 												<li><a href="sampler_forced_random.html">Forced Random</a></li>
-												<li><a href="wip.html" style="color:black">FPO</a></li>
+												<li><a href="sampler_FPO.html">FPO</a></li>
 												<li><a href="sampler_ldbn.html">LDBN</a></li>
 												<li><a href="sampler_penrose.html">Penrose</a></li>
 											</ul>
@@ -188,7 +188,7 @@
 				</div>
 		</div>
 <div id="post">
-			<h2> Sampler CCVT </h2>
+			<h2> Sampler CVT <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a></h2>
 			<table class=files>
 			<tr>
 				<td class=files valign=middle>Files</td>
@@ -202,6 +202,7 @@
 
 			<h1>Description</h1>
 			<p>
+			Implementation of the CVT sampler from <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a>.
 			<br/>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy,
 			please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.
 		    </p>
@@ -213,7 +214,7 @@
 				<pre>
 	[HELP]
 	--boundary [string]		The file with the boundary of the domain
-	--iter [int]		The numer of iterations
+	--iter [int]			The number of iterations
 	-o [string=output_pts.dat]	Output file
 	-m [int=1]			Number of poinset realisations
 	-n [ullint=1024]		Number of samples to generate
@@ -265,6 +266,16 @@ writer.close();
 					<td>File<br/><a href="data/CVT/CVT_4096.edat">CCVT_4096.edat</a></td>
 					<td>Pointset<br/><a href="data/CVT/CVT_4096.png"><img class="mylogo" width="150" src="data/CVT/CVT_4096.png"></a></td>
 					<td>Fourier<br/><a href="data/CVT/CVT_4096_fourier.png"><img class="mylogo" width="150" src="data/CVT/CVT_4096_fourier.png"></a></td>
+				</tr>
+			</table>
+			<pre><cli>
+./src/samplers/CVT_2dd -o CVT_2_4096.edat -n 4096 --iter 10
+			</cli></pre>
+			<table style="width:100%">
+				<tr class="images">
+					<td>File<br/><a href="data/CVT_2/CVT_2_4096.edat">CVT_2_4096.edat</a></td>
+					<td>Pointset<br/><a href="data/CVT_2/CVT_2_4096.png"><img class="mylogo" width="150" src="data/CVT_2/CVT_2_4096.png"></a></td>
+					<td>Fourier<br/><a href="data/CVT_2/CVT_2_4096_fourier.png"><img class="mylogo" width="150" src="data/CVT_2/CVT_2_4096_fourier.png"></a></td>
 				</tr>
 			</table>
 <!-- Footer -->
