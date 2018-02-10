@@ -40,7 +40,7 @@ before_script:
 ############
 script:
   - mkdir build ; cd build
-  - cmake .. -DUSE_FFTW=true -DUSE_CIMG=true -DUSE_MPFR=true -DUSE_CGAL=true
+  - cmake .. -DUSE_FFTW=true -DUSE_CIMG=true -DUSE_MPFR=true 
   - make
   - make test
 
