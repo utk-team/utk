@@ -15,5 +15,7 @@ More information: https://utk-team.github.io/utk/
 # Authors
 
 🦄 Hélène Perrier <helene.perrier@liris.cnrs.fr>
+
 David Coeurjolly <david.coeurjolly@liris.cnrs.fr>
+
 Victor Ostromoukhov <victor.Ostrromoukhov@liris.cnrs.fr>
