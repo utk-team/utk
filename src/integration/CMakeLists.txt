@@ -1,3 +1,4 @@
+if(!USE_CIMG)
 SET(SRCs
 
 	IntegrationNSphere_fromfile_2dd
@@ -19,10 +20,22 @@ FOREACH(FILE ${SRCs})
 					RUNTIME DESTINATION bin
 					LIBRARY DESTINATION lib
 					ARCHIVE DESTINATION lib)
+					
 ENDFOREACH(FILE)
+endif(!USE_CIMG)
 
 if(USE_CIMG)
 SET(SRCs
+
+	IntegrationNSphere_fromfile_2dd
+	IntegrationNSphere_fromfile_3dd
+	IntegrationNSphere_fromfile_2di
+	IntegrationNSphere_fromfile_3di
+	IntegrationNSphere_fromfile_4dd
+	
+	IntegrationGaussian_fromfile_2dd
+	IntegrationCenteredGaussian_fromfile_2dd
+	IntegrationCorneredGaussian_fromfile_2dd
 
 	IntegrationImage2D_fromfile_2dd
 	IntegrationImage2D_fromfile_2di
