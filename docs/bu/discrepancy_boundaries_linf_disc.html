@@ -4,6 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="assets/js/highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body>
 <div id="page-wrapper">
@@ -13,8 +15,10 @@
 						<h1>
 							<img class="mylogo" height="60" src="data/logo_utk.jpg" alt="Logo"/>
 							<a style="color:inherit;" href="index.html" id="logo"> Uni{corn|form} Tool Kit</a>
+							<a href="https://github.com/utk-team/utk"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 						</h1>
-
+						
+						
 						<nav id="nav">
 							<ul>
 								<li><a href="index.html">Home</a></li>
@@ -194,8 +198,8 @@
 			<tr>
 				<td class=files valign=middle>Files</td>
 				<td class=files valign=middle>
-					src/discrepancy/BoundariesStarDiscrepancy.hpp.hpp<br/>
-					src/bin/discrepancy/BoundariesStarDiscrepancy_2dd.cpp.cpp
+					src/discrepancy/BoundariesStarDiscrepancy.hpp<br/>
+					src/bin/discrepancy/BoundariesStarDiscrepancy_2dd.cpp
 				</td>
 			</tr>
 			</table>
@@ -233,18 +237,18 @@
 
 			<p>
 			Or one can use the following C++ code:
-			<pre><code>
-<b>BoundariesStarDiscrepancy.hpp</b> discrepancy_test;
-<b>DiscrepancyStatistics</b> statsBoundMin;
-<b>DiscrepancyStatistics</b> statsBoundMax;
-<b>Pointset< D, double, Point<D, double> ></b> pts;
+			<pre><code class="C++">
+BoundariesStarDiscrepancy discrepancy_test;
+DiscrepancyStatistics statsBoundMin;
+DiscrepancyStatistics statsBoundMax;
+Pointset< D, double, Point<D, double> > pts;
 //We assume pts is filled
 statsBoundMin.nbpts = pts.size();
 
 
 //Can be done several times if we need to average over
 //several stochastic pointsets
-<b>std::array<double, 2></b> discrepancy;
+std::array<double, 2> discrepancy;
 disc.compute< D, double, Point<D, double> >(pts, param_epsilon, discrepancy)
 statsBoundMin.addValue(discrepancy[0]);
 statsBoundMax.addValue(discrepancy[1]);

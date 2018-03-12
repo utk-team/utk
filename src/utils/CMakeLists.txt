@@ -9,6 +9,9 @@ SET(SRCs
 	draw_fromfile_2dd
 #	draw_subset_fromfile_2dd
 	histogram_compare_2dd
+	
+	generate_movement_gif
+	normalize_pointset_2di_2dd
 
 	)
 
