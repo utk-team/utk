@@ -237,18 +237,18 @@
 
 			<p>
 			Or one can use the following C++ code:
-			<pre><code class="C++">
-BoundariesStarDiscrepancy discrepancy_test;
-DiscrepancyStatistics statsBoundMin;
-DiscrepancyStatistics statsBoundMax;
-Pointset< D, double, Point<D, double> > pts;
+			<pre><code>
+<b>BoundariesStarDiscrepancy</b> discrepancy_test;
+<b>DiscrepancyStatistics</b> statsBoundMin;
+<b>DiscrepancyStatistics</b> statsBoundMax;
+<b>Pointset< D, double, Point<D, double> ></b> pts;
 //We assume pts is filled
 statsBoundMin.nbpts = pts.size();
 
 
 //Can be done several times if we need to average over
 //several stochastic pointsets
-std::array<double, 2> discrepancy;
+<b>std::array<double, 2></b> discrepancy;
 disc.compute< D, double, Point<D, double> >(pts, param_epsilon, discrepancy)
 statsBoundMin.addValue(discrepancy[0]);
 statsBoundMax.addValue(discrepancy[1]);
