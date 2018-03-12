@@ -21,6 +21,9 @@ addons:
    packages:
     - graphviz
     - libfftw3-dev
+    - libmpfr-dev
+    - libcgal-dev
+
 
 before_install:
 
@@ -29,7 +32,7 @@ before_install:
 # Deps.
 ########
 before_script:
-   - if [ $TRAVIS_OS_NAME == osx ]; then brew install fftw; echo "All deps ok."; fi
+   - if [ $TRAVIS_OS_NAME == osx ]; then brew install fftw cgal; echo "All deps ok."; fi
 
 
 ############
@@ -37,7 +40,7 @@ before_script:
 ############
 script:
   - mkdir build ; cd build
-  - cmake .. -DUSE_FFTW=true
+  - cmake .. -DUSE_FFTW=true -DUSE_CIMG=true -DUSE_MPFR=true 
   - make
   - make test
 
