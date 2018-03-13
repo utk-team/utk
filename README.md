@@ -24,9 +24,9 @@ Victor Ostromoukhov <victor.Ostromoukhov@liris.cnrs.fr>
 
 ```
 @Misc{UTK,
-title = {Uni(corn|form) tool kit},
-url = {https://utk-team.github.io/utk/},
-authors= {H. Perrier,  D. Coeurjolly and Victor Ostromoukhov}
+      title = {Uni(corn|form) tool kit},
+      url = {https://utk-team.github.io/utk/},
+      authors= {H. Perrier,  D. Coeurjolly and Victor Ostromoukhov}
 }
 ```
 
