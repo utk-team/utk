@@ -18,13 +18,15 @@ More information: https://utk-team.github.io/utk/
 
 David Coeurjolly <david.coeurjolly@liris.cnrs.fr>
 
-Victor Ostromoukhov <victor.Ostrromoukhov@liris.cnrs.fr>
+Victor Ostromoukhov <victor.Ostromoukhov@liris.cnrs.fr>
 
-# Cite
+# Citing UTK
 
+```
 @Misc{UTK,
 title = {Uni(corn|form) tool kit},
-note = {url{https://utk-team.github.io/utk/}}
+note = {url{https://utk-team.github.io/utk/}},
+authors= {H. Perrier,  D. Coeurjolly and Victor Ostromoukhov}
 }
-
+```
 
