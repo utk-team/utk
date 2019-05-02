@@ -5,6 +5,7 @@ SET(SRCs
 	Whitenoise_2dd
 	Whitenoise_3dd
 	Whitenoise_4dd
+  Whitenoise_6dd
 
 	Sobol_2dd
 	Sobol_3dd
