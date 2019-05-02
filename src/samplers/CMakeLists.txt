@@ -34,7 +34,8 @@ SET(SRCs
 
 	Stratified_2dd
 	Stratified_3dd
-	Stratified_4dd
+  Stratified_4dd
+  Stratified_6dd
 
 	NRooks_2dd
 	NRooks_3dd
