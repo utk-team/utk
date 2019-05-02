@@ -327,17 +327,17 @@ void TriangleArrangement::rasterizerPS(const unsigned int Width,
 		++nextccb;
 		
 		double pt[2];
-		pt[0] = origin->target()->point().x().to_double()*normalisation_factor;
-		pt[1] = origin->target()->point().y().to_double()*normalisation_factor;
+    pt[0] = CGAL::to_double(origin->target()->point().x())*normalisation_factor;
+		pt[1] = CGAL::to_double(origin->target()->point().y())*normalisation_factor;
 		points.push_back(utk::Vector<2, double>(pt));
 		
-		pt[0] = ccb->target()->point().x().to_double()*normalisation_factor;
-		pt[1] = ccb->target()->point().y().to_double()*normalisation_factor;
+		pt[0] = CGAL::to_double(ccb->target()->point().x())*normalisation_factor;
+		pt[1] = CGAL::to_double(ccb->target()->point().y())*normalisation_factor;
 		points.push_back(utk::Vector<2, double>(pt));
 		do
 		{
-			pt[0] = nextccb->target()->point().x().to_double()*normalisation_factor;
-			pt[1] = nextccb->target()->point().y().to_double()*normalisation_factor;
+			pt[0] = CGAL::to_double(nextccb->target()->point().x())*normalisation_factor;
+			pt[1] = CGAL::to_double(nextccb->target()->point().y())*normalisation_factor;
 			points.push_back(utk::Vector<2, double>(pt));
 			++nextccb;
 		} while (nextccb != origin);
