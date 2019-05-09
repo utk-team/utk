@@ -67,6 +67,7 @@ SET(SRCs
 
 	Owen_2dd
 	Owen_4dd
+  Owen_6dd
 
 	Rank1_2dd
 
