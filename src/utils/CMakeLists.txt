@@ -3,12 +3,15 @@ SET(SRCs
 # 	full2DProjections_fromfile_3dd
 # 	full2DProjections_fromfile_4dd
 # 	full2DProjections_fromfile_10dd
-# 
+#
 # 	full3DProjections_fromfile_4dd
-	
+
 	draw_fromfile_2dd
 #	draw_subset_fromfile_2dd
 	histogram_compare_2dd
+	2ddto2di
+	2dito2dd
+2dito2dd-bis
 
 	)
 
@@ -19,7 +22,7 @@ FOREACH(FILE ${SRCs})
 					RUNTIME DESTINATION bin
 					LIBRARY DESTINATION lib
 					ARCHIVE DESTINATION lib)
-  
+
 ENDFOREACH(FILE)
 
 #if(USE_CIMG)
@@ -38,6 +41,3 @@ ENDFOREACH(FILE)
 #					ARCHIVE DESTINATION lib)
 #ENDFOREACH(FILE)
 #endif(USE_CIMG)
-
-
-

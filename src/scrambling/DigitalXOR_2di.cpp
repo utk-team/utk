@@ -2,7 +2,7 @@
 #include "../parameters/ParamParser_getopt.hpp"
 #include "../io/fileIO.hpp"
 #include <chrono>
-
+#include <algorithm>
 #include "runScrambler.hpp"
 
 using namespace utk;
@@ -36,6 +36,17 @@ int main(int argc, char** argv)
 	
 	while(reader.readPointset(pts))
 	{
+    int xmin=11212346, ymin=121212, xmax=0,ymax=0;
+    for(auto i = 0; i < pts.size(); ++i)
+    {
+      xmin = std::min(xmin, pts[i].pos()[0]);
+      ymin = std::min(xmin, pts[i].pos()[1]);
+      xmax = std::max(xmax, pts[i].pos()[0]);
+      ymax = std::max(ymax, pts[i].pos()[1]);
+    }
+    pts.domain.pMin = {xmin, ymin};
+    pts.domain.pMax = {xmax, ymax};
+    
 		//SAMPLE
 		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 		if(!scrambler.scramble<D, T, P>(pts, pts_scrambled))

@@ -8,7 +8,7 @@ std::string param_input;
 std::string param_output;
 unsigned int param_npts = 0;
 
-class IntegrationStatistics
+  class IntegrationStatistics
 {
 public:
 	double iter;

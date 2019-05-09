@@ -26,10 +26,15 @@ public:
 		if (isFloatingType<T>())
 			WARNING("ScramblingDigitalXOR:compute applying on floating type coordinates. Clamping to integer values.");
 		
+    std::cout<<(pts_input.domain.pMax.pos()[0]-pts_input.domain.pMin.pos()[0])<<" "<<
+    (pts_input.domain.pMax.pos()[1]-pts_input.domain.pMin.pos()[1])<<" Rand vector = ";
 		Vector<D, unsigned int> randvector;
 		for(uint d=0; d<D; d++)
-			randvector[d] = getRandom01()*(pts_input.domain.pMax.pos()[d]-pts_input.domain.pMin.pos()[d]);
-		
+    {
+      randvector[d] = getRandom01()*(pts_input.domain.pMax.pos()[d]-pts_input.domain.pMin.pos()[d]);
+      std::cout <<randvector[d]<<" ";
+    }
+    std::cout<<std::endl;
 		pts_output.resize(pts_input.size());
 		for(uint d=0; d<D; d++)
 		{
