@@ -11,10 +11,9 @@ SET(SRCs
 	histogram_compare_2dd
 	2ddto2di
 	2dito2dd
-2dito2dd-bis
+  2dito2dd-bis
 
-
-	#generate_movement_gif
+  #generate_movement_gif
 	normalize_pointset_2di_2dd
 
 	)
