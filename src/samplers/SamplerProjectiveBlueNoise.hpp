@@ -38,7 +38,7 @@ namespace utk
 				return false;
 			}
 			
-			if(D < 1 || D > 4)
+			if(D < 1 || D > 6)
 			{
 				ERROR("SamplerProjectiveBlueNoise::generateSamples has only been defined between 1 and 4 dimensions");
 				return false;
@@ -58,13 +58,17 @@ namespace utk
 			double distDT_2D = sqrt(1.0/(2.0*sqrt(3)*arg_points));
 			double distDT_3D = pow(1.0/(4.0*sqrt(2)*arg_points), 1.0/3.0);
 			double distDT_4D = pow(1.0/(8.0*arg_points), 1.0/4.0);
-			
+      double distDT_5D = 12.0;//pow(1.0/(4.0*sqrt(2)*arg_points), 1.0/3.0);
+      double distDT_6D = 12.0;//pow(1.0/(8.0*arg_points), 1.0/4.0);
+      
 			std::cout << "Dists " << std::endl;
 			std::cout << "1D " << distDT_1D << std::endl;
 			std::cout << "2D " << distDT_2D << std::endl;
 			std::cout << "3D " << distDT_3D << std::endl;
 			std::cout << "4D " << distDT_4D << std::endl;
-			
+      std::cout << "5D " << distDT_5D << std::endl;
+      std::cout << "6D " << distDT_6D << std::endl;
+      
 			double dist_full;
 			switch(D)
 			{
@@ -72,7 +76,9 @@ namespace utk
 				case 2: dist_full = distDT_2D; break;
 				case 3: dist_full = distDT_3D; break;
 				case 4: dist_full = distDT_4D; break;
-			}
+        case 5: dist_full = distDT_5D; break;
+        case 6: dist_full = distDT_6D; break;
+      }
 			
 			P p;
 			for(uint i=0; i<arg_points; ++i)
