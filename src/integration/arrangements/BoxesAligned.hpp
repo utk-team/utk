@@ -93,9 +93,9 @@ void BoxesAligned::generateBoxesRandom(const uint N, const unsigned int seed, co
 		
 		//compute bottom left corner
 		double x,y,z;
-		x = (init.x() + current_size*vect.x()).to_double();
-		y = (init.y() + current_size*vect.y()).to_double();
-		z = init.z().to_double();
+		x = CGAL::to_double((init.x() + current_size*vect.x()) );
+		y = CGAL::to_double((init.y() + current_size*vect.y()) );
+		z = CGAL::to_double(init.z() );
 		backToBounds(x, y);
 		Point_3 diff_0 = Point_3 (x, y, z);
 		
@@ -103,16 +103,16 @@ void BoxesAligned::generateBoxesRandom(const uint N, const unsigned int seed, co
 		theta =  (3.14159/2.0) + drand48()*0.01;//generateAngle();
 		
 		//compute bottom left corner
-		x = init.x().to_double() + current_size*(cos(theta));
-		y = init.y().to_double() + current_size*(sin(theta));
-		z = init.z().to_double();
+		x = CGAL::to_double(init.x() ) + current_size*(cos(theta));
+		y = CGAL::to_double(init.y() ) + current_size*(sin(theta));
+		z = CGAL::to_double(init.z() );
 		backToBounds(x, y);
 		Point_3 diff_1 = Point_3 (x, y, z);
 		
 		//compute upper right corner
-		x = (diff_1.x() + current_size*vect.x()).to_double();
-		y = (diff_1.y() + current_size*vect.y()).to_double();
-		z = diff_1.z().to_double();
+		x = CGAL::to_double((diff_1.x() + current_size*vect.x()) );
+		y = CGAL::to_double((diff_1.y() + current_size*vect.y()) );
+		z = CGAL::to_double(diff_1.z());
 		backToBounds(x, y);
 		Point_3 diff_2 = Point_3 (x, y, z);
 

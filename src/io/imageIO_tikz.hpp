@@ -40,7 +40,6 @@ public:
 		double xcoord0 = x0;
 		double ycoord0 = y0;
 		double sxscale = sx;
-		double syscale = sy;
 
 		this->m_file << "\\draw[line width=" << linewidth*((this->m_boundingbox_x+this->m_boundingbox_y)/8) << ", draw=" << getColorStr() << "]";
 		this->m_file << " (" << xcoord0 << "," << ycoord0 << ") rectangle (" << xcoord0+sxscale << "," << ycoord0+sxscale << ");" << std::endl;

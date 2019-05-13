@@ -47,6 +47,32 @@ public:
 		return true;
 	}
 	
+	template<unsigned int D, typename T, typename P>
+	bool scramble(const Pointset< D, T, P >& pts_input, Pointset< D, T, P >& pts_output, utk::Vector<D, T> randvector)
+	{
+		if(pts_input.toricity!=1)
+			WARNING("ScramblingCranleyPatterson:compute applying on a non-toric point set");
+
+		pts_output.resize(pts_input.size());
+		for(uint d=0; d<D; d++)
+		{
+			pts_output.domain.pMin.pos()[d] = pts_input.domain.pMin.pos()[d];
+			pts_output.domain.pMax.pos()[d] = pts_input.domain.pMax.pos()[d];
+		}
+		
+		for(uint i=0; i<pts_input.size(); i++)
+		{
+			for(uint d=0; d<D; d++)
+			{
+				pts_output[i].pos()[d] = pts_input[i].pos()[d] + randvector[d];
+				if(pts_output[i].pos()[d] > pts_output.domain.pMax.pos()[d])
+					pts_output[i].pos()[d] -= (pts_output.domain.pMax.pos()[d]-pts_output.domain.pMin.pos()[d]);
+			}
+		}
+		
+		return true;
+	}
+	
 	
 protected:
 	std::mt19937 m_mersenneTwister;

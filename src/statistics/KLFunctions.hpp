@@ -49,8 +49,8 @@ public:
 				for(uint j=i+1; j<N; j++)
 				{
 					double val = distance<D, double, Point<D, double> >(pts01[i], pts01[j]);
-					double x = pts01[i].pos()[0] - pts01[j].pos()[0];
-					double y = pts01[i].pos()[1] - pts01[j].pos()[1];
+				//double x = pts01[i].pos()[0] - pts01[j].pos()[0];
+				//	double y = pts01[i].pos()[1] - pts01[j].pos()[1];
 					if (val < r)
 						estimator += 2.0;//2.0 / ((1.0 - fabs(x))*(1.0 - fabs(y)));//2*(val * 2*M_PI*r) / (M_PI*val*val);
 					//if(i==j) continue;
@@ -134,8 +134,8 @@ public:
 				for(uint j=i+1; j<N; j++)
 				{
 					double val = distance<D, double, Point<D, double> >(pts01[i], pts01[j]);
-					double x = pts01[i].pos()[0] - pts01[j].pos()[0];
-					double y = pts01[i].pos()[1] - pts01[j].pos()[1];
+				//	double x = pts01[i].pos()[0] - pts01[j].pos()[0];
+				//	double y = pts01[i].pos()[1] - pts01[j].pos()[1];
 					if (val < r)
 						estimator += 2.0;// / ((1.0 - fabs(x))*(1.0 - fabs(y)));//2*(val * 2*M_PI*r) / (M_PI*val*val);
 					//if(i==j) continue;

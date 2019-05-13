@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	{
 		ERROR("Parameter -i mandatory");
 		std::cout << parser.getHelp() << std::endl;
-		return true;
+		return 0;
 	}
 	
 	sampler.setInputPointset(initpts_file);

@@ -10,7 +10,8 @@ SET(SRCs
 	GeneralizedL2Discrepancy_fromfile_2dd
 	GeneralizedL2Discrepancy_fromfile_3dd
 	GeneralizedL2Discrepancy_fromfile_4dd
-	GeneralizedL2Discrepancy_fromfile_10dd
+	GeneralizedL2Discrepancy_fromfile_6dd
+  GeneralizedL2Discrepancy_fromfile_10dd
 
 	UnanchoredL2Discrepancy_fromfile_2dd
 	UnanchoredL2Discrepancy_fromfile_3dd

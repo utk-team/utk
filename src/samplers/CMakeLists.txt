@@ -5,6 +5,7 @@ SET(SRCs
 	Whitenoise_2dd
 	Whitenoise_3dd
 	Whitenoise_4dd
+  Whitenoise_6dd
 
 	Sobol_2dd
 	Sobol_3dd
@@ -34,7 +35,8 @@ SET(SRCs
 
 	Stratified_2dd
 	Stratified_3dd
-	Stratified_4dd
+  Stratified_4dd
+  Stratified_6dd
 
 	NRooks_2dd
 	NRooks_3dd
@@ -48,6 +50,7 @@ SET(SRCs
   ProjectiveBlueNoise_6dd
 
 	DartThrowing_2dd
+	DartThrowing_6dd
 
 	Step_2dd
 
@@ -65,7 +68,8 @@ SET(SRCs
 
 	Owen_2dd
 	Owen_4dd
-	
+  Owen_6dd
+
 	Rank1_2dd
 
 	AAPatterns_2dd
@@ -73,9 +77,9 @@ SET(SRCs
 	Penrose_2dd
 
 	Korobov_2dd
-	
+
 	ART_2dd
-	
+
 	BNLDS_2dd
 	BNLDS_optimizer_Mindist_Zero_2dd
 	BNLDS_optimizer_Mindist_Random_2dd
@@ -83,14 +87,14 @@ SET(SRCs
 	BNLDS_optimizer_PCF_Zero_2dd
 	BNLDS_optimizer_PCF_RandomOpti_2dd
 	BNLDS_optimizer_PCF_Random_2dd
-	
+
 	VanDerCorput_1dd
-		
+
 	#Experimental
-	
+
  	GeneticOwen_2dd
  	GeneticOwen_2di
- 	
+
 	ExhaustiveOwen_2dd
 
 	)
@@ -160,7 +164,7 @@ install(TARGETS ForcedRandom_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
-			
+
 if(USE_CGALv2)
 INCLUDE_DIRECTORIES(SamplerCapCVT/)
 file(GLOB SOURCES SamplerCapCVT/Geex/basics/*.c*  ${SOURCES} )
@@ -214,8 +218,8 @@ target_link_libraries ( CapCVT_2dd ${LINK} geex glut GL GLU X11 Xext Xi CGAL Ant
 install(TARGETS CapCVT_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
-			ARCHIVE DESTINATION lib)	
-			
+			ARCHIVE DESTINATION lib)
+
 add_executable(CVT_2dd
 			SamplerCapCVT/gx_capcvt2d/cvt.cpp
 			SamplerCapCVT/gx_capcvt2d/delaunay.cpp
@@ -229,7 +233,7 @@ install(TARGETS CVT_2dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
-			
+
 add_executable(FPO_2dd
 			SamplerFPO/DT.cpp
 			FPO_2dd.cpp
@@ -240,14 +244,14 @@ install(TARGETS FPO_2dd
 			LIBRARY DESTINATION lib
 			ARCHIVE DESTINATION lib)
 endif(USE_CGALv2)
-			
+
 
 
 # if(USE_CIMG)
 # SET(SRCs
-# 
+#
 # 	Victor2D2D_06021027_adaptive
-# 
+#
 # 	)
 # FOREACH(FILE ${SRCs})
 #   add_executable(${FILE} ${FILE} ${UTK_FILES})
@@ -262,11 +266,11 @@ endif(USE_CGALv2)
 
 # if(USE_BOOST)
 # SET(SRCs
-# 
+#
 # 	BNLDS_optimize_pattern_2dd
 # 	#BNLDS_optimize_pattern_local
 # 	BNLDS64_optimizer_PCF_RandomOpti_GPU_2dd
-# 
+#
 # 	)
 # FOREACH(FILE ${SRCs})
 #   add_executable(${FILE} ${FILE} ${UTK_FILES})

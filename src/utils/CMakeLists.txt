@@ -13,6 +13,10 @@ SET(SRCs
 	2dito2dd
 2dito2dd-bis
 
+
+	#generate_movement_gif
+	normalize_pointset_2di_2dd
+
 	)
 
 FOREACH(FILE ${SRCs})

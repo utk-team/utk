@@ -53,6 +53,32 @@ public:
 		return true;
 	}
 	
+	template<unsigned int D, typename T, typename P>
+	bool scramble(const Pointset< D, T, P >& pts_input, Pointset< D, T, P >& pts_output, std::vector<uint> permutation_tree[D])
+	{
+		if (isFloatingType<T>())
+			WARNING("ScramblingOwen:compute applying on floating type coordinates. Clamping to integer values.");
+		
+		uint arg_points = pts_input.size();
+	
+		pts_output.resize(pts_input.size());
+		for(uint d=0; d<D; d++)
+		{
+			pts_output.domain.pMin.pos()[d] = pts_input.domain.pMin.pos()[d];
+			pts_output.domain.pMax.pos()[d] = pts_input.domain.pMax.pos()[d];
+		}
+		pts_output.toricity=pts_input.toricity;
+		
+		for(int i=0; i<arg_points; i++)
+			for(int d=0; d<D; d++)
+				pts_output[i].pos()[d] = (unsigned int)pts_input[i].pos()[d];
+				
+		for(int d=0; d<D; d++)
+			owenScrambling<D, T>(pts_output, d, permutation_tree[d]);
+		
+		return true;
+	}
+	
 	
 protected:
 	std::mt19937 m_mersenneTwister;

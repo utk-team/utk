@@ -4,6 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="assets/js/highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body>
 <div id="page-wrapper">
@@ -13,8 +15,10 @@
 						<h1>
 							<img class="mylogo" height="60" src="data/logo_utk.jpg" alt="Logo"/>
 							<a style="color:inherit;" href="index.html" id="logo"> Uni{corn|form} Tool Kit</a>
+							<a href="https://github.com/utk-team/utk"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 						</h1>
-
+						
+						
 						<nav id="nav">
 							<ul>
 								<li><a href="index.html">Home</a></li>
@@ -78,6 +82,7 @@
 												<li><a href="sampler_FPO.html">FPO</a></li>
 												<li><a href="sampler_ldbn.html">LDBN</a></li>
 												<li><a href="sampler_penrose.html">Penrose</a></li>
+												<li><a href="sampler_BNOT.html">BNOT</li>
 											</ul>
 										</li>
 										<li>
@@ -253,6 +258,31 @@ make
 			to set to true/false the variables [LIBRARY]_ON.
 			Or one can use the following command 
 			<name>ccmake ..</name> from the build repository to edit the compilation options.
+			</p>
+			
+			<h2>Misc</h2>
+			
+			<p>
+			The UTK library was developped mainly by
+			<ul>
+			<li> Helene Perrier <a href="mailto:helene.perrier@liris.cnrs.fr">helene.perrier@liris.cnrs.fr</a>
+			<li> David Coeurjolly <a href="mailto:david.coeurjolly@liris.cnrs.fr">david.coeurjolly@liris.cnrs.fr</a>
+			</ul>
+			But was also contributed to by
+			<ul>
+			<li> Victor Ostromoukhov <a href="mailto:victor.ostromoukhov@liris.cnrs.fr">victor.ostromoukhov@liris.cnrs.fr</a>
+			<li>Jean David Genevaux
+			</ul>
+			</p>
+			
+			<p>
+			If you want to refer to UTK in your publications, please use the following bibtex entry:
+			<pre>
+@Misc{UTK,
+title = {Uni(corn|form) tool kit},
+note = {url{https://utk-team.github.io/utk/}}
+}
+			</pre>
 			</p>
 </div>
 			<!-- Footer -->
