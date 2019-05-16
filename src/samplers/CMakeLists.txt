@@ -52,6 +52,7 @@ SET(SRCs
 	DartThrowing_2dd
 	DartThrowing_4dd
   DartThrowing_6dd
+  DartThrowing_8dd
 
 	Step_2dd
 
@@ -70,6 +71,7 @@ SET(SRCs
 	Owen_2dd
 	Owen_4dd
   Owen_6dd
+  Owen_8dd
 
 	Rank1_2dd
 
