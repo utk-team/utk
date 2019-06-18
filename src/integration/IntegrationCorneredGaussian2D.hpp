@@ -51,7 +51,7 @@ public:
 
   double analyticIntegrand()
   {
-	return 0.249999713349;
+	return 0.2499997133485104;
   }
   
   double sampleIntegrand(Point<2, double>& pt)
