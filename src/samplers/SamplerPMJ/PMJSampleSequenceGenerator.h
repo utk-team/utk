@@ -8,19 +8,19 @@
 #include <random>
 #include <fstream>
 #include <iostream>
-#include "Sample.h"
+#include "SamplePMJ.h"
 
 class PMJSampleSequenceGenerator {
 public:
     PMJSampleSequenceGenerator(int seed = 42);
     ~PMJSampleSequenceGenerator();
     void ProgressiveMultiJitteredAlgorithm2D(int numberOfSamplesToGenerate, int numberOfCandidates = 10);
-    void exportSampleSet(std::string outputPath);
+    void exportSampleSet(std::string &outputPath);
 
 private:
     std::mt19937 randomNumberGenerator;
     int numberOfSamplesToGenerate;
-    Sample* generatedSamples;
+    SamplePMJ *generatedSamples;
     bool* occupied1Dx;
     bool* occupied1Dy;
     int* xhalves;
@@ -32,8 +32,8 @@ private:
     void extendSequenceOdd(int alreadyGeneratedSamples);
     void markOccupiedStrata(int alreadyGeneratedSamples);
     void generateSamplePoint(int i, int j, int xhalf, int yhalf, double n, int N);
-    double minDist(Sample reference);
-    Sample* instantiateArray(int size);
+    double minDist(SamplePMJ &reference);
+    SamplePMJ* instantiateArray(int size);
     double generateRandomDouble();
 };
 

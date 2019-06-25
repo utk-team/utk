@@ -7,16 +7,16 @@
 
 #include <ostream>
 
-class Sample {
+class SamplePMJ {
 private:
     int dimension;
     double* coordinates;
 public:
-    Sample(int dimension = 2);
+    SamplePMJ(int dimension = 2);
     double& operator[](int index);
     void deleteSample();
 
-    friend std::ostream &operator<<(std::ostream &os, const Sample &sample);
+    friend std::ostream &operator<<(std::ostream &os, const SamplePMJ &sample);
 };
 
 

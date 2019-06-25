@@ -2,22 +2,22 @@
 // Created by p1703185 on 09/04/19.
 //
 
-#include "Sample.h"
+#include "SamplePMJ.h"
 
-Sample::Sample(int dimension) : dimension(dimension) {
+SamplePMJ::SamplePMJ(int dimension) : dimension(dimension) {
     coordinates = new double[dimension];
 }
 
-double& Sample::operator[](int index)
+double& SamplePMJ::operator[](int index)
 {
     return coordinates[index];
 }
 
-void Sample::deleteSample() {
+void SamplePMJ::deleteSample() {
     delete[] coordinates;
 }
 
-std::ostream &operator<<(std::ostream &os, const Sample &sample) {
+std::ostream &operator<<(std::ostream &os, const SamplePMJ &sample) {
     os << "(";
     for(int i = 0; i < sample.dimension-1; i++)
         os << sample.coordinates[i] << " ; ";

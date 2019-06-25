@@ -1,4 +1,4 @@
-#include "./SamplerPMJ/src/PMJSampleSequenceGenerator.h"
+#include "./SamplerPMJ/PMJSampleSequenceGenerator.h"
 #include <string>
 #include <iostream>
 

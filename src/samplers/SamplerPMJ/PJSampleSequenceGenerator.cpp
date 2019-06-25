@@ -28,7 +28,7 @@ void PJSampleSequenceGenerator::progressiveJitteredAlgorithm2D(int numberOfSampl
     }
 }
 
-void PJSampleSequenceGenerator::exportSampleSet(std::string outputPath) {
+void PJSampleSequenceGenerator::exportSampleSet(std::string &outputPath) {
     std::ofstream outputStream(outputPath);
     outputStream.precision(16);
     if(outputStream) {
@@ -48,7 +48,7 @@ void PJSampleSequenceGenerator::PJExtendSequence(int currentlyGeneratedSamples) 
     int n = std::sqrt(currentlyGeneratedSamples);
     for(int s = 0; s < currentlyGeneratedSamples; s++)
     {
-        Sample oldSample = generatedSamples[s];
+        SamplePMJ oldSample = generatedSamples[s];
         unsigned int i = (int)(n*oldSample[0]);
         unsigned int j = (int)(n*oldSample[1]);
         double xhalf = (int)(2*(n*oldSample[0]-i));
@@ -67,17 +67,17 @@ void PJSampleSequenceGenerator::PJExtendSequence(int currentlyGeneratedSamples) 
     }
 }
 
-Sample PJSampleSequenceGenerator::PJGenerateSamplePoint(double i, double j, double xhalf, double yhalf, double n) {
-    Sample toReturn = Sample(2);
+SamplePMJ PJSampleSequenceGenerator::PJGenerateSamplePoint(double i, double j, double xhalf, double yhalf, double n) {
+    SamplePMJ toReturn = SamplePMJ(2);
     toReturn[0] = (i+0.5*(xhalf + generateRandomDouble()))/n;
     toReturn[1] = (j+0.5*(yhalf + generateRandomDouble()))/n;
     return toReturn;
 }
 
-Sample *PJSampleSequenceGenerator::instanciateArray(int size) {
-    Sample* toReturn = new Sample[size];
+SamplePMJ *PJSampleSequenceGenerator::instanciateArray(int size) {
+    SamplePMJ* toReturn = new SamplePMJ[size];
     for(int i = 0; i < size; i++)
-        toReturn[i] = Sample(2);
+        toReturn[i] = SamplePMJ(2);
     return toReturn;
 }
 

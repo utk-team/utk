@@ -9,7 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <random>
-#include "Sample.h"
+#include "SamplePMJ.h"
 
 /** Generates sample sequences using the Progressive Jittered algorithm
  *
@@ -32,10 +32,10 @@ public:
      * Creates a file at outputPath containing the coordinates of the generated samples.
      * @param outputPath The path of the created file.
      */
-    void exportSampleSet(std::string outputPath);
+    void exportSampleSet(std::string &outputPath);
 private:
     std::mt19937 randomNumberGenerator;
-    Sample* generatedSamples;
+    SamplePMJ* generatedSamples;
     int numberOfSamplesToGenerate;
 
     /**
@@ -43,8 +43,8 @@ private:
      * @param currentlyGeneratedSamples The number of samples already generated.
      */
     void PJExtendSequence(int currentlyGeneratedSamples);
-    Sample PJGenerateSamplePoint(double i, double j, double xhalf, double yhalf, double n);
-    Sample* instanciateArray(int size);
+    SamplePMJ PJGenerateSamplePoint(double i, double j, double xhalf, double yhalf, double n);
+    SamplePMJ* instanciateArray(int size);
     double generateRandomDouble();
 };
 
