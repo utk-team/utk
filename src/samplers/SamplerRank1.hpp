@@ -106,7 +106,7 @@ long long gaussian_basisReduction(int nb, int gx, int gy, Pair& b1, Pair& b2){
 	else{
 		int a1, a2, b3, gamma;
 		int d = extended_eucliden(nb, gx, a2, a1);
-		int d1 = extended_eucliden(d, gy, b3, gamma);
+		//int d1 = extended_eucliden(d, gy, b3, gamma);
 
 		long long b11 = (nb / d) * gamma;
 		long long b22 = (-gx / d) * gamma;
