@@ -126,6 +126,37 @@ install(TARGETS GradientDescent_2dd
 			ARCHIVE DESTINATION lib)
 
 
+
+#Progressive Jittered
+add_executable(ProgressiveJittered_2dd
+  ProgressiveJittered_2dd.cpp
+  SamplerPMJ/PJSampleSequenceGenerator.cpp
+  SamplerPMJ/PMJSampleSequenceGenerator.cpp
+  SamplerPMJ/PMJ02SampleSequenceGenerator.cpp
+  SamplerPMJ/SamplePMJ.cpp
+  ${UTK_FILES})
+target_link_libraries ( ProgressiveJittered_2dd ${LINK} ${LINK_TBB} )
+install(TARGETS ProgressiveJittered_2dd
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
+
+#Progressive MultiJittered
+add_executable(ProgressiveMultiJittered_2dd
+  ProgressiveMultiJittered_2dd.cpp
+  SamplerPMJ/PJSampleSequenceGenerator.cpp
+  SamplerPMJ/PMJSampleSequenceGenerator.cpp
+  SamplerPMJ/PMJ02SampleSequenceGenerator.cpp
+  SamplerPMJ/SamplePMJ.cpp
+  ${UTK_FILES})
+target_link_libraries ( ProgressiveMultiJittered_2dd ${LINK} ${LINK_TBB} )
+install(TARGETS ProgressiveMultiJittered_2dd
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
+
+
+
 #FastPoisson
 add_executable(FastPoisson_2dd
 			FastPoisson_2dd.cpp
