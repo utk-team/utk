@@ -27,7 +27,7 @@ public:
 	
 	bool L2(const Histogram<D, T0, T1>& histo, double& L2) const
 	{
-		if(!this->size() == histo.size())
+		if(this->size() != histo.size())
 		{
 			ERROR("Histogram::L2 given histograms are of different sizes");
 			return false;

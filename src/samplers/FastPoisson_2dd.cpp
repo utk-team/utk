@@ -45,6 +45,7 @@ int main(int argc, char** argv)
 	/*The original method generates a certain amount of samples depending on the given radius
 	 * to fit our framework, we try to do the opposition conversion with minor ad hoc tuning
 	 * for each method*/
+  param_radius = 1.0;
 	if (param_method == "DartThrowing")
 		param_radius = 1.0 / (1.3*sqrt(param_nbsamples));
 	//else if (param_method == "Boundary")

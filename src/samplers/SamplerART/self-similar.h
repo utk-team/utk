@@ -93,7 +93,7 @@ void loadTileSet(std::fstream &file) {
             M[Y * scale + X] = {step, step * X, step * Y};
         }
     }
-    fprintf(stderr, "Loaded %4d tiles\n", tiles.size());
+    fprintf(stderr, "Loaded %d tiles\n", (int)tiles.size());
 }
 
 }

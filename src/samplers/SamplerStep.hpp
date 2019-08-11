@@ -266,7 +266,7 @@ public:
 			result[i] = pts[i];
 		
 		float smoothing = 8;
-		float bestd = heck::MainOptimization(pts, target, smoothing, result);
+    heck::MainOptimization(pts, target, smoothing, result);
 		
 		for (int i=0; i<npts; i++)
 		{
