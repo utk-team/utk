@@ -345,6 +345,270 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_rank1/" title="Rank 1" class="md-nav__link">
+      Rank 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_ldbn/" title="LDBN" class="md-nav__link">
+      LDBN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_BNLDS/" title="BNLD Sequences" class="md-nav__link">
+      BNLD Sequences
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_aapatterns/" title="AA Patterns" class="md-nav__link">
+      AA Patterns
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_art/" title="ART" class="md-nav__link">
+      ART
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_CVT/" title="CVT" class="md-nav__link">
+      CVT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_CapCVT/" title="CapCVT" class="md-nav__link">
+      CapCVT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_forced_random/" title="Forced Random" class="md-nav__link">
+      Forced Random
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_FPO/" title="FPO" class="md-nav__link">
+      FPO
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_penrose/" title="Penrose" class="md-nav__link">
+      Penrose
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_BNOT/" title="BNOT" class="md-nav__link">
+      BNOT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_dart_throwing/" title="Dart Throwing" class="md-nav__link">
+      Dart Throwing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_fastpoisson/" title="Fast Poisson" class="md-nav__link">
+      Fast Poisson
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_cmj/" title="CMJ" class="md-nav__link">
+      CMJ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_hexagonal_grid/" title="Hexagonal grid" class="md-nav__link">
+      Hexagonal grid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_korobov/" title="Korobov" class="md-nav__link">
+      Korobov
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_nrooks/" title="NRooks" class="md-nav__link">
+      NRooks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_regular_grid/" title="Regular grid" class="md-nav__link">
+      Regular grid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_singlepeak/" title="Single Peak" class="md-nav__link">
+      Single Peak
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_step/" title="Step" class="md-nav__link">
+      Step
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_stratified/" title="Stratified" class="md-nav__link">
+      Stratified
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_whitenoise/" title="Whitenoise" class="md-nav__link">
+      Whitenoise
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -434,18 +698,21 @@ src/bin/samplers/GeneticOwen_2dd.cpp.cpp</p>
 <p>Owen&rsquo;s scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1. This leads to 2^N possible trees in each dimension, which is too computationnally expensive for an exhaustive search. This sampler thus uses genetic algorithms to try and find the best possible tree generating Blue Noise sets. However, the algorithm is too naive to generate good Blue Noise sets for more than 128 samples.</p>
 <h1 id="execution">Execution</h1>
 <p>Parameters:  </p>
-<div class="codehilite"><pre><span></span><span class="err">\</span><span class="p">[</span><span class="n">HELP</span><span class="err">\</span><span class="p">]</span>
-<span class="o">-</span><span class="n">o</span> <span class="err">\</span><span class="p">[</span><span class="n">string</span><span class="o">=</span><span class="k">output</span><span class="err">\</span><span class="n">_pts</span><span class="p">.</span><span class="n">dat</span><span class="err">\</span><span class="p">]</span>   <span class="k">Output</span> <span class="n">file</span>
-<span class="o">-</span><span class="n">m</span> <span class="err">\</span><span class="p">[</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="err">\</span><span class="p">]</span>            <span class="nb">Number</span> <span class="k">of</span> <span class="n">poinset</span> <span class="n">realisations</span>
-<span class="o">-</span><span class="n">n</span> <span class="err">\</span><span class="p">[</span><span class="n">ullint</span><span class="o">=</span><span class="mi">1024</span><span class="err">\</span><span class="p">]</span>      <span class="nb">Number</span> <span class="k">of</span> <span class="n">samples</span> <span class="k">to</span> <span class="n">generate</span>
-<span class="c1">--silent            Silent mode</span>
-<span class="o">-</span><span class="n">h</span>              <span class="n">Displays</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
-<span class="c1">--iter \[int=1000\]     the number of iterations</span>
+<div class="codehilite"><pre><span></span><span class="k">[HELP]</span>
+<span class="na">-o [string</span><span class="o">=</span><span class="s">output_pts.dat]  Output file</span>
+<span class="na">-m [int</span><span class="o">=</span><span class="s">1]          Number of poinset realisations</span>
+<span class="na">-n [ullint</span><span class="o">=</span><span class="s">1024]        Number of samples to generate</span>
+<span class="na">--silent            Silent mode</span>
+<span class="na">-h              Displays this help message</span>
+<span class="na">--iter [int</span><span class="o">=</span><span class="s">1000]       the number of iterations</span>
 </pre></div>
 
 
 <p>To generate a 2D point set of 1024 samples with a genetic_owen distribution, we can use the following client line command:</p>
-<p>./bin/samplers/GeneticOwen_2dd &ndash;iter 200 -n 1024 -o toto.dat </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">GeneticOwen_2dd</span> <span class="c1">--iter 200 -n 1024 -o toto.dat</span>
+</pre></div>
+
+
 <p>Or one can use the following C++ code:</p>
 <div class="codehilite"><pre><span></span><span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
 <span class="n">writer</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="ss">&quot;toto.dat&quot;</span><span class="p">);</span>
@@ -459,14 +726,20 @@ src/bin/samplers/GeneticOwen_2dd.cpp.cpp</p>
 
 
 <h1 id="results">Results</h1>
-<p>./bin/samplers/GeneticOwen_2dd &ndash;iter 200 -o genetic_owen_64.edat -n 64 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">GeneticOwen_2dd</span> <span class="c1">--iter 200 -o genetic_owen_64.edat -n 64</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/genetic_owen/genetic_owen_64.edat">genetic_owen_64.edat</a></p>
 <p>Pointset<br />
 <a href="../data/genetic_owen/genetic_owen_64.png"><img alt="" src="../data/genetic_owen/genetic_owen_64.png" /></a></p>
 <p>Fourier<br />
 <a href="../data/genetic_owen/genetic_owen_64_fourier.png"><img alt="" src="../data/genetic_owen/genetic_owen_64_fourier.png" /></a></p>
-<p>./bin/samplers/GeneticOwen_2dd &ndash;iter 200 -o genetic_owen_128.edat -n 128 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">GeneticOwen_2dd</span> <span class="c1">--iter 200 -o genetic_owen_128.edat -n 128</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/genetic_owen/genetic_owen_128.edat">genetic_owen_128.edat</a></p>
 <p>Pointset<br />
