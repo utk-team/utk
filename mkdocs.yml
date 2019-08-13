@@ -1,0 +1,64 @@
+site_name: Uni{form|corn} tool kit
+markdown_extensions:
+  - codehilite
+  - attr_list
+  - admonition
+  - markdown.extensions.footnotes
+  - markdown.extensions.smarty
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+
+
+extra:
+  search:
+    tokenizer: '[\s\-\.::]+'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'teal'
+    accent: 'deep orange'
+  font:
+    text: 'PT Serif'
+    code: 'Inconsolata'
+  logo:
+    icon: 'home'
+
+extra_css:
+  - extras.css
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+repo_name: 'utk-team/utk'
+repo_url: 'https://github.com/utk-team/utk'
+edit_uri: ''
+
+
+docs_dir: 'sources-doc'
+site_dir: 'docs'
+
+nav:
+  - Home: 'index.md'
+  - Samplers:
+    - All samplers: 'samplers.md'
+    - Faure: 'sampler_faure.md'
+    - Halton: 'sampler_halton.md'
+  - Classes:
+    - Doxygen: 'doxygen.md'
+    - I/O formats: 'io_format.md'
+  # - Scrambing:
+  #   - Cranley Patterson:
+  #   - Digital XOR:
+  #   - Owen Scrambling:
+  # - Integration:
+  #   - NSpheres:
+  #   - Centered Gaussian:
+  #   - Cornered Gaussian:
+  #   - Gaussian:
+  #   - Image:
+  #   - Box arrangement:
+  #   - Triangle arrangement:
