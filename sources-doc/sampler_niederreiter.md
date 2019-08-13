@@ -35,7 +35,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a nieddereiter distribution, we can use the following client line command:
 
-     ./bin/samplers/Niederreiter_2dd -n 1024 -o toto.dat 
+         ./bin/samplers/Niederreiter_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -53,7 +53,7 @@ Or one can use the following C++ code:
 ## Results
 
 
-     ./bin/samplers/Niederreiter_2dd -o nieddereiter_1024.edat -n 1024 
+         ./bin/samplers/Niederreiter_2dd -o nieddereiter_1024.edat -n 1024 
 
 File  
 [nieddereiter_1024.edat](data/nieddereiter/nieddereiter_1024.edat)
@@ -64,7 +64,7 @@ Pointset
 Fourier  
 [![](data/nieddereiter/nieddereiter_1024_fourier.png)](data/nieddereiter/nieddereiter_1024_fourier.png)
 
-     ./bin/samplers/Niederreiter_2dd -o nieddereiter_4096.edat -n 4096 
+         ./bin/samplers/Niederreiter_2dd -o nieddereiter_4096.edat -n 4096 
 
 File  
 [nieddereiter_4096.edat](data/nieddereiter/nieddereiter_4096.edat)
@@ -75,7 +75,7 @@ Pointset
 Fourier  
 [![](data/nieddereiter/nieddereiter_4096_fourier.png)](data/nieddereiter/nieddereiter_4096_fourier.png)
 
-     ./bin/samplers/Niederreiter_2dd -b 3 -o nieddereiter_b3_1024.edat -n 1024 
+         ./bin/samplers/Niederreiter_2dd -b 3 -o nieddereiter_b3_1024.edat -n 1024 
 
 File  
 [nieddereiter_b3_1024.edat](data/nieddereiter_b3/nieddereiter_b3_1024.edat)
@@ -86,7 +86,7 @@ Pointset
 Fourier  
 [![](data/nieddereiter_b3/nieddereiter_b3_1024_fourier.png)](data/nieddereiter_b3/nieddereiter_b3_1024_fourier.png)
 
-     ./bin/samplers/Niederreiter_2dd -b 5 -o nieddereiter_b5_1024.edat -n 1024 
+         ./bin/samplers/Niederreiter_2dd -b 5 -o nieddereiter_b5_1024.edat -n 1024 
 
 File  
 [nieddereiter_b5_1024.edat](data/nieddereiter_b5/nieddereiter_b5_1024.edat)

@@ -4,30 +4,30 @@ Sampler stratified
 Files
 
 src/samplers/SamplerStratified.hpp  
-src/bin/samplers/Stratified\_\*.cpp.cpp
+src/bin/samplers/Stratified_*.cpp.cpp
 
 Description
 ===========
 
 The domain is partitioned with a grid of k x k. In each cell of this grid, a random sample is generated.  
-For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML\_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
+For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
 Execution
 =========
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
 			
 
 To generate a 2D point set of 1024 samples with a stratified distribution, we can use the following client line command:
 
- ./bin/samplers/Stratified\_2dd -n 1024 -o toto.dat 
+     ./bin/samplers/Stratified_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -45,10 +45,10 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/Stratified\_2dd -o stratified\_1024.edat -n 1024 
+     ./bin/samplers/Stratified_2dd -o stratified_1024.edat -n 1024 
 
 File  
-[stratified\_1024.edat](data/stratified/stratified_1024.edat)
+[stratified_1024.edat](data/stratified/stratified_1024.edat)
 
 Pointset  
 [![](data/stratified/stratified_1024.png)](data/stratified/stratified_1024.png)
@@ -56,10 +56,10 @@ Pointset
 Fourier  
 [![](data/stratified/stratified_1024_fourier.png)](data/stratified/stratified_1024_fourier.png)
 
- ./bin/samplers/Stratified\_2dd -o stratified\_4096.edat -n 4096 
+     ./bin/samplers/Stratified_2dd -o stratified_4096.edat -n 4096 
 
 File  
-[stratified\_4096.edat](data/stratified/stratified_4096.edat)
+[stratified_4096.edat](data/stratified/stratified_4096.edat)
 
 Pointset  
 [![](data/stratified/stratified_4096.png)](data/stratified/stratified_4096.png)

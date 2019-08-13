@@ -4,7 +4,7 @@ Sampler Gradient Descent
 Files
 
 src/samplers/SamplerGradientDescent.hpp  
-src/bin/samplers/GradientDescent\_2dd.cpp.cpp
+src/bin/samplers/GradientDescent_2dd.cpp.cpp
 
 Description
 ===========
@@ -16,18 +16,18 @@ Execution
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
-	-i \[string\]			The pointset to optimize
+	-i [string]			The pointset to optimize
 			
 
 To optimize the discrepancy of a 2D point set using gradient descent, we can use the following client line command:
 
- ./bin/samplers/GradientDescent\_2dd -i bnot128.dat -o toto.dat 
+     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -45,7 +45,7 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/GradientDescent\_2dd -i bnot128.dat -o optimbnot\_128.edat 
+     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o optimbnot_128.edat 
 
 Initial File  
 [bnot128.dat](data/gradient_descent/bnot128.dat)
@@ -57,7 +57,7 @@ Initial Fourier
 [![](data/gradient_descent/bnot128_fourier.png)](data/gradient_descent/bnot128_fourier.png)
 
 Optimized File  
-[optimbnot\_128.edat](data/gradient_descent/optimbnot_128.edat)
+[optimbnot_128.edat](data/gradient_descent/optimbnot_128.edat)
 
 Optimized Pointset  
 [![](data/gradient_descent/optimbnot_128.png)](data/gradient_descent/optimbnot_128.png)
@@ -65,7 +65,7 @@ Optimized Pointset
 Optimized Fourier  
 [![](data/gradient_descent/optimbnot_128_fourier.png)](data/gradient_descent/optimbnot_128_fourier.png)
 
- ./bin/samplers/GradientDescent\_2dd -i bnot1024.dat -o optimbnot\_1024.edat 
+     ./bin/samplers/GradientDescent_2dd -i bnot1024.dat -o optimbnot_1024.edat 
 
 Initial File  
 [bnot1024.dat](data/gradient_descent/bnot1024.dat)
@@ -77,7 +77,7 @@ Initial Fourier
 [![](data/gradient_descent/bnot1024_fourier.png)](data/gradient_descent/bnot1024_fourier.png)
 
 Optimized File  
-[optimbnot\_1024.edat](data/gradient_descent/optimbnot_1024.edat)
+[optimbnot_1024.edat](data/gradient_descent/optimbnot_1024.edat)
 
 Optimized Pointset  
 [![](data/gradient_descent/optimbnot_1024.png)](data/gradient_descent/optimbnot_1024.png)

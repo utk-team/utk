@@ -32,7 +32,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a faure distribution, we can use the following client line command:
 
-    ./bin/samplers/Faure_2dd -n 1024 -o toto.dat
+        ./bin/samplers/Faure_2dd -n 1024 -o toto.dat
 
 Or one can use the following C++ code:
 
@@ -49,7 +49,7 @@ Or one can use the following C++ code:
 
 ## Results
 
-    ./bin/samplers/Faure_2dd -o faure_1024.edat -n 1024
+        ./bin/samplers/Faure_2dd -o faure_1024.edat -n 1024
 
 ### File  
 [faure_1024.edat](../data/faure/faure_1024.edat)
@@ -60,7 +60,7 @@ Or one can use the following C++ code:
 ### Fourier  
 [![](../data/faure/faure_1024_fourier.png)](../data/faure/faure_1024_fourier.png)
 
-    ./bin/samplers/Faure_2dd -o faure_4096.edat -n 4096
+        ./bin/samplers/Faure_2dd -o faure_4096.edat -n 4096
 
 ### File  
 [faure_4096.edat](../data/faure/faure_4096.edat)

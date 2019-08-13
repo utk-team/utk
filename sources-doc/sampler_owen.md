@@ -34,7 +34,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a owen distribution, we can use the following client line command:
 
-     ./bin/samplers/Owen_2dd -n 1024 -o toto.dat 
+         ./bin/samplers/Owen_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -52,7 +52,7 @@ Or one can use the following C++ code:
 ## Results
 
 
-     ./bin/samplers/Owen_2dd -o owen_1024.edat -n 1024 
+         ./bin/samplers/Owen_2dd -o owen_1024.edat -n 1024 
 
 File  
 [owen_1024.edat](data/owen/owen_1024.edat)
@@ -63,7 +63,7 @@ Pointset
 Fourier  
 [![](data/owen/owen_1024_fourier.png)](data/owen/owen_1024_fourier.png)
 
-     ./bin/samplers/Owen_2dd -o owen_4096.edat -n 4096 
+         ./bin/samplers/Owen_2dd -o owen_4096.edat -n 4096 
 
 File  
 [owen_4096.edat](data/owen/owen_4096.edat)

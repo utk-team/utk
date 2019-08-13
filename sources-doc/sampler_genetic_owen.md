@@ -4,7 +4,7 @@ Sampler Genetic Owen
 Files
 
 src/samplers/SamplerGeneticOwen.hpp  
-src/bin/samplers/GeneticOwen\_2dd.cpp.cpp
+src/bin/samplers/GeneticOwen_2dd.cpp.cpp
 
 Description
 ===========
@@ -16,18 +16,18 @@ Execution
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
-	--iter \[int=1000\]		the number of iterations
+	--iter [int=1000]		the number of iterations
 			
 
-To generate a 2D point set of 1024 samples with a genetic\_owen distribution, we can use the following client line command:
+To generate a 2D point set of 1024 samples with a genetic_owen distribution, we can use the following client line command:
 
- ./bin/samplers/GeneticOwen\_2dd --iter 200 -n 1024 -o toto.dat 
+     ./bin/samplers/GeneticOwen_2dd --iter 200 -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -45,10 +45,10 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/GeneticOwen\_2dd --iter 200 -o genetic\_owen\_64.edat -n 64 
+     ./bin/samplers/GeneticOwen_2dd --iter 200 -o genetic_owen_64.edat -n 64 
 
 File  
-[genetic\_owen\_64.edat](data/genetic_owen/genetic_owen_64.edat)
+[genetic_owen_64.edat](data/genetic_owen/genetic_owen_64.edat)
 
 Pointset  
 [![](data/genetic_owen/genetic_owen_64.png)](data/genetic_owen/genetic_owen_64.png)
@@ -56,10 +56,10 @@ Pointset
 Fourier  
 [![](data/genetic_owen/genetic_owen_64_fourier.png)](data/genetic_owen/genetic_owen_64_fourier.png)
 
- ./bin/samplers/GeneticOwen\_2dd --iter 200 -o genetic\_owen\_128.edat -n 128 
+     ./bin/samplers/GeneticOwen_2dd --iter 200 -o genetic_owen_128.edat -n 128 
 
 File  
-[genetic\_owen\_128.edat](data/genetic_owen/genetic_owen_128.edat)
+[genetic_owen_128.edat](data/genetic_owen/genetic_owen_128.edat)
 
 Pointset  
 [![](data/genetic_owen/genetic_owen_128.png)](data/genetic_owen/genetic_owen_128.png)

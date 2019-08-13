@@ -4,7 +4,7 @@ Sampler Exhaustive Owen
 Files
 
 src/samplers/SamplerExhaustiveOwen.hpp  
-src/bin/samplers/ExaustiveOwen\_2dd.cpp.cpp
+src/bin/samplers/ExaustiveOwen_2dd.cpp.cpp
 
 Description
 ===========
@@ -16,17 +16,17 @@ Execution
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
 			
 
-To generate a 2D point set of 1024 samples with a exhaustive\_owen distribution, we can use the following client line command:
+To generate a 2D point set of 1024 samples with a exhaustive_owen distribution, we can use the following client line command:
 
- ./bin/samplers/ExhautiveOwen\_2dd -n 1024 -o toto.dat 
+     ./bin/samplers/ExhautiveOwen_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -44,10 +44,10 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/ExhautiveOwen\_2dd -o exhaustive\_owen\_16.edat -n 16 
+     ./bin/samplers/ExhautiveOwen_2dd -o exhaustive_owen_16.edat -n 16 
 
 File  
-[exhaustive\_owen\_16.edat](data/exhaustive_owen/exhaustive_owen_16.edat)
+[exhaustive_owen_16.edat](data/exhaustive_owen/exhaustive_owen_16.edat)
 
 Pointset  
 [![](data/exhaustive_owen/exhaustive_owen_16.png)](data/exhaustive_owen/exhaustive_owen_16.png)

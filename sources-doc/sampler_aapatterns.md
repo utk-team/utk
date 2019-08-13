@@ -1,33 +1,33 @@
-Sampler AA Patterns [\[Ahm16\]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf)
+Sampler AA Patterns [[Ahm16]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf)
 -------------------------------------------------------------------------------------------------------------------------
 
 Files
 
 src/samplers/SamplerAAPattern.hpp  
-src/bin/samplers/AAPatterns\_2dd.cpp.cpp
+src/bin/samplers/AAPatterns_2dd.cpp.cpp
 
 Description
 ===========
 
-The AA Pattern sampler from [\[Ahm16\]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf).  
-For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML\_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
+The AA Pattern sampler from [[Ahm16]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf).  
+For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
 Execution
 =========
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
 	-d File containing the displacement vectors 
 
 To generate a 2D point set of 1024 samples with a aapatterns distribution, we can use the following client line command:
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/blue.dat -n 1024 -o toto.dat 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/blue.dat -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -45,10 +45,10 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/blue.dat -o aapatterns\_1024.edat -n 1024 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/blue.dat -o aapatterns_1024.edat -n 1024 
 
 File  
-[aapatterns\_1024.edat](data/aapatterns/aapatterns_1024.edat)
+[aapatterns_1024.edat](data/aapatterns/aapatterns_1024.edat)
 
 Pointset  
 [![](data/aapatterns/aapatterns_1024.png)](data/aapatterns/aapatterns_1024.png)
@@ -56,10 +56,10 @@ Pointset
 Fourier  
 [![](data/aapatterns/aapatterns_1024_fourier.png)](data/aapatterns/aapatterns_1024_fourier.png)
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/blue.dat -o aapatterns\_4096.edat -n 4096 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/blue.dat -o aapatterns_4096.edat -n 4096 
 
 File  
-[aapatterns\_4096.edat](data/aapatterns/aapatterns_4096.edat)
+[aapatterns_4096.edat](data/aapatterns/aapatterns_4096.edat)
 
 Pointset  
 [![](data/aapatterns/aapatterns_4096.png)](data/aapatterns/aapatterns_4096.png)
@@ -69,10 +69,10 @@ Fourier
 
 This sampler can also match various distributions
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/green.dat -o aapatterns\_green\_1024.edat -n 1024 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/green.dat -o aapatterns_green_1024.edat -n 1024 
 
 File  
-[aapatterns\_green\_1024.edat](data/aapatterns_green/aapatterns_green_1024.edat)
+[aapatterns_green_1024.edat](data/aapatterns_green/aapatterns_green_1024.edat)
 
 Pointset  
 [![](data/aapatterns_green/aapatterns_green_1024.png)](data/aapatterns_green/aapatterns_green_1024.png)
@@ -80,10 +80,10 @@ Pointset
 Fourier  
 [![](data/aapatterns_green/aapatterns_green_1024_fourier.png)](data/aapatterns_green/aapatterns_green_1024_fourier.png)
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/pink.dat -o aapatterns\_pink\_1024.edat -n 1024 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/pink.dat -o aapatterns_pink_1024.edat -n 1024 
 
 File  
-[aapatterns\_pink\_1024.edat](data/aapatterns_pink/aapatterns_pink_1024.edat)
+[aapatterns_pink_1024.edat](data/aapatterns_pink/aapatterns_pink_1024.edat)
 
 Pointset  
 [![](data/aapatterns_pink/aapatterns_pink_1024.png)](data/aapatterns_pink/aapatterns_pink_1024.png)
@@ -91,10 +91,10 @@ Pointset
 Fourier  
 [![](data/aapatterns_pink/aapatterns_pink_1024_fourier.png)](data/aapatterns_pink/aapatterns_pink_1024_fourier.png)
 
- ./bin/samplers/AAPatterns\_2dd -d ../../data/aapatterns/step.dat -o aapatterns\_step\_1024.edat -n 1024 
+     ./bin/samplers/AAPatterns_2dd -d ../../data/aapatterns/step.dat -o aapatterns_step_1024.edat -n 1024 
 
 File  
-[aapatterns\_step\_1024.edat](data/aapatterns_step/aapatterns_step_1024.edat)
+[aapatterns_step_1024.edat](data/aapatterns_step/aapatterns_step_1024.edat)
 
 Pointset  
 [![](data/aapatterns_step/aapatterns_step_1024.png)](data/aapatterns_step/aapatterns_step_1024.png)

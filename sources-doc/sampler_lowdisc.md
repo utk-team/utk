@@ -23,7 +23,7 @@ Niederreiter
 Owen  
  [![](data/owen/owen_1024.png)](sampler_owen.html) 
 
-Sobol (code from [\[JK03\]](http://web.maths.unsw.edu.au/~fkuo/sobol/))  
+Sobol (code from [[JK03]](http://web.maths.unsw.edu.au/~fkuo/sobol/))  
  [![](data/sobolkuo/sobolkuo_1024.png)](sampler_sobolkuo.html) 
 
 Sobol (Original)  

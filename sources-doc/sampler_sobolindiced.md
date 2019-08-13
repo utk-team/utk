@@ -32,7 +32,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a sobolindiced distribution, we can use the following client line command:
 
-     ./bin/samplers/SobolIndices_2dd -n 1024 -o toto.dat 
+         ./bin/samplers/SobolIndices_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -54,7 +54,7 @@ Or one can use the following C++ code:
 ## Results
 
 
-     ./bin/samplers/SobolIndices_2dd -o sobolindiced_1024.edat -n 1024 
+         ./bin/samplers/SobolIndices_2dd -o sobolindiced_1024.edat -n 1024 
 
 File  
 [sobolindiced_1024.edat](data/sobolindiced/sobolindiced_1024.edat)
@@ -65,7 +65,7 @@ Pointset
 Fourier  
 [![](data/sobolindiced/sobolindiced_1024_fourier.png)](data/sobolindiced/sobolindiced_1024_fourier.png)
 
-     ./bin/samplers/SobolIndices_2dd -o sobolindiced_4096.edat -n 4096 
+         ./bin/samplers/SobolIndices_2dd -o sobolindiced_4096.edat -n 4096 
 
 File  
 [sobolindiced_4096.edat](data/sobolindiced/sobolindiced_4096.edat)
@@ -76,7 +76,7 @@ Pointset
 Fourier  
 [![](data/sobolindiced/sobolindiced_4096_fourier.png)](data/sobolindiced/sobolindiced_4096_fourier.png)
 
-     ./bin/samplers/SobolIndices_2dd -x 3 -y 4 -o sobolindiced_34_1024.edat -n 1024 
+         ./bin/samplers/SobolIndices_2dd -x 3 -y 4 -o sobolindiced_34_1024.edat -n 1024 
 
 File  
 [sobolindiced_34_1024.edat](data/sobolindiced_34/sobolindiced_34_1024.edat)
@@ -87,7 +87,7 @@ Pointset
 Fourier  
 [![](data/sobolindiced_34/sobolindiced_34_1024_fourier.png)](data/sobolindiced_34/sobolindiced_34_1024_fourier.png)
 
-     ./bin/samplers/SobolIndices_2dd -x 5 -y 6 -o sobolindiced_56_1024.edat -n 1024 
+         ./bin/samplers/SobolIndices_2dd -x 5 -y 6 -o sobolindiced_56_1024.edat -n 1024 
 
 File  
 [sobolindiced_56_1024.edat](data/sobolindiced_56/sobolindiced_56_1024.edat)

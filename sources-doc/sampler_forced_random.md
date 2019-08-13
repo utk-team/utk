@@ -1,34 +1,34 @@
-Sampler Forced Random [\[CTS\*17\]](https://link.springer.com/article/10.1007/s00371-017-1392-7)
+Sampler Forced Random [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7)
 ------------------------------------------------------------------------------------------------
 
 Files
 
 src/samplers/SamplerForcedRandom.hpp  
-src/bin/samplers/ForcedRandom\_2dd.cpp.cpp
+src/bin/samplers/ForcedRandom_2dd.cpp.cpp
 
 Description
 ===========
 
-A sampler based on dithering matrices from [\[CTS\*17\]](https://link.springer.com/article/10.1007/s00371-017-1392-7).
+A sampler based on dithering matrices from [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7).
 
 Execution
 =========
 
 Parameters:  
 
-	\[HELP\]
-	-o \[string=output\_pts.dat\]	Output file
-	-m \[int=1\]			Number of poinset realisations
-	-n \[ullint=1024\]		Number of samples to generate
+	[HELP]
+	-o [string=output_pts.dat]	Output file
+	-m [int=1]			Number of poinset realisations
+	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
-	--matrix \[int=512\] 		the matrix size \[512 | 1024 | 2048\]
-	--sparsity \[int=8\] 		the matrix sparsity
+	--matrix [int=512] 		the matrix size [512 | 1024 | 2048]
+	--sparsity [int=8] 		the matrix sparsity
 			
 
-To generate a 2D point set of 1024 samples with a forced\_random distribution, we can use the following client line command:
+To generate a 2D point set of 1024 samples with a forced_random distribution, we can use the following client line command:
 
- ./bin/samplers/ForcedRandom\_2dd -n 1024 -o toto.dat 
+     ./bin/samplers/ForcedRandom_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -46,10 +46,10 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./bin/samplers/ForcedRandom\_2dd -o forced\_random\_1024.edat -n 1024 
+     ./bin/samplers/ForcedRandom_2dd -o forced_random_1024.edat -n 1024 
 
 File  
-[forced\_random\_1024.edat](data/forced_random/forced_random_1024.edat)
+[forced_random_1024.edat](data/forced_random/forced_random_1024.edat)
 
 Pointset  
 [![](data/forced_random/forced_random_1024.png)](data/forced_random/forced_random_1024.png)
@@ -57,10 +57,10 @@ Pointset
 Fourier  
 [![](data/forced_random/forced_random_1024_fourier.png)](data/forced_random/forced_random_1024_fourier.png)
 
- ./bin/samplers/ForcedRandom\_2dd -o forced\_random\_4096.edat -n 4096 
+     ./bin/samplers/ForcedRandom_2dd -o forced_random_4096.edat -n 4096 
 
 File  
-[forced\_random\_4096.edat](data/forced_random/forced_random_4096.edat)
+[forced_random_4096.edat](data/forced_random/forced_random_4096.edat)
 
 Pointset  
 [![](data/forced_random/forced_random_4096.png)](data/forced_random/forced_random_4096.png)
