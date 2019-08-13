@@ -47,6 +47,11 @@ nav:
     - All samplers: 'samplers.md'
     - Faure: 'sampler_faure.md'
     - Halton: 'sampler_halton.md'
+    - Hammersley: 'sampler_hammersley.md'
+    - Niederreiter: 'sampler_niederreiter.md'
+    - Sobol (Joe&Kuo): 'sampler_sobolkuo.md'
+    - Sobol (Original): 'sampler_sobolindiced.md'
+    - Owen Scrambled Sobol: 'sampler_owen.md'
   - Classes:
     - Doxygen: 'doxygen.md'
     - I/O formats: 'io_format.md'

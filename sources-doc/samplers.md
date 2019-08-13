@@ -1,17 +1,21 @@
 #  Samplers
 
 
+All samplers are illustrated in 2D but most of them are available in higher dimensions. Please have a look to the code for more details.
+
+
+
 ## Low Discrepancy Samplers
 
 Sampler | License  |Illustration
 --------|------|---
 [Faure](../sampler_faure) | LGPL |[![](../data/faure/faure_1024.png)](../sampler_faure)
 [Halton](../sampler_halton)| BSD | [![](../data/halton/halton_1024.png)](../sampler_halton)
-Hammersley | |[![](../data/hammersley/hammersley_1024.png)](../sampler_hammersley)
-Niederreiter | | [![](../data/nieddereiter/nieddereiter_1024.png)](../sampler_niederreiter)
-Sobol (code from [\[JK03\]](http://web.maths.unsw.edu.au/~fkuo/sobol/)) |  |[![](../data/sobolkuo/sobolkuo_1024.png)](../sampler_sobolkuo)
-Sobol (Original) | | [![](../data/sobolindiced/sobolindiced_1024.png)](../sampler_sobolindiced)
-Owen (Sobol) | |[![](../data/owen/owen_1024.png)](../sampler_owen)
+[Hammersley](../sampler_hammersley) | BSD |[![](../data/hammersley/hammersley_1024.png)](../sampler_hammersley)
+[Niederreiter](../sampler_niederreiter.md) | LGPL | [![](../data/nieddereiter/nieddereiter_1024.png)](../sampler_niederreiter)
+[Sobol](../sampler_sobolkuo.md) (code from [\[JK03\]](http://web.maths.unsw.edu.au/~fkuo/sobol/)) | BSD |[![](../data/sobolkuo/sobolkuo_1024.png)](../sampler_sobolkuo)
+[Sobol](../sampler_sobolindiced) (Original) | BSD | [![](../data/sobolindiced/sobolindiced_1024.png)](../sampler_sobolindiced)
+[Owen](../sampler_owen) (Sobol) | BSD |[![](../data/owen/owen_1024.png)](../sampler_owen)
 Rank 1 |  |[![](../data/rank1/rank1_1024.png)](../sampler_rank1)
 LDBN |  |  [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 BNLD Sequences |  |  [![](../data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
