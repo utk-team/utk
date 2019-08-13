@@ -1,0 +1,530 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-\.::]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>sampler CVT - Uni{form|corn} tool kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,400,400i,700|Inconsolata&display=fallback">
+        <style>body,input{font-family:"PT Serif","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Inconsolata","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../extras.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#sampler-cvt-91bsd0993" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Uni{form|corn} tool kit" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">home</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Uni{form|corn} tool kit
+            </span>
+            <span class="md-header-nav__topic">
+              
+                sampler CVT
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    utk-team/utk
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Uni{form|corn} tool kit" class="md-nav__button md-logo">
+      
+        <i class="md-icon">home</i>
+      
+    </a>
+    Uni{form|corn} tool kit
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    utk-team/utk
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Samplers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Samplers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../samplers/" title="All samplers" class="md-nav__link">
+      All samplers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_faure/" title="Faure" class="md-nav__link">
+      Faure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_halton/" title="Halton" class="md-nav__link">
+      Halton
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_hammersley/" title="Hammersley" class="md-nav__link">
+      Hammersley
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_niederreiter/" title="Niederreiter" class="md-nav__link">
+      Niederreiter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_sobolkuo/" title="Sobol (Joe&Kuo)" class="md-nav__link">
+      Sobol (Joe&Kuo)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_sobolindiced/" title="Sobol (Original)" class="md-nav__link">
+      Sobol (Original)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sampler_owen/" title="Owen Scrambled Sobol" class="md-nav__link">
+      Owen Scrambled Sobol
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Classes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Classes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../doxygen/" title="Doxygen" class="md-nav__link">
+      Doxygen
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../io_format/" title="I/O formats" class="md-nav__link">
+      I/O formats
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h2 id="sampler-cvt-91bsd0993">Sampler CVT <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a></h2>
+<p>Files</p>
+<p>src/samplers/SamplerCapCVT.hpp<br />
+src/samplers/CVT_2dd.cpp<br />
+src/samplers/SamplerCapCVT/*</p>
+<h1 id="description">Description</h1>
+<p>Implementation of the CVT sampler from <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a>.<br />
+For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
+<h1 id="execution">Execution</h1>
+<p>Parameters:  </p>
+<div class="codehilite"><pre><span></span><span class="err">\</span><span class="p">[</span><span class="n">HELP</span><span class="err">\</span><span class="p">]</span>
+<span class="c1">--boundary \[string\]       The file with the boundary of the domain</span>
+<span class="c1">--iter \[int\]          The number of iterations</span>
+<span class="o">-</span><span class="n">o</span> <span class="err">\</span><span class="p">[</span><span class="n">string</span><span class="o">=</span><span class="k">output</span><span class="err">\</span><span class="n">_pts</span><span class="p">.</span><span class="n">dat</span><span class="err">\</span><span class="p">]</span>   <span class="k">Output</span> <span class="n">file</span>
+<span class="o">-</span><span class="n">m</span> <span class="err">\</span><span class="p">[</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="err">\</span><span class="p">]</span>            <span class="nb">Number</span> <span class="k">of</span> <span class="n">poinset</span> <span class="n">realisations</span>
+<span class="o">-</span><span class="n">n</span> <span class="err">\</span><span class="p">[</span><span class="n">ullint</span><span class="o">=</span><span class="mi">1024</span><span class="err">\</span><span class="p">]</span>      <span class="nb">Number</span> <span class="k">of</span> <span class="n">samples</span> <span class="k">to</span> <span class="n">generate</span>
+<span class="c1">--silent            Silent mode</span>
+<span class="o">-</span><span class="n">h</span>              <span class="n">Displays</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span>
+</pre></div>
+
+
+<p>To generate a 2D point set of 1024 samples with a CCVT distribution, we can use the following client line command:</p>
+<p>./src/samplers/CVT_2dd -n 1024 -o toto.dat </p>
+<p>Or one can use the following C++ code:</p>
+<div class="codehilite"><pre><span></span><span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
+<span class="n">writer</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="ss">&quot;toto.dat&quot;</span><span class="p">);</span>
+<span class="n">Pointset</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">pts</span><span class="p">;</span>
+<span class="n">SamplerCapCVT</span><span class="p">.</span> <span class="n">s</span><span class="p">;</span>
+<span class="n">uint</span> <span class="n">nbIter</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="n">setIterations</span><span class="p">(</span><span class="n">nbIter</span><span class="p">);</span>
+<span class="n">unsigned</span> <span class="nb">int</span> <span class="n">param_nbsamples</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="n">generateSamples</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">param_nbsamples</span><span class="p">);</span>
+<span class="n">writer</span><span class="p">.</span><span class="n">writePointset</span><span class="p">(</span><span class="n">pts</span><span class="p">);</span>
+<span class="n">writer</span><span class="p">.</span><span class="k">close</span><span class="p">();</span>
+</pre></div>
+
+
+<h1 id="results">Results</h1>
+<p>./src/samplers/CCVT_2dd -o CVT_1024.edat -n 1024 </p>
+<p>File<br />
+<a href="../data/CVT/CVT_1024.edat">CCVT_1024.edat</a></p>
+<p>Pointset<br />
+<a href="../data/CVT/CVT_1024.png"><img alt="" src="../data/CVT/CVT_1024.png" /></a></p>
+<p>Fourier<br />
+<a href="../data/CVT/CVT_1024_fourier.png"><img alt="" src="../data/CVT/CVT_1024_fourier.png" /></a></p>
+<p>./src/samplers/CCVT_2dd -o CVT_4096.edat -n 4096 </p>
+<p>File<br />
+<a href="../data/CVT/CVT_4096.edat">CCVT_4096.edat</a></p>
+<p>Pointset<br />
+<a href="../data/CVT/CVT_4096.png"><img alt="" src="../data/CVT/CVT_4096.png" /></a></p>
+<p>Fourier<br />
+<a href="../data/CVT/CVT_4096_fourier.png"><img alt="" src="../data/CVT/CVT_4096_fourier.png" /></a></p>
+<p>./src/samplers/CVT_2dd -o CVT_2_4096.edat -n 4096 &ndash;iter 10 </p>
+<p>File<br />
+<a href="../data/CVT_2/CVT_2_4096.edat">CVT_2_4096.edat</a></p>
+<p>Pointset<br />
+<a href="../data/CVT_2/CVT_2_4096.png"><img alt="" src="../data/CVT_2/CVT_2_4096.png" /></a></p>
+<p>Fourier<br />
+<a href="../data/CVT_2/CVT_2_4096_fourier.png"><img alt="" src="../data/CVT_2/CVT_2_4096_fourier.png" /></a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
