@@ -3,12 +3,12 @@ UTK     hljs.initHighlightingOnLoad();
 Sampler PMJ [[PMJ]](https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf)
 ----------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/src_pmj
 
-Description
-===========
+## Description
+
 
 The Progressive Multi-Jittered sampler. This sampler is divided in 3 techniques, each giving better results than the previous one :  
   
@@ -20,8 +20,8 @@ Progressive Multi-Jittered(0,2) (PMJ02) : Generalises the previous techniques. I
   
 View article : [[PMJ]](https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf)
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

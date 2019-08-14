@@ -1,19 +1,19 @@
 Sampler Step [[HSD13]](http://kops.uni-konstanz.de/bitstream/handle/123456789/24358/Heck_243584.pdf%3Bjsessionid%3D6A7E6EFBFF35CDC5C5F8EBB5928C44F8?sequence%3D2)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerStep.hpp  
 src/bin/samplers/Step_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The sampler from [[HSD13]](http://kops.uni-konstanz.de/bitstream/handle/123456789/24358/Heck_243584.pdf%3Bjsessionid%3D6A7E6EFBFF35CDC5C5F8EBB5928C44F8?sequence%3D2) with a step profile.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

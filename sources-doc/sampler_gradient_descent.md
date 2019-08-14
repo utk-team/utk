@@ -1,18 +1,18 @@
 Sampler Gradient Descent
 ------------------------
 
-Files
+## Files
 
 src/samplers/SamplerGradientDescent.hpp  
 src/bin/samplers/GradientDescent_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 This sampler optimizes a given input sampler to minimize its Generalized L2 discrepancy, using gradient descent. This optimizing is very slow and therefore can hardly be performed on more than 4k samples.
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

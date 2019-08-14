@@ -1,20 +1,20 @@
 Sampler CapCVT [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839)
 ----------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerCapCVT.hpp  
 src/samplers/CapCVT_2dd.cpp  
 src/samplers/SamplerCapCVT/
 
-Description
-===========
+## Description
+
 
 Implementation of the CapCVT sampler from [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

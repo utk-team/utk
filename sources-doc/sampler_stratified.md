@@ -1,19 +1,19 @@
 Sampler stratified
 ------------------
 
-Files
+## Files
 
 src/samplers/SamplerStratified.hpp  
 src/bin/samplers/Stratified_*.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The domain is partitioned with a grid of k x k. In each cell of this grid, a random sample is generated.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

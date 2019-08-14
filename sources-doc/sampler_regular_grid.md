@@ -1,19 +1,19 @@
 Sampler Regular Grid
 --------------------
 
-Files
+## Files
 
 src/samplers/SamplerRegularGrid.hpp  
 src/bin/samplers/RegularGrid_*dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 A regular grid.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

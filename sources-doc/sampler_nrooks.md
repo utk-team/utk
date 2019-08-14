@@ -1,19 +1,19 @@
 Sampler N-Rooks [[Shi91]](http://www.cs.utah.edu/~shirley/papers/euro91.pdf)
 ------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerNRooks.hpp  
 src/bin/samplers/NRooks_*dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The N-Rooks sampler.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

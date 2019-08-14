@@ -16,9 +16,9 @@ Sampler | License  |Illustration
 [Sobol](../sampler_sobolkuo.md) (code from [\[JK03\]](http://web.maths.unsw.edu.au/~fkuo/sobol/)) | BSD |[![](../data/sobolkuo/sobolkuo_1024.png)](../sampler_sobolkuo)
 [Sobol](../sampler_sobolindiced) (Original) | BSD | [![](../data/sobolindiced/sobolindiced_1024.png)](../sampler_sobolindiced)
 [Owen](../sampler_owen) (Sobol) | BSD |[![](../data/owen/owen_1024.png)](../sampler_owen)
-Rank 1 |  |[![](../data/rank1/rank1_1024.png)](../sampler_rank1)
-LDBN |  |  [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
-BNLD Sequences |  |  [![](../data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
+[Rank 1](../sampler_rank1) | ??  |[![](../data/rank1/rank1_1024.png)](../sampler_rank1)
+[LDBN] (../sampler_ldbn) | BSD |  [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
+[BNLD Sequences](../sampler_BNLDS) | BSD |  [![](../data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
 
 ##  Blue Noise Samplers
 
@@ -58,7 +58,7 @@ Regular Grid | [![](../data/regular_grid/regular_grid_1024.png)](../sampler_regu
 Single Peak | [![](../data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
 Step | [![](../data/step/step_1024.png)](../sampler_step)
 Stratified | [![](../data/stratified/stratified_1024.png)](../sampler_stratified)
-Whitenoise | [![](../data/stratified/stratified_1024.png)](../sampler_stratified)
+Whitenoise | [![](../data/stratified/whitenoise_1024.png)](../sampler_whitenoise)
 
 ## Experimental Samplers
 

@@ -1,19 +1,19 @@
 Sampler Korobov [[Kor59]](https://www.sciencedirect.com/science/article/pii/S0885064X14001204)
 ------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerKorobov.hpp  
 src/bin/samplers/Korobov_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 Korobov lattices. The generator value should be prime relatively to the number of samples, otherwise the point set will not be projection regular.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

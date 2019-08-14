@@ -1,19 +1,19 @@
 Sampler Hexagonal Grid
 ----------------------
 
-Files
+## Files
 
 src/samplers/SamplerHexagonalGrid.hpp  
 src/bin/samplers/HexagonalGrid_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 An hexagonal grid.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

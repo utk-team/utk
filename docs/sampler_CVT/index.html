@@ -98,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Uni{form|corn} tool kit" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">home</i>
+            <img src="../data/logo_utk.png" width="24" height="24">
           
         </a>
       </div>
@@ -190,7 +190,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href=".." title="Uni{form|corn} tool kit" class="md-nav__button md-logo">
       
-        <i class="md-icon">home</i>
+        <img src="../data/logo_utk.png" width="48" height="48">
       
     </a>
     Uni{form|corn} tool kit
@@ -702,28 +702,33 @@
                 
                 
                 <h2 id="sampler-cvt-bsd09">Sampler CVT <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a></h2>
-<p>Files</p>
-<p>src/samplers/SamplerCapCVT.hpp<br />
-src/samplers/CVT_2dd.cpp<br />
-src/samplers/SamplerCapCVT/*</p>
-<h1 id="description">Description</h1>
+<h2 id="files">Files</h2>
+<div class="codehilite"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerCapCVT</span><span class="p">.</span><span class="n">hpp</span>  
+<span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">CVT_2dd</span><span class="p">.</span><span class="n">cpp</span>  
+<span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerCapCVT</span><span class="cm">/*</span>
+</pre></div>
+
+<h2 id="description">Description</h2>
 <p>Implementation of the CVT sampler from <a href="https://dl.acm.org/citation.cfm?id=1531392">[BSD09]</a>.<br />
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
-<h1 id="execution">Execution</h1>
-<p>Parameters:  </p>
-<div class="codehilite"><pre><span></span><span class="k">[HELP]</span>
-<span class="na">--boundary [string]     The file with the boundary of the domain</span>
-<span class="na">--iter [int]            The number of iterations</span>
-<span class="na">-o [string</span><span class="o">=</span><span class="s">output_pts.dat]  Output file</span>
-<span class="na">-m [int</span><span class="o">=</span><span class="s">1]          Number of poinset realisations</span>
-<span class="na">-n [ullint</span><span class="o">=</span><span class="s">1024]        Number of samples to generate</span>
-<span class="na">--silent            Silent mode</span>
-<span class="na">-h              Displays this help message</span>
+<h2 id="execution">Execution</h2>
+<div class="codehilite"><pre><span></span><span class="k">Parameters</span><span class="err">:</span><span class="w">  </span>
+
+<span class="w">    </span><span class="o">[</span><span class="n">HELP</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="c1">--boundary [string]     The file with the boundary of the domain</span>
+<span class="w">    </span><span class="c1">--iter [int]            The number of iterations</span>
+<span class="w">    </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">string=output_pts.dat</span><span class="o">]</span><span class="w">  </span><span class="k">Output</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="o">[</span><span class="n">int=1</span><span class="o">]</span><span class="w">          </span><span class="n">Number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">poinset</span><span class="w"> </span><span class="n">realisations</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="o">[</span><span class="n">ullint=1024</span><span class="o">]</span><span class="w">        </span><span class="n">Number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">generate</span><span class="w"></span>
+<span class="w">    </span><span class="c1">--silent            Silent mode</span>
+<span class="w">    </span><span class="o">-</span><span class="n">h</span><span class="w">              </span><span class="n">Displays</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">help</span><span class="w"> </span><span class="n">message</span><span class="w"></span>
+</pre></div>
+
+<p>To generate a 2D point set of 1024 samples with a CCVT distribution, we can use the following client line command:</p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">CVT_2dd</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span> <span class="o">-</span><span class="n">o</span> <span class="n">toto</span><span class="p">.</span><span class="n">dat</span>
 </pre></div>
 
 
-<p>To generate a 2D point set of 1024 samples with a CCVT distribution, we can use the following client line command:</p>
-<p>./src/samplers/CVT_2dd -n 1024 -o toto.dat </p>
 <p>Or one can use the following C++ code:</p>
 <div class="codehilite"><pre><span></span><span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
 <span class="n">writer</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="ss">&quot;toto.dat&quot;</span><span class="p">);</span>
@@ -739,21 +744,30 @@ For a more precise description of this sampler and its performances in terms of 
 
 
 <h1 id="results">Results</h1>
-<p>./src/samplers/CCVT_2dd -o CVT_1024.edat -n 1024 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">CCVT_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">CVT_1024</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/CVT/CVT_1024.edat">CCVT_1024.edat</a></p>
 <p>Pointset<br />
 <a href="../data/CVT/CVT_1024.png"><img alt="" src="../data/CVT/CVT_1024.png" /></a></p>
 <p>Fourier<br />
 <a href="../data/CVT/CVT_1024_fourier.png"><img alt="" src="../data/CVT/CVT_1024_fourier.png" /></a></p>
-<p>./src/samplers/CCVT_2dd -o CVT_4096.edat -n 4096 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">CCVT_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">CVT_4096</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4096</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/CVT/CVT_4096.edat">CCVT_4096.edat</a></p>
 <p>Pointset<br />
 <a href="../data/CVT/CVT_4096.png"><img alt="" src="../data/CVT/CVT_4096.png" /></a></p>
 <p>Fourier<br />
 <a href="../data/CVT/CVT_4096_fourier.png"><img alt="" src="../data/CVT/CVT_4096_fourier.png" /></a></p>
-<p>./src/samplers/CVT_2dd -o CVT_2_4096.edat -n 4096 &ndash;iter 10 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">CVT_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">CVT_2_4096</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4096</span> <span class="c1">--iter 10</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/CVT_2/CVT_2_4096.edat">CVT_2_4096.edat</a></p>
 <p>Pointset<br />

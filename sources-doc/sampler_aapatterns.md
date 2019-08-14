@@ -1,20 +1,21 @@
-Sampler AA Patterns [[Ahm16]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf)
--------------------------------------------------------------------------------------------------------------------------
+# Sampler AA Patterns [[Ahm16]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf)
 
-Files
+## Files
 
+```
 src/samplers/SamplerAAPattern.hpp  
 src/bin/samplers/AAPatterns_2dd.cpp.cpp
+```
 
-Description
-===========
+## Description
+
 
 The AA Pattern sampler from [[Ahm16]](http://abdallagafar.com/abdalla/wp-content/uploads/2017/03/Sampling-with-AA-Patterns.pdf).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
 
+```
 Parameters:  
 
 	[HELP]
@@ -24,6 +25,7 @@ Parameters:
 	--silent 			Silent mode
 	-h 				Displays this help message
 	-d File containing the displacement vectors 
+```
 
 To generate a 2D point set of 1024 samples with a aapatterns distribution, we can use the following client line command:
 
@@ -31,7 +33,7 @@ To generate a 2D point set of 1024 samples with a aapatterns distribution, we ca
 
 Or one can use the following C++ code:
 
-    
+ ```cpp   
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -40,7 +42,7 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
     writer.writePointset(pts);
     writer.close();
-    			
+ ```   			
 
 Results
 =======

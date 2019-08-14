@@ -1,20 +1,20 @@
 Sampler FPO [[SHD11]](https://dl.acm.org/citation.cfm?id=2018345)
 -------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerFPO.hpp  
 src/samplers/SamplerFPO/*  
 src/bin/samplers/FPO_2dd.cpp  
 
-Description
-===========
+## Description
+
 
 Implementation from the stk library of the sampler from [[SHD11]](https://dl.acm.org/citation.cfm?id=2018345).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

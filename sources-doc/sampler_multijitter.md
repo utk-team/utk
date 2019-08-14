@@ -1,19 +1,19 @@
 Sampler Multi Jittered [[CSW94]](https://dl.acm.org/citation.cfm?id=180895.180927)
 ------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerMultiJitter.hpp  
 src/bin/samplers/MultiJitter_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The Multi-Jitter sampler from [[CSW94]](https://www.researchgate.net/publication/262372120_Multi-Jittered_Sampling).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

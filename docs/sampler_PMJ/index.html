@@ -98,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Uni{form|corn} tool kit" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">home</i>
+            <img src="../data/logo_utk.png" width="24" height="24">
           
         </a>
       </div>
@@ -190,7 +190,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href=".." title="Uni{form|corn} tool kit" class="md-nav__button md-logo">
       
-        <i class="md-icon">home</i>
+        <img src="../data/logo_utk.png" width="48" height="48">
       
     </a>
     Uni{form|corn} tool kit
@@ -692,15 +692,15 @@
                 
                 <p>UTK     hljs.initHighlightingOnLoad();</p>
 <h2 id="sampler-pmj-pmj">Sampler PMJ <a href="https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf">[PMJ]</a></h2>
-<p>Files</p>
+<h2 id="files">Files</h2>
 <p>src/samplers/src_pmj</p>
-<h1 id="description">Description</h1>
+<h2 id="description">Description</h2>
 <p>The Progressive Multi-Jittered sampler. This sampler is divided in 3 techniques, each giving better results than the previous one :  </p>
 <p>Progressive Jittered (PJ) : Divides the unit square into 4 equal squares. Randomly throws a point into each subsquare. Then divide those subsquares into subsubsquares. Randomly throws points in them, and so on.  </p>
 <p>Progressive Multi-Jittered (PMJ) : Adds to PJ one property : Using PJ, each sample falls into its own square subdivision. Using PMJ, each sample falls into its own square subdivision AND its own strata. When throwing points, uses a best candidate algorithm.  </p>
 <p>Progressive Multi-Jittered(0,2) (PMJ02) : Generalises the previous techniques. If we subdivide the unit square into equals rectangles, each sample falls into its own rectangle.  </p>
 <p>View article : <a href="https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf">[PMJ]</a></p>
-<h1 id="execution">Execution</h1>
+<h2 id="execution">Execution</h2>
 <p>Parameters:  </p>
 <div class="codehilite"><pre><span></span><span class="k">[HELP]</span>
 <span class="na">-o [string</span><span class="o">=</span><span class="s">output_pts.dat]  Output file</span>

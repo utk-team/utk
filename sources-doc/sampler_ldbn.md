@@ -1,20 +1,27 @@
-Sampler LDBN [[APC*16]](https://liris.cnrs.fr/ldbn/)
--------------------------------------------------------
+# Sampler LDBN [[APC*16]](https://liris.cnrs.fr/ldbn/)
 
-Files
 
+## Files
+
+```
 src/samplers/SamplerLDBN.hpp  
 src/bin/samplers/LDBN_2dd.cpp.cpp
+```
 
-Description
-===========
+## Description
+
 
 The LDBN sampler from [[APC*16]](https://liris.cnrs.fr/ldbn). This sampler is only 2D.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
 
+## License
+
+BSD, see `SamplerLDBN.hpp`.
+
+## Execution
+
+```
 Parameters:  
 
 	[HELP]
@@ -26,7 +33,8 @@ Parameters:
 	-d [string]			File containing the permutations
 	-t [uint=128]			The size of the permutation tile
 	-c [uint=16]			The size of the permutation chunk
-			
+```
+
 
 To generate a 2D point set of 1024 samples with a ldbn distribution, we can use the following client line command:
 
@@ -34,7 +42,7 @@ To generate a 2D point set of 1024 samples with a ldbn distribution, we can use 
 
 Or one can use the following C++ code:
 
-    
+```cpp    
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -43,7 +51,7 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
     writer.writePointset(pts);
     writer.close();
-    			
+```    			
 
 Results
 =======

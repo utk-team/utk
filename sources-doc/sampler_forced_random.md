@@ -1,18 +1,18 @@
 Sampler Forced Random [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7)
 ------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerForcedRandom.hpp  
 src/bin/samplers/ForcedRandom_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 A sampler based on dithering matrices from [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

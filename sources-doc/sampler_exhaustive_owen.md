@@ -1,18 +1,18 @@
 Sampler Exhaustive Owen
 -----------------------
 
-Files
+## Files
 
 src/samplers/SamplerExhaustiveOwen.hpp  
 src/bin/samplers/ExaustiveOwen_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 Owen's scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1. This sampler tests all 2^N possible trees (in each dimension) and returns the trees that generates the most Blue Noise like set. As this exhaustive search is very computationnally expensive, this sampler can only generate point sets of size n lesser than 32.
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

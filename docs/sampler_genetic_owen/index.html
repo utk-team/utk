@@ -98,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Uni{form|corn} tool kit" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">home</i>
+            <img src="../data/logo_utk.png" width="24" height="24">
           
         </a>
       </div>
@@ -190,7 +190,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href=".." title="Uni{form|corn} tool kit" class="md-nav__button md-logo">
       
-        <i class="md-icon">home</i>
+        <img src="../data/logo_utk.png" width="48" height="48">
       
     </a>
     Uni{form|corn} tool kit
@@ -691,12 +691,12 @@
                 
                 
                 <h2 id="sampler-genetic-owen">Sampler Genetic Owen</h2>
-<p>Files</p>
+<h2 id="files">Files</h2>
 <p>src/samplers/SamplerGeneticOwen.hpp<br />
 src/bin/samplers/GeneticOwen_2dd.cpp.cpp</p>
-<h1 id="description">Description</h1>
+<h2 id="description">Description</h2>
 <p>Owen&rsquo;s scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1. This leads to 2^N possible trees in each dimension, which is too computationnally expensive for an exhaustive search. This sampler thus uses genetic algorithms to try and find the best possible tree generating Blue Noise sets. However, the algorithm is too naive to generate good Blue Noise sets for more than 128 samples.</p>
-<h1 id="execution">Execution</h1>
+<h2 id="execution">Execution</h2>
 <p>Parameters:  </p>
 <div class="codehilite"><pre><span></span><span class="k">[HELP]</span>
 <span class="na">-o [string</span><span class="o">=</span><span class="s">output_pts.dat]  Output file</span>

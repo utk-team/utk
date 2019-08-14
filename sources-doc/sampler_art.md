@@ -1,19 +1,19 @@
 Sampler ART [[ANH*17]](http://abdallagafar.com/publications/art/)
 --------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerART.hpp  
 src/bin/samplers/ART_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The sampler from [[ANH*17]](http://abdallagafar.com/publications/art/)  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

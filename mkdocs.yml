@@ -24,8 +24,7 @@ theme:
   font:
     text: 'PT Serif'
     code: 'Inconsolata'
-  logo:
-    icon: 'home'
+  logo: 'data/logo_utk.png'
 
 extra_css:
   - extras.css

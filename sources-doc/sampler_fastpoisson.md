@@ -1,19 +1,19 @@
 Sampler Fast Poisson [[Bri07]](https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
 ---------------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerFastPoisson.hpp  
 src/bin/samplers/FastPoisson_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The Fast Poisson sampler from [[DH06]](https://dl.acm.org/citation.cfm?doid=1141911.1141915).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

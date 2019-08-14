@@ -1,12 +1,12 @@
 Sampler BNOT
 ------------
 
-Files
+## Files
 
 externals/bnot/*
 
-Description
-===========
+## Description
+
 
 This sampler is the BNOT sampmler from []. Due to its code complexity, this sampler was not ported within the UTK framework. It is therefore provided as an external party (in the externals folder). It was however slightly modified to allow using this sampler with similar parameters as other samples from UTK (very useful for scripting purposes). To compile this sampler, please do the following:
 
@@ -19,8 +19,8 @@ make
   
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

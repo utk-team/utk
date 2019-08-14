@@ -1,19 +1,19 @@
 Sampler whitenoise
 ------------------
 
-Files
+## Files
 
 src/samplers/SamplerWhitenoise.hpp  
 src/bin/samplers/Whitenoise_*.cpp.cpp
 
-Description
-===========
+## Description
+
 
 A pure random sampler  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

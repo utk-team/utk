@@ -1,19 +1,19 @@
 Sampler Correlated Multi Jittered [[Ken03]](http://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf)
 ----------------------------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerCMJ.hpp  
 src/bin/samplers/CMJ_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The Correlated Multi-Jitter sampler from [[Kens03]](http://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 

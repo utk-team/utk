@@ -98,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Uni{form|corn} tool kit" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">home</i>
+            <img src="../data/logo_utk.png" width="24" height="24">
           
         </a>
       </div>
@@ -190,7 +190,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href=".." title="Uni{form|corn} tool kit" class="md-nav__button md-logo">
       
-        <i class="md-icon">home</i>
+        <img src="../data/logo_utk.png" width="48" height="48">
       
     </a>
     Uni{form|corn} tool kit
@@ -385,9 +385,59 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        BNLD Sequences
+      </label>
+    
     <a href="./" title="BNLD Sequences" class="md-nav__link md-nav__link--active">
       BNLD Sequences
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files" title="Files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution" title="Execution" class="md-nav__link">
+    Execution
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -690,6 +740,43 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files" title="Files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" title="License" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution" title="Execution" class="md-nav__link">
+    Execution
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -701,52 +788,68 @@
               
                 
                 
-                <h2 id="sampler-bnlds">Sampler BNLDS</h2>
-<p>Files</p>
-<p>src/samplers/SamplerBNLDS.hpp<br />
-src/samplers/BNLDS_2dd.cpp</p>
-<h1 id="description">Description</h1>
-<p>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
-<h1 id="execution">Execution</h1>
-<p>Parameters:  </p>
-<div class="codehilite"><pre><span></span><span class="k">[HELP]</span>
-<span class="na">-o [string</span><span class="o">=</span><span class="s">output_pts.dat]  Output file</span>
-<span class="na">-m [int</span><span class="o">=</span><span class="s">1]          Number of poinset realisations</span>
-<span class="na">-n [ullint</span><span class="o">=</span><span class="s">1024]        Number of samples to generate</span>
-<span class="na">--silent            Silent mode</span>
-<span class="na">-h              Displays this help message</span>
-<span class="na">--lut-in [string]       the file containing the lookuptable</span>
-<span class="na">--sobolD0 [uint</span><span class="o">=</span><span class="s">1]      the sobol indices for dimension 0</span>
-<span class="na">--sobolD1 [uint</span><span class="o">=</span><span class="s">2]      the sobol indices for dimension 1</span>
-<span class="na">-K [uint</span><span class="o">=</span><span class="s">4]         the subdivision factor K</span>
-<span class="na">--level [uint</span><span class="o">=</span><span class="s">-1]       the level of subdivision (overrides the -n parameter)</span>
+                <h1 id="sampler-bnlds">Sampler BNLDS</h1>
+<h2 id="files">Files</h2>
+<div class="codehilite"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerBNLDS</span><span class="p">.</span><span class="n">hpp</span>  
+<span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span><span class="p">.</span><span class="n">cpp</span>
 </pre></div>
 
+<h2 id="description">Description</h2>
+<p>Implementation of
+<div class="codehilite"><pre><span></span><span class="n">Hélène</span> <span class="n">Perrier</span><span class="p">,</span> <span class="n">David</span> <span class="n">Coeurjolly</span><span class="p">,</span> <span class="n">Feng</span> <span class="n">Xie</span><span class="p">,</span> <span class="n">Matt</span> <span class="n">Pharr</span><span class="p">,</span> <span class="n">Pat</span> <span class="n">Hanrahan</span><span class="p">,</span> <span class="n">Victor</span> <span class="n">Ostromoukhov</span><span class="p">.</span> <span class="n">Sequences</span> <span class="k">with</span> <span class="n">Low</span><span class="o">-</span><span class="n">Discrepancy</span> <span class="n">Blue</span><span class="o">-</span><span class="n">Noise</span> <span class="mi">2</span><span class="o">-</span><span class="n">D</span> <span class="n">Projections</span><span class="p">.</span> <span class="n">Computer</span> <span class="n">Graphics</span> <span class="n">Forum</span> <span class="p">(</span><span class="n">Proceedings</span> <span class="k">of</span> <span class="n">Eurographics</span><span class="p">),</span> <span class="mi">37</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span><span class="mi">339</span><span class="err">–</span><span class="mi">353</span><span class="p">,</span> <span class="mi">2018</span><span class="p">.</span>
+</pre></div></p>
+<p>See also [https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html]](https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html).</p>
+<p>For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
+<h2 id="license">License</h2>
+<p>BSD, see <code class="codehilite"><span class="n">SamplerBNLDS</span><span class="p">.</span><span class="n">hpp</span></code>.</p>
+<h2 id="execution">Execution</h2>
+<div class="codehilite"><pre><span></span><span class="nv">Parameters</span>:  
+
+    [<span class="nv">HELP</span>]
+    <span class="o">-</span><span class="nv">o</span> [<span class="nv">string</span><span class="o">=</span><span class="nv">output_pts</span>.<span class="nv">dat</span>]  <span class="nv">Output</span> <span class="nv">file</span>
+    <span class="o">-</span><span class="nv">m</span> [<span class="nv">int</span><span class="o">=</span><span class="mi">1</span>]          <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">poinset</span> <span class="nv">realisations</span>
+    <span class="o">-</span><span class="nv">n</span> [<span class="nv">ullint</span><span class="o">=</span><span class="mi">1024</span>]        <span class="nv">Number</span> <span class="nv">of</span> <span class="nv">samples</span> <span class="nv">to</span> <span class="nv">generate</span>
+    <span class="o">--</span><span class="nv">silent</span>            <span class="nv">Silent</span> <span class="nv">mode</span>
+    <span class="o">-</span><span class="nv">h</span>              <span class="nv">Displays</span> <span class="nv">this</span> <span class="nv">help</span> <span class="nv">message</span>
+    <span class="o">--</span><span class="nv">lut</span><span class="o">-</span><span class="nv">in</span> [<span class="nv">string</span>]       <span class="nv">the</span> <span class="nv">file</span> <span class="nv">containing</span> <span class="nv">the</span> <span class="nv">lookuptable</span>
+    <span class="o">--</span><span class="nv">sobolD0</span> [<span class="nv">uint</span><span class="o">=</span><span class="mi">1</span>]      <span class="nv">the</span> <span class="nv">sobol</span> <span class="nv">indices</span> <span class="k">for</span> <span class="nv">dimension</span> <span class="mi">0</span>
+    <span class="o">--</span><span class="nv">sobolD1</span> [<span class="nv">uint</span><span class="o">=</span><span class="mi">2</span>]      <span class="nv">the</span> <span class="nv">sobol</span> <span class="nv">indices</span> <span class="k">for</span> <span class="nv">dimension</span> <span class="mi">1</span>
+    <span class="o">-</span><span class="nv">K</span> [<span class="nv">uint</span><span class="o">=</span><span class="mi">4</span>]         <span class="nv">the</span> <span class="nv">subdivision</span> <span class="nv">factor</span> <span class="nv">K</span>
+    <span class="o">--</span><span class="nv">level</span> [<span class="nv">uint</span><span class="o">=-</span><span class="mi">1</span>]       <span class="nv">the</span> <span class="nv">level</span> <span class="nv">of</span> <span class="nv">subdivision</span> <span class="ss">(</span><span class="nv">overrides</span> <span class="nv">the</span> <span class="o">-</span><span class="nv">n</span> <span class="nv">parameter</span><span class="ss">)</span>
+</pre></div>
 
 <p>To generate a 2D point set of 1024 samples with a BNLDS distribution, we can use the following client line command:</p>
-<p>./src/samplers/BNLDS_2dd -n 1024 -o toto.dat </p>
-<p>Or one can use the following C++ code:</p>
-<div class="codehilite"><pre><span></span><span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
-<span class="n">writer</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="ss">&quot;toto.dat&quot;</span><span class="p">);</span>
-<span class="n">Pointset</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">pts</span><span class="p">;</span>
-<span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerBNLDS</span><span class="p">.</span><span class="n">hpp</span> <span class="n">s</span><span class="p">;</span>
-<span class="n">unsigned</span> <span class="nb">int</span> <span class="n">param_nbsamples</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
-<span class="n">s</span><span class="p">.</span><span class="n">generateSamples</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">param_nbsamples</span><span class="p">);</span>
-<span class="n">writer</span><span class="p">.</span><span class="n">writePointset</span><span class="p">(</span><span class="n">pts</span><span class="p">);</span>
-<span class="n">writer</span><span class="p">.</span><span class="k">close</span><span class="p">();</span>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span> <span class="o">-</span><span class="n">o</span> <span class="n">toto</span><span class="p">.</span><span class="n">dat</span>
 </pre></div>
 
+
+<p>Or one can use the following C++ code:</p>
+<div class="codehilite"><pre><span></span>    <span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
+    <span class="n">writer</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;toto.dat&quot;</span><span class="p">);</span>
+    <span class="n">Pointset</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">pts</span><span class="p">;</span>
+    <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerBNLDS</span><span class="p">.</span><span class="n">hpp</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">param_nbsamples</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">generateSamples</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">param_nbsamples</span><span class="p">);</span>
+    <span class="n">writer</span><span class="p">.</span><span class="n">writePointset</span><span class="p">(</span><span class="n">pts</span><span class="p">);</span>
+    <span class="n">writer</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+</pre></div>
 
 <h1 id="results">Results</h1>
 <p>Note that only the point sets containing K^{2n} samples are Blue Noise and Low Discrepancy, for K=4, 1024 is not a multiple of 4^{2n}, whereas 4096=4^6 (n=3).</p>
-<p>./src/samplers/BNLDS_2dd -o BNLDS_1024.edat -n 1024 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">BNLDS_1024</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/BNLDS/BNLDS_1024.edat">BNLDS_1024.edat</a></p>
 <p>Pointset<br />
 <a href="../data/BNLDS/BNLDS_1024.png"><img alt="" src="../data/BNLDS/BNLDS_1024.png" /></a></p>
 <p>Fourier<br />
 <a href="../data/BNLDS/BNLDS_1024_fourier.png"><img alt="" src="../data/BNLDS/BNLDS_1024_fourier.png" /></a></p>
-<p>./src/samplers/BNLDS_2dd -o BNLDS_4096.edat -n 4096 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">BNLDS_4096</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4096</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/BNLDS/BNLDS_4096.edat">BNLDS_4096.edat</a></p>
 <p>Pointset<br />
@@ -754,9 +857,10 @@ src/samplers/BNLDS_2dd.cpp</p>
 <p>Fourier<br />
 <a href="../data/BNLDS/BNLDS_4096_fourier.png"><img alt="" src="../data/BNLDS/BNLDS_4096_fourier.png" /></a></p>
 <p>Changing the initial Sobol sequence</p>
-<p>./src/samplers/BNLDS_2dd &ndash;sobolD0 3 &ndash;sobolD1 7 
-&ndash;lut-in ../data/BNLDS/factorK_4/Sobol_37/allPermutsCache_Sobol+OptPerms_3_7_00000.dat 
--o BNLDS_2_4096.edat -n 4096 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span> <span class="c1">--sobolD0 3 --sobolD1 7 --lut-in ../data/BNLDS/factorK_4/Sobol_37/allPermutsCache_Sobol+OptPerms_3_7_00000.dat -o BNLDS_2_4096.edat -n 4096</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/BNLDS_2/BNLDS_2_4096.edat">BNLDS_2_4096.edat</a></p>
 <p>Pointset<br />
@@ -764,9 +868,10 @@ src/samplers/BNLDS_2dd.cpp</p>
 <p>Fourier<br />
 <a href="../data/BNLDS_2/BNLDS_2_4096_fourier.png"><img alt="" src="../data/BNLDS_2/BNLDS_2_4096_fourier.png" /></a></p>
 <p>Changing the K factor</p>
-<p>./src/samplers/BNLDS_2dd -K 8 &ndash;sobolD0 1 &ndash;sobolD1 2 
-&ndash;lut-in ../data/BNLDS/factorK_8/fastoptim_lut_sobol1_2_k8_lvlmax3_sampler_BNLDS_optimizer_PCF_RandomOpti_2dd.dat 
--o BNLDS_3_4096.edat -n 4096 </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">BNLDS_2dd</span> <span class="o">-</span><span class="n">K</span> <span class="mi">8</span> <span class="c1">--sobolD0 1 --sobolD1 2 --lut-in ../data/BNLDS/factorK_8/fastoptim_lut_sobol1_2_k8_lvlmax3_sampler_BNLDS_optimizer_PCF_RandomOpti_2dd.dat -o BNLDS_3_4096.edat -n 4096</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/BNLDS_3/BNLDS_3_4096.edat">BNLDS_3_4096.edat</a></p>
 <p>Pointset<br />

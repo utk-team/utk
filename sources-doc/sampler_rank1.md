@@ -1,20 +1,25 @@
-Sampler Rank 1 [[DK08]](https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.100/institut/mitarbeiterbereiche/sabrina/ImgSynthPrePrint.pdf)
---------------------------------------------------------------------------------------------------------------------------------------------------
+# Sampler Rank 1 [[DK08]](https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.100/institut/mitarbeiterbereiche/sabrina/ImgSynthPrePrint.pdf)
 
-Files
+## Files
 
+```
 src/samplers/SamplerRank1.hpp  
 src/bin/samplers/Rank1_2dd.cpp.cpp
+```
 
-Description
-===========
+## Description
+
 
 The Rank 1 lattices from [[Keller04]](https://link.springer.com/chapter/10.1007%2F978-3-642-18743-8_18).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+##License
 
+
+
+## Execution
+
+```
 Parameters:  
 
 	[HELP]
@@ -24,7 +29,7 @@ Parameters:
 	--silent 			Silent mode
 	-h 				Displays this help message
 	--fibonacci 			Uses the fibonnacci sequence as indices
-			
+```			
 
 To generate a 2D point set of 1024 samples with a rank1 distribution, we can use the following client line command:
 
@@ -32,7 +37,7 @@ To generate a 2D point set of 1024 samples with a rank1 distribution, we can use
 
 Or one can use the following C++ code:
 
-    
+```cpp    
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -41,7 +46,7 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
     writer.writePointset(pts);
     writer.close();
-    			
+```    			
 
 Results
 =======

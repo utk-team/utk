@@ -1,19 +1,19 @@
 Sampler Penrose [[ODJ04]](https://cseweb.ucsd.edu/~ravir/6160/papers/importancesampling.pdf)
 ----------------------------------------------------------------------------------------------
 
-Files
+## Files
 
 src/samplers/SamplerPenrose.hpp  
 src/bin/samplers/Penrose_2dd.cpp.cpp
 
-Description
-===========
+## Description
+
 
 The Penrose sampler from [[ODJ04]](https://cseweb.ucsd.edu/~ravir/6160/papers/importancesampling.pdf).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-Execution
-=========
+## Execution
+
 
 Parameters:  
 
