@@ -1,11 +1,12 @@
-Sampler FPO [[SHD11]](https://dl.acm.org/citation.cfm?id=2018345)
--------------------------------------------------------------------
+# Sampler FPO [[SHD11]](https://dl.acm.org/citation.cfm?id=2018345)
+
+
 
 ## Files
 
-src/samplers/SamplerFPO.hpp  
-src/samplers/SamplerFPO/*  
-src/bin/samplers/FPO_2dd.cpp  
+    src/samplers/SamplerFPO.hpp  
+    src/samplers/SamplerFPO/*  
+    src/bin/samplers/FPO_2dd.cpp  
 
 ## Description
 
@@ -28,7 +29,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a FPO distribution, we can use the following client line command:
 
- ./src/samplers/FPO_2dd -n 1024 -o toto.dat 
+     ./src/samplers/FPO_2dd -n 1024 -o toto.dat 
 
 Or one can use the following C++ code:
 
@@ -46,7 +47,7 @@ Or one can use the following C++ code:
 Results
 =======
 
- ./src/samplers/FPO_2dd -o FPO_1024.edat -n 1024 
+      ./src/samplers/FPO_2dd -o FPO_1024.edat -n 1024 
 
 File  
 [FPO_1024.edat](data/FPO/FPO_1024.edat)
@@ -57,7 +58,7 @@ Pointset
 Fourier  
 [![](data/FPO/FPO_1024_fourier.png)](data/FPO/FPO_1024_fourier.png)
 
- ./src/samplers/FPO_2dd -o FPO_4096.edat -n 4096 
+      ./src/samplers/FPO_2dd -o FPO_4096.edat -n 4096 
 
 File  
 [FPO_4096.edat](data/FPO/FPO_4096.edat)

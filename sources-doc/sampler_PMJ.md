@@ -1,11 +1,10 @@
-UTK     hljs.initHighlightingOnLoad();
 
-Sampler PMJ [[PMJ]](https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf)
-----------------------------------------------------------------------------------------------------
+# Sampler PMJ [[PMJ]](https://graphics.pixar.com/library ProgressiveMultiJitteredSampling/paper.pdf)
+
 
 ## Files
 
-src/samplers/src_pmj
+    src/samplers/src_pmj
 
 ## Description
 
