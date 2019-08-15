@@ -1,10 +1,12 @@
-Sampler Penrose [[ODJ04]](https://cseweb.ucsd.edu/~ravir/6160/papers/importancesampling.pdf)
-----------------------------------------------------------------------------------------------
+# Sampler Penrose [[ODJ04]](https://cseweb.ucsd.edu/~ravir/6160/papers/importancesampling.pdf)
+
 
 ## Files
 
+```
 src/samplers/SamplerPenrose.hpp  
-src/bin/samplers/Penrose_2dd.cpp.cpp
+src/bin/samplers/Penrose_2dd.cpp
+```
 
 ## Description
 
