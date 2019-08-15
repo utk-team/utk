@@ -1,5 +1,5 @@
-Sampler BNOT
-------------
+# Sampler BNOT
+
 
 ## Files
 
@@ -8,7 +8,7 @@ externals/bnot/*
 ## Description
 
 
-This sampler is the BNOT sampmler from []. Due to its code complexity, this sampler was not ported within the UTK framework. It is therefore provided as an external party (in the externals folder). It was however slightly modified to allow using this sampler with similar parameters as other samples from UTK (very useful for scripting purposes). To compile this sampler, please do the following:
+This sampler is a wrapper around the BNOT sampler from [de Goes et al 2012]. Due to its code complexity, this sampler was not ported within the UTK framework. It is therefore provided as an external party (in the externals folder). It was however slightly modified to allow using this sampler with similar parameters as other samples from UTK (very useful for scripting purposes). To compile this sampler, please do the following:
 
  cd externals/bnot
 mkdir build
@@ -38,7 +38,7 @@ To generate a 2D point set of 1024 samples using BNOT, we can use the following 
 Results
 =======
 
- ../externals/bnot/build/pbnot -o BNOT_1024.edat -n 1024 
+      ../externals/bnot/build/pbnot -o BNOT_1024.edat -n 1024 
 
 File  
 [BNOT_1024.edat](data/BNOT/BNOT_1024.edat)
@@ -49,7 +49,7 @@ Pointset
 Fourier  
 [![](data/BNOT/BNOT_1024_fourier.png)](data/BNOT/BNOT_1024_fourier.png)
 
- ../externals/bnot/build/pbnot -o BNOT_4096.edat -n 4096 
+     ../externals/bnot/build/pbnot -o BNOT_4096.edat -n 4096 
 
 File  
 [BNOT_4096.edat](data/BNOT/BNOT_4096.edat)

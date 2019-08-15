@@ -1,10 +1,12 @@
-Sampler Step [[HSD13]](http://kops.uni-konstanz.de/bitstream/handle/123456789/24358/Heck_243584.pdf%3Bjsessionid%3D6A7E6EFBFF35CDC5C5F8EBB5928C44F8?sequence%3D2)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Sampler Step [[HSD13]](http://kops.uni-konstanz.de/bitstream/handle/123456789/24358/Heck_243584.pdf%3Bjsessionid%3D6A7E6EFBFF35CDC5C5F8EBB5928C44F8?sequence%3D2)
+
 
 ## Files
 
+```
 src/samplers/SamplerStep.hpp  
-src/bin/samplers/Step_2dd.cpp.cpp
+src/bin/samplers/Step_2dd.cpp
+```
 
 ## Description
 

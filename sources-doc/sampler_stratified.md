@@ -1,10 +1,12 @@
-Sampler stratified
-------------------
+# Sampler stratified
+
 
 ## Files
 
+```
 src/samplers/SamplerStratified.hpp  
-src/bin/samplers/Stratified_*.cpp.cpp
+src/bin/samplers/Stratified_*.cpp
+```
 
 ## Description
 

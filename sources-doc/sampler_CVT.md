@@ -1,5 +1,5 @@
-Sampler CVT [[BSD09]](https://dl.acm.org/citation.cfm?id=1531392)
--------------------------------------------------------------------
+# Sampler CVT [[BSD09]](https://dl.acm.org/citation.cfm?id=1531392)
+
 
 ## Files
 

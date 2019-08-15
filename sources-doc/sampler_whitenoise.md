@@ -1,10 +1,12 @@
-Sampler whitenoise
-------------------
+# Sampler whitenoise
+
 
 ## Files
 
+```
 src/samplers/SamplerWhitenoise.hpp  
-src/bin/samplers/Whitenoise_*.cpp.cpp
+src/bin/samplers/Whitenoise_*.cpp
+```
 
 ## Description
 
