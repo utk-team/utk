@@ -4,7 +4,7 @@
 
 ```
 src/samplers/SamplerHalton.hpp  
-src/bin/samplers/Halton_*d*.cpp.cpp
+src/bin/samplers/Halton_*d*.cpp
 ```
 
 ## Description
