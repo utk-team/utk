@@ -1,10 +1,10 @@
-Sampler Forced Random [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7)
-------------------------------------------------------------------------------------------------
+# Sampler Forced Random [[CTS*17]](https://link.springer.com/article/10.1007/s00371-017-1392-7)
+
 
 ## Files
 
-src/samplers/SamplerForcedRandom.hpp  
-src/bin/samplers/ForcedRandom_2dd.cpp.cpp
+    src/samplers/SamplerForcedRandom.hpp  
+    src/bin/samplers/ForcedRandom_2dd.cpp.cpp
 
 ## Description
 

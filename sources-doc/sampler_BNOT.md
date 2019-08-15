@@ -3,7 +3,7 @@
 
 ## Files
 
-externals/bnot/*
+    externals/bnot/*
 
 ## Description
 
@@ -33,7 +33,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples using BNOT, we can use the following client line command (from the buold folder):
 
- ../externals/bnot/build/pbnot -n 1024 -o toto.dat 
+     ../externals/bnot/build/pbnot -n 1024 -o toto.dat 
 
 Results
 =======

@@ -1,10 +1,10 @@
-Sampler N-Rooks [[Shi91]](http://www.cs.utah.edu/~shirley/papers/euro91.pdf)
-------------------------------------------------------------------------------
+# Sampler N-Rooks [[Shi91]](http://www.cs.utah.edu/~shirley/papers/euro91.pdf)
+
 
 ## Files
 
-src/samplers/SamplerNRooks.hpp  
-src/bin/samplers/NRooks_*dd.cpp.cpp
+    src/samplers/SamplerNRooks.hpp  
+    src/bin/samplers/NRooks_*dd.cpp.cpp
 
 ## Description
 

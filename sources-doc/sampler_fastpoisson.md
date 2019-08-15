@@ -3,8 +3,8 @@ Sampler Fast Poisson [[Bri07]](https://www.cs.ubc.ca/~rbridson/docs/bridson-sigg
 
 ## Files
 
-src/samplers/SamplerFastPoisson.hpp  
-src/bin/samplers/FastPoisson_2dd.cpp.cpp
+    src/samplers/SamplerFastPoisson.hpp  
+    src/bin/samplers/FastPoisson_2dd.cpp.cpp
 
 ## Description
 

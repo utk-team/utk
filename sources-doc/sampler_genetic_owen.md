@@ -1,15 +1,15 @@
-Sampler Genetic Owen
---------------------
+# Sampler Genetic Owen
+
 
 ## Files
 
-src/samplers/SamplerGeneticOwen.hpp  
-src/bin/samplers/GeneticOwen_2dd.cpp.cpp
+    src/samplers/SamplerGeneticOwen.hpp  
+    src/bin/samplers/GeneticOwen_2dd.cpp.cpp
 
 ## Description
 
 
-Owen's scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1. This leads to 2^N possible trees in each dimension, which is too computationnally expensive for an exhaustive search. This sampler thus uses genetic algorithms to try and find the best possible tree generating Blue Noise sets. However, the algorithm is too naive to generate good Blue Noise sets for more than 128 samples.
+Owen's scrambling uses a permutation tree in each dimension. This tree is usually randomly filled. For a set containing n samples, it contains N flags, with N=n-1. This leads to $2^N$ possible trees in each dimension, which is too computationnally expensive for an exhaustive search. This sampler thus uses genetic algorithms to try and find the best possible tree generating Blue Noise sets. However, the algorithm is too naive to generate good Blue Noise sets for more than 128 samples.
 
 ## Execution
 
