@@ -4,7 +4,7 @@ Sampler Multi Jittered [[CSW94]](https://dl.acm.org/citation.cfm?id=180895.18092
 ## Files
 
 src/samplers/SamplerMultiJitter.hpp  
-src/bin/samplers/MultiJitter_2dd.cpp.cpp
+src/bin/samplers/MultiJitter_2dd.cpp
 
 ## Description
 

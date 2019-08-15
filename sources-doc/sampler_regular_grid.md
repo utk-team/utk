@@ -4,7 +4,7 @@ Sampler Regular Grid
 ## Files
 
 src/samplers/SamplerRegularGrid.hpp  
-src/bin/samplers/RegularGrid_*dd.cpp.cpp
+src/bin/samplers/RegularGrid_*dd.cpp
 
 ## Description
 

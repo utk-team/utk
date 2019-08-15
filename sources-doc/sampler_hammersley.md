@@ -5,7 +5,7 @@
 
 ```
 src/samplers/SamplerHammersley.hpp  
-src/bin/samplers/Hammersley_2d*.cpp.cpp
+src/bin/samplers/Hammersley_2d*.cpp
 ```
 
 

@@ -4,7 +4,7 @@ Sampler Correlated Multi Jittered [[Ken03]](http://graphics.pixar.com/library/Mu
 ## Files
 
 src/samplers/SamplerCMJ.hpp  
-src/bin/samplers/CMJ_2dd.cpp.cpp
+src/bin/samplers/CMJ_2dd.cpp
 
 ## Description
 

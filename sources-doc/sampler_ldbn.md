@@ -5,7 +5,7 @@
 
 ```
 src/samplers/SamplerLDBN.hpp  
-src/bin/samplers/LDBN_2dd.cpp.cpp
+src/bin/samplers/LDBN_2dd.cpp
 ```
 
 ## Description
