@@ -1,10 +1,12 @@
-Sampler Correlated Multi Jittered [[Ken03]](http://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf)
-----------------------------------------------------------------------------------------------------------------
+# Sampler Correlated Multi Jittered [[Ken03]](http://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf)
+
 
 ## Files
 
+```
 src/samplers/SamplerCMJ.hpp  
 src/bin/samplers/CMJ_2dd.cpp
+```
 
 ## Description
 

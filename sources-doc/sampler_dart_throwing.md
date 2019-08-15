@@ -1,10 +1,12 @@
-Sampler Dart Throwing [[MF92]](http://www.dgp.toronto.edu/~elf/.misc/poissondisk.pdf)
----------------------------------------------------------------------------------------
+# Sampler Dart Throwing [[MF92]](http://www.dgp.toronto.edu/~elf/.misc/poissondisk.pdf)
+
 
 ## Files
 
+```
 src/samplers/SamplerDartThrowing.hpp  
-src/bin/samplers/DartThrowing_2dd.cpp.cpp
+src/bin/samplers/DartThrowing_2dd.cpp
+```
 
 ## Description
 
