@@ -1,6 +1,7 @@
 ``` cpp
 /*
- * Coded by Hélène Perrier helene.perrier@liris.cnrs.fr and David Coeurjolly David.coeurjolly@liris.cnrs.fr
+ * Coded by Hélène Perrier helene.perrier@liris.cnrs.fr
+ * and David Coeurjolly David.coeurjolly@liris.cnrs.fr
  *
  * Copyright (c) 2018 CNRS Université de Lyon
  * All rights reserved.
