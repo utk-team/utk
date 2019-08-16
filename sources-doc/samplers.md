@@ -22,29 +22,25 @@ Sampler | License  |Illustration
 
 ##  Blue Noise Samplers
 
-Sampler |  Illustration
---------|------
-AA Patterns  |[![](../data/aapatterns/aapatterns_1024.png)](../sampler_aapatterns)
-ART | [![](../data/art/art_1024.png)](../sampler_art)
+Sampler | License  |Illustration
+--------|------|---
+AA Patterns|  |[![](../data/aapatterns/aapatterns_1024.png)](../sampler_aapatterns)
+ART | | [![](../data/art/art_1024.png)](../sampler_art)
 CVT  | | [![](../data/CVT/CVT_1024.png)](../sampler_CVT)
-CapCVT | [![](../data/CapCVT/CapCVT_1024.png)](../sampler_CapCVT)
-Forced Random | [![](../data/forced_random/forced_random_1024.png)](../sampler_forced_random)
-FPO | [![](../data/FPO/FPO_1024.png)](../sampler_FPO)
-LDBN | [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
-Penrose | [![](../data/penrose/penrose_1024.png)](../sampler_penrose)
-BNOT | [![](../data/BNOT/BNOT_1024.png)](../sampler_BNOT)
+CapCVT| | [![](../data/CapCVT/CapCVT_1024.png)](../sampler_CapCVT)
+Forced Random | | [![](../data/forced_random/forced_random_1024.png)](../sampler_forced_random)
+FPO | |[![](../data/FPO/FPO_1024.png)](../sampler_FPO)
+LDBN | |[![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
+Penrose | |[![](../data/penrose/penrose_1024.png)](../sampler_penrose)
+BNOT | |[![](../data/BNOT/BNOT_1024.png)](../sampler_BNOT)
 
-## Poisson Samplers
+## Poisson Disk Samplers
 
-Sampler |  Illustration
---------|------
-Dart Throwing | [![](../data/dart_throwing/dart_throwing_1024.png)](../sampler_dart_throwing)
-Fast Poisson | [![](../data/fastpoisson/fastpoisson_1024.png)](../sampler_fastpoisson)
-![](../data/empty.png)
+Sampler | License  |Illustration
+--------|------|---
+Dart Throwing | | [![](../data/dart_throwing/dart_throwing_1024.png)](../sampler_dart_throwing)
+Fast Poisson|  | [![](../data/fastpoisson/fastpoisson_1024.png)](../sampler_fastpoisson)
 
-![](../data/empty.png)
-
-![](../data/empty.png)
 
 ## Other Samplers
 
@@ -58,7 +54,7 @@ Regular Grid | [![](../data/regular_grid/regular_grid_1024.png)](../sampler_regu
 Single Peak | [![](../data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
 Step | [![](../data/step/step_1024.png)](../sampler_step)
 Stratified | [![](../data/stratified/stratified_1024.png)](../sampler_stratified)
-Whitenoise | [![](../data/stratified/whitenoise_1024.png)](../sampler_whitenoise)
+Whitenoise | [![](../data/whitenoise/whitenoise_1024.png)](../sampler_whitenoise)
 
 ## Experimental Samplers
 
@@ -67,7 +63,3 @@ Sampler |  Illustration
 Exhaustive Owen | [![](../data/exhaustive_owen/exhaustive_owen_16.png)](../sampler_exhaustive_owen)
 Genetic Owen | [![](../data/genetic_owen/genetic_owen_64.png)](../sampler_genetic_owen)
 Gradient descent | [![](../data/gradient_descent/optimbnot_1024.png)](../sampler_gradient_descent)
-
-![](../data/empty.png)
-
-![](../data/empty.png)
