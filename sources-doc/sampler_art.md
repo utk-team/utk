@@ -1,10 +1,10 @@
-Sampler ART [[ANH*17]](http://abdallagafar.com/publications/art/)
---------------------------------------------------------------------
+# Sampler ART [[ANH*17]](http://abdallagafar.com/publications/art/)
+
 
 ## Files
 
-src/samplers/SamplerART.hpp  
-src/bin/samplers/ART_2dd.cpp.cpp
+    src/samplers/SamplerART.hpp  
+    src/bin/samplers/ART_2dd.cpp.cpp
 
 ## Description
 

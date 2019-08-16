@@ -1,10 +1,11 @@
-Sampler Korobov [[Kor59]](https://www.sciencedirect.com/science/article/pii/S0885064X14001204)
-------------------------------------------------------------------------------------------------
+# Sampler Korobov [[Kor59]](https://www.sciencedirect.com/science/article/pii/S0885064X14001204)
+
 
 ## Files
 
-src/samplers/SamplerKorobov.hpp  
-src/bin/samplers/Korobov_2dd.cpp.cpp
+    src/samplers/SamplerKorobov.hpp  
+    src/bin/samplers/Korobov_2dd.cpp
+
 
 ## Description
 

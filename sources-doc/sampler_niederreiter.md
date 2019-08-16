@@ -16,7 +16,7 @@ The Niederreiter sequence.  For a more precise description of this sampler and i
 
 ## License
 
-LGPL, code from [https://people.sc.fsu.edu/~jburkardt/cpp_src/niederreiter2/niederreiter2.html](https://people.sc.fsu.edu/~jburkardt/cpp_src/niederreiter2/niederreiter2.html)
+GNU LGPL, code from [https://people.sc.fsu.edu/~jburkardt/cpp_src/niederreiter2/niederreiter2.html](https://people.sc.fsu.edu/~jburkardt/cpp_src/niederreiter2/niederreiter2.html)
 
 ## Execution
 

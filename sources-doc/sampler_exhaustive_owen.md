@@ -1,10 +1,10 @@
-Sampler Exhaustive Owen
------------------------
+# Sampler Exhaustive Owen
+
 
 ## Files
 
-src/samplers/SamplerExhaustiveOwen.hpp  
-src/bin/samplers/ExaustiveOwen_2dd.cpp.cpp
+    src/samplers/SamplerExhaustiveOwen.hpp  
+    src/bin/samplers/ExaustiveOwen_2dd.cpp.cpp
 
 ## Description
 

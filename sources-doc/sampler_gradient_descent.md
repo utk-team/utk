@@ -1,10 +1,10 @@
-Sampler Gradient Descent
-------------------------
+# Sampler Gradient Descent
+
 
 ## Files
 
-src/samplers/SamplerGradientDescent.hpp  
-src/bin/samplers/GradientDescent_2dd.cpp.cpp
+    src/samplers/SamplerGradientDescent.hpp  
+    src/bin/samplers/GradientDescent_2dd.cpp.cpp
 
 ## Description
 
