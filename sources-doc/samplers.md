@@ -30,9 +30,9 @@ CVT  | | [![](../data/CVT/CVT_1024.png)](../sampler_CVT)
 CapCVT| | [![](../data/CapCVT/CapCVT_1024.png)](../sampler_CapCVT)
 Forced Random | | [![](../data/forced_random/forced_random_1024.png)](../sampler_forced_random)
 FPO | |[![](../data/FPO/FPO_1024.png)](../sampler_FPO)
-LDBN | |[![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
+LDBN |BSD |[![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 Penrose | |[![](../data/penrose/penrose_1024.png)](../sampler_penrose)
-BNOT | |[![](../data/BNOT/BNOT_1024.png)](../sampler_BNOT)
+BNOT | BSD*|[![](../data/BNOT/BNOT_1024.png)](../sampler_BNOT)
 
 ## Poisson Disk Samplers
 
@@ -44,22 +44,22 @@ Fast Poisson|  | [![](../data/fastpoisson/fastpoisson_1024.png)](../sampler_fast
 
 ## Other Samplers
 
-Sampler |  Illustration
---------|------
-CMJ | [![](../data/cmj/cmj_1024.png)](../sampler_cmj)
-Hexagonal Grid | [![](../data/hexagonal_grid/hexagonal_grid_1024.png)](../sampler_hexagonal_grid)
-Korobov | [![](../data/korobov/korobov_1024.png)](../sampler_korobov)
-NRooks | [![](../data/nrooks/nrooks_1024.png)](../sampler_nrooks)
-Regular Grid | [![](../data/regular_grid/regular_grid_1024.png)](../sampler_regular_grid)
-Single Peak | [![](../data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
-Step | [![](../data/step/step_1024.png)](../sampler_step)
-Stratified | [![](../data/stratified/stratified_1024.png)](../sampler_stratified)
-Whitenoise | [![](../data/whitenoise/whitenoise_1024.png)](../sampler_whitenoise)
+Sampler | License  |Illustration
+--------|------|---
+CMJ | | [![](../data/cmj/cmj_1024.png)](../sampler_cmj)
+Hexagonal Grid| BSD| [![](../data/hexagonal_grid/hexagonal_grid_1024.png)](../sampler_hexagonal_grid)
+Korobov | BSD|[![](../data/korobov/korobov_1024.png)](../sampler_korobov)
+NRooks | |[![](../data/nrooks/nrooks_1024.png)](../sampler_nrooks)
+Regular Grid | BSD|[![](../data/regular_grid/regular_grid_1024.png)](../sampler_regular_grid)
+Single Peak | |[![](../data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
+Step| | [![](../data/step/step_1024.png)](../sampler_step)
+Stratified | BSD|[![](../data/stratified/stratified_1024.png)](../sampler_stratified)
+Whitenoise | BSD|[![](../data/whitenoise/whitenoise_1024.png)](../sampler_whitenoise)
 
 ## Experimental Samplers
 
-Sampler |  Illustration
---------|------
-Exhaustive Owen | [![](../data/exhaustive_owen/exhaustive_owen_16.png)](../sampler_exhaustive_owen)
-Genetic Owen | [![](../data/genetic_owen/genetic_owen_64.png)](../sampler_genetic_owen)
-Gradient descent | [![](../data/gradient_descent/optimbnot_1024.png)](../sampler_gradient_descent)
+Sampler | License  |Illustration
+--------|------|---
+Exhaustive Owen| BSD| [![](../data/exhaustive_owen/exhaustive_owen_16.png)](../sampler_exhaustive_owen)
+Genetic Owen| BSD| [![](../data/genetic_owen/genetic_owen_64.png)](../sampler_genetic_owen)
+Gradient descent| BSD| [![](../data/gradient_descent/optimbnot_1024.png)](../sampler_gradient_descent)
