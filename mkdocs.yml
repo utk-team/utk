@@ -87,7 +87,7 @@ nav:
     - Generalized L2 Discrepancy: 'discrepancy_generalized_l2_disc.md'
     - Fast bounds on the Star Discrepancy: 'discrepancy_bounds_star_disc.md'
   - Integration Tests:
-    - NSpheres: 'integration_n_Sphere.md'
+    - NSpheres: 'integration_n-Sphere.md'
     - Centered Gaussian: 'integration_centered_gaussian.md'
     - Cornered Gaussian: 'integration_cornered_gaussian.md'
     - Gaussian: 'integration_gaussian.md'
