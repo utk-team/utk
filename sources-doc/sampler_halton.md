@@ -36,7 +36,7 @@ Parameters:
 
 To generate a 2D point set of 1024 samples with a halton distribution, we can use the following client line command:
 
-           ./bin/samplers/Halton_2dd -n 1024 -o toto.dat 
+           ./bin/samplers/Halton_2dd -n 1024 -o toto.dat
 
 Or one can use the following C++ code:
 
@@ -56,49 +56,49 @@ Or one can use the following C++ code:
 ## Results
 
 
-          ./bin/samplers/Halton_2dd -o halton_1024.edat -n 1024 
+          ./bin/samplers/Halton_2dd -o halton_1024.edat -n 1024
 
 
 File  
-[halton_1024.edat](../data/halton/halton_1024.edat)
+[halton_1024.edat](data/halton/halton_1024.edat)
 
 Pointset  
-[![](../data/halton/halton_1024.png)](../data/halton/halton_1024.png)
+[![](data/halton/halton_1024.png)](data/halton/halton_1024.png)
 
 Fourier  
-[![](../data/halton/halton_1024_fourier.png)](../data/halton/halton_1024_fourier.png)
+[![](data/halton/halton_1024_fourier.png)](data/halton/halton_1024_fourier.png)
 
-         ./bin/samplers/Halton_2dd -o halton_4096.edat -n 4096 
+         ./bin/samplers/Halton_2dd -o halton_4096.edat -n 4096
 
 File  
-[halton_4096.edat](../data/halton/halton_4096.edat)
+[halton_4096.edat](data/halton/halton_4096.edat)
 
 Pointset  
-[![](../data/halton/halton_4096.png)](../data/halton/halton_4096.png)
+[![](data/halton/halton_4096.png)](data/halton/halton_4096.png)
 
 Fourier  
-[![](../data/halton/halton_4096_fourier.png)](../data/halton/halton_4096_fourier.png)
+[![](data/halton/halton_4096_fourier.png)](data/halton/halton_4096_fourier.png)
 
-         ./bin/samplers/Halton_2dd -x 5 -y 7 -o halton_57_1024.edat -n 1024 
+         ./bin/samplers/Halton_2dd -x 5 -y 7 -o halton_57_1024.edat -n 1024
 
 File  
-[halton_57_1024.edat](../data/halton_57/halton_57_1024.edat)
+[halton_57_1024.edat](data/halton_57/halton_57_1024.edat)
 
 Pointset  
-[![](../data/halton_57/halton_57_1024.png)](../data/halton_57/halton_57_1024.png)
+[![](data/halton_57/halton_57_1024.png)](data/halton_57/halton_57_1024.png)
 
 Fourier  
-[![](../data/halton_57/halton_57_1024_fourier.png)](../data/halton_57/halton_57_1024_fourier.png)
+[![](data/halton_57/halton_57_1024_fourier.png)](data/halton_57/halton_57_1024_fourier.png)
 
 When the basis are not relatively prime, the low discrepancy property is broken.
 
-        ./bin/samplers/Halton_2dd -x 3 -y 6 -o halton_36_1024.edat -n 1024 
+        ./bin/samplers/Halton_2dd -x 3 -y 6 -o halton_36_1024.edat -n 1024
 
 File  
-[halton_36      _1024.edat](../data/halton_36/halton_36_1024.edat)
+[halton_36      _1024.edat](data/halton_36/halton_36_1024.edat)
 
 Pointset  
-[![](../data/halton_36/halton_36_1024.png)](../data/halton_36/halton_36_1024.png)
+[![](data/halton_36/halton_36_1024.png)](data/halton_36/halton_36_1024.png)
 
 Fourier  
-[![](../data/halton_36/halton_36_1024_fourier.png)](../data/halton_36/halton_36_1024_fourier.png)
+[![](data/halton_36/halton_36_1024_fourier.png)](data/halton_36/halton_36_1024_fourier.png)

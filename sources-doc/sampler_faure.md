@@ -52,21 +52,21 @@ Or one can use the following C++ code:
         ./bin/samplers/Faure_2dd -o faure_1024.edat -n 1024
 
 ### File  
-[faure_1024.edat](../data/faure/faure_1024.edat)
+[faure_1024.edat](data/faure/faure_1024.edat)
 
 ### Pointset  
-[![](../data/faure/faure_1024.png)](../data/faure/faure_1024.png)
+[![](data/faure/faure_1024.png)](data/faure/faure_1024.png)
 
 ### Fourier  
-[![](../data/faure/faure_1024_fourier.png)](../data/faure/faure_1024_fourier.png)
+[![](data/faure/faure_1024_fourier.png)](data/faure/faure_1024_fourier.png)
 
         ./bin/samplers/Faure_2dd -o faure_4096.edat -n 4096
 
 ### File  
-[faure_4096.edat](../data/faure/faure_4096.edat)
+[faure_4096.edat](data/faure/faure_4096.edat)
 
 ### Pointset  
-[![](../data/faure/faure_4096.png)](../data/faure/faure_4096.png)
+[![](data/faure/faure_4096.png)](data/faure/faure_4096.png)
 
 ### Fourier  
-[![](../data/faure/faure_4096_fourier.png)](../data/faure/faure_4096_fourier.png)
+[![](data/faure/faure_4096_fourier.png)](data/faure/faure_4096_fourier.png)

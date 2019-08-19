@@ -73,8 +73,14 @@ nav:
     - Step: 'sampler_step.md'
     - Stratified: 'sampler_stratified.md'
     - Whitenoise: 'sampler_whitenoise.md'
-  - Discrepancy:
+  - Discrepancy Evaluation:
     - Star discrepancy: 'discrepancy_star_disc.md'
+    - L2 Discrepancy: 'discrepancy_l2_disc.md'
+    - Centered L2 Discrepancy: 'discrepancy_centered_l2_disc.md'
+    - Unanchored L2 Discrepancy: 'discrepancy_unanchored_l2_disc.md'
+    - Symmetric L2 Discrepancy: 'discrepancy_symmetric_l2_disc.md'
+    - Generalized L2 Discrepancy: 'discrepancy_generalized_l2_disc.md'
+    - Fast bounds on the Star Discrepancy: 'discrepancy_bounds_star_disc.md'
   - Classes:
     - Doxygen: 'doxygen.md'
     - I/O formats: 'io_format.md'

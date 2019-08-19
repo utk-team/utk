@@ -1,12 +1,12 @@
 # Uni{corn|form} Tool Kit
 
-![](../data/logo_utk2.jpg) The UTK tool kit aims at providing executables to generate and analyze point sets in unit domains $[0,1)^s$. It is originally meant to help researchers developing sampling patterns in a numerical integration using Monte Carlo estimators. More precisely, it was developed with the precise question of optimizing image synthesis via Path tracing algorithms.
+![](data/logo_utk2.jpg) The UTK tool kit aims at providing executables to generate and analyze point sets in unit domains $[0,1)^s$. It is originally meant to help researchers developing sampling patterns in a numerical integration using Monte Carlo estimators. More precisely, it was developed with the precise question of optimizing image synthesis via Path tracing algorithms.
 
-UTK is a C++ library that implements a large variety of samplers and tools to analyze and compare them (discrepancy evaluation, spectral analysis, numerical integration tests...). 
+UTK is a C++ library that implements a large variety of samplers and tools to analyze and compare them (discrepancy evaluation, spectral analysis, numerical integration tests...).
 
 ## License
 
-The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (ses the [samplers](samplers) page for details). 
+The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (ses the [samplers](samplers) page for details).
 
 
 ## Clone and Build
