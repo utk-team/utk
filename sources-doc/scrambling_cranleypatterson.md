@@ -49,4 +49,10 @@ Input
 
 Output  
 [scrambled_m3.edat](data/cranleypatterson/scrambled_m3.edat)  
-[![](data/cranleypatterson/scrambled1.png)](data/cranleypatterson/scrambled1.png) [![](data/cranleypatterson/scrambled2.png)](data/cranleypatterson/scrambled2.png) [![](data/cranleypatterson/scrambled3.png)](data/cranleypatterson/scrambled3.png)
+[![](data/cranleypatterson/scrambled1.png)](data/cranleypatterson/scrambled1.png)
+
+
+[![](data/cranleypatterson/scrambled2.png)](data/cranleypatterson/scrambled2.png)
+
+
+ [![](data/cranleypatterson/scrambled3.png)](data/cranleypatterson/scrambled3.png)

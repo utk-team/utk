@@ -50,4 +50,10 @@ Input
 
 Output  
 [scrambled_m3.edat](data/digitalxor/scrambled_m3.edat)  
-[![](data/digitalxor/scrambled1.png)](data/digitalxor/scrambled1.png) [![](data/digitalxor/scrambled2.png)](data/digitalxor/scrambled2.png) [![](data/digitalxor/scrambled3.png)](data/digitalxor/scrambled3.png)
+[![](data/digitalxor/scrambled1.png)](data/digitalxor/scrambled1.png)
+
+
+[![](data/digitalxor/scrambled2.png)](data/digitalxor/scrambled2.png)
+
+
+[![](data/digitalxor/scrambled3.png)](data/digitalxor/scrambled3.png)

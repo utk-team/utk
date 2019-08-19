@@ -54,4 +54,8 @@ Input
 
 Output  
 [scrambled_m3.edat](data/owenscrambler/scrambled_m3.edat)  
-[![](data/owenscrambler/scrambled1.png)](data/owenscrambler/scrambled1.png) [![](data/owenscrambler/scrambled2.png)](data/owenscrambler/scrambled2.png) [![](data/owenscrambler/scrambled3.png)](data/owenscrambler/scrambled3.png)
+[![](data/owenscrambler/scrambled1.png)](data/owenscrambler/scrambled1.png)
+
+[![](data/owenscrambler/scrambled2.png)](data/owenscrambler/scrambled2.png)
+
+ [![](data/owenscrambler/scrambled3.png)](data/owenscrambler/scrambled3.png)
