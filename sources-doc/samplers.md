@@ -17,7 +17,7 @@ Sampler | License  |Illustration
 [Sobol](../sampler_sobolindiced) (Original) | BSD | [![](../data/sobolindiced/sobolindiced_1024.png)](../sampler_sobolindiced)
 [Owen](../sampler_owen) (Sobol) | BSD |[![](../data/owen/owen_1024.png)](../sampler_owen)
 [Rank 1](../sampler_rank1) | ??  |[![](../data/rank1/rank1_1024.png)](../sampler_rank1)
-[LDBN] (../sampler_ldbn) | BSD |  [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
+[LDBN](../sampler_ldbn) | BSD |  [![](../data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 [BNLD Sequences](../sampler_BNLDS) | BSD |  [![](../data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
 
 ##  Blue Noise Samplers

@@ -457,9 +457,52 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        FPO
+      </label>
+    
     <a href="./" title="FPO" class="md-nav__link md-nav__link--active">
       FPO
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files" title="Files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution" title="Execution" class="md-nav__link">
+    Execution
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -635,10 +678,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      Classes
+      Discrepancy
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        Discrepancy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../discrepancy_star_disc/" title="Star discrepancy" class="md-nav__link">
+      Star discrepancy
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Classes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
         Classes
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -690,6 +769,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files" title="Files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution" title="Execution" class="md-nav__link">
+    Execution
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -701,11 +810,14 @@
               
                 
                 
-                <h2 id="sampler-fpo-shd11">Sampler FPO <a href="https://dl.acm.org/citation.cfm?id=2018345">[SHD11]</a></h2>
+                <h1 id="sampler-fpo-shd11">Sampler FPO <a href="https://dl.acm.org/citation.cfm?id=2018345">[SHD11]</a></h1>
 <h2 id="files">Files</h2>
-<p>src/samplers/SamplerFPO.hpp<br />
-src/samplers/SamplerFPO/*<br />
-src/bin/samplers/FPO_2dd.cpp  </p>
+<div class="codehilite"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerFPO</span><span class="p">.</span><span class="n">hpp</span>  
+<span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">SamplerFPO</span><span class="cm">/*  </span>
+<span class="cm">src/bin/samplers/FPO_2dd.cpp</span>
+</pre></div>
+
+
 <h2 id="description">Description</h2>
 <p>Implementation from the stk library of the sampler from <a href="https://dl.acm.org/citation.cfm?id=2018345">[SHD11]</a>.<br />
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
@@ -721,7 +833,10 @@ For a more precise description of this sampler and its performances in terms of 
 
 
 <p>To generate a 2D point set of 1024 samples with a FPO distribution, we can use the following client line command:</p>
-<p>./src/samplers/FPO_2dd -n 1024 -o toto.dat </p>
+<div class="codehilite"><pre><span></span> <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">FPO_2dd</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span> <span class="o">-</span><span class="n">o</span> <span class="n">toto</span><span class="p">.</span><span class="n">dat</span>
+</pre></div>
+
+
 <p>Or one can use the following C++ code:</p>
 <div class="codehilite"><pre><span></span><span class="n">PointsetWriter</span><span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">Point</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="n">double</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">writer</span><span class="p">;</span>
 <span class="n">writer</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="ss">&quot;toto.dat&quot;</span><span class="p">);</span>
@@ -735,14 +850,20 @@ For a more precise description of this sampler and its performances in terms of 
 
 
 <h1 id="results">Results</h1>
-<p>./src/samplers/FPO_2dd -o FPO_1024.edat -n 1024 </p>
+<div class="codehilite"><pre><span></span>  <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">FPO_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">FPO_1024</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1024</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/FPO/FPO_1024.edat">FPO_1024.edat</a></p>
 <p>Pointset<br />
 <a href="../data/FPO/FPO_1024.png"><img alt="" src="../data/FPO/FPO_1024.png" /></a></p>
 <p>Fourier<br />
 <a href="../data/FPO/FPO_1024_fourier.png"><img alt="" src="../data/FPO/FPO_1024_fourier.png" /></a></p>
-<p>./src/samplers/FPO_2dd -o FPO_4096.edat -n 4096 </p>
+<div class="codehilite"><pre><span></span>  <span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">FPO_2dd</span> <span class="o">-</span><span class="n">o</span> <span class="n">FPO_4096</span><span class="p">.</span><span class="n">edat</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4096</span>
+</pre></div>
+
+
 <p>File<br />
 <a href="../data/FPO/FPO_4096.edat">FPO_4096.edat</a></p>
 <p>Pointset<br />

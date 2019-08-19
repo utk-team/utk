@@ -15,7 +15,7 @@ Implementation of
 Hélène Perrier, David Coeurjolly, Feng Xie, Matt Pharr, Pat Hanrahan, Victor Ostromoukhov. Sequences with Low-Discrepancy Blue-Noise 2-D Projections. Computer Graphics Forum (Proceedings of Eurographics), 37(2):339–353, 2018.
 ```
 
-See also [https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html]](https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html).
+See also [https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html](https://perso.liris.cnrs.fr/david.coeurjolly/publications/perrier18eg.html).
 
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
