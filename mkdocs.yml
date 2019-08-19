@@ -1,0 +1,111 @@
+site_name: Uni{form|corn} tool kit
+markdown_extensions:
+  - codehilite
+  - attr_list
+  - admonition
+  - markdown.extensions.footnotes
+  - markdown.extensions.smarty
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+
+
+extra:
+  search:
+    tokenizer: '[\s\-\.::]+'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'light-green'
+    accent: 'deep orange'
+  font:
+    text: 'PT Serif'
+    code: 'Inconsolata'
+  logo: 'data/logo_utk.png'
+
+extra_css:
+  - extras.css
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+repo_name: 'utk-team/utk'
+repo_url: 'https://github.com/utk-team/utk'
+edit_uri: ''
+
+
+docs_dir: 'sources-doc'
+site_dir: 'docs'
+
+nav:
+  - Home: 'index.md'
+  - Samplers:
+    - ---All samplers---: 'samplers.md'
+    - Faure: 'sampler_faure.md'
+    - Halton: 'sampler_halton.md'
+    - Hammersley: 'sampler_hammersley.md'
+    - Niederreiter: 'sampler_niederreiter.md'
+    - Sobol (Joe&Kuo): 'sampler_sobolkuo.md'
+    - Sobol (Original): 'sampler_sobolindiced.md'
+    - Owen Scrambled Sobol: 'sampler_owen.md'
+    - Rank 1: 'sampler_rank1.md'
+    - LDBN: 'sampler_ldbn.md'
+    - BNLD Sequences: 'sampler_BNLDS.md'
+    - Progressive MultiJittered Sampling: 'sampler_PMJ.md'
+    - AA Patterns: 'sampler_aapatterns.md'
+    - ART: 'sampler_art.md'
+    - CVT : 'sampler_CVT.md'
+    - CapCVT: 'sampler_CapCVT.md'
+    - Forced Random: 'sampler_forced_random.md'
+    - FPO: 'sampler_FPO.md'
+    - Penrose: 'sampler_penrose.md'
+    - BNOT: 'sampler_BNOT.md'
+    - Dart Throwing: 'sampler_dart_throwing.md'
+    - Fast Poisson: 'sampler_fastpoisson.md'
+    - CMJ: 'sampler_cmj.md'
+    - Hexagonal grid: 'sampler_hexagonal_grid.md'
+    - Korobov: 'sampler_korobov.md'
+    - NRooks: 'sampler_nrooks.md'
+    - Regular grid: 'sampler_regular_grid.md'
+    - Single Peak: 'sampler_singlepeak.md'
+    - Step: 'sampler_step.md'
+    - Stratified: 'sampler_stratified.md'
+    - Whitenoise: 'sampler_whitenoise.md'
+  - Scrambling:
+    - Cranley Patterson: 'scrambling_cranleypatterson.md'
+    - Digital XOR: 'scrambling_digitalxor.md'
+    - Owen Scrambling: 'scrambling_owen.md'
+  - Discrepancy Evaluation:
+    - Star discrepancy: 'discrepancy_star_disc.md'
+    - L2 Discrepancy: 'discrepancy_l2_disc.md'
+    - Centered L2 Discrepancy: 'discrepancy_centered_l2_disc.md'
+    - Unanchored L2 Discrepancy: 'discrepancy_unanchored_l2_disc.md'
+    - Symmetric L2 Discrepancy: 'discrepancy_symmetric_l2_disc.md'
+    - Generalized L2 Discrepancy: 'discrepancy_generalized_l2_disc.md'
+    - Fast bounds on the Star Discrepancy: 'discrepancy_bounds_star_disc.md'
+  - Integration Tests:
+    - NSpheres: 'integration_n_Sphere.md'
+    - Centered Gaussian: 'integration_centered_gaussian.md'
+    - Cornered Gaussian: 'integration_cornered_gaussian.md'
+    - Gaussian: 'integration_gaussian.md'
+    - Image: 'integration_image.md'
+    - Box arrangement: 'integration_box_arrangement.md'
+    - Triangle arrangement: 'integration_triangle_arrangement.md'
+  - Spectral Analysis: 'spectral_fourier.md'
+  - Statistics:
+    - Pair Correlation Function: 'stats_PCF.md'
+    - Minimum Distance: 'stats_minDist.md'
+  - Zoneplace Test: 'rendering_zoneplate.md'
+  - Classes:
+    - Doxygen: 'doxygen.md'
+    - I/O formats: 'io_format.md'
+  - Misc. and Scripts:
+    - Histogram compare: 'utils_histogram_compare.md'
+    - Script discrepancy: 'scripts_discrepancy_graph.md'
+    - Script integration: 'scripts_integration_graph.md'
+    - Plot pointset: 'utils_draw_pointset.md'
+    - Plot PCF: 'scripts_plot_pcf.md'
+    - Plot Radial: 'scripts_plot_radial.md'
