@@ -47,7 +47,7 @@ Originally, only CImg and dCpp are activated, since they are very light librarie
 
 To activate or deactivate a library, one can either edit the file utk/CMakeLists.txt to set to true/false the variables \[LIBRARY\]\_ON. Or one can use the following command ccmake .. from the build repository to edit the compilation options.
 
-## Misc
+## Authors
 
 
 The UTK library was developed mainly by
@@ -68,3 +68,6 @@ title = {Uni(corn|form) tool kit},
 note = {url{https://utk-team.github.io/utk/}}
 }
 ```
+## Contributing
+
+UTK is an open-source, community driven, project. If you want to help us (typos, documentations issues, new samplers, new tools...), feel free to create a Pull-Request on the Github project.

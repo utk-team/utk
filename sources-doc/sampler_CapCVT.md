@@ -1,11 +1,12 @@
-Sampler CapCVT [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839)
-----------------------------------------------------------------------
+# Sampler CapCVT [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839)
 
 ## Files
 
+```
 src/samplers/SamplerCapCVT.hpp  
 src/samplers/CapCVT_2dd.cpp  
 src/samplers/SamplerCapCVT/
+```
 
 ## Description
 
@@ -13,9 +14,11 @@ src/samplers/SamplerCapCVT/
 Implementation of the CapCVT sampler from [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
+**Requires CGAL v2**
+
 ## Execution
 
-
+```
 Parameters:  
 
 	[HELP]
@@ -27,15 +30,15 @@ Parameters:
 	-n [ullint=1024]		Number of samples to generate
 	--silent 			Silent mode
 	-h 				Displays this help message
-			
+```			
 
 To generate a 2D point set of 1024 samples with a CapCVT distribution, we can use the following client line command:
 
- ./src/samplers/CapCVT_2dd -n 1024 -o toto.dat 
+     ./src/samplers/CapCVT_2dd -n 1024 -o toto.dat
 
 Or one can use the following C++ code:
 
-    
+``` cpp    
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -48,12 +51,11 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
     writer.writePointset(pts);
     writer.close();
-    			
+```     			
 
-Results
-=======
+## Results
 
- ./src/samplers/CapCVT_2dd -o CapCVT_1024.edat -n 1024 
+     ./src/samplers/CapCVT_2dd -o CapCVT_1024.edat -n 1024
 
 File  
 [CapCVT_1024.edat](data/CapCVT/CapCVT_1024.edat)
@@ -64,7 +66,7 @@ Pointset
 Fourier  
 [![](data/CapCVT/CapCVT_1024_fourier.png)](data/CapCVT/CapCVT_1024_fourier.png)
 
- ./src/samplers/CapCVT_2dd -o CapCVT_4096.edat -n 4096 
+     ./src/samplers/CapCVT_2dd -o CapCVT_4096.edat -n 4096
 
 File  
 [CapCVT_4096.edat](data/CapCVT/CapCVT_4096.edat)
@@ -75,7 +77,7 @@ Pointset
 Fourier  
 [![](data/CapCVT/CapCVT_4096_fourier.png)](data/CapCVT/CapCVT_4096_fourier.png)
 
- ./src/samplers/CapCVT_2dd -o CapCVT_2_1024.edat -n 1024 --lambda 10 
+     ./src/samplers/CapCVT_2dd -o CapCVT_2_1024.edat -n 1024 --lambda 10
 
 File  
 [CapCVT_2_1024.edat](data/CapCVT_2/CapCVT_2_1024.edat)
@@ -86,7 +88,7 @@ Pointset
 Fourier  
 [![](data/CapCVT_2/CapCVT_2_1024_fourier.png)](data/CapCVT_2/CapCVT_2_1024_fourier.png)
 
- ./src/samplers/CapCVT_2dd -o CapCVT_2_1024.edat -n 1024 --iter 10 
+     ./src/samplers/CapCVT_2dd -o CapCVT_2_1024.edat -n 1024 --iter 10
 
 File  
 [CapCVT_3_1024.edat](data/CapCVT_3/CapCVT_3_1024.edat)

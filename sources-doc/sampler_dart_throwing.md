@@ -14,6 +14,10 @@ src/bin/samplers/DartThrowing_2dd.cpp
 A naive (relaxed) dart throwing algorithm.  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
+## License
+
+BSD, see `SamplerDartThrowing.hpp`
+
 ## Execution
 
 
@@ -26,15 +30,15 @@ Parameters:
 	--silent 			Silent mode
 	-h 				Displays this help message
 	--relaxed 				Use relaxed dart throwing
-			
+
 
 To generate a 2D point set of 1024 samples with a dart_throwing distribution, we can use the following client line command:
 
-     ./bin/samplers/DartThrowing_2dd -n 1024 -o toto.dat 
+     ./bin/samplers/DartThrowing_2dd -n 1024 -o toto.dat
 
 Or one can use the following C++ code:
 
-    
+
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -43,12 +47,12 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts, param_nbsamples);
     writer.writePointset(pts);
     writer.close();
-    			
+
 
 Results
 =======
 
-     ./bin/samplers/DartThrowing_2dd -o dart_throwing_1024.edat -n 1024 
+     ./bin/samplers/DartThrowing_2dd -o dart_throwing_1024.edat -n 1024
 
 File  
 [dart_throwing_1024.edat](data/dart_throwing/dart_throwing_1024.edat)
@@ -59,7 +63,7 @@ Pointset
 Fourier  
 [![](data/dart_throwing/dart_throwing_1024_fourier.png)](data/dart_throwing/dart_throwing_1024_fourier.png)
 
-     ./bin/samplers/DartThrowing_2dd -o dart_throwing_4096.edat -n 4096 
+     ./bin/samplers/DartThrowing_2dd -o dart_throwing_4096.edat -n 4096
 
 File  
 [dart_throwing_4096.edat](data/dart_throwing/dart_throwing_4096.edat)
@@ -70,7 +74,7 @@ Pointset
 Fourier  
 [![](data/dart_throwing/dart_throwing_4096_fourier.png)](data/dart_throwing/dart_throwing_4096_fourier.png)
 
-     ./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_1024.edat -n 1024 
+     ./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_1024.edat -n 1024
 
 File  
 [dart_throwing_relaxed_1024.edat](data/dart_throwing_relaxed/dart_throwing_relaxed_1024.edat)
@@ -81,7 +85,7 @@ Pointset
 Fourier  
 [![](data/dart_throwing_relaxed/dart_throwing_relaxed_1024_fourier.png)](data/dart_throwing_relaxed/dart_throwing_relaxed_1024_fourier.png)
 
-     ./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_4096.edat -n 4096 
+     ./bin/samplers/DartThrowing_2dd --relaxed -o dart_throwing_relaxed_4096.edat -n 4096
 
 File  
 [dart_throwing_relaxed_4096.edat](data/dart_throwing_relaxed/dart_throwing_relaxed_4096.edat)

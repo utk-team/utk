@@ -19,47 +19,48 @@ Sampler | License  |Illustration
 [Rank 1](../sampler_rank1) | ??  |[![](data/rank1/rank1_1024.png)](../sampler_rank1)
 [LDBN](../sampler_ldbn) | BSD |  [![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 [BNLD Sequences](../sampler_BNLDS) | BSD |  [![](data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
+[Progressive MultiJittered Sampling](../sampler_PMJ) | BSD |  [![](data/PMJ/Images/PMJ02_1024.png)](../sampler_PMJ)
 
 ##  Blue Noise Samplers
 
 Sampler | License  |Illustration
 --------|------|---
-AA Patterns|  |[![](data/aapatterns/aapatterns_1024.png)](../sampler_aapatterns)
-ART | | [![](data/art/art_1024.png)](../sampler_art)
-CVT  | | [![](data/CVT/CVT_1024.png)](../sampler_CVT)
-CapCVT| | [![](data/CapCVT/CapCVT_1024.png)](../sampler_CapCVT)
-Forced Random | | [![](data/forced_random/forced_random_1024.png)](../sampler_forced_random)
-FPO | |[![](data/FPO/FPO_1024.png)](../sampler_FPO)
-LDBN |BSD |[![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
-Penrose | |[![](data/penrose/penrose_1024.png)](../sampler_penrose)
-BNOT | BSD*|[![](data/BNOT/BNOT_1024.png)](../sampler_BNOT)
+[AA Patterns](../sampler_aapatterns)| See doc |[![](data/aapatterns/aapatterns_1024.png)](../sampler_aapatterns)
+[ART](../sampler_art) | See doc | [![](data/art/art_1024.png)](../sampler_art)
+[CVT](../sampler_CVT)  | See doc| [![](data/CVT/CVT_1024.png)](../sampler_CVT)
+[CapCVT](../sampler_CapCVT)| See doc | [![](data/CapCVT/CapCVT_1024.png)](../sampler_CapCVT)
+[Forced Random](../sampler_forced_random) | open | [![](data/forced_random/forced_random_1024.png)](../sampler_forced_random)
+[FPO](../sampler_FPO)| See doc |[![](data/FPO/FPO_1024.png)](../sampler_FPO)
+[LDBN](../sampler_ldbn) |BSD |[![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
+[Penrose](../sampler_penrose) | See doc|[![](data/penrose/penrose_1024.png)](../sampler_penrose)
+[BNOT](../sampler_BNOT)| BSD and GPL |[![](data/BNOT/BNOT_1024.png)](../sampler_BNOT)
 
 ## Poisson Disk Samplers
 
 Sampler | License  |Illustration
 --------|------|---
-Dart Throwing | | [![](data/dart_throwing/dart_throwing_1024.png)](../sampler_dart_throwing)
-Fast Poisson|  | [![](data/fastpoisson/fastpoisson_1024.png)](../sampler_fastpoisson)
+[Dart Throwing](../sampler_dart_throwing) | BSD | [![](data/dart_throwing/dart_throwing_1024.png)](../sampler_dart_throwing)
+[Fast Poisson Disk](../sampler_fastpoisson)| Public domain | [![](data/fastpoisson/fastpoisson_1024.png)](../sampler_fastpoisson)
 
 
 ## Other Samplers
 
 Sampler | License  |Illustration
 --------|------|---
-CMJ | | [![](data/cmj/cmj_1024.png)](../sampler_cmj)
-Hexagonal Grid| BSD| [![](data/hexagonal_grid/hexagonal_grid_1024.png)](../sampler_hexagonal_grid)
-Korobov | BSD|[![](data/korobov/korobov_1024.png)](../sampler_korobov)
-NRooks | |[![](data/nrooks/nrooks_1024.png)](../sampler_nrooks)
-Regular Grid | BSD|[![](data/regular_grid/regular_grid_1024.png)](../sampler_regular_grid)
-Single Peak | |[![](data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
-Step| | [![](data/step/step_1024.png)](../sampler_step)
-Stratified | BSD|[![](data/stratified/stratified_1024.png)](../sampler_stratified)
-Whitenoise | BSD|[![](data/whitenoise/whitenoise_1024.png)](../sampler_whitenoise)
+[CMJ](../sampler_cmj) | BSD | [![](data/cmj/cmj_1024.png)](../sampler_cmj)
+[Hexagonal Grid](../sampler_hexagonal_grid)| BSD| [![](data/hexagonal_grid/hexagonal_grid_1024.png)](../sampler_hexagonal_grid)
+[Korobov](../sampler_korobov) | BSD|[![](data/korobov/korobov_1024.png)](../sampler_korobov)
+[NRooks](../sampler_nrooks) | BSD |[![](data/nrooks/nrooks_1024.png)](../sampler_nrooks)
+[Regular Grid](../sampler_regular_grid) | BSD|[![](data/regular_grid/regular_grid_1024.png)](../sampler_regular_grid)
+[Single Peak](../sampler_singlepeak) | See doc |[![](data/singlepeak/singlepeak_1024.png)](../sampler_singlepeak)
+[Step](../sampler_step)| See doc | [![](data/step/step_1024.png)](../sampler_step)
+[Stratified](../sampler_stratified) | BSD|[![](data/stratified/stratified_1024.png)](../sampler_stratified)
+[Whitenoise](../sampler_whitenoise) | BSD|[![](data/whitenoise/whitenoise_1024.png)](../sampler_whitenoise)
 
 ## Experimental Samplers
 
 Sampler | License  |Illustration
 --------|------|---
-Exhaustive Owen| BSD| [![](data/exhaustive_owen/exhaustive_owen_16.png)](../sampler_exhaustive_owen)
-Genetic Owen| BSD| [![](data/genetic_owen/genetic_owen_64.png)](../sampler_genetic_owen)
-Gradient descent| BSD| [![](data/gradient_descent/optimbnot_1024.png)](../sampler_gradient_descent)
+[Exhaustive Owen](../sampler_exhaustive_owen)| BSD| [![](data/exhaustive_owen/exhaustive_owen_16.png)](../sampler_exhaustive_owen)
+[Genetic Owen](../sampler_genetic_owen)| BSD| [![](data/genetic_owen/genetic_owen_64.png)](../sampler_genetic_owen)
+[Gradient descent](../sampler_gradient_descent)| BSD| [![](data/gradient_descent/optimbnot_1024.png)](../sampler_gradient_descent)

@@ -11,9 +11,13 @@
 
 This sampler optimizes a given input sampler to minimize its Generalized L2 discrepancy, using gradient descent. This optimizing is very slow and therefore can hardly be performed on more than 4k samples.
 
+## License
+
+BSD, see `SamplerGradientDescent.hpp`
+
 ## Execution
 
-
+```
 Parameters:  
 
 	[HELP]
@@ -23,15 +27,16 @@ Parameters:
 	--silent 			Silent mode
 	-h 				Displays this help message
 	-i [string]			The pointset to optimize
-			
+```
+
 
 To optimize the discrepancy of a 2D point set using gradient descent, we can use the following client line command:
 
-     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o toto.dat 
+     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o toto.dat
 
 Or one can use the following C++ code:
 
-    
+``` cpp
     PointsetWriter< 2, double, Point<2, double> > writer;
     writer.open("toto.dat");
     Pointset< 2, double, Point<2, double> > pts;
@@ -40,12 +45,11 @@ Or one can use the following C++ code:
     s.generateSamples< 2, double, Point<2, double> >(pts);
     writer.writePointset(pts);
     writer.close();
-    			
+```
 
-Results
-=======
+## Results
 
-     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o optimbnot_128.edat 
+     ./bin/samplers/GradientDescent_2dd -i bnot128.dat -o optimbnot_128.edat
 
 Initial File  
 [bnot128.dat](data/gradient_descent/bnot128.dat)
@@ -65,7 +69,7 @@ Optimized Pointset
 Optimized Fourier  
 [![](data/gradient_descent/optimbnot_128_fourier.png)](data/gradient_descent/optimbnot_128_fourier.png)
 
-     ./bin/samplers/GradientDescent_2dd -i bnot1024.dat -o optimbnot_1024.edat 
+     ./bin/samplers/GradientDescent_2dd -i bnot1024.dat -o optimbnot_1024.edat
 
 Initial File  
 [bnot1024.dat](data/gradient_descent/bnot1024.dat)
