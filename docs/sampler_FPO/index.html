@@ -1241,7 +1241,10 @@
 <h2 id="description">Description</h2>
 <p>Implementation from the stk library of the sampler from <a href="https://dl.acm.org/citation.cfm?id=2018345">[SHD11]</a>.<br />
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle <a href="https://liris.cnrs.fr/ldbn/HTML_bundle/index.html">https://liris.cnrs.fr/ldbn/HTML_bundle/index.html</a>.</p>
-<p><strong>Requires CGAL v2</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This sampler requires an old version of the CGAL (v2) library. and set  <code class="codehilite"><span class="n">cmake</span> <span class="p">..</span> <span class="o">-</span><span class="n">DUSE_CGALv2</span><span class="o">=</span><span class="k">true</span></code> when generating the project.</p>
+</div>
 <h2 id="execution">Execution</h2>
 <p>Parameters:  </p>
 <div class="codehilite"><pre><span></span><span class="k">[HELP]</span>

@@ -11,6 +11,11 @@
 
 To palliate the absence of analytical expression for natural images, we instead try to integrate analytical arrangements of boxes or triangles. Such arrangement present analytical expression for their integrand and are therefore a better reference when testing the behavior of a sampler when used to approximate an integrand using a Monte Carlo estimator. Note that this test is not yet finished. Due to numerical imprecisions (?), we can't generate too many triangles and boxes within the arrangement. Furthermore, the Fourier spectrum of the arrangement is not yet controllable. However, this second issue might be solved by distributing shapes following colored noise distributions (green noise, pink noise, blue noise). as each color of noise seems to affect a particular range of frequencies.
 
+
+!!! note
+     This tool requires the CGAL library. You would need also to set  `cmake .. -DUSE_CGAL=true` when generating the project.
+
+
 ## License
 
 BSD, see `IntegrationTriangleArrangement.hpp`

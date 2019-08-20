@@ -1280,15 +1280,19 @@
 <li><a href="http://cimg.eu">CImg</a>(for image processing)</li>
 <li><a href="https://zigasajovic.github.io/dCpp/">dCpp</a> (for automatic differentiation).</li>
 </ul>
-<p>It may also require several other librairies, namely:</p>
+<p>Some specific tools may require additional dependancies:</p>
 <ul>
 <li><a href="http://cgal.org">CGAL</a> (to generate analytical shapes arrangements)</li>
-<li><a href="http://fftw.org">FFTW3</a> (to compute Fourier spectras)</li>
+<li><a href="http://fftw.org">FFTW3</a> (to compute Fourier spectra)</li>
 </ul>
 <p>Finally, it also strongly relies on the Gnuplot framework to generate graphs.</p>
 <p>Note that none of those libraries are mandatory. When building the UTK framework, the external dependancies can be either activated or deactivated. Each tool of this framework is compiled independently. If a dependency is marked as unrequired, all the tools that do not require this dependency are still compiled.</p>
 <p>Originally, only CImg and dCpp are activated, since they are very light libraries and are provided with the framework.</p>
-<p>To activate or deactivate a library, one can either edit the file utk/CMakeLists.txt to set to true/false the variables [LIBRARY]_ON. Or one can use the following command ccmake .. from the build repository to edit the compilation options.</p>
+<p>To activate or deactivate a library, one can either edit the file <code class="codehilite"><span class="n">utk</span><span class="o">/</span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span></code> to set to true/false the variables <code class="codehilite"><span class="o">[</span><span class="n">LIBRARY</span><span class="o">]</span><span class="n">_ON</span><span class="w"></span></code>. Alternatively, you can pass some options at the cmake step (or use <code class="codehilite"><span class="n">ccmake</span></code> or <code class="codehilite"><span class="n">cmake</span><span class="o">-</span><span class="n">gui</span></code>), e.g.:</p>
+<div class="codehilite"><pre><span></span><span class="n">cmake</span> <span class="p">..</span> <span class="o">-</span><span class="n">DUSE_FFTW</span><span class="o">=</span><span class="k">true</span>
+</pre></div>
+
+
 <h2 id="authors">Authors</h2>
 <p>The UTK library was developed mainly by</p>
 <ul>

@@ -18,6 +18,8 @@ cmake ..
 make
 ```
 
+Note that building bnot requires to have CGAL installed (version 4.9).
+
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
 ## License

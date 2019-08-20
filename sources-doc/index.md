@@ -34,10 +34,10 @@ The UTK repository provides the files for two external libraries:
 *   [CImg](http://cimg.eu)(for image processing)
 *   [dCpp](https://zigasajovic.github.io/dCpp/) (for automatic differentiation).
 
-It may also require several other librairies, namely:
+Some specific tools may require additional dependancies:
 
 *   [CGAL](http://cgal.org) (to generate analytical shapes arrangements)
-*   [FFTW3](http://fftw.org) (to compute Fourier spectras)
+*   [FFTW3](http://fftw.org) (to compute Fourier spectra)
 
 Finally, it also strongly relies on the Gnuplot framework to generate graphs.
 
@@ -45,7 +45,9 @@ Note that none of those libraries are mandatory. When building the UTK framework
 
 Originally, only CImg and dCpp are activated, since they are very light libraries and are provided with the framework.
 
-To activate or deactivate a library, one can either edit the file utk/CMakeLists.txt to set to true/false the variables \[LIBRARY\]\_ON. Or one can use the following command ccmake .. from the build repository to edit the compilation options.
+To activate or deactivate a library, one can either edit the file `utk/CMakeLists.txt` to set to true/false the variables `[LIBRARY]_ON`. Alternatively, you can pass some options at the cmake step (or use `ccmake` or `cmake-gui`), e.g.:
+
+    cmake .. -DUSE_FFTW=true
 
 ## Authors
 

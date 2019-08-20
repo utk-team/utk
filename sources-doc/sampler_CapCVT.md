@@ -14,7 +14,8 @@ src/samplers/SamplerCapCVT/
 Implementation of the CapCVT sampler from [[CYC12]](https://dl.acm.org/citation.cfm?id=2360839).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
-**Requires CGAL v2**
+!!! note
+     This sampler requires an old version of the CGAL (v2) library. and set  `cmake .. -DUSE_CGALv2=true` when generating the project.
 
 ## Execution
 

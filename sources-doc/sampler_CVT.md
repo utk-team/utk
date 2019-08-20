@@ -15,6 +15,11 @@ src/samplers/SamplerCapCVT/*
 Implementation of the CVT sampler from [[BSD09]](https://dl.acm.org/citation.cfm?id=1531392).  
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
+
+!!! note
+     This sampler requires an old version of the CGAL (v2) library. and set  `cmake .. -DUSE_CGALv2=true` when generating the project.
+
+
 **Requires CGAL v2**
 
 

@@ -9,6 +9,10 @@
 
 Computes the Fourier power spectrum of the input point set (Discrete Fourier Transform). Can return a .png of the Fourier power spectrum, a .dat of the Fourier power spectrum, a .dat opf the Fourier spectrum, and/or a .dat of the radial average of this spectrum. The radial average can then be plotted using the [following script](wip.html). This executable relies on the FFTW library.
 
+!!! note
+     This tool requires FFTW library. You would also need to set  `cmake .. -DUSE_FFTW=true` when generating the project.
+
+
 ## License
 
 BSD, see `Fourier2D.hpp`
