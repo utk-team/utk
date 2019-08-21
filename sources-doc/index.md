@@ -6,7 +6,7 @@ UTK is a C++ library that implements a large variety of samplers and tools to an
 
 ## License
 
-The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (ses the [samplers](samplers) page for details).
+The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (see the [samplers](samplers) page for details).
 
 
 ## Clone and Build
@@ -34,7 +34,7 @@ The UTK repository provides the files for two external libraries:
 *   [CImg](http://cimg.eu)(for image processing)
 *   [dCpp](https://zigasajovic.github.io/dCpp/) (for automatic differentiation).
 
-Some specific tools may require additional dependancies:
+Some specific tools may require additional dependencies:
 
 *   [CGAL](http://cgal.org) (to generate analytical shapes arrangements)
 *   [FFTW3](http://fftw.org) (to compute Fourier spectra)
