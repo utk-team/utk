@@ -60,6 +60,7 @@ The UTK library was developed mainly by
 But was also contributed to by
 
 *   Victor Ostromoukhov [victor.ostromoukhov@liris.cnrs.fr](mailto:victor.ostromoukhov@liris.cnrs.fr)
+*   Adrien Pilleboue
 *   Jean David Genevaux
 
 If you want to refer to UTK in your publications, please use the following bibtex entry:
