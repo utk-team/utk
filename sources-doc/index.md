@@ -54,8 +54,8 @@ To activate or deactivate a library, one can either edit the file `utk/CMakeList
 
 The UTK library was developed mainly by
 
-*   Hélène Perrier [helene.perrier@liris.cnrs.fr](mailto:helene.perrier@liris.cnrs.fr)
 *   David Coeurjolly [david.coeurjolly@liris.cnrs.fr](mailto:david.coeurjolly@liris.cnrs.fr)
+*   Hélène Perrier [helene.perrier@liris.cnrs.fr](mailto:helene.perrier@liris.cnrs.fr)
 
 But was also contributed to by
 
