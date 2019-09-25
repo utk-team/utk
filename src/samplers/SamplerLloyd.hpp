@@ -153,7 +153,7 @@ namespace utk
       init_random_points();
 
       //Main loop
-      for(auto i=0; i < nbSteps ;++i)
+      for(auto i=0u; i < nbSteps ;++i)
         Lloyd_step();
     }
 
