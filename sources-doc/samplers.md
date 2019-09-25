@@ -34,6 +34,7 @@ Sampler | License  |Illustration
 [LDBN](../sampler_ldbn) |BSD |[![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 [Penrose](../sampler_penrose) | See doc|[![](data/penrose/penrose_1024.png)](../sampler_penrose)
 [BNOT](../sampler_BNOT)| BSD and GPL |[![](data/BNOT/BNOT_1024.png)](../sampler_BNOT)
+[Lloyd 3D](../sampler_Lloyd)| See doc | 
 
 ## Poisson Disk Samplers
 
