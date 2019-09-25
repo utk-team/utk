@@ -116,7 +116,7 @@ add_executable(Lloyd_3dd
 			Lloyd_3dd.cpp
 			SamplerLloyd/Delaunay_psm.cpp
 			${UTK_FILES})
-target_link_libraries ( Lloyd_2dd ${LINK} ${LINK_TBB} )
+target_link_libraries (Lloyd_3dd ${LINK} ${LINK_TBB} pthread)
 install(TARGETS Lloyd_3dd
 			RUNTIME DESTINATION bin
 			LIBRARY DESTINATION lib
