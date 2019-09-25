@@ -201,7 +201,7 @@ int main(int argc, char** argv)
 	for(int p=0; p<10; p++)
 	{
 		std::cout << "wrote " << p << std::endl;
-		whitenoise.generateSamples<2, double, Point<2, double> >(pts[p], 1000000);
+		whitenoise.generateSamples<2, double, Point<2, double> >(pts[p], 10000);
 
 		writer.writePointset(pts[p]);
 	}
