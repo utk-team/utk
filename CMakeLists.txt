@@ -131,9 +131,11 @@ message(STATUS "=============================================")
 
 set(UTK_FILES "")
 
-add_subdirectory(src)
 
 ENABLE_TESTING()
 include(CTest)
 message(STATUS "Build test files ENABLED")
 add_subdirectory(unit-tests)
+
+
+add_subdirectory(src)

@@ -103,6 +103,7 @@ SET(SRCs
 	)
 FOREACH(FILE ${SRCs})
   add_executable(${FILE} ${FILE} ${UTK_FILES})
+  add_test(${FILE} ${FILE})
   target_link_libraries ( ${FILE} ${LINK} ${LINK_TBB} )
   install(TARGETS ${FILE}
 					RUNTIME DESTINATION bin
@@ -116,6 +117,8 @@ add_executable(Lloyd_3dd
 			Lloyd_3dd.cpp
 			SamplerLloyd/Delaunay_psm.cpp
 			${UTK_FILES})
+add_test(Lloyd_3dd Lloyd_3dd)
+
 target_link_libraries (Lloyd_3dd ${LINK} ${LINK_TBB} pthread)
 install(TARGETS Lloyd_3dd
 			RUNTIME DESTINATION bin
