@@ -5,7 +5,7 @@ SET(SRCs
 	Whitenoise_2dd
 	Whitenoise_3dd
 	Whitenoise_4dd
-  Whitenoise_6dd
+        Whitenoise_6dd
 
 	Sobol_2dd
 	Sobol_3dd
@@ -110,6 +110,19 @@ FOREACH(FILE ${SRCs})
 					ARCHIVE DESTINATION lib)
 ENDFOREACH(FILE)
 
+
+#Lloyd
+add_executable(Lloyd_3dd
+			Lloyd_3dd.cpp
+			SamplerLloyd/Delaunay_psm.cpp
+			${UTK_FILES})
+target_link_libraries ( Lloyd_2dd ${LINK} ${LINK_TBB} )
+install(TARGETS Lloyd_3dd
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
+
+                      
 
 #Gradient Descent
 add_executable(GradientDescent_2dd
