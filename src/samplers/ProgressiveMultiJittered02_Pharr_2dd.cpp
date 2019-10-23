@@ -1,4 +1,5 @@
 /*
+ * renderdude <https://github.com/renderdude>
  * Adrien Hamers
  * David Coeurjolly david.coeurjolly@liris.cnrs.fr
  *
@@ -29,7 +30,7 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include "./SamplerPMJ/PMJ02SampleSequenceGenerator.h"
+#include "./SamplerPMJ/PMJ02SampleSequenceGenerator_Pharr.h"
 #include <string>
 #include <iostream>
 
@@ -47,17 +48,17 @@ int main(int argc, char* argv[]) {
     {
         std::cout << "Usage :" << std::endl
                   << "-n      number of samples to generate   default : 16" << std::endl
-                  << "-o      output file                     default : output_PMJ02.dat" << std::endl
+                  << "-o      output file                     default : output_PMJ02_Pharr.dat" << std::endl
                   << "-s      seed                            default : 0" << std::endl
                   << "-c      number of candidates            default : 10" << std::endl;
     }
 
     int numberOfSamplesToGenerate = atoi(getArg("-n", argc, argv, "16").c_str());
-    std::string outputPath = getArg("-o", argc, argv, "output_PMJ02.dat");
+    std::string outputPath = getArg("-o", argc, argv, "output_PMJ02_Pharr.dat");
     int seed = atoi(getArg("-s", argc, argv, "0").c_str());
     int numberOfCandidates = atoi(getArg("-c", argc, argv, "10").c_str());
 
-    PMJ02SampleSequenceGenerator g = PMJ02SampleSequenceGenerator(seed);
+    PMJ02SampleSequenceGenerator_Pharr g = PMJ02SampleSequenceGenerator_Pharr(seed);
     g.ProgressiveMultiJittered02Algorithm2D(numberOfSamplesToGenerate, numberOfCandidates);
     g.exportSampleSet(outputPath);
 
