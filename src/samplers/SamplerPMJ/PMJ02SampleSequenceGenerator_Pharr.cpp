@@ -1,4 +1,5 @@
 /*
+ * renderdude <https://github.com/renderdude>
  * Adrien Hamers
  * David Coeurjolly david.coeurjolly@liris.cnrs.fr
  *
