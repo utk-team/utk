@@ -9,6 +9,7 @@
     src/samplers/ProgressiveJittered_2dd.cpp
     src/samplers/ProgressiveMultiJittered_2dd.cpp
     src/samplers/ProgressiveMultiJittered02_2dd.cpp
+    src/samplers/ProgressiveMultiJittered02_Pharr_2dd.cpp
 ```
 
 ## Description
@@ -23,6 +24,11 @@ Progressive Multi-Jittered (PMJ): Adds to PJ one property: Using PJ, each sample
 Progressive Multi-Jittered(0,2) (PMJ02): Generalizes the previous techniques. If we subdivide the unit square into equal rectangles, each sample falls into its own rectangle.  
 
 C++ Implementation of [[PMJ]](https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf)
+
+`ProgressiveMultiJittered02_Pharr_2dd` implements Matt Pharr's variant
+from the JCGT article "Efficient Generation of Points that Satisfy
+Two-Dimensional Elementary Intervals" focusing on fast PMJ02 sampling.
+
 
 ## License
 
