@@ -50,7 +50,8 @@ PMJ02SampleSequenceGenerator::~PMJ02SampleSequenceGenerator() {
     delete[](occupiedStrata);
 }
 
-void PMJ02SampleSequenceGenerator::ProgressiveMultiJittered02Algorithm2D(int numberOfSamplesToGenerate) {
+void PMJ02SampleSequenceGenerator::ProgressiveMultiJittered02Algorithm2D(int numberOfSamplesToGenerate,  
+                                                                         int numberOfCandidates) {
     this->numberOfSamplesToGenerate = numberOfSamplesToGenerate;
     int arraySize = 4*numberOfSamplesToGenerate;
     generatedSamples = instantiateArray(arraySize);
@@ -61,6 +62,8 @@ void PMJ02SampleSequenceGenerator::ProgressiveMultiJittered02Algorithm2D(int num
     yhalves = new int[4*numberOfSamplesToGenerate];
     generatedSamples[0][0] = generateRandomDouble();
     generatedSamples[0][1] = generateRandomDouble();
+
+    this->numberOfCandidates = numberOfCandidates;
     numSamples = 1;
     int currentlyGeneratedSamples = 1;
     while(currentlyGeneratedSamples < numberOfSamplesToGenerate)
