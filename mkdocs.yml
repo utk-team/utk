@@ -63,6 +63,7 @@ nav:
     - FPO: 'sampler_FPO.md'
     - Penrose: 'sampler_penrose.md'
     - BNOT: 'sampler_BNOT.md'
+    - Lloyd3D: 'sampler_Lloyd.md'
     - Dart Throwing: 'sampler_dart_throwing.md'
     - Fast Poisson: 'sampler_fastpoisson.md'
     - CMJ: 'sampler_cmj.md'
@@ -109,3 +110,4 @@ nav:
     - Plot pointset: 'utils_draw_pointset.md'
     - Plot PCF: 'scripts_plot_pcf.md'
     - Plot Radial: 'scripts_plot_radial.md'
+  - Changelog: 'Changelog.md'

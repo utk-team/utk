@@ -563,6 +563,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../sampler_Lloyd/" title="Lloyd3D" class="md-nav__link">
+      Lloyd3D
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../sampler_dart_throwing/" title="Dart Throwing" class="md-nav__link">
       Dart Throwing
     </a>
@@ -1186,6 +1198,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -1264,6 +1288,7 @@
     <span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">ProgressiveJittered_2dd</span><span class="p">.</span><span class="n">cpp</span>
     <span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">ProgressiveMultiJittered_2dd</span><span class="p">.</span><span class="n">cpp</span>
     <span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">ProgressiveMultiJittered02_2dd</span><span class="p">.</span><span class="n">cpp</span>
+    <span class="n">src</span><span class="o">/</span><span class="n">samplers</span><span class="o">/</span><span class="n">ProgressiveMultiJittered02_Pharr_2dd</span><span class="p">.</span><span class="n">cpp</span>
 </pre></div>
 
 <h2 id="description">Description</h2>
@@ -1272,6 +1297,9 @@
 <p>Progressive Multi-Jittered (PMJ): Adds to PJ one property: Using PJ, each sample falls into its own square subdivision. With PMJ, each sample falls into its own square subdivision AND its own strata. When throwing points, uses a best candidate algorithm.  </p>
 <p>Progressive Multi-Jittered(0,2) (PMJ02): Generalizes the previous techniques. If we subdivide the unit square into equal rectangles, each sample falls into its own rectangle.  </p>
 <p>C++ Implementation of <a href="https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf">[PMJ]</a></p>
+<p><code class="codehilite"><span class="n">ProgressiveMultiJittered02_Pharr_2dd</span></code> implements Matt Pharr&rsquo;s variant
+from the JCGT article &ldquo;Efficient Generation of Points that Satisfy
+Two-Dimensional Elementary Intervals&rdquo; focusing on fast PMJ02 sampling.</p>
 <h2 id="license">License</h2>
 <p>BSD, see source codes</p>
 <h2 id="execution">Execution</h2>
