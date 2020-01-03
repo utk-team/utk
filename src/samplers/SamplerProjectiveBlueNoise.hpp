@@ -96,10 +96,10 @@ namespace utk
           while( !accept )
             {	
               iter++;
-              if((iter % 10000) == 0)
+              if((iter % 5000) == 0)
                 {
                   //std::cout << "Current Dist " << ratio*(distDT_2D / dist_full) << std::endl;
-                  ratio *= 0.9
+                  ratio -= 0.04;
                 }
 					
               accept=true;
