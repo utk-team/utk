@@ -35,6 +35,7 @@
 #include "../pointsets/Pointset.hpp"
 #include "../utils.hpp"
 #include <math.h>
+#include <omp.h>
 
 namespace utk
 {
@@ -79,6 +80,7 @@ public:
 		factor_c *= factor_c;
 		
 		long double sumb = 0.0;
+#pragma omp parallel for num_threads( 32 ) reduction(+:sumb)
 		for(unsigned int i=0; i<N; i++)
 		{
 			long double prodb = 1.0;
@@ -92,6 +94,8 @@ public:
 		//std::cout << "sum =" << sumb << std::endl;
 		
 		long double sumc = 0.0;
+        //#pragma omp parallel for num_threads( omp_get_max_threads() ) reduction(+:sumc)
+#pragma omp parallel for num_threads( 32 ) reduction(+:sumc)
 		for(uint i=0; i<N; i++)
 		for(unsigned int iprime=0; iprime<N; iprime++)
 		{

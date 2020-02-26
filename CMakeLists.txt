@@ -18,7 +18,7 @@ add_definitions(-DUTK_DATA_PATH=\"${UTK_DATA_PATH}\")
 option(USE_TBB "Using TBB library" false)
 option(USE_DGTAL "Using DGtal library" false)
 option(USE_CIMG "Using CIMG library" true)
-option(USE_FFTW "Using FFTW3 library" false)
+option(USE_FFTW "Using FFTW3 library" true)
 option(USE_MPFR "Using MPFR library" false)
 option(USE_BOOST "Using Boost Compute library" false)
 option(USE_CGAL "Using CGAL library version 3" false)
@@ -139,3 +139,7 @@ add_subdirectory(unit-tests)
 
 
 add_subdirectory(src)
+
+
+SET(CMAKE_INSTALL_PREFIX $ENV{HOME})
+
