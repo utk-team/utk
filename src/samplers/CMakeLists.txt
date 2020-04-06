@@ -52,6 +52,7 @@ SET(SRCs
   ProjectiveBlueNoise_6dd
 
   DartThrowing_2dd
+  DartThrowing_3dd
   DartThrowing_4dd
   DartThrowing_6dd
   DartThrowing_8dd
