@@ -1,5 +1,7 @@
 // $Id: WeightedDiscretePDF.h,v 1.4 2006/07/07 05:54:31 zr Exp $
 
+#include <stdexcept>
+
 namespace dunbarPoisson
 {
 
@@ -58,8 +60,6 @@ private:
 	void lengthen(WDPDF_Node<T> *node);
 	void propogateSumsUp(WDPDF_Node<T> *n);
 };
-
-#include <stdexcept>
 
 //
 
