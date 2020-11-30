@@ -1,3 +1,4 @@
+* 2020-Nov: Cleanup in the Generalized L2 Discrepancy code
 * 2020-Jan: Bugfix FFTW_INCLUDES headers
 * 2020-Jan: More Jittered samplers
 * 2019-Nov: Adding Matt Pharr's variant of PMJ02 (faster)
