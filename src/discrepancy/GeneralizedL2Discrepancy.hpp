@@ -91,10 +91,8 @@ public:
 			}
 			sumb += prodb;
 		}
-		//std::cout << "sum =" << sumb << std::endl;
 		
 		long double sumc = 0.0;
-        //#pragma omp parallel for num_threads( omp_get_max_threads() ) reduction(+:sumc)
 #pragma omp parallel for reduction(+:sumc)
 		for(uint i=0; i<N; i++)
 		for(unsigned int iprime=0; iprime<N; iprime++)
@@ -109,23 +107,11 @@ public:
 			}
 			sumc += prodc;
 		}
-		//std::cout << "sum2 =" << sumc << std::endl;
-		
-		/*std::cout << std::setprecision(11) << "a=" << a << std::endl;
-		std::cout << "factor_b=" << factor_b << std::endl;
-		std::cout << "sum_b=" << sumb << std::endl;
-		std::cout << "factor_c=" << factor_c << std::endl;
-		std::cout << "sum_c=" << sumc << std::endl;*/
 		
 		long double tmp0 = factor_b*sumb;
 		long double tmp1 = factor_c*sumc;
 		
-		/*std::cout << "factor_b*sum_b=" << tmp0 << std::endl;
-		std::cout << "factor_c*sum_c=" << tmp1 << std::endl;
-		
-		std::cout << "all=" << a -tmp0 + tmp1 << std::endl;*/
-		
-		//std::cout << "total=" << a -tmp0 + tmp1 << std::endl;
+	
 		generalizedL2discrepancy = sqrtl(a -tmp0 + tmp1);
 	
 		return true;
