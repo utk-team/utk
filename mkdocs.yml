@@ -110,3 +110,4 @@ nav:
     - Plot pointset: 'utils_draw_pointset.md'
     - Plot PCF: 'scripts_plot_pcf.md'
     - Plot Radial: 'scripts_plot_radial.md'
+  - Changelog: 'Changelog.md'

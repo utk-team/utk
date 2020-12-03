@@ -7,10 +7,12 @@ SET(SRCs
 	L2Discrepancy_fromfile_3dd
 	L2Discrepancy_fromfile_4dd
 
+	GeneralizedL2Discrepancy_fromfile_1dd
 	GeneralizedL2Discrepancy_fromfile_2dd
 	GeneralizedL2Discrepancy_fromfile_3dd
 	GeneralizedL2Discrepancy_fromfile_4dd
 	GeneralizedL2Discrepancy_fromfile_6dd
+	GeneralizedL2Discrepancy_fromfile_8dd
   GeneralizedL2Discrepancy_fromfile_10dd
 
 	UnanchoredL2Discrepancy_fromfile_2dd
@@ -75,3 +77,16 @@ endif(USE_TBB)
 # ENDFOREACH(FILE)
 # 
 # endif(USE_MPFR)
+
+if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
+    message("Compiling for Mac")
+    SET(CMAKE_CXX_FLAGS "-lm -lomp -L/usr/local/opt/libomp/lib -I/usr/local/include/")
+    add_compile_options(-std=c++11 -mtune=native -march=native -O3 -Xpreprocessor -fopenmp )
+endif()
+
+if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )
+    message("Compiling for Ununtu")
+    SET(CMAKE_CXX_FLAGS "-lm -fopenmp")
+    add_compile_options(-std=c++11 -mtune=native -march=native -O3 -Xpreprocessor -DWITH_TREES)
+endif()
+

@@ -45,7 +45,8 @@ class PMJ02SampleSequenceGenerator {
 public:
     PMJ02SampleSequenceGenerator(int seed = 42);
     ~PMJ02SampleSequenceGenerator();
-    void ProgressiveMultiJittered02Algorithm2D(int numberOfSamplesToGenerate);
+    void ProgressiveMultiJittered02Algorithm2D(int numberOfSamplesToGenerate,
+                                               int numberOfCandidates = 10);
     void exportSampleSet(std::string &outputPath);
 
 private:
@@ -56,6 +57,7 @@ private:
     int* xhalves;
     int* yhalves;
     int numSamples;
+    int numberOfCandidates;
 
     void extendSequenceEven(int alreadyGeneratedSamples);
     void extendSequenceOdd(int alreadyGeneratedSamples);

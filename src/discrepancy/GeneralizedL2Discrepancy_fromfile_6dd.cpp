@@ -76,7 +76,7 @@ int main(int argc, char** argv)
 		std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
 		if(param_verbose)
-			std::cout << std::fixed << std::setprecision(5) << "Discrepancy on " << pts.size() << " samples computed in " << time_span.count() << " secs" << std::endl;
+			std::cout << std::fixed << std::setprecision(16) << "Discrepancy on " << pts.size() << " samples computed in " << time_span.count() << " secs" << std::endl;
 		
 		if(param_brute)
 		{

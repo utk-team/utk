@@ -12,611 +12,611 @@
 namespace utk
 {
 
-	class SamplerProjectiveBlueNoise
-	{
-	protected:
+  class SamplerProjectiveBlueNoise
+  {
+  protected:
 
-	public:
+  public:
 
-		SamplerProjectiveBlueNoise() { setRandomSeedTime(); }
+    SamplerProjectiveBlueNoise() { setRandomSeedTime(); }
 
-		void setRandomSeed(long unsigned int arg_seed) { m_mersenneTwister.seed(arg_seed); }
-		void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
+    void setRandomSeed(long unsigned int arg_seed) { m_mersenneTwister.seed(arg_seed); }
+    void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
 		
-		template<unsigned int D, typename T, typename P>
-		bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned int arg_points)
-		{
-			if (!arg_pts.empty())
-			{
-				WARNING("SamplerProjectiveBlueNoise::generateSamples the pointset to fill is not empty, clearing it ...");
-				arg_pts.clear();
-			}
+    template<unsigned int D, typename T, typename P>
+    bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned int arg_points)
+    {
+      if (!arg_pts.empty())
+        {
+          WARNING("SamplerProjectiveBlueNoise::generateSamples the pointset to fill is not empty, clearing it ...");
+          arg_pts.clear();
+        }
 			
-			if(!isFloatingType<T>())
-			{
-				ERROR("SamplerProjectiveBlueNoise::generateSamples generates samples in [0, 1]^d, can only run with points of type float or double");
-				return false;
-			}
+      if(!isFloatingType<T>())
+        {
+          ERROR("SamplerProjectiveBlueNoise::generateSamples generates samples in [0, 1]^d, can only run with points of type float or double");
+          return false;
+        }
 			
-			if(D < 1 || D > 6)
-			{
-				ERROR("SamplerProjectiveBlueNoise::generateSamples has only been defined between 1 and 4 dimensions");
-				return false;
-			}
+      if(D < 1 || D > 6)
+        {
+          ERROR("SamplerProjectiveBlueNoise::generateSamples has only been defined between 1 and 4 dimensions");
+          return false;
+        }
 			
-			//load domain & toricity
-			for(uint d = 0; d<D; d++)
-			{
-				arg_pts.domain.pMin.pos()[d] = 0;
-				arg_pts.domain.pMax.pos()[d] = 1;
-			}
-			arg_pts.toricity = 1;
+      //load domain & toricity
+      for(uint d = 0; d<D; d++)
+        {
+          arg_pts.domain.pMin.pos()[d] = 0;
+          arg_pts.domain.pMax.pos()[d] = 1;
+        }
+      arg_pts.toricity = 1;
 
-			//arg_pts.resize(arg_points);
+      //arg_pts.resize(arg_points);
 			
-			double distDT_1D = 1.0/(2.0*arg_points);
-			double distDT_2D = sqrt(1.0/(2.0*sqrt(3)*arg_points));
-			double distDT_3D = pow(1.0/(4.0*sqrt(2)*arg_points), 1.0/3.0);
-			double distDT_4D = pow(1.0/(8.0*arg_points), 1.0/4.0);
+      double distDT_1D = 1.0/(2.0*arg_points);
+      double distDT_2D = sqrt(1.0/(2.0*sqrt(3)*arg_points));
+      double distDT_3D = pow(1.0/(4.0*sqrt(2)*arg_points), 1.0/3.0);
+      double distDT_4D = pow(1.0/(8.0*arg_points), 1.0/4.0);
 
       double eta_5d =  1.0/30.0*M_PI*M_PI*sqrt(2.0);
       double eta_6d =  1.0/144.0*M_PI*M_PI*M_PI*sqrt(3.0);
       double distDT_5D = std::pow( 15.0*eta_5d / (8.0*M_PI*M_PI*arg_points), 1.0/5.0);
       double distDT_6D = std::pow(  6.0*eta_6d / (M_PI*M_PI*M_PI*arg_points), 1.0/6.0);
       
-			std::cout << "Dists " << std::endl;
-			std::cout << "1D " << distDT_1D << std::endl;
-			std::cout << "2D " << distDT_2D << std::endl;
-			std::cout << "3D " << distDT_3D << std::endl;
-			std::cout << "4D " << distDT_4D << std::endl;
+      std::cout << "Dists " << std::endl;
+      std::cout << "1D " << distDT_1D << std::endl;
+      std::cout << "2D " << distDT_2D << std::endl;
+      std::cout << "3D " << distDT_3D << std::endl;
+      std::cout << "4D " << distDT_4D << std::endl;
       std::cout << "5D " << distDT_5D << std::endl;
       std::cout << "6D " << distDT_6D << std::endl;
       
-			double dist_full;
-			switch(D)
-			{
-				case 1: dist_full = distDT_1D; break;
-				case 2: dist_full = distDT_2D; break;
-				case 3: dist_full = distDT_3D; break;
-				case 4: dist_full = distDT_4D; break;
+      double dist_full;
+      switch(D)
+        {
+        case 1: dist_full = distDT_1D; break;
+        case 2: dist_full = distDT_2D; break;
+        case 3: dist_full = distDT_3D; break;
+        case 4: dist_full = distDT_4D; break;
         case 5: dist_full = distDT_5D; break;
         case 6: dist_full = distDT_6D; break;
-      }
+        }
 			
-			P p;
-			for(uint i=0; i<arg_points; ++i)
-			{
-				double ratio = 2;
+      P p;
+      for(uint i=0; i<arg_points; ++i)
+        {
+          double ratio = 2;
 			
-				if(i%10 == 0)
-					std::cout << i << "/" << arg_points << "\r" << std::flush;
+          if(i%10 == 0)
+            std::cout << i << "/" << arg_points << "\r" << std::flush;
 				
-				bool accept=false;
-				int iter = 1;
-				while( !accept )
-				{	
-					iter++;
-					if((iter % 10000) == 0)
-					{
-						//std::cout << "Current Dist " << ratio*(distDT_2D / dist_full) << std::endl;
-						ratio -= 0.01;
-					}
-					
-					accept=true;
-					
-					for(uint d=0; d<D; d++)
-						p.pos()[d] = getRandom01();
-					
-					//test 1D
-					double current_dist = distDT_1D; // / dist_full;
-					current_dist *= ratio;
-						
-					for(int d=0; d<D; d++)
-					{
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-							double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
-							double toric_diff = std::min( diff, 1-diff );
-							dist = toric_diff;
-							
-							if ( dist < current_dist )
-								accept = false;
-						}
-					}
-
-					if(D==1)
-						continue;
-					
-					//test 2D, projections 
-					//Id D=2, 01
-					//If D=3, 01, 12, 20
-					//If D=4, 01, 12, 20, 03, 13, 23
-          //If D=5, 01, 12, 20, 03, 13, 23, 04, 14, 24, 34
-          //If D=6, 01, 12, 20, 03, 13, 23, 04, 14, 24, 34, 05, 15, 25, 35, 45,
-					if(D>=2)
-					{
-						double current_dist = distDT_2D; // / dist_full;
-						current_dist *= ratio;
-						
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-
-							{
-								double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							{
-								double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							
-							dist = sqrt(dist);
-							
-							if ( dist < current_dist )
-								accept = false;
-						}
-					}
-					if(D>=3)
-					{
-						double current_dist = distDT_2D;
-						current_dist *= ratio;
-						
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-
-							{
-								double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							{
-								double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							
-							dist = sqrt(dist);
-							
-							if ( dist < current_dist )
-								accept = false;
-						}
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-
-							{
-								double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							{
-								double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							
-							dist = sqrt(dist);
-							
-							if ( dist < current_dist )
-								accept = false;
-						}
-						
-					}
-					if(D>=4)
-					{
-						for(int d=0; d<3; d++)
-						{
-							double current_dist = distDT_2D;
-							current_dist *= ratio;
-							
-							for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-							{
-								double dist = 0;
-
-								{
-									double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								
-								dist = sqrt(dist);
-								
-								if ( dist < current_dist )
-									accept = false;
-							}
-						}
-          }
-          if(D>=5)
-            {
-              for(int d=0; d<4; d++)
-              {
-                double current_dist = distDT_2D;
-                current_dist *= ratio;
-                
-                for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+          bool accept=false;
+          int iter = 1;
+          while( !accept )
+            {	
+              iter++;
+              if((iter % 5000) == 0)
                 {
-                  double dist = 0;
-                  
-                  {
-                    double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
-                    double toric_diff = std::min( diff, 1-diff );
-                    dist += toric_diff*toric_diff;
-                  }
-                  {
-                    double diff = std::abs((p.pos()[4]-arg_pts[j].pos()[4]));
-                    double toric_diff = std::min( diff, 1-diff );
-                    dist += toric_diff*toric_diff;
-                  }
-                  
-                  dist = sqrt(dist);
-                  
-                  if ( dist < current_dist )
-                  accept = false;
+                  //std::cout << "Current Dist " << ratio*(distDT_2D / dist_full) << std::endl;
+                  ratio -= 0.04;
                 }
-              }
-            }
-          if(D==6)
-            {
-                for(int d=0; d<5; d++)
+					
+              accept=true;
+					
+              for(uint d=0; d<D; d++)
+                p.pos()[d] = getRandom01();
+					
+              //test 1D
+              double current_dist = distDT_1D; // / dist_full;
+              current_dist *= ratio;
+						
+              for(int d=0; d<D; d++)
+                {
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+                      double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
+                      double toric_diff = std::min( diff, 1-diff );
+                      dist = toric_diff;
+							
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
+
+              if(D==1)
+                continue;
+					
+              //test 2D, projections 
+              //Id D=2, 01
+              //If D=3, 01, 12, 20
+              //If D=4, 01, 12, 20, 03, 13, 23
+              //If D=5, 01, 12, 20, 03, 13, 23, 04, 14, 24, 34
+              //If D=6, 01, 12, 20, 03, 13, 23, 04, 14, 24, 34, 05, 15, 25, 35, 45,
+              if(D>=2)
+                {
+                  double current_dist = distDT_2D; // / dist_full;
+                  current_dist *= ratio;
+						
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+
+                      {
+                        double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
+                      {
+                        double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
+							
+                      dist = sqrt(dist);
+							
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
+              if(D>=3)
                 {
                   double current_dist = distDT_2D;
                   current_dist *= ratio;
-                  
-                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-                  {
-                    double dist = 0;
-                    
-                    {
-                      double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
-                      double toric_diff = std::min( diff, 1-diff );
-                      dist += toric_diff*toric_diff;
-                    }
-                    {
-                      double diff = std::abs((p.pos()[5]-arg_pts[j].pos()[5]));
-                      double toric_diff = std::min( diff, 1-diff );
-                      dist += toric_diff*toric_diff;
-                    }
-                    
-                    dist = sqrt(dist);
-                    
-                    if ( dist < current_dist )
-                    accept = false;
-                  }
-                }
-					}
-					
-					if(D==2)
-						continue;
-					
-					//test 3D projections
-					//If D=3: 012
-					//If D=4: 012, 023, 013, 123
-          //If D=5: 012, 023, 013, 123, 014, 024, 034, 124, 134, 234
-          //If D=6: 012, 023, 013, 123,
-					if(D>=3)
-					{
-						double current_dist = distDT_3D;
-						current_dist *= ratio;
 						
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-							for(uint dtmp=0; dtmp<3; dtmp++)
-							{
-								double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							dist = sqrt(dist);
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+
+                      {
+                        double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
+                      {
+                        double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
 							
-							if ( dist < current_dist )
-								accept = false;
-						}
-					}
-					if(D>=4)
-					{
-						for(int d=0; d<3; d++)
-						{
-							double current_dist = distDT_3D;
-							current_dist *= ratio;
+                      dist = sqrt(dist);
 							
-							for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-							{
-								double dist = 0;
-								{
-									double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								dist = sqrt(dist);
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+
+                      {
+                        double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
+                      {
+                        double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                        double toric_diff = std::min( diff, 1-diff );
+                        dist += toric_diff*toric_diff;
+                      }
+							
+                      dist = sqrt(dist);
+							
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+						
+                }
+              if(D>=4)
+                {
+                  for(int d=0; d<3; d++)
+                    {
+                      double current_dist = distDT_2D;
+                      current_dist *= ratio;
+							
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+
+                          {
+                            double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
 								
-								if ( dist < current_dist )
-									accept = false;
-							}
-							for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-							{
-								double dist = 0;
-								{
-									double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								dist = sqrt(dist);
+                          dist = sqrt(dist);
 								
-								if ( dist < current_dist )
-									accept = false;
-							}
-							for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-							{
-								double dist = 0;
-								{
-									double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								{
-									double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
-									double toric_diff = std::min( diff, 1-diff );
-									dist += toric_diff*toric_diff;
-								}
-								dist = sqrt(dist);
-								
-								if ( dist < current_dist )
-									accept = false;
-							}
-						}
-	
-					}
-          if(D==5)
-          {
-            for(int d=0; d<4; d++)
-            {
-              double current_dist = distDT_3D;
-              current_dist *= ratio;
-              
-              for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-              {
-                double dist = 0;
-                {
-                  double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                    }
                 }
+              if(D>=5)
                 {
-                  double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                dist = sqrt(dist);
+                  for(int d=0; d<4; d++)
+                    {
+                      double current_dist = distDT_2D;
+                      current_dist *= ratio;
                 
-                if ( dist < current_dist )
-                accept = false;
-              }
-              for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-              {
-                double dist = 0;
-                {
-                  double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                  
+                          {
+                            double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[4]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                  
+                          dist = sqrt(dist);
+                  
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                    }
                 }
+              if(D==6)
                 {
-                  double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
+                  for(int d=0; d<5; d++)
+                    {
+                      double current_dist = distDT_2D;
+                      current_dist *= ratio;
+                  
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                    
+                          {
+                            double diff = std::abs((p.pos()[d]-arg_pts[j].pos()[d]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[5]-arg_pts[j].pos()[5]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                    
+                          dist = sqrt(dist);
+                    
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                    }
                 }
-                {
-                  double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                dist = sqrt(dist);
-                
-                if ( dist < current_dist )
-                accept = false;
-              }
-              for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-              {
-                double dist = 0;
-                {
-                  double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[1]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[2]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                dist = sqrt(dist);
-                
-                if ( dist < current_dist )
-                accept = false;
-              }
-              for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-              {
-                double dist = 0;
-                {
-                  double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[1]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[3]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                dist = sqrt(dist);
-                
-                if ( dist < current_dist )
-                accept = false;
-              }
-              for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-              {
-                double dist = 0;
-                {
-                  double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[3]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                {
-                  double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
-                  double toric_diff = std::min( diff, 1-diff );
-                  dist += toric_diff*toric_diff;
-                }
-                dist = sqrt(dist);
-                
-                if ( dist < current_dist )
-                accept = false;
-              }
-            }
-            
-          }
 					
-					if(D==3)
-						continue;
-
-					//test 4D projection
-          //STOPPING HERE FOR NOW
-          //If D=4: 0123
-          //If D=5: 0123,
-          //If D=6: 0123,
-					if(D>=4)
-					{
-						double current_dist = distDT_4D;
-						current_dist *= ratio;
-
-						for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-						{
-							double dist = 0;
-							for(uint dtmp=0; dtmp<4; dtmp++)
-							{
-								double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
-								double toric_diff = std::min( diff, 1-diff );
-								dist += toric_diff*toric_diff;
-							}
-							dist = sqrt(dist);
+              if(D==2)
+                continue;
+					
+              //test 3D projections
+              //If D=3: 012
+              //If D=4: 012, 023, 013, 123
+              //If D=5: 012, 023, 013, 123, 014, 024, 034, 124, 134, 234
+              //If D=6: 012, 023, 013, 123,
+              if(D>=3)
+                {
+                  double current_dist = distDT_3D;
+                  current_dist *= ratio;
+						
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+                      for(uint dtmp=0; dtmp<3; dtmp++)
+                        {
+                          double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
+                          double toric_diff = std::min( diff, 1-diff );
+                          dist += toric_diff*toric_diff;
+                        }
+                      dist = sqrt(dist);
 							
-							if ( dist < current_dist )
-								accept = false;
-						}
-					}
-          if(D>=5)
-          {
-            double current_dist = distDT_5D;
-            current_dist *= ratio;
-            
-            for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-            {
-              double dist = 0;
-              for(uint dtmp=0; dtmp<5; dtmp++)
-              {
-                double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
-                double toric_diff = std::min( diff, 1-diff );
-                dist += toric_diff*toric_diff;
-              }
-              dist = sqrt(dist);
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
+              if(D>=4)
+                {
+                  for(int d=0; d<3; d++)
+                    {
+                      double current_dist = distDT_3D;
+                      current_dist *= ratio;
+							
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+								
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+								
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+								
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                    }
+	
+                }
+              if(D==5)
+                {
+                  for(int d=0; d<4; d++)
+                    {
+                      double current_dist = distDT_3D;
+                      current_dist *= ratio;
               
-              if ( dist < current_dist )
-              accept = false;
-            }
-          }
-          if(D==6)
-          {
-            double current_dist = distDT_6D;
-            current_dist *= ratio;
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[1]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+                
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[0]-arg_pts[j].pos()[0]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+                
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[1]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[2]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+                
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[1]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+                
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                      for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                        {
+                          double dist = 0;
+                          {
+                            double diff = std::abs((p.pos()[2]-arg_pts[j].pos()[2]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[1]-arg_pts[j].pos()[3]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          {
+                            double diff = std::abs((p.pos()[3]-arg_pts[j].pos()[4]));
+                            double toric_diff = std::min( diff, 1-diff );
+                            dist += toric_diff*toric_diff;
+                          }
+                          dist = sqrt(dist);
+                
+                          if ( dist < current_dist )
+                            accept = false;
+                        }
+                    }
             
-            for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
-            {
-              double dist = 0;
-              for(uint dtmp=0; dtmp<D; dtmp++)
-              {
-                double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
-                double toric_diff = std::min( diff, 1-diff );
-                dist += toric_diff*toric_diff;
-              }
-              dist = sqrt(dist);
+                }
+					
+              if(D==3)
+                continue;
+
+              //test 4D projection
+              //STOPPING HERE FOR NOW
+              //If D=4: 0123
+              //If D=5: 0123,
+              //If D=6: 0123,
+              if(D>=4)
+                {
+                  double current_dist = distDT_4D;
+                  current_dist *= ratio;
+
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+                      for(uint dtmp=0; dtmp<4; dtmp++)
+                        {
+                          double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
+                          double toric_diff = std::min( diff, 1-diff );
+                          dist += toric_diff*toric_diff;
+                        }
+                      dist = sqrt(dist);
+							
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
+              if(D>=5)
+                {
+                  double current_dist = distDT_5D;
+                  current_dist *= ratio;
+            
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+                      for(uint dtmp=0; dtmp<5; dtmp++)
+                        {
+                          double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
+                          double toric_diff = std::min( diff, 1-diff );
+                          dist += toric_diff*toric_diff;
+                        }
+                      dist = sqrt(dist);
               
-              if ( dist < current_dist )
-              accept = false;
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
+              if(D==6)
+                {
+                  double current_dist = distDT_6D;
+                  current_dist *= ratio;
+            
+                  for(uint j=0; (j<arg_pts.size()) & (accept); ++j)
+                    {
+                      double dist = 0;
+                      for(uint dtmp=0; dtmp<D; dtmp++)
+                        {
+                          double diff = std::abs((p.pos()[dtmp]-arg_pts[j].pos()[dtmp]));
+                          double toric_diff = std::min( diff, 1-diff );
+                          dist += toric_diff*toric_diff;
+                        }
+                      dist = sqrt(dist);
+              
+                      if ( dist < current_dist )
+                        accept = false;
+                    }
+                }
             }
-          }
-				}
 				
-				arg_pts.push_back(p);
-				/*std::cout << "######################################### Insert" << std::endl;
-				std::cout << "Pointset" << std::endl;
-				for(uint j=0; j<arg_pts.size(); ++j)
-					std::cout << arg_pts[j] << std::endl;
-				std::cout << "######################################### Insert" << std::endl;*/
-			}
+          arg_pts.push_back(p);
+          /*std::cout << "######################################### Insert" << std::endl;
+            std::cout << "Pointset" << std::endl;
+            for(uint j=0; j<arg_pts.size(); ++j)
+            std::cout << arg_pts[j] << std::endl;
+            std::cout << "######################################### Insert" << std::endl;*/
+        }
 
-			return true;
-		};
+      return true;
+    };
 
-	protected:
-		std::mt19937 m_mersenneTwister;
-		double getRandom01()
-		{
-			return (double)m_mersenneTwister() / (double)m_mersenneTwister.max();
-		}
+  protected:
+    std::mt19937 m_mersenneTwister;
+    double getRandom01()
+    {
+      return (double)m_mersenneTwister() / (double)m_mersenneTwister.max();
+    }
 
-	};
+  };
 
 } //end namespace utk
 
