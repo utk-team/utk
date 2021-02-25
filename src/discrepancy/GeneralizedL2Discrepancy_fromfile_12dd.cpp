@@ -36,7 +36,7 @@
 
 #include "runDiscrepancy.hpp"
 
-#define D 8
+#define D 12
 
 using namespace utk;
 

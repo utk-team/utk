@@ -11,9 +11,22 @@ SET(SRCs
 	GeneralizedL2Discrepancy_fromfile_2dd
 	GeneralizedL2Discrepancy_fromfile_3dd
 	GeneralizedL2Discrepancy_fromfile_4dd
+	GeneralizedL2Discrepancy_fromfile_5dd
 	GeneralizedL2Discrepancy_fromfile_6dd
+	GeneralizedL2Discrepancy_fromfile_7dd
 	GeneralizedL2Discrepancy_fromfile_8dd
-  GeneralizedL2Discrepancy_fromfile_10dd
+	GeneralizedL2Discrepancy_fromfile_9dd
+    GeneralizedL2Discrepancy_fromfile_10dd
+    GeneralizedL2Discrepancy_fromfile_11dd
+    GeneralizedL2Discrepancy_fromfile_12dd
+    GeneralizedL2Discrepancy_fromfile_13dd
+    GeneralizedL2Discrepancy_fromfile_14dd
+    GeneralizedL2Discrepancy_fromfile_15dd
+    GeneralizedL2Discrepancy_fromfile_16dd
+    GeneralizedL2Discrepancy_fromfile_17dd
+    GeneralizedL2Discrepancy_fromfile_18dd
+    GeneralizedL2Discrepancy_fromfile_19dd
+    GeneralizedL2Discrepancy_fromfile_20dd
 
 	UnanchoredL2Discrepancy_fromfile_2dd
 	UnanchoredL2Discrepancy_fromfile_3dd
