@@ -7,6 +7,10 @@ SET(SRCs
 	L2Discrepancy_fromfile_3dd
 	L2Discrepancy_fromfile_4dd
 
+	Diaphony_fromfile_2dd
+	Diaphony_fromfile_3dd
+	Diaphony_fromfile_4dd
+
 	GeneralizedL2Discrepancy_fromfile_1dd
 	GeneralizedL2Discrepancy_fromfile_2dd
 	GeneralizedL2Discrepancy_fromfile_3dd
@@ -72,13 +76,13 @@ endif(USE_TBB)
 
 
 # if(USE_MPFR)
-# 
+#
 # SET(SRCs
 # 	GeneralizedL2Discrepancy_HighPrec_fromfile_2dd
 # 	GeneralizedL2Discrepancy_HighPrec_fromfile_3dd
 # 	GeneralizedL2Discrepancy_HighPrec_fromfile_4dd
 # 	)
-# 
+#
 # FOREACH(FILE ${SRCs})
 #   add_executable(${FILE} ${FILE} ${UTK_FILES})
 #   target_link_libraries ( ${FILE} ${LINK_MPFR} )
@@ -86,9 +90,9 @@ endif(USE_TBB)
 # 					RUNTIME DESTINATION bin
 # 					LIBRARY DESTINATION lib
 # 					ARCHIVE DESTINATION lib)
-# 
+#
 # ENDFOREACH(FILE)
-# 
+#
 # endif(USE_MPFR)
 
 if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
@@ -102,4 +106,3 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )
     SET(CMAKE_CXX_FLAGS "-lm -fopenmp")
     add_compile_options(-std=c++11 -mtune=native -march=native -O3 -Xpreprocessor -DWITH_TREES)
 endif()
-
