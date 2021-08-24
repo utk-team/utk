@@ -1,7 +1,7 @@
 /*
  * Mayur Patel  mayur.patel2@rci.rogers.com
  *
- * Copyright (c) 2021 Rogers Communications
+ * Copyright (c) 2021
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
