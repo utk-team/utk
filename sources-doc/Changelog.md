@@ -1,3 +1,4 @@
+* 2021-Aug: Adding code and documentation for Diaphony
 * 2020-Nov: Cleanup in the Generalized L2 Discrepancy code
 * 2020-Jan: Bugfix FFTW_INCLUDES headers
 * 2020-Jan: More Jittered samplers
