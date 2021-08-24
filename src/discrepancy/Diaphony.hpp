@@ -1,5 +1,5 @@
 /*
- * Mayur Patel  mayur.patel2@rci.rogers.com
+ * Mayur Patel  mayur.patel.rogers@gmail.com
  *
  * Copyright (c) 2021
  * All rights reserved.
