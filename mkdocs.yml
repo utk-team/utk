@@ -82,6 +82,7 @@ nav:
   - Discrepancy Evaluation:
     - Star discrepancy: 'discrepancy_star_disc.md'
     - L2 Discrepancy: 'discrepancy_l2_disc.md'
+    - Diaphony: 'discrepancy_diaphony.md'
     - Centered L2 Discrepancy: 'discrepancy_centered_l2_disc.md'
     - Unanchored L2 Discrepancy: 'discrepancy_unanchored_l2_disc.md'
     - Symmetric L2 Discrepancy: 'discrepancy_symmetric_l2_disc.md'
