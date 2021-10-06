@@ -1,3 +1,5 @@
+#include <iomanip>
+
 #include "../parameters/ParamParser.hpp"
 #include "../io/messageStream.hpp"
 
@@ -53,6 +55,7 @@ public:
 };
 std::ostream& operator<<(std::ostream& os, const DiscrepancyStatistics& e) 
 { 
+	os << std::setprecision(16);
 	os << "#Nbpts\t\t#Mean\t\t#Var\t\t#Min\t\t#Max\t\t#NbPtsets" << std::endl;
 	os << e.nbpts << "\t\t";
 	os << e.mean_discrepancy << "\t\t";

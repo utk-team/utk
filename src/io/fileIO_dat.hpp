@@ -91,10 +91,10 @@ public:
 	virtual bool writePointset(const Pointset<D, T, P>& arg_pointset) 
 	{
 		if(!first)
-			this->m_ostream << "#" << std::endl;
+			this->m_ostream << "#" << "\n";
 		
 		for(uint i=0; i<arg_pointset.size(); i++)
-			this->m_ostream << arg_pointset[i] << std::endl;
+			this->m_ostream << arg_pointset[i] << "\n";
 		
 		first = false;
 		
