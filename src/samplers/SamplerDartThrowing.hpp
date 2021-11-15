@@ -103,9 +103,9 @@ namespace utk
 			{
 				int iter = 1;
 				bool accept=false;
+				double current_dist = distDT;
 				while( ! accept )
 				{
-					double current_dist = distDT;
 					if(m_relaxed)
 					{
 						if(iter%1000 == 0)
