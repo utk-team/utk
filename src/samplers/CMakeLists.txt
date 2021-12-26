@@ -190,7 +190,6 @@ SET(SRCs_test
   BNLDS_2dd
 
   VanDerCorput_1dd
-
   )
 
 FOREACH(FILE ${SRCs_test})
@@ -419,7 +418,25 @@ if(USE_CGALv2)
     ARCHIVE DESTINATION lib)
 endif(USE_CGALv2)
 
+add_executable(KroneckerK21-2_2dd
+  SamplerKronecker/Kronecker.cpp
+  KroneckerK21-2_2dd.cpp
+  ${UTK_FILES})
+target_link_libraries ( KroneckerK21-2_2dd ${LINK})
+install(TARGETS KroneckerK21-2_2dd
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
 
+add_executable(KroneckerR2_2dd
+  SamplerKronecker/Kronecker.cpp
+  KroneckerR2_2dd.cpp
+  ${UTK_FILES})
+target_link_libraries ( KroneckerR2_2dd ${LINK})
+install(TARGETS KroneckerR2_2dd
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
 
 # if(USE_CIMG)
 # SET(SRCs
