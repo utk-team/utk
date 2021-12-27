@@ -126,7 +126,8 @@ class JitteredGenerator {
     ~JitteredGenerator(void){}
 
     float get_current_value(uint8_t dim) const {
-      return _s0.get_current_value(dim) + _amplitude * _s1.get_current_value(dim);
+      float ret = _s0.get_current_value(dim) + _amplitude * _s1.get_current_value(dim);
+      return ret > 1.0f ? ret - 1.0f : ret;
     }
 
     void next(void){
