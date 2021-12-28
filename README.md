@@ -1,6 +1,5 @@
 # Uni{corn|form} toolkit
 
-
 The UTK tool kit aims at providing executables to generate and analyze
 point set. It is originally meant to help researchers developing
 sampling patterns in a numerical integration using Monte-Carlo
