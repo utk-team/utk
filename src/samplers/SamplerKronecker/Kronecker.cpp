@@ -49,39 +49,39 @@ const double Kronecker::R4[4] = {
 };
 
 const double Kronecker::K21_2[2] = {
-  std::sqrt((long double)506598872547596.0)/(long double)29147227.0,
-  std::sqrt((long double)107882942223468.0)/(long double)28993644.0
+  static_cast<double>(std::sqrt((long double)506598872547596.0)/(long double)29147227.0),
+  static_cast<double>(std::sqrt((long double)107882942223468.0)/(long double)28993644.0)
 };
 
 const double Kronecker::K21_3[3] = {
-  std::sqrt((long double)136155583282554.0)/(long double)19015340.0,
-  std::sqrt((long double)263438703080803.0)/(long double)17181595.0,
-  std::sqrt((long double)352662070147437.0)/(long double)22118332.0
+  static_cast<double>(std::sqrt((long double)136155583282554.0)/(long double)19015340.0),
+  static_cast<double>(std::sqrt((long double)263438703080803.0)/(long double)17181595.0),
+  static_cast<double>(std::sqrt((long double)352662070147437.0)/(long double)22118332.0)
 };
 
 const double Kronecker::K21_4[4] = {
-  std::sqrt((long double)1062447381118571.0)/(long double)33084971.0,
-  std::sqrt((long double)147063651917932.0)/(long double)30639341.0,
-  std::sqrt((long double)711707016062345.0)/(long double)29661368.0,
-  std::sqrt((long double)328399936443598.0)/(long double)27256281.0
+  static_cast<double>(std::sqrt((long double)1062447381118571.0)/(long double)33084971.0),
+  static_cast<double>(std::sqrt((long double)147063651917932.0)/(long double)30639341.0),
+  static_cast<double>(std::sqrt((long double)711707016062345.0)/(long double)29661368.0),
+  static_cast<double>(std::sqrt((long double)328399936443598.0)/(long double)27256281.0)
 };
 
 const double Kronecker::K21b_2[2] = {
-  std::sqrt((long double)415745956465435.0)/(long double)32662800.0,
-  std::sqrt((long double)16340581432791.0)/(long double)25338159.0
+  static_cast<double>(std::sqrt((long double)415745956465435.0)/(long double)32662800.0),
+  static_cast<double>(std::sqrt((long double)16340581432791.0)/(long double)25338159.0)
 };
 
 const double Kronecker::K21b_3[3] = {
-  std::sqrt((long double)6742281674969.0)/(long double)20126138.0,
-  std::sqrt((long double)42845384312863.0)/(long double)18315113.0,
-  std::sqrt((long double)1044922263929.0)/(long double)25238999.0
+  static_cast<double>(std::sqrt((long double)6742281674969.0)/(long double)20126138.0),
+  static_cast<double>(std::sqrt((long double)42845384312863.0)/(long double)18315113.0),
+  static_cast<double>(std::sqrt((long double)1044922263929.0)/(long double)25238999.0)
 };
 
 const double Kronecker::K21b_4[4] = {
-  std::sqrt((long double)79054014721081.0)/(long double)17204034.0,
-  std::sqrt((long double)7916082904289.0)/(long double)18894472.0,
-  std::sqrt((long double)859650028021546.0)/(long double)29772799.0,
-  std::sqrt((long double)623200003618550.0)/(long double)27601088.0
+  static_cast<double>(std::sqrt((long double)79054014721081.0)/(long double)17204034.0),
+  static_cast<double>(std::sqrt((long double)7916082904289.0)/(long double)18894472.0),
+  static_cast<double>(std::sqrt((long double)859650028021546.0)/(long double)29772799.0),
+  static_cast<double>(std::sqrt((long double)623200003618550.0)/(long double)27601088.0)
 };
 
 // ====================================
