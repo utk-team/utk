@@ -8,9 +8,8 @@
       
       
       
-      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.5">
     
     
       
@@ -18,10 +17,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ee0f47ba.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -35,15 +34,16 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:300,400,400i,700%7CInconsolata&display=fallback">
-        <style>:root{--md-text-font-family:"PT Serif";--md-code-font-family:"Inconsolata"}</style>
+        <style>:root{--md-text-font:"PT Serif";--md-code-font:"Inconsolata"}</style>
       
     
     
+      <link rel="stylesheet" href="..">
     
-      <link rel="stylesheet" href="../extras.css">
-    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+
     
     
   </head>
@@ -57,7 +57,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-green" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,7 +73,10 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+    
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Uni{form|corn} tool kit" class="md-header__button md-logo" aria-label="Uni{form|corn} tool kit" data-md-component="logo">
       
@@ -106,19 +108,22 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -135,8 +140,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -148,11 +152,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -177,8 +184,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/utk-team/utk" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -219,10 +225,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        Samplers
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Samplers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Samplers" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
@@ -231,6 +241,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -241,8 +252,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -253,8 +266,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -265,8 +280,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -277,8 +294,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -289,8 +308,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -301,8 +322,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -313,8 +336,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -325,8 +350,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -337,8 +364,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -349,8 +378,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -361,8 +392,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -373,8 +406,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -385,8 +420,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -397,8 +434,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -409,8 +448,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -421,8 +462,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -433,8 +476,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -445,8 +490,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -457,8 +504,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -469,8 +518,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -481,8 +532,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -493,8 +546,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -505,8 +560,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -517,8 +574,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -529,8 +588,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -541,8 +602,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -553,8 +616,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -565,8 +630,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -577,8 +644,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -589,8 +658,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -601,8 +672,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -613,6 +686,35 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampler_kronecker_k21_2/" class="md-nav__link">
+        Kronecker K21-2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampler_kronecker_r2/" class="md-nav__link">
+        Kronecker R2
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -633,10 +735,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        Scrambling
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Scrambling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Scrambling" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
@@ -645,6 +751,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -655,8 +762,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -667,8 +776,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -679,6 +790,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -699,10 +811,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        Discrepancy Evaluation
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Discrepancy Evaluation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Discrepancy Evaluation" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -711,6 +827,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -721,8 +838,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -733,8 +852,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -745,8 +866,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -757,8 +880,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -769,8 +894,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -781,8 +908,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -793,8 +922,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -805,6 +936,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -827,10 +959,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_5">
-        Integration Tests
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Integration Tests
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Integration Tests" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
@@ -839,6 +975,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -849,8 +986,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -861,8 +1000,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -873,8 +1014,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -885,8 +1028,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -897,8 +1042,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -922,6 +1069,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -977,8 +1125,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -989,6 +1139,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1024,10 +1175,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        Statistics
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Statistics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Statistics" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
@@ -1036,6 +1191,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1046,8 +1202,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1058,6 +1216,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1093,10 +1252,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        Classes
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Classes" data-md-level="1">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
@@ -1105,6 +1268,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1115,8 +1279,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1127,6 +1293,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1147,10 +1314,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
       
-      <label class="md-nav__link" for="__nav_10">
-        Misc. and Scripts
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Misc. and Scripts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Misc. and Scripts" data-md-level="1">
         <label class="md-nav__title" for="__nav_10">
           <span class="md-nav__icon md-icon"></span>
@@ -1159,6 +1330,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1169,8 +1341,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1181,8 +1355,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1193,8 +1369,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1205,8 +1383,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1217,8 +1397,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1229,6 +1411,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1263,6 +1446,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1323,13 +1507,13 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                <h1 id="integration-box-arrangement">Integration Box Arrangement</h1>
+
+<h1 id="integration-box-arrangement">Integration Box Arrangement</h1>
 <h2 id="files">Files</h2>
-<div class="codehilite"><pre><span></span><code><span class="err">src/integration/IntegrationBoxArrangement.hpp  </span>
-<span class="err">src/integration/arrangement/TriangleArrangement.hpp  </span>
-<span class="err">src/integration/arrangement/BoxesAligned.hpp  </span>
-<span class="err">src/bin/integration/IntegrationBoxArrangement_fromfile_2dd.cpp</span>
+<div class="codehilite"><pre><span></span><code>src/integration/IntegrationBoxArrangement.hpp  
+src/integration/arrangement/TriangleArrangement.hpp  
+src/integration/arrangement/BoxesAligned.hpp  
+src/bin/integration/IntegrationBoxArrangement_fromfile_2dd.cpp
 </code></pre></div>
 
 <h2 id="description">Description</h2>
@@ -1353,26 +1537,26 @@
     -r [string]     Rasterized output
 </code></pre></div>
 <p>To integrate over a function using an input 2D point set, we can use the following client line command:</p>
-<div class="codehilite"><pre><span></span><code><span class="err"> ./bin/integration/IntegrationBoxArrangement_fromfile_2dd -i toto.dat</span>
+<div class="codehilite"><pre><span></span><code> ./bin/integration/IntegrationBoxArrangement_fromfile_2dd -i toto.dat
 </code></pre></div>
 
 <p>Or one can use the following C++ code:</p>
-<div class="highlight"><pre><span></span><code>    <span class="n">IntegrationBoxArrangement</span> <span class="n">integration_test</span><span class="p">;</span>
-    <span class="n">IntegrationStatistics</span> <span class="n">stats</span><span class="p">;</span>
-    <span class="n">Pointset</span><span class="o">&lt;</span> <span class="n">D</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&gt;</span> <span class="n">pts</span><span class="p">;</span>
-    <span class="c1">//We assume pts is filled</span>
-    <span class="n">stats</span><span class="p">.</span><span class="n">nbpts</span> <span class="o">=</span> <span class="n">pts</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">IntegrationBoxArrangement</span><span class="w"> </span><span class="n">integration_test</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">IntegrationStatistics</span><span class="w"> </span><span class="n">stats</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Pointset</span><span class="o">&lt;</span><span class="w"> </span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pts</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//We assume pts is filled</span>
+<span class="w">    </span><span class="n">stats</span><span class="p">.</span><span class="n">nbpts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pts</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
 
-    <span class="c1">//Can be done several times if we need to average over</span>
-    <span class="c1">//several stochastic pointsets</span>
-    <span class="kt">double</span> <span class="n">analytical</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">double</span> <span class="n">integration</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">integration_test</span><span class="p">.</span><span class="n">compute</span><span class="o">&lt;</span> <span class="n">D</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">integration</span><span class="p">,</span> <span class="n">analytical</span><span class="p">)</span>
-    <span class="n">stats</span><span class="p">.</span><span class="n">setAnalytical</span><span class="p">(</span><span class="n">analytical</span><span class="p">);</span>
-    <span class="n">stats</span><span class="p">.</span><span class="n">addValue</span><span class="p">(</span><span class="n">integration</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//Can be done several times if we need to average over</span>
+<span class="w">    </span><span class="c1">//several stochastic pointsets</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">analytical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">integration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">integration_test</span><span class="p">.</span><span class="n">compute</span><span class="o">&lt;</span><span class="w"> </span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="n">integration</span><span class="p">,</span><span class="w"> </span><span class="n">analytical</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">stats</span><span class="p">.</span><span class="n">setAnalytical</span><span class="p">(</span><span class="n">analytical</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">stats</span><span class="p">.</span><span class="n">addValue</span><span class="p">(</span><span class="n">integration</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">stats</span><span class="p">.</span><span class="n">computeStatistics</span><span class="p">();</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">stats</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stats</span><span class="p">.</span><span class="n">computeStatistics</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="results">Results</h2>
 <p>Stochastic sampler</p>
@@ -1402,11 +1586,6 @@
 4096    176.217     0   176.217     176.217     176.922     0.49652 1
 </code></pre></div>
 <p><a href="../data/box_arrangement/integration_4096.png"><img alt="" src="../data/box_arrangement/integration_4096.png" /></a></p>
-                
-              
-              
-                
-
 
               
             </article>
@@ -1415,12 +1594,12 @@
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../integration_image/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../integration_image/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Image" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1435,7 +1614,8 @@
         </a>
       
       
-        <a href="../integration_triangle_arrangement/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../integration_triangle_arrangement/" class="md-footer__link md-footer__link--next" aria-label="Next: Triangle arrangement" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -1453,14 +1633,15 @@
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1470,10 +1651,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b6ff8c07.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../assets/javascripts/bundle.5e13d264.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
