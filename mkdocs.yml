@@ -27,7 +27,7 @@ theme:
   logo: 'data/logo_utk.png'
 
 extra_css:
-  - 
+  -
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -75,6 +75,8 @@ nav:
     - Step: 'sampler_step.md'
     - Stratified: 'sampler_stratified.md'
     - Whitenoise: 'sampler_whitenoise.md'
+    - Kronecker K21-2: 'sampler_kronecker_k21_2.md'
+    - Kronecker R2: 'sampler_kronecker_r2.md'
   - Scrambling:
     - Cranley Patterson: 'scrambling_cranleypatterson.md'
     - Digital XOR: 'scrambling_digitalxor.md'

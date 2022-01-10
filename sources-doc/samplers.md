@@ -20,6 +20,8 @@ Sampler | License  |Illustration
 [LDBN](../sampler_ldbn) | BSD |  [![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 [BNLD Sequences](../sampler_BNLDS) | BSD |  [![](data/BNLDS/BNLDS_4096.png)](../sampler_BNLDS)
 [Progressive MultiJittered Sampling](../sampler_PMJ) | BSD |  [![](data/PMJ/Images/PMJ02_1024.png)](../sampler_PMJ)
+[Kronecker K21-2](../sampler_kronecker_k21_2) | BSD |  [![](data/kronecker_k21_2/k21-2_1024.png)](../sampler_kronecker_k21_2)
+[Kronecker R2](../sampler_kronecker_r2) | BSD |  [![](data/kronecker_r2/r2_1024.png)](../sampler_kronecker_r2)
 
 ##  Blue Noise Samplers
 
@@ -34,7 +36,7 @@ Sampler | License  |Illustration
 [LDBN](../sampler_ldbn) |BSD |[![](data/ldbn/ldbn_1024.png)](../sampler_ldbn)
 [Penrose](../sampler_penrose) | See doc|[![](data/penrose/penrose_1024.png)](../sampler_penrose)
 [BNOT](../sampler_BNOT)| BSD and GPL |[![](data/BNOT/BNOT_1024.png)](../sampler_BNOT)
-[Lloyd 3D](../sampler_Lloyd)| See doc | 
+[Lloyd 3D](../sampler_Lloyd)| See doc |
 
 ## Poisson Disk Samplers
 
