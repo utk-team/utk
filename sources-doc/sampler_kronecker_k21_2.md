@@ -17,7 +17,7 @@ A Kronecker sequence is defined by an additive recurrence for each dimension:
 S[i] = { S[i-1] + a }
 
 Where _a_ is an irrational value and {_x_} denotes the fractional part of _x_.
-In this case, we use the K21-2 irrationals of: (To appear) Optimizing Kronecker Sequences for Multidimensional Sampling, Journal of Computer Graphics Techniques.
+In this case, we use the K21-2 irrationals of: [[Patel2022]](https://jcgt.org/published/0011/01/04/)
 
 
 ## License
