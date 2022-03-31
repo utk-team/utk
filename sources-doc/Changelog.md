@@ -1,3 +1,4 @@
+* 2022-Mar: Adding the reference for the Kronecker K21-2 sampler
 * 2021-Dec: Adding Kronecker K21-2 and R2 sample generators
 * 2021-Aug: Adding code and documentation for Diaphony
 * 2020-Nov: Cleanup in the Generalized L2 Discrepancy code
