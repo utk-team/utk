@@ -32,6 +32,7 @@
 #ifndef _UTK_STAR_DISCREPANCY_
 #define _UTK_STAR_DISCREPANCY_
 
+#include <limits>
 #include "../pointsets/Pointset.hpp"
 #include "../utils.hpp"
 
