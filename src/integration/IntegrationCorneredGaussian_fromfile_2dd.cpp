@@ -38,7 +38,10 @@
 #include "runIntegration.hpp"
 
 #ifdef CIMG_ON
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wall"
 #include "../../externals/CImg-3.2.0_pre110222/CImg.h"
+#pragma GCC diagnostic pop
 #endif
 
 #define D 2
