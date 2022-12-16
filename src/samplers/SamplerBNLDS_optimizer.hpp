@@ -587,7 +587,7 @@ private:
 				     uint level_max
 					)
 	{
-		uint N = in_pts.size();
+		auto N = in_pts.size();
 		Pointset< 2, std::bitset<SamplerBNLDS_BITSETSIZE>, Point< 2, std::bitset<SamplerBNLDS_BITSETSIZE> > > pts2;
 		pts2.resize(N);
 		

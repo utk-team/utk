@@ -58,7 +58,7 @@ public:
 		Pointset<D, double, Point<D, double> > pts01;
 		arg_pts.normalizePositions(pts01);
 			
-		uint N = pts01.size();
+		auto N = pts01.size();
 
 		double ra = rmin;//*smoothing;
 		double rb = rmax;

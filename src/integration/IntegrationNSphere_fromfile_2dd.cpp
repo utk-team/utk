@@ -38,7 +38,7 @@
 #include "runIntegration.hpp"
 
 #ifdef CIMG_ON
-#include "../../externals/CImg-1.6.9/CImg.h"
+#include "../../externals/CImg-3.2.0_pre110222/CImg.h"
 #endif
 
 #define D 2
@@ -73,7 +73,6 @@ int main(int argc, char** argv)
 	
 	IntegrationStatistics stats;
 
-	int size = 0;
 	Pointset< D, double, Point<D, double> > pts;
 	while(stream.readPointset(pts))
 	{
@@ -105,9 +104,7 @@ int main(int argc, char** argv)
 		}
 		else
 			stats.addValue(integration);
-		
-		size+=pts.size();
-		pts.clear();
+      pts.clear();
 	}
 
 	if(!param_brute)

@@ -34,9 +34,9 @@ inline Point getSample(unsigned tileID, unsigned sampleNo, Matrix m = IDENTITY) 
 }
 
 void generate(Points &samples) {
-    int n = samples.size();
+    auto n = samples.size();
     int tileID = rand() % tileCount;
-    for (int i = 0; i < n; i++) {
+    for (auto i = 0; i < n; i++) {
         samples[i] = getSample(tileID, i);
     }
 }
@@ -51,7 +51,7 @@ class SamplerART
 protected:
 public:
 
-	SamplerART() { srand(time(NULL)); m_tilefile=""; }
+	SamplerART() { srand((unsigned)time(NULL)); m_tilefile=""; }
 	
 	void setTileFile(std::string arg_tilefile) { m_tilefile = arg_tilefile; }
 

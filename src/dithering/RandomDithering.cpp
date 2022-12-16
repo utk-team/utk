@@ -29,7 +29,7 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include "../../externals/CImg-1.6.9/CImg.h"
+#include "../../externals/CImg-3.2.0_pre110222/CImg.h"
 #include "../parameters/ParamParser_getopt.hpp"
 
 using namespace utk;

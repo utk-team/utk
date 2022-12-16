@@ -20,8 +20,8 @@ public:
 
 	SamplerGeneticOwen() { setRandomSeedTime(); m_nbiter=1000; } //{ setRandomSeed(123456); m_nbiter=1000; }
 
-	void setRandomSeed( long unsigned int arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
+	void setRandomSeed( long unsigned int arg_seed ) { m_mersenneTwister.seed((std::mt19937::result_type)arg_seed); }
+	void setRandomSeedTime() { m_mersenneTwister.seed((std::mt19937::result_type)std::chrono::system_clock::now().time_since_epoch().count()); }
 	void setNbIter(int arg_nbiter) { m_nbiter = arg_nbiter; }
 
 	template<unsigned int D, typename T, typename P>

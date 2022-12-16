@@ -139,7 +139,7 @@ public:
 protected:
 	
 	int s;
-	int n;
+	size_t n;
 	int num;
 	int den;
 	int num2;

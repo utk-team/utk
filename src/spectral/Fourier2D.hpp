@@ -45,7 +45,7 @@
 #include "../pointsets/Pointset.hpp"
 #include "../pointsets/Histogram.hpp"
 
-#include "../../externals/CImg-1.6.9/CImg.h"
+#include "../../externals/CImg-3.2.0_pre110222/CImg.h"
 using namespace cimg_library;
 
 namespace utk
@@ -70,7 +70,7 @@ public:
 	template < uint D, typename T, typename P>
 	bool compute(const Pointset<D, T, P>& arg_pts, bool limit_size=0)
 	{		
-		uint nPts= arg_pts.size();
+		auto nPts= arg_pts.size();
 		
 		uint size = (int)round(4.0 * std::sqrt(nPts)) / 4.0;
 		if(size > 256 && limit_size)

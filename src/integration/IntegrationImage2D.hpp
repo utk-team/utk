@@ -37,7 +37,7 @@
 
 #include "../io/messageStream.hpp"
 #include "../pointsets/Pointset.hpp"
-#include "../../externals/CImg-1.6.9/CImg.h"
+#include "../../externals/CImg-3.2.0_pre110222/CImg.h"
 
 using namespace cimg_library;
 

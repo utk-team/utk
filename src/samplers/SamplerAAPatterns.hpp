@@ -42,7 +42,7 @@ struct TPoint {
 TPoint *map;
 double maxDisplacement;                                                         // A supremum for the shift in x or y directions.
 
-int aa(TPoint *list, int nxn) {                                                 // This function generates n x n points in the unit domain
+unsigned long aa(TPoint *list, int nxn) {                                                 // This function generates n x n points in the unit domain
     double n = sqrt(nxn);                                                       // Average number of points in a single row
     double w = (n / aa_t) * aa_ONE;                                             // The width to scan: aa_ONE produces aa_t points per row
     double scanRange = w + 2 * maxDisplacement + 2;                                  // Add a margin for displacement of points; and a margin for th
@@ -111,8 +111,8 @@ public:
 	SamplerAAPatterns() { setRandomSeedTime(); }
 
 	void setVectorFile( std::string arg_vectorfile) { m_vectorfile = arg_vectorfile; }
-	void setRandomSeed( long unsigned int arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeedTime() { m_mersenneTwister.seed(std::chrono::system_clock::now().time_since_epoch().count()); }
+	void setRandomSeed( long unsigned int arg_seed ) { m_mersenneTwister.seed((std::mt19937::result_type)arg_seed); }
+	void setRandomSeedTime() { m_mersenneTwister.seed((std::mt19937::result_type)std::chrono::system_clock::now().time_since_epoch().count()); }
 
 	template<unsigned int D, typename T, typename P>
 	bool generateSamples(Pointset<D, T, P>& arg_pts, unsigned int arg_points)
@@ -140,7 +140,7 @@ public:
 		nsaapattern::loadVectors(m_vectorfile.c_str());
 		int n = arg_points;
 		nsaapattern::TPoint *list = new nsaapattern::TPoint[(int)(1.1*n)];                                    // Add a 10% safety margin in buffer size. This is admittedly subjective
-		int actual = aa(list, n);
+		auto actual = aa(list, n);
 
 		arg_pts.resize(actual);
 		for(int i=0; i<actual; i++)

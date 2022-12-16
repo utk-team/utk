@@ -403,7 +403,7 @@ void BoundarySampler::complete()
 	candidates.push_back((int) points.size()-1);
 
 	while (candidates.size()) {
-		int c = m_rng.getInt32()%candidates.size();
+		auto c = m_rng.getInt32()%candidates.size();
 		int index = candidates[c];
 		Vec2 candidate = points[index];
 		candidates[c] = candidates[candidates.size()-1];

@@ -70,8 +70,8 @@ public:
 		sobol_ids[0] = 1;
 		sobol_ids[1] = 2;
 
-		srand(std::chrono::system_clock::now().time_since_epoch().count());
-		srand48(std::chrono::system_clock::now().time_since_epoch().count());
+		srand((unsigned)std::chrono::system_clock::now().time_since_epoch().count());
+		srand48((unsigned)std::chrono::system_clock::now().time_since_epoch().count());
 	}
 	
 	unsigned long long int permut_val;
@@ -88,13 +88,13 @@ public:
 			sobol_ids[i] = ids[i];
 	}
 	
-	void setRandomSeed( long unsigned int arg_seed ) { 
+	void setRandomSeed( unsigned int arg_seed ) { 
 		srand48(arg_seed); 
 		srand(arg_seed);
 	}
 	void setRandomSeedTime() { 
-		srand(std::chrono::system_clock::now().time_since_epoch().count());
-		srand48(std::chrono::system_clock::now().time_since_epoch().count()); 
+		srand((unsigned)std::chrono::system_clock::now().time_since_epoch().count());
+		srand48((unsigned)std::chrono::system_clock::now().time_since_epoch().count());
 	}
 	
 	void setLookupTableFile(std::string arg_lookuptable_file) { lookuptable_infile=arg_lookuptable_file; }

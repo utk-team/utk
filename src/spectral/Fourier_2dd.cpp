@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 	Histogram2dd image_spectrum_data;
 	
 	int nb = 0;
-	int ptssize = 0;
+	size_t ptssize = 0;
 	Pointset< D, double, Point<D, double> > pts;
 	while(stream.readPointset(pts))
 	{

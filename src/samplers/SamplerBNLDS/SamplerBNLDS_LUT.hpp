@@ -126,12 +126,12 @@ double PCFDistance(Pointset<D, uint, Point<D, uint> > pts)
 	
 	double d = 2.0 * sqrt( 1.0 / (2.0*sqrt(3.0)*tilesize) );
 	double smoothing = 0.1*d;
-	uint nbbins = SamplerBNLDS_targetpcf.size();
+	auto nbbins = SamplerBNLDS_targetpcf.size();
 	double rmin = 1.5*smoothing;
 	double rmax = 2.5*d;
 	
 	Histogram1dd pcf_data;
-	if(!pcf_engine.compute< 2, double, Point<2, double> >(pts2, pcf_data, rmin, rmax, nbbins, smoothing, true))
+	if(!pcf_engine.compute< 2, double, Point<2, double> >(pts2, pcf_data, rmin, rmax, (unsigned int)nbbins, smoothing, true))
 		return 1;
 	
 	double linf=0;
@@ -602,7 +602,7 @@ public:
 		std::cout << "Writing LUT . . ." << std::endl;
 		for(auto it=data.begin(); it!=data.end(); it++)
 		{
-			std::vector<uint> keyui;
+			std::vector<unsigned long> keyui;
 			uint tilesize = pow(K, D);
 			keyui.resize(tilesize*D);
 			
