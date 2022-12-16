@@ -43,7 +43,11 @@
 
 #include <Geex/basics/types.h>
 #include <Geex/basics/assert.h>
+#if defined(__MACH__)
+#include <stdlib.h>
+#else
 #include <malloc.h>
+#endif
 
 #ifdef GX_PARANOID
 #define GX_ARRAY_BOUND_CHECK

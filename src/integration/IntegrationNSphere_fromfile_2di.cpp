@@ -73,7 +73,6 @@ int main(int argc, char** argv)
 	
 	IntegrationStatistics stats;
 
-	int size = 0;
 	Pointset< D, uint, Point<D, uint> > pts;
 	
 	Pointset< D, double, Point<D, double> > pts2;
@@ -117,7 +116,6 @@ int main(int argc, char** argv)
 		else
 			stats.addValue(integration);
 		
-		size+=pts.size();
 		pts.clear();
 	}
 	

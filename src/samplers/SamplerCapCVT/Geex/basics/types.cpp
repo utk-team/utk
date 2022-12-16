@@ -70,7 +70,7 @@ namespace Geex {
 #ifdef WIN32
             return (_isnan(x) != 0) || (_finite(x) == 0) ;
 #else
-            return isnan(x) || !finite(x);
+          return isnan(x) || !isfinite(x);
 #endif
         }
     
@@ -78,7 +78,7 @@ namespace Geex {
 #ifdef WIN32
             return (_isnan(x) != 0) || (_finite(x) == 0) ;
 #else
-            return isnan(x) || !finite(x);
+          return isnan(x) || !isfinite(x);
 #endif
         }    
 
