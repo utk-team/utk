@@ -18,7 +18,7 @@ void assignInt(void* variable, char* str)
 }
 void assignUInt(void* variable, char* str)
 {
-	*((unsigned int*)variable) = atol(str);
+	*((long*)variable) = atol(str);
 }
 void assignLLInt(void* variable, char* str)
 {

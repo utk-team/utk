@@ -20,7 +20,7 @@ std::string getExt(std::string f, std::string default_value)
 
 std::string getBasename(std::string f)
 {
-	unsigned int pos_ext = f.find_last_of('.');
+	auto pos_ext = f.find_last_of('.');
 	return f.substr(0, pos_ext);
 }
 

@@ -63,7 +63,7 @@ public:
 				return false;
 			}
 			
-		uint N = arg_pts.size();
+		auto N = arg_pts.size();
 			
 		if(N==0)
 		{

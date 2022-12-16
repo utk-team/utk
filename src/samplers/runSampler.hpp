@@ -3,7 +3,7 @@
 #include "../pointsets/Pointset.hpp"
 
 unsigned int param_nbrealisations = 1;
-unsigned long long int param_nbsamples = 1024;
+unsigned int param_nbsamples = 1024;
 bool param_display_help = false;
 std::string param_output="output_pts.dat";
 bool param_verbose = true;

@@ -79,7 +79,7 @@ public:
 	SamplerLDBN() { 
 		setTileSize(128);
 		setChunkSize(16);
-		srand(time(NULL));
+		srand((unsigned int)time(NULL));
 	}
 
 	void setTileSize(uint arg_tile)

@@ -95,7 +95,7 @@ public:
 		this->m_ostream.write((char*)&(arg_pointset.domain.pMin), sizeof(arg_pointset.domain.pMin));
 		this->m_ostream.write((char*)&(arg_pointset.domain.pMax), sizeof(arg_pointset.domain.pMax));
 		this->m_ostream.write((char*)&(arg_pointset.toricity), sizeof(arg_pointset.toricity));
-		unsigned int s = arg_pointset.size();
+		auto s = arg_pointset.size();
 		this->m_ostream.write((char*)&s, sizeof(unsigned int));
 		this->m_ostream.write((char*)&arg_pointset[0], sizeof(arg_pointset[0])*s);
 		//this->m_ostream.write((char*)arg_pointset.data(), sizeof(arg_pointset[0])*s);

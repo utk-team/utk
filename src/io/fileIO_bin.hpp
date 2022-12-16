@@ -89,7 +89,7 @@ public:
 
 	virtual bool writePointset(const Pointset<D, T, P>& arg_pointset)
 	{
-		unsigned int s = arg_pointset.size();
+		auto s = arg_pointset.size();
 
 		this->m_ostream.write((char*)&s, sizeof(unsigned int));
 
