@@ -105,7 +105,7 @@ SET(SRCs
   )
 
 FOREACH(FILE ${SRCs})
-  add_executable(${FILE} ${FILE} ${UTK_FILES})
+  add_executable(${FILE} ${FILE}.cpp ${UTK_FILES})
   target_link_libraries ( ${FILE} ${LINK} ${LINK_TBB} )
   install(TARGETS ${FILE}
     RUNTIME DESTINATION bin

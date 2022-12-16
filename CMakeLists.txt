@@ -1,6 +1,35 @@
 Project(UnicornTK)
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.12)
 
+
+if(APPLE)
+    message("-- Setting OpenMP flags on MacOs. Assuming `brew install libomp`")
+    if(CMAKE_C_COMPILER_ID MATCHES "Clang\$")
+      set(OpenMP_C_LIB_NAMES "omp" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      IF(EXISTS "/opt/homebrew/") #for homebrew on Apple Silicon
+				message(STATUS "using M1 path for openmp")
+        set(OpenMP_C_FLAGS "-Xpreprocessor -fopenmp  -I/opt/homebrew/include" CACHE INTERNAL "OpenMP flags for Xcode toolchain.")
+        set(OpenMP_omp_LIBRARY "/opt/homebrew/lib/libomp.dylib" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      else()
+				message(STATUS "using classical path for openmp")
+				set(OpenMP_C_FLAGS "-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" CACHE INTERNAL "OpenMP flags for Xcode toolchain.")
+        set(OpenMP_omp_LIBRARY "/usr/local/opt/libomp/lib/libomp.dylib" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      endif()
+    endif()
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang\$")
+      set(OpenMP_CXX_LIB_NAMES "omp" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      IF(EXISTS "/opt/homebrew/")
+			  message(STATUS "using M1 path for openmp")
+        set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp  -I/opt/homebrew/include"  CACHE INTERNAL "OpenMP flags for Xcode toolchain.")
+        set(OpenMP_omp_LIBRARY "/opt/homebrew/lib/libomp.dylib" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      else()
+				message(STATUS "using classical path for openmp")
+				set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" CACHE INTERNAL "OpenMP flags for Xcode toolchain.")
+        set(OpenMP_omp_LIBRARY "/usr/local/opt/libomp/lib/libomp.dylib" CACHE INTERNAL "OpenMP lib name for Xcode toolchain.")
+      endif()
+    endif()
+endif()
+find_package(OpenMP REQUIRED)
 
 #### C++11
 set(CMAKE_CXX_STANDARD 11) # C++11...
@@ -142,4 +171,3 @@ add_subdirectory(src)
 
 
 SET(CMAKE_INSTALL_PREFIX $ENV{HOME})
-

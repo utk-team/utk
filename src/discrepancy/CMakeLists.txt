@@ -48,7 +48,7 @@ SET(SRCs
 	)
 
 FOREACH(FILE ${SRCs})
-  add_executable(${FILE} ${FILE} ${UTK_FILES})
+  add_executable(${FILE} ${FILE}.cpp ${UTK_FILES})
   target_link_libraries ( ${FILE} ${LINK} )
   install(TARGETS ${FILE}
           RUNTIME DESTINATION bin
@@ -64,7 +64,7 @@ SET(SRCs
 	)
 
 FOREACH(FILE ${SRCs})
-  add_executable(${FILE} ${FILE} ${UTK_FILES})
+  add_executable(${FILE} ${FILE}.cpp ${UTK_FILES})
   target_link_libraries ( ${FILE} ${LINK_TBB} )
 	install(TARGETS ${FILE}
 					RUNTIME DESTINATION bin
@@ -94,15 +94,3 @@ endif(USE_TBB)
 # ENDFOREACH(FILE)
 #
 # endif(USE_MPFR)
-
-if( ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" )
-    message("Compiling for Mac")
-    SET(CMAKE_CXX_FLAGS "-lm -lomp -L/usr/local/opt/libomp/lib -I/usr/local/include/")
-    add_compile_options(-std=c++11 -mtune=native -march=native -O3 -Xpreprocessor -fopenmp )
-endif()
-
-if( ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )
-    message("Compiling for Ununtu")
-    SET(CMAKE_CXX_FLAGS "-lm -fopenmp")
-    add_compile_options(-std=c++11 -mtune=native -march=native -O3 -Xpreprocessor -DWITH_TREES)
-endif()
