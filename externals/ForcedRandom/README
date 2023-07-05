@@ -1,0 +1,30 @@
+Supplementary material for the paper "Forced Random Sampling:
+Fast Generation of Importance-Guided Blue-Noise Samples" by
+Daniel Cornel, Robert F. Tobler, Hiroyuki Sakai, Christian
+Luksch, and Michael Wimmer
+
+Implementation of Forced Random Dithering and Forced Random
+Sampling on CPU and GPU in C++.
+
+The GPU implementations require OpenCL 1.2 to compile and
+link. The code has been tested with Visual Studio 2012.
+
+Usage:
+./bin/ForcedRandomDithering matrixSize
+
+Creates a new 2D FRD matrix of size matrixSize x matrixSize.
+The matrix will be stored in binary in ./Matrices/.
+Additionally, a TGA image of the dither values scaled to
+[0, 255] is stored.
+
+
+./bin/ForcedRandomSampling numberOfSamples matrixSize sigma
+
+Samples the importance function (hard-coded linear gradient)
+with FRS, producing approximately numberOfSamples samples.
+The dither matrix ./Matrices/matrixSizexmatrixSize.matrix
+must exist. Sigma controls the sparsity of the samples, the
+default value is 8. The samples will be stored in two
+different text files for CPU and GPU implementation in
+./Samples/samples.txt and ./Samples/samplesCL.txt.
+Additionally, a TGA image of the samples is stored.

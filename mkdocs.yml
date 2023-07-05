@@ -1,0 +1,94 @@
+site_name: Uni{form|corn} tool kit
+markdown_extensions:
+  - codehilite
+  - attr_list
+  - admonition
+  - markdown.extensions.footnotes
+  - markdown.extensions.smarty
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex
+  - pymdownx.emoji
+
+
+extra:
+  search:
+    tokenizer: '[\s\-\.::]+'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'light-green'
+    accent: 'deep orange'
+  font:
+    text: 'PT Serif'
+    code: 'Inconsolata'
+  logo: 'figs/logo_utk.png'
+
+extra_css:
+  - 'stylesheets/multilanguage_snippet.css'
+  - 'stylesheets/show_results.css'
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'javascript/multilanguage_snippet.js'
+  - 'javascript/show_results.js'
+
+repo_name: 'utk-team/utk'
+repo_url: 'https://github.com/utk-team/utk'
+edit_uri: ''
+
+
+docs_dir: 'doc'
+site_dir: 'docs'
+
+nav:
+  - Home: 'index.md'
+  - Using UTK:
+    - Exe UTK: 'usingutk/ExeUtk.md'
+    - Cpp UTK: 'usingutk/CppUtk.md'
+    - PyUTK: 'usingutk/PyUtk.md'
+  - Samplers:
+    - AAPatterns: 'samplers/AAPatterns.md'
+    - ART: 'samplers/ART.md'
+    - CMJ: 'samplers/CMJ.md'
+    - DartThrowing: 'samplers/DartThrowing.md'
+    - FastPoisson: 'samplers/FastPoisson.md'
+    - Fattal: 'samplers/Fattal.md'
+    - Faure: 'samplers/Faure.md'
+    - ForcedRandom: 'samplers/ForcedRandom.md'
+    - Halton: 'samplers/Halton.md'
+    - Hammersley: 'samplers/Hammersley.md'
+    - HexagonalGrid: 'samplers/HexagonalGrid.md'
+    - Korobov: 'samplers/Korobov.md'
+    - Kronecker: 'samplers/Kronecker.md'
+    - LDBN: 'samplers/LDBN.md'
+    - LLoyd: 'samplers/LLoyd.md'
+    - Niederreiter: 'samplers/Niederreiter.md'
+    - NRooks: 'samplers/NRooks.md'
+    - Penrose: 'samplers/Penrose.md'
+    - PMJ: 'samplers/PMJ.md'
+    - ProjectiveBlueNoise: 'samplers/ProjectiveBlueNoise.md'
+    - Rank1: 'samplers/Rank1.md'
+    - RegularGrid: 'samplers/RegularGrid.md'
+    - SinglePeak: 'samplers/SinglePeak.md'
+    - Sobol: 'samplers/Sobol.md'
+    - Step: 'samplers/Step.md'
+    - Stratified: 'samplers/Stratified.md'
+    - VanDerCorput: 'samplers/VanDerCorput.md'
+    - Whitenoise: 'samplers/Whitenoise.md'
+  - Metrics:
+    - BoundaryStars: 'metrics/BoundaryStar.md'
+    - L2: 'metrics/L2.md'
+    - GeneralizedL2: 'metrics/GeneralizedL2.md'
+    - SymmetricL2: 'metrics/SymmetricL2.md'
+    - UnanchoredL2: 'metrics/UnanchoredL2.md'
+    - CenteredL2: 'metrics/CenteredL2.md'
+    - Diaphony: 'metrics/Diaphony.md'
+    - MinDist: 'metrics/MinDist.md'
+    - PCF: 'metrics/PCF.md'
+    - Spectrum: 'metrics/Spectrum.md'
+    - RadialSpectrum: 'metrics/RadialSpectrum.md'
+    - IntegrationTest: 'metrics/IntegrationTest.md'
+  - License: 'license.md'
