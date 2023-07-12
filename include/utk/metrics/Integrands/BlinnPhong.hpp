@@ -373,9 +373,9 @@ namespace utk
 
         virtual void WriteInStream (std::ostream& stream) const override
         {
-            stream << p.x << p.y << p.z;
-            stream << o.x << o.y << o.z;
-            stream << alpha;
+            stream << p.x << " " << p.y << " " << p.z;
+            stream << " " << o.x << " " << o.y << " " << o.z;
+            stream << " " << alpha;
         }
 
         void ReadFromStream(std::istream& stream) override 

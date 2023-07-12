@@ -48,6 +48,7 @@
 #include <utk/metrics/IntegrationTest.hpp>
 #include <utk/metrics/Integrands/GaussianIntegrands.hpp>
 #include <utk/metrics/Integrands/HeavisideIntegrands.hpp>
+#include <utk/metrics/Integrands/BlinnPhong.hpp>
 
 
 template<typename InputType, typename IntegrandType>
@@ -170,5 +171,7 @@ void init_Metrics(py::module& m)
         .def( "ReadGaussianDatabse"  , &IntegrationTest:: ReadDatabase<GaussianIntegrand>)
         .def("BuildHeavisideDatabase", GetBuildComputeFunction<double, HeavisideIntegrand>())
         .def( "ReadHeavisideDatabse" , &IntegrationTest:: ReadDatabase<HeavisideIntegrand>)
+        .def("BuildBlinnPhongDatabase", GetBuildComputeFunction<double, BlinnPhong>())
+        .def( "ReadBlinnPhongDatabase" , &IntegrationTest:: ReadDatabase<BlinnPhong>)
         .def("compute"      , GetComputeFunction<IntegrationTest, double, IntegrationTest::ErrorReport>());   
 }

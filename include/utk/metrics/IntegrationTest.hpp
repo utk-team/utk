@@ -251,6 +251,11 @@ namespace utk
             for (const auto ptr : integrands)
                 delete ptr;
         }
+
+        const std::vector<Integrand*>& getIntegrands() const
+        {
+            return integrands;
+        }
     private:
         std::vector<Integrand*> integrands;
         std::vector<double>     values;
