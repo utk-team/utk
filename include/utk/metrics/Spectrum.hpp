@@ -36,6 +36,10 @@
     #include <omp.h>
 #endif
 
+#ifdef UTK_USE_FFTW
+    #include <fftw3.h>
+#endif
+
 #include <utk/utils/utk_types.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/log.hpp>
@@ -63,13 +67,157 @@ namespace utk
         {
             uint32_t w = paramWidth;
             if (paramWidth == 0)
-                w = static_cast<uint32_t>(2 * 5 * std::sqrt(hint_N));
+                w = static_cast<uint32_t>(2 * 5 * std::sqrt(hint_N)) / 2;
             else if ((w & 1) == 0)
                 UTK_WARN("Spectrum: only using odd resolution ({} => {})", w, w - !(w & 1));
 
             return w - !(w & 1);
         }
 
+#ifdef UTK_USE_FFTW
+        template<typename T>
+        std::vector<T> compute(const Pointset<T>& pts)
+        {
+            const uint32_t width = getWidth(pts.Npts());
+            const uint32_t Origin = width >> 1;
+            const uint32_t totalRes = std::pow(width, pts.Ndim());
+            const std::vector<int> ranks(pts.Ndim(), width);
+
+            const std::vector<uint32_t> powers = [&](){
+                std::vector<uint32_t> vals(pts.Ndim(), 1);
+                for (uint32_t d = 1; d < pts.Ndim(); d++)
+                    vals[d] = vals[d - 1] * width;
+                return vals;
+            }();
+
+            const T invNPts = 1. / (pts.Npts());
+
+            std::vector<T> spectrum(totalRes, 0.0);
+
+            fftw_complex* fftPrimal = (fftw_complex*)fftw_malloc(totalRes * sizeof(fftw_complex));
+            fftw_complex* fftDual   = (fftw_complex*)fftw_malloc(totalRes * sizeof(fftw_complex));
+            fftw_plan fftp = fftw_plan_dft(pts.Ndim(), ranks.data(), fftPrimal, fftDual, -1.0, FFTW_ESTIMATE);
+
+            for (uint32_t i = 0; i < pts.Npts(); i++)
+            {
+                uint32_t coord = 0;
+                for (uint32_t d = 0; d < pts.Ndim(); d++)
+                {
+                    uint32_t component = static_cast<uint32_t>(pts[i][d] * width) % width;
+                    coord = component * powers[d] + coord; 
+                }
+                fftPrimal[coord][0] = 1.0;
+            }
+
+            fftw_execute(fftp);
+
+            if (cancelDC)
+            {
+                fftDual[0][0] = 0.0;
+                fftDual[0][1] = 0.0;
+            }    
+
+            for (uint32_t i = 0; i < totalRes; i++)
+            {
+                uint32_t tmp = i;
+                uint32_t index = 0;
+
+                for (uint32_t d = 0; d < pts.Ndim(); d++)
+                {
+                    uint32_t component = ((tmp % width) + Origin - 1) % width;
+                    index = index + component * powers[pts.Ndim() - d - 1];
+                    tmp  /= width;
+                }
+
+                T abs_sqr = fftDual[i][0] * fftDual[i][0] + 
+                            fftDual[i][1] * fftDual[i][1];
+                spectrum[index] = abs_sqr * invNPts;
+            }
+
+            fftw_free(fftPrimal);
+            fftw_free(fftDual);  
+            fftw_destroy_plan(fftp);
+            fftw_cleanup();
+
+            return spectrum;
+        }
+
+        template<typename T>
+        std::vector<T> compute(const std::vector<Pointset<T>>& ptss)
+        {
+            if (ptss.size() == 0) return std::vector<T>();
+
+            const uint32_t width = getWidth(ptss[0].Npts());
+            const uint32_t Origin = width >> 1;
+            const uint32_t totalRes = std::pow(width, ptss[0].Ndim());
+            const std::vector<int> ranks(ptss[0].Ndim(), width);
+
+            const std::vector<uint32_t> powers = [&](){
+                std::vector<uint32_t> vals(ptss[0].Ndim(), 1);
+                for (uint32_t d = 1; d < ptss[0].Ndim(); d++)
+                    vals[d] = vals[d - 1] * width;
+                return vals;
+            }();
+
+            const T invNPts = 1. / (ptss.size() * ptss[0].Npts());
+
+            std::vector<T> spectrum(totalRes, 0.0);
+
+            fftw_complex* fftPrimal = (fftw_complex*)fftw_malloc(totalRes * sizeof(fftw_complex));
+            fftw_complex* fftDual   = (fftw_complex*)fftw_malloc(totalRes * sizeof(fftw_complex));
+            fftw_plan fftp = fftw_plan_dft(ptss[0].Ndim(), ranks.data(), fftPrimal, fftDual, -1.0, FFTW_MEASURE);
+
+            // FFT is linear, hence we can sum data here instead of summing ffts...
+            // Set memory to 0 !
+            std::memset(fftPrimal, 0, totalRes * sizeof(fftw_complex));
+            for (const auto& pts : ptss)
+            {
+                #pragma omp parallel for
+                for (uint32_t i = 0; i < pts.Npts(); i++)
+                {
+                    uint32_t coord = 0;
+                    for (uint32_t d = 0; d < pts.Ndim(); d++)
+                    {
+                        uint32_t component = static_cast<uint32_t>(pts[i][d] * width) % width;
+                        coord = component * powers[d] + coord; 
+                    }
+                    fftPrimal[coord][0] += 1.0;
+                }
+            }
+
+            fftw_execute(fftp);
+
+            if (cancelDC)
+            {
+                fftDual[0][0] = 0.0;
+                fftDual[0][1] = 0.0;
+            }    
+
+            for (uint32_t i = 0; i < totalRes; i++)
+            {
+                uint32_t tmp = i;
+                uint32_t index = 0;
+
+                for (uint32_t d = 0; d < ptss[0].Ndim(); d++)
+                {
+                    uint32_t component = ((tmp % width) + Origin - 1) % width;
+                    index = index + component * powers[ptss[0].Ndim() - d - 1];
+                    tmp  /= width;
+                }
+
+                T abs_sqr = fftDual[i][0] * fftDual[i][0] + 
+                            fftDual[i][1] * fftDual[i][1];
+                spectrum[index] = abs_sqr * invNPts;
+            }
+
+            fftw_free(fftPrimal);
+            fftw_free(fftDual);
+            fftw_destroy_plan(fftp);
+            fftw_cleanup();
+
+            return spectrum;
+        }
+#else
         template<typename T>
         std::vector<T> compute(const Pointset<T>& pts)
         {
@@ -139,7 +287,7 @@ namespace utk
             }
             return spectrum;
         }
-        
+
         // Specialized version here
         // Loop over pointsets is pushed in the code to save on memory !
         template<typename T>
@@ -222,6 +370,7 @@ namespace utk
             }
             return spectrum;
         }
+    #endif
     private:
         uint32_t paramWidth;
         bool cancelDC;

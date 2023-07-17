@@ -7,8 +7,6 @@ SET(Metrics
     BuildGaussianIntegrandDatabase
     BuildHeavisideIntegrandDatabase
     BuildBlinnPhongIntegrandDatabase
-
-    BlinnPhongPlot
 )
 
 

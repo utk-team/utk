@@ -6,6 +6,15 @@ if (UTK_LOG)
     add_definitions(-DUTK_LOG)
 endif()
 
+include(${CMAKE_CURRENT_LIST_DIR}/cmake/fftw.cmake)
+if (FFTW_FOUND)
+    add_definitions(-DUTK_USE_FFTW)
+    
+    include_directories(${FFTW_INCLUDES})
+else()
+    message("FFTW not found. UTK compiled without.")
+endif()
+
 set(UTK_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include/")
 set(UTK_DATA_PATH "${CMAKE_CURRENT_LIST_DIR}/data")
 set(UTK_EXTERNALS_FOLDER "${CMAKE_CURRENT_LIST_DIR}/externals/")

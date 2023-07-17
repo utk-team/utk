@@ -16,6 +16,8 @@ option(UTK_PYTHON "Enable build of pyutk (see setup.py)" OFF)
 option(UTK_BUILD_EXE "Enable building of utk's executables" ON)
 
 option(UTK_USE_OPENMP "Enable USE of OpenMp" ON)
+# FFTW options
+option(UTK_USE_FFTW "Enable use of FFTW" ON)
 # CGal options
 option(UTK_BUILD_CGAL "Enable projects depending on CGAL. " OFF)
  
@@ -32,6 +34,17 @@ endif()
 if (UTK_USE_OPENMP)
     include(openmp)
     add_definitions(-DUTK_USE_OPENMP)
+endif()
+
+if (UTK_USE_FFTW)
+    include(fftw)
+    if (FFTW_FOUND)
+        add_definitions(-DUTK_USE_FFTW)
+        
+        include_directories(${FFTW_INCLUDES})
+    else()
+        message("FFTW not found. UTK compiled without.")
+    endif()
 endif()
 
 if (UTK_BUILD_CGAL)
