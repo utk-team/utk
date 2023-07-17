@@ -2,7 +2,7 @@
 
 ## 2.0.0 
 
-- 2023-Jul 2.0 released : 
+- 2023-Jul: 2.0 released 
     - Code refactoring
     - Dimension templating removed
     - Automatic dependancy handling

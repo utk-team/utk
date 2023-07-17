@@ -91,4 +91,5 @@ nav:
     - Spectrum: 'metrics/Spectrum.md'
     - RadialSpectrum: 'metrics/RadialSpectrum.md'
     - IntegrationTest: 'metrics/IntegrationTest.md'
+  - Changelog: 'changelog.md'
   - License: 'license.md'
