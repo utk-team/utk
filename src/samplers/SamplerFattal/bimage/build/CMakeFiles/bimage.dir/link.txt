@@ -1,2 +1,0 @@
-/usr/bin/ar cr libbimage.a  CMakeFiles/bimage.dir/bimage.cc.o CMakeFiles/bimage.dir/btest.cc.o
-/usr/bin/ranlib libbimage.a

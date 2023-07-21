@@ -1,491 +1,134 @@
-SET(SRCs
+SET(Samplers
+    Whitenoise
+    Stratified
+    HexagonalGrid
+    RegularGrid
+    Rank1
+    Halton
+    Hammersley
+    Faure
+    NRooks
+    Niederreiter
+    Korobov
+    Kronecker
+    DartThrowing
+    AAPatterns
+    ART
+    CMJ
+    FastPoisson
+    Fattal
+    ForcedRandom
+    VanDerCorput
+    Step
+    SinglePeak
+    Penrose
+    ProjectiveBlueNoise
+    PMJ
+    LDBN
+    LutLDBN
+    Sobol
+)
 
-  #test_allowedpairs
+SET(pyutk_samplers)
+SET(pyutk_samplers_libs pybind11::module spdlog::spdlog)
 
-  Whitenoise_2dd
-  Whitenoise_3dd
-  Whitenoise_4dd
-  Whitenoise_6dd
+FOREACH(FILE ${Samplers})
+    IF(UTK_BUILD_EXE)
+        add_executable(${FILE} ${FILE}.cpp)
+        target_include_directories(${FILE} PRIVATE "${UTK_INCLUDE_DIR}")
+    ENDIF()
 
-  Sobol_2dd
-  Sobol_3dd
-  Sobol_2di
-  Sobol_3di
-  Sobol_4dd
-  Sobol_4di
-  Sobol_10dd
+    IF (EXISTS ${UTK_EXTERNALS_FOLDER}/${FILE})
+        FILE(GLOB_RECURSE ADDITIONNAL_CODE
+                    "${UTK_EXTERNALS_FOLDER}/${FILE}/*.cpp"
+            )
+        
+        LIST(APPEND pyutk_samplers ${ADDITIONNAL_CODE})
+        
+        IF (UTK_BUILD_EXE)
+            target_sources(${FILE} PRIVATE ${ADDITIONNAL_CODE})
+            target_include_directories(${FILE} PRIVATE ${UTK_EXTERNALS_FOLDER})
+        ENDIF()
+    ENDIF()
 
-  SobolIndices_2dd
-  SobolIndices_2di
-  SobolIndices_3dd
-  SobolIndices_4dd
-  SobolIndices_10dd
+    IF(UTK_BUILD_EXE)
+        target_link_libraries(${FILE} PRIVATE spdlog::spdlog CLI11::CLI11)
 
-  Halton_2dd
-  Halton_3dd
-  Halton_4dd
-  Halton_10dd
-
-  Hammersley_2dd
-
-  RegularGrid_2dd
-  RegularGrid_3dd
-
-  HexagonalGrid_2dd
-
-  Stratified_2dd
-  Stratified_3dd
-  Stratified_4dd
-  Stratified_6dd
-  Stratified_8dd
-  Stratified_10dd
-
-  NRooks_2dd
-  NRooks_3dd
-
-  LDBN_2dd
-  LDBN_2di
-
-  ProjectiveBlueNoise_2dd
-  ProjectiveBlueNoise_3dd
-  ProjectiveBlueNoise_4dd
-  ProjectiveBlueNoise_6dd
-
-  DartThrowing_2dd
-  DartThrowing_3dd
-  DartThrowing_4dd
-  DartThrowing_6dd
-  DartThrowing_8dd
-
-  Step_2dd
-
-  SinglePeak_2dd
-
-  Niederreiter_2dd
-  Niederreiter_2di
-  Niederreiter_3dd
-
-  Faure_2dd
-  Faure_2di
-
-  MultiJitter_2dd
-  CMJ_2dd
-
-  Owen_2dd
-  Owen_4dd
-  Owen_6dd
-  Owen_8dd
-
-  Rank1_2dd
-
-  AAPatterns_2dd
-
-  Penrose_2dd
-
-  Korobov_2dd
-
-  ART_2dd
-
-  BNLDS_2dd
-  BNLDS_optimizer_Mindist_Zero_2dd
-  BNLDS_optimizer_Mindist_Random_2dd
-  BNLDS_optimizer_Mindist_RandomOpti_2dd
-  BNLDS_optimizer_PCF_Zero_2dd
-  BNLDS_optimizer_PCF_RandomOpti_2dd
-  BNLDS_optimizer_PCF_Random_2dd
-
-  VanDerCorput_1dd
-
-  #Experimental
-
-  GeneticOwen_2dd
-  GeneticOwen_2di
-
-  ExhaustiveOwen_2dd
-  )
-
-FOREACH(FILE ${SRCs})
-  add_executable(${FILE} ${FILE}.cpp ${UTK_FILES})
-  target_link_libraries ( ${FILE} ${LINK} ${LINK_TBB} )
-  install(TARGETS ${FILE}
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib)
+        install(TARGETS ${FILE}
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+    ENDIF()
 ENDFOREACH(FILE)
 
+# ===========================================
+#  Samplers requiring additional libraries  #
+# ===========================================
 
-SET(SRCs_test
+# Disable compilation on windows... GEOGRAM dllspec is problematic for an unknown reason...
+IF(NOT WIN32)
+    IF(OpenMP_FOUND AND UTK_BUILD_EXE)
+        # Lloyd
+        add_executable(Lloyd Lloyd.cpp  ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
+        
+        target_include_directories(Lloyd PRIVATE "${UTK_INCLUDE_DIR}")
+        target_include_directories(Lloyd PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+        target_link_libraries(Lloyd PRIVATE spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
 
-  #test_allowedpairs
-
-  Whitenoise_2dd
-  Whitenoise_3dd
-  Whitenoise_4dd
-  Whitenoise_6dd
-
-
-  SobolIndices_2dd
-  SobolIndices_2di
-  SobolIndices_3dd
-  SobolIndices_4dd
-  SobolIndices_10dd
-
-  Halton_2dd
-  Halton_3dd
-  Halton_4dd
-  Halton_10dd
-
-  Hammersley_2dd
-
-  RegularGrid_2dd
-  RegularGrid_3dd
-
-  HexagonalGrid_2dd
-
-  Stratified_2dd
-  Stratified_3dd
-  Stratified_4dd
-  Stratified_6dd
-  Stratified_8dd
-  Stratified_10dd
-
-  NRooks_2dd
-  NRooks_3dd
-
-  LDBN_2dd
+        install(TARGETS Lloyd
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+    ELSE()
+        # message("Lloyd not compiled.")
+    ENDIF()
+ELSE()
+    message("Lloyd not compiled on Windows !")
+ENDIF()
 
 
-  DartThrowing_2dd
-  DartThrowing_4dd
-  DartThrowing_6dd
-  DartThrowing_8dd
+IF (CGAL_FOUND AND SuiteSparse_FOUND AND UTK_BUILD_EXE)
+    add_executable(BoundedBNOT  BoundedBNOT.cpp)
+    add_executable(PeriodicBNOT PeriodicBNOT.cpp)
 
-  Step_2dd
+    target_include_directories(BoundedBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+    target_include_directories(BoundedBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+    target_link_libraries(BoundedBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+    target_link_libraries(BoundedBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
+        
 
-  SinglePeak_2dd
+    target_include_directories(PeriodicBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+    target_include_directories(PeriodicBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+    target_link_libraries(PeriodicBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+    target_link_libraries(PeriodicBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
+  
+    
+    install(TARGETS BoundedBNOT
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
 
-  Niederreiter_2dd
-  Niederreiter_2di
-  Niederreiter_3dd
+    install(TARGETS PeriodicBNOT
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+ELSE()
+    # message("BNOT Not compiled")
+ENDIF()
 
-  Faure_2dd
-  Faure_2di
+IF (UTK_PYTHON)
+    SET(pyutk_samplers_bindings 
+        "python/Samplers.cpp"
+        "python/BaseSamplers.cpp"
+        "python/ExternalSamplers.cpp"
+        "python/Scrambling.cpp"
+    )
+    add_library(pyutkSamplers ${pyutk_samplers} ${pyutk_samplers_bindings})
 
-  MultiJitter_2dd
-  CMJ_2dd
-
-  Owen_2dd
-  Owen_4dd
-  Owen_6dd
-  Owen_8dd
-
-  Rank1_2dd
-
-  AAPatterns_2dd
-
-  Penrose_2dd
-
-  Korobov_2dd
-
-  BNLDS_2dd
-
-  VanDerCorput_1dd
-  )
-
-FOREACH(FILE ${SRCs_test})
-  add_test(${FILE} ${FILE})
-ENDFOREACH(FILE)
-
-
-#Lloyd
-add_executable(Lloyd_3dd
-  Lloyd_3dd.cpp
-  SamplerLloyd/Delaunay_psm.cpp
-  ${UTK_FILES})
-add_test(Lloyd_3dd Lloyd_3dd)
-
-target_link_libraries (Lloyd_3dd ${LINK} ${LINK_TBB} pthread)
-install(TARGETS Lloyd_3dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-
-#Gradient Descent
-add_executable(GradientDescent_2dd
-  GradientDescent_2dd.cpp
-  ../../externals/dCpp/dCpp.cpp
-  ../../externals/dCpp/operators.cpp
-  ../../externals/dCpp/tau.cpp
-  ../../externals/dCpp/var.cpp
-  ${UTK_FILES})
-target_link_libraries ( GradientDescent_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS GradientDescent_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-
-#Progressive Jittered
-add_executable(ProgressiveJittered_2dd
-  ProgressiveJittered_2dd.cpp
-  SamplerPMJ/PJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJ02SampleSequenceGenerator.cpp
-  SamplerPMJ/SamplePMJ.cpp
-  ${UTK_FILES})
-  add_test(ProgressiveJittered_2dd ProgressiveJittered_2dd)
-
-target_link_libraries ( ProgressiveJittered_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS ProgressiveJittered_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-#Progressive MultiJittered
-add_executable(ProgressiveMultiJittered_2dd
-  ProgressiveMultiJittered_2dd.cpp
-  SamplerPMJ/PJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJ02SampleSequenceGenerator.cpp
-  SamplerPMJ/SamplePMJ.cpp
-  ${UTK_FILES})
-  add_test(ProgressiveMultiJittered_2dd ProgressiveMultiJittered_2dd)
-
-target_link_libraries ( ProgressiveMultiJittered_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS ProgressiveMultiJittered_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-#Progressive MultiJittered(0,2)
-add_executable(ProgressiveMultiJittered02_2dd
-  ProgressiveMultiJittered02_2dd.cpp
-  SamplerPMJ/PJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJ02SampleSequenceGenerator.cpp
-  SamplerPMJ/SamplePMJ.cpp
-  ${UTK_FILES})
-target_link_libraries ( ProgressiveMultiJittered02_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS ProgressiveMultiJittered02_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-#Progressive MultiJittered(0,2) Pharr
-add_executable(ProgressiveMultiJittered02_Pharr_2dd
-  ProgressiveMultiJittered02_Pharr_2dd.cpp
-  SamplerPMJ/PJSampleSequenceGenerator.cpp
-  SamplerPMJ/PMJ02SampleSequenceGenerator_Pharr.cpp
-  SamplerPMJ/SamplePMJ.cpp
-  ${UTK_FILES})
-target_link_libraries ( ProgressiveMultiJittered02_Pharr_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS ProgressiveMultiJittered02_Pharr_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-#FastPoisson
-add_executable(FastPoisson_2dd
-  FastPoisson_2dd.cpp
-  SamplerFastPoisson/PDSampling.cpp
-  SamplerFastPoisson/RangeList.cpp
-  SamplerFastPoisson/RNG.cpp
-  SamplerFastPoisson/ScallopedSector.cpp
-  SamplerFastPoisson/WeightedDiscretePDF.h
-  ${UTK_FILES})
-  add_test(FastPoisson_2dd FastPoisson_2dd)
-
-target_link_libraries ( FastPoisson_2dd ${LINK} ${LINK_TBB} )
-install(TARGETS FastPoisson_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-
-#Fattal
-add_executable(Fattal_2dd
-  SamplerFattal/bimage/bimage.cc
-  SamplerFattal/npde/tensor2d.cc
-  Fattal_2dd.cpp
-  ${UTK_FILES})
-  add_test(Fattal_2dd Fattal_2dd)
-
-target_link_libraries ( Fattal_2dd ${LINK} ${LINK_TBB})
-install(TARGETS Fattal_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-#ForcedRandom
-add_executable(ForcedRandom_2dd
-  SamplerForcedRandom/src/ForcedRandomSampling/main.hpp
-  SamplerForcedRandom/src/Common/MathHelpers.cpp
-  SamplerForcedRandom/src/Common/MathTypes.cpp
-  SamplerForcedRandom/src/Common/Random.cpp
-  ForcedRandom_2dd.cpp
-  ${UTK_FILES})
-  add_test(ForcedRandom_2dd ForcedRandom_2dd)
-
-target_link_libraries ( ForcedRandom_2dd ${LINK} ${LINK_TBB})
-install(TARGETS ForcedRandom_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-if(USE_CGALv2)
-  INCLUDE_DIRECTORIES(SamplerCapCVT/)
-  file(GLOB SOURCES SamplerCapCVT/Geex/basics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/mathematics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/numerics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/symbolics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/properties/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/combinatorics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/graphics/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/CVT/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/image/*.c*  ${SOURCES} )
-  INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/)
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/zlib/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/gzstream/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/png/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/GLsdk/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/pbuffer/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/glut_viewer/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/glu/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/misc/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/LBFGSB/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/HLBFGS/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/METIS/*.c*  ${SOURCES} )
-  INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/tsANN/include)
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tsANN/src/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tetgen/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/AntTweakBar/*.c*  ${SOURCES} )
-  INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/AntTweakBar/include)
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/LMBM/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/f2c/src/libF77/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/f2c/src/libI77/*.c*  ${SOURCES} )
-  INCLUDE_DIRECTORIES(SamplerCapCVT/Geex/third_party/f2c/include)
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/bluemath/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/rand48/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party/tinyxml/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party2/geodesic/*.c*  ${SOURCES} )
-  file(GLOB SOURCES SamplerCapCVT/Geex/third_party2/lodepng/*.c*  ${SOURCES} )
-  LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/src/samplers/SamplerCapCVT/Geex/third_party/AntTweakBar/lib)
-  ADD_LIBRARY(geex ${SOURCES} ${HeaderFiles})
-
-  file(GLOB CapCVT_SOURCES SamplerCapCVT/gx_capcvt2d/generated/*.c*  ${CapCVT_SOURCES} )
-  add_executable(CapCVT_2dd
-    SamplerCapCVT/gx_capcvt2d/cvt.cpp
-    SamplerCapCVT/gx_capcvt2d/delaunay.cpp
-    SamplerCapCVT/gx_capcvt2d/delaunay_cvt.cpp
-    SamplerCapCVT/gx_capcvt2d/polygons.cpp
-    ${CapCVT_SOURCES}
-    CapCVT_2dd.cpp
-    ${UTK_FILES})
-  target_link_libraries ( CapCVT_2dd ${LINK} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
-  install(TARGETS CapCVT_2dd
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib)
-
-  add_executable(CVT_2dd
-    SamplerCapCVT/gx_capcvt2d/cvt.cpp
-    SamplerCapCVT/gx_capcvt2d/delaunay.cpp
-    SamplerCapCVT/gx_capcvt2d/delaunay_cvt.cpp
-    SamplerCapCVT/gx_capcvt2d/polygons.cpp
-    ${CapCVT_SOURCES}
-    CVT_2dd.cpp
-    ${UTK_FILES})
-  target_link_libraries ( CVT_2dd ${LINK} geex glut GL GLU X11 Xext Xi CGAL AntTweakBar)
-  install(TARGETS CVT_2dd
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib)
-
-  add_executable(FPO_2dd
-    SamplerFPO/DT.cpp
-    FPO_2dd.cpp
-    ${UTK_FILES})
-  target_link_libraries ( FPO_2dd ${LINK})
-  install(TARGETS FPO_2dd
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib)
-endif(USE_CGALv2)
-
-add_executable(KroneckerK21-2_2dd
-  SamplerKronecker/Kronecker.cpp
-  KroneckerK21-2_2dd.cpp
-  ${UTK_FILES})
-target_link_libraries ( KroneckerK21-2_2dd ${LINK})
-install(TARGETS KroneckerK21-2_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-add_executable(KroneckerR2_2dd
-  SamplerKronecker/Kronecker.cpp
-  KroneckerR2_2dd.cpp
-  ${UTK_FILES})
-target_link_libraries ( KroneckerR2_2dd ${LINK})
-install(TARGETS KroneckerR2_2dd
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
-
-# if(USE_CIMG)
-# SET(SRCs
-#
-# 	Victor2D2D_06021027_adaptive
-#
-# 	)
-# FOREACH(FILE ${SRCs})
-#   add_executable(${FILE} ${FILE} ${UTK_FILES})
-#   target_link_libraries ( ${FILE} ${LINK} ${LINK_CIMG} )
-# 	install(TARGETS ${FILE}
-# 					RUNTIME DESTINATION bin
-# 					LIBRARY DESTINATION lib
-# 					ARCHIVE DESTINATION lib)
-# ENDFOREACH(FILE)
-# endif(USE_CIMG)
-
-
-# if(USE_BOOST)
-# SET(SRCs
-#
-# 	BNLDS_optimize_pattern_2dd
-# 	#BNLDS_optimize_pattern_local
-# 	BNLDS64_optimizer_PCF_RandomOpti_GPU_2dd
-#
-# 	)
-# FOREACH(FILE ${SRCs})
-#   add_executable(${FILE} ${FILE} ${UTK_FILES})
-#   target_link_libraries ( ${FILE} ${LINK} ${Boost_LIBRARIES} ${OpenCL_LIBRARIES})
-# 	install(TARGETS ${FILE}
-# 					RUNTIME DESTINATION bin
-# 					LIBRARY DESTINATION lib
-# 					ARCHIVE DESTINATION lib)
-# ENDFOREACH(FILE)
-# endif(USE_BOOST)
-
-
-# if(USE_FLANN)
-# SET(SRCs
-#
-# 	ProjectiveBlueNoise_Flann_2dd
-#
-# 	)
-# FOREACH(FILE ${SRCs})
-#   add_executable(${FILE} ${FILE} ${UTK_FILES})
-#   target_link_libraries ( ${FILE} ${LINK} ${LINK_CIMG} )
-# 	install(TARGETS ${FILE}
-# 					RUNTIME DESTINATION bin
-# 					LIBRARY DESTINATION lib
-# 					ARCHIVE DESTINATION lib)
-# ENDFOREACH(FILE)
-# endif(USE_FLANN)
+    # Required by pybind
+    set_target_properties(pyutkSamplers PROPERTIES POSITION_INDEPENDENT_CODE ON) 
+    
+    target_include_directories(pyutkSamplers PRIVATE "${UTK_INCLUDE_DIR}")
+    target_include_directories(pyutkSamplers PRIVATE ${UTK_EXTERNALS_FOLDER})
+    target_link_libraries(pyutkSamplers PRIVATE ${pyutk_samplers_libs})
+ENDIF()

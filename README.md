@@ -15,6 +15,8 @@ More information: https://utk-team.github.io/utk/
 
 🦄 Hélène Perrier <helene.perrier@liris.cnrs.fr>
 
+🐾 Bastien DOIGNIES <bastien.doignies@liris.cnrs.fr>
+
 David Coeurjolly <david.coeurjolly@liris.cnrs.fr>
 
 Victor Ostromoukhov <victor.Ostromoukhov@liris.cnrs.fr>

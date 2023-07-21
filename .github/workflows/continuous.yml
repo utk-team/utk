@@ -1,0 +1,80 @@
+name: CI (linux/macOS/windows)
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  # if needed
+  CONFIG_GLOBAL:
+  CONFIG_LINUX:
+  CONFIG_MAC:
+  CONFIG_WINDOWS:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        BUILD_TYPE: [Debug,Release]
+
+    steps:
+     - uses: actions/checkout@v3
+       with:
+          fetch-depth: 10
+
+     - name: Install linux deps
+       if: matrix.os == 'ubuntu-latest'
+       run: |
+           sudo apt-get update
+
+     - name: Install macOS deps
+       if: matrix.os == 'macOS-latest'
+       run: echo "nothing to install with brew"
+
+     - name: Create Build Environment
+       run: cmake -E make_directory build
+
+     - name: Configure CMake (linux)
+       if: matrix.os == 'ubuntu-latest'
+       shell: bash
+       working-directory: build
+       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }} $CONFIG_GLOBAL $CONFIG_LINUX
+
+     - name: Configure CMake (macOS)
+       if: matrix.os == 'macOS-latest'
+       shell: bash
+       working-directory: build
+       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }}  $CONFIG_GLOBAL $CONFIG_MAC
+
+     - name: Configure CMake (windows)
+       if: matrix.os == 'windows-latest'
+       shell: bash
+       working-directory: build
+       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{ matrix.BUILD_TYPE }}
+
+     - name: Build
+       working-directory: build
+       shell: bash
+       run: cmake --build . --config ${{ matrix.BUILD_TYPE }} --parallel 3
+
+     - name: Python dependencies
+       run: |
+         python -m pip install --upgrade pip
+         pip install numpy
+     
+     - name: Installing pyutk
+       # Only for linux. TODO : set proper version for macos
+       if: matrix.os == 'ubuntu-latest'
+       run: |
+          python -m pip install -v -e . 
+
+     - name: Test
+       working-directory: build
+       if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+       shell: bash
+       run: |
+           echo ctest -C ${{ matrix.BUILD_TYPE }}  --output-on-failure
+           ctest -C $${{ matrix.BUILD_TYPE }}  --output-on-failure
