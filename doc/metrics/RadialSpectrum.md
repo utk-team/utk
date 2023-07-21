@@ -4,6 +4,8 @@
 
 Computes Radial Average of the fourier spectrum.
 
+When the `UTK_USE_FFTW` cmake flag is set to true, the Fourier transform is computed using the [fftw](https://www.fftw.org) library (faster for high resolution spectra).
+
 Note : C++ API also supports computing the average from an already computed spectrum. 
 
 Note : When multiples pointset are given to 'compute', the results are averaged.

@@ -6,6 +6,8 @@
 
 Computes the Fourier power spectrum of the input point set (Discrete Fourier Transform). 
 
+When the `UTK_USE_FFTW` cmake flag is set to true, the Fourier transform is computed using the [fftw](https://www.fftw.org) library (faster for high resolution spectra).
+
 Note : functions and scripts returns a linear C-style array of the computed spectrum. 
 Note : Only odd resolution are supported (so that the DC is properly identified). 
 Note : When multiples pointset are given to 'compute', the results are averaged.
