@@ -1121,7 +1121,9 @@ make
 </code></pre></div>
 <p>See <code>Using UTK/*</code> documentation pages for mor information and building options. </p>
 <h2 id="external-libraries">External libraries</h2>
-<p>Main external libraries are downloaded automatically by CMake (<a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://cliutils.github.io/CLI11/book/">cli11</a>, <a href="https://pybind11.readthedocs.io/en/stable/">pybind11</a>).</p>
+<p>Main external libraries are downloaded automatically by CMake (<a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://cliutils.github.io/CLI11/book/">cli11</a>). When the python binding is enabled (cmake flag <code>UTK_PYTHON</code> set to true), <a href="https://pybind11.readthedocs.io/en/stable/">pybind11</a> is fetched.</p>
+<p>If <code>UTK_USE_FFTW</code> cmake flag is set to true (default setting) and if the fftw library is available in your system, the Fourier tools will use it.</p>
+<p>Finally, if <code>UTK_USE_CGAL</code> is set to true, samplers with <a href="http://cgal.org">CGAL</a> as dependency will be build (if cgal is not installed, cmake will fetch it with its dependencies &ndash;boost,gmp&hellip;&ndash;). </p>
 <h2 id="authors">Authors</h2>
 <p>The UTK library was developed mainly by</p>
 <ul>
