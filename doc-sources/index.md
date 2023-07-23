@@ -33,7 +33,6 @@ If `UTK_USE_FFTW` cmake flag is set to true (default setting) and if the fftw li
 
 Finally, if `UTK_USE_CGAL` is set to true, samplers with [CGAL](http://cgal.org) as dependency will be build (if cgal is not installed, cmake will fetch it with its dependencies --boost,gmp...--). 
 
-
 ## Authors
 
 The UTK library was developed mainly by
