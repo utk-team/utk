@@ -27,7 +27,8 @@ See `Using UTK/*` documentation pages for mor information and building options.
 
 ## External libraries
 
-Every external library is downloaded automatically by CMake. Nothing to install ! 
+Main external libraries are downloaded automatically by CMake ([spdlog](https://github.com/gabime/spdlog), [cli11](https://cliutils.github.io/CLI11/book/), [pybind11](https://pybind11.readthedocs.io/en/stable/)).
+
 
 ## Authors
 
