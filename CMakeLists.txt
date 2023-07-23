@@ -19,7 +19,7 @@ option(UTK_USE_OPENMP "Enable USE of OpenMp" ON)
 # FFTW options
 option(UTK_USE_FFTW "Enable use of FFTW" ON)
 # CGal options
-option(UTK_BUILD_CGAL "Enable projects depending on CGAL. " OFF)
+option(UTK_USE_CGAL "Enable projects depending on CGAL. " OFF)
  
 # Finding libraries
 set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -47,7 +47,7 @@ if (UTK_USE_FFTW)
     endif()
 endif()
 
-if (UTK_BUILD_CGAL)
+if (UTK_USE_CGAL)
     include(cgal)
     find_package(SuiteSparse)
 endif()

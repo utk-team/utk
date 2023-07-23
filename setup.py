@@ -22,7 +22,7 @@ UTK_CMAKE_ARGS = [
     f"-DUTK_USE_OPENMP=ON",
     f"-DUTK_PYTHON=ON",
     f"-DUTK_BUILD_EXE=OFF",
-    f"-DUTK_BUILD_CGAL=OFF"
+    f"-DUTK_USE_CGAL=OFF"
 ]
 
 # A CMakeExtension needs a sourcedir instead of a file list.
