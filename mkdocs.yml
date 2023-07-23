@@ -40,7 +40,7 @@ repo_url: 'https://github.com/utk-team/utk'
 edit_uri: ''
 
 
-docs_dir: 'doc-source'
+docs_dir: 'doc-sources'
 site_dir: 'docs'
 
 nav:
