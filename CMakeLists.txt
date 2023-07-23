@@ -37,7 +37,7 @@ if (UTK_USE_OPENMP)
 endif()
 
 if (UTK_USE_FFTW)
-    include(fftw)
+    include(fftw REQUIRED)
     if (FFTW_FOUND)
         add_definitions(-DUTK_USE_FFTW)
         
