@@ -26,7 +26,7 @@ plot_pointset()
 main()
 {
     binpath="../../build/src/samplers/"
-    outpath="../../doc/figs/samplers"
+    outpath="../../doc-sources/figs/samplers"
     n=1024
 
     if [ $# -ge 1 ]; then

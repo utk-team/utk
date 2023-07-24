@@ -34,8 +34,8 @@ values of the `Config` class (in both C++ and Python version).
 ----------------------------------------------
 
 Both version should produce similar results (up to seeding which is
-not properly done). Code might be long to run depending on configs
-option (which should be set in the code directly). Parrallelization can be
+not properly done). Code might be long to run depending on config
+options (which should be set in the code directly). Parrallelization can be
 controlled by setting `OMP_NUM_THREADS` environment variable. 
 
 Data may be plotted with the `python plots.py path_to_csv` command. 
@@ -70,4 +70,4 @@ spectrum. A few option are to be set directly in the code.
 
 It can be run with the following command `bash sample.sh`
 
-This is the code that is used to generates documentation figures. 
+This is the code that is used to generate documentation figures. 
