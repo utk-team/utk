@@ -15,7 +15,7 @@ function UrlExists(url)
 
 function GetMainPath()
 {
-    return "/figs/samplers/";
+    return "../../figs/samplers/";
 }
 
 function GetPointPath(name)
@@ -78,5 +78,3 @@ function show_results(override_name)
     InsertData("Points", location, pts_path);
     InsertData("Spectrum", location, spe_path);
 }
-
-console.log("Loaded!")

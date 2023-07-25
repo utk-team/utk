@@ -15,8 +15,7 @@ function UrlExists(url)
 
 function GetMainPath()
 {
-    return "https://utk-team.github.io/utk/figs/samplers/";
-    // return "/figs/samplers/";
+    return "../../figs/samplers/";
 }
 
 function GetPointPath(name)
