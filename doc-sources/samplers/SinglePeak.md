@@ -26,19 +26,21 @@ externals/SinglePeak/*
 
 ```bash
 SinglePeak sampler
-Usage: ./build/src/samplers/SinglePeak [OPTIONS]
+Usage: ./SinglePeak [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
   -s,--seed UINT              Seed (unspecified means 'random')
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
-  --criticalFreq FLOAT [36.5]
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
+  --criticalFreq FLOAT [36.5] 
                               Critical frequency
   --smoothing FLOAT [8]       Smoothing
   --peakPower FLOAT [2]       Peak power
   --peakSmoothing FLOAT [2]   Peak smoothing
+
 ```
 
 </div>

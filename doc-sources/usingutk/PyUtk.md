@@ -5,9 +5,7 @@
 A conda (or venv) environnment is recommended. There is no requirements for the pyutk
 library to be built. But to be used, numpy must be available.
 
-If using a conda environnment, make sure the proper compiler is detected. It is 
-recommanded to install GCC via `conda install -c conda-force gxx`. If the wrong
-compiler, setting CC and CXX environment variables might help. 
+If using a conda environnment, make sure the proper compiler is detected. If the wrong compiler is detected, setting CC and CXX environment variables might help. 
 
 To build the library run the command `pip install -v -e .` (dot is part of command) in 
 the root directory. Everything will be built and linked with your current python interpreter. 

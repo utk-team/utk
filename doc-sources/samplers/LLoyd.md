@@ -27,6 +27,7 @@ externals/Lloyd/*
   
 
 <div class="exe tabcontent">
+
 ```bash
 Lloyd sampler
 Usage: ./samplers/Lloyd [OPTIONS]
@@ -39,6 +40,8 @@ Options:
   -o,--out TEXT [out.dat]     Output file
   --steps [100]               Number of steps to perform
   --toroidal [0]              When set, use toroidal version.
+```
+
 </div>
 
 <div class="cpp tabcontent">

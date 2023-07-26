@@ -21,9 +21,10 @@ include/utk/samplers/SamplerNRooks.hpp
   
 
 <div class="exe tabcontent">
+
 ```bash
 NRooks sampler
-Usage: ./samplers/NRooks [OPTIONS]
+Usage: ./NRooks [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -31,7 +32,9 @@ Options:
   -d UINT REQUIRED            Dimensions
   -s,--seed UINT              Seed (unspecified means 'random')
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
+```
+
 </div>
 
 <div class="cpp tabcontent">

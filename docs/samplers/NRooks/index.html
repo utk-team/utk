@@ -15,7 +15,7 @@
         <link rel="next" href="../Penrose/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -353,6 +353,20 @@
     <li class="md-nav__item">
       <a href="../ART/" class="md-nav__link">
         ART
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BNOT/" class="md-nav__link">
+        BNOT
       </a>
     </li>
   
@@ -1121,8 +1135,9 @@ include/utk/samplers/SamplerNRooks.hpp
 <button class="tablink pybutton" onclick="openCode('py', this)" markdown="1">Python</button> 
 <br/></p>
 <div class="exe tabcontent">
+
 <div class="highlight"><pre><span></span><code>NRooks<span class="w"> </span>sampler
-Usage:<span class="w"> </span>./samplers/NRooks<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+Usage:<span class="w"> </span>./NRooks<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,--help<span class="w">                   </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -1130,28 +1145,29 @@ Options:
 <span class="w">  </span>-d<span class="w"> </span>UINT<span class="w"> </span>REQUIRED<span class="w">            </span>Dimensions
 <span class="w">  </span>-s,--seed<span class="w"> </span>UINT<span class="w">              </span>Seed<span class="w"> </span><span class="o">(</span>unspecified<span class="w"> </span>means<span class="w"> </span><span class="s1">&#39;random&#39;</span><span class="o">)</span>
 <span class="w">  </span>-m<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Number<span class="w"> </span>of<span class="w"> </span>pointsets
-<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file
-&lt;/div&gt;
+<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>format<span class="o">)</span>.<span class="w"> </span><span class="o">{</span>i<span class="o">}</span><span class="w"> </span>splits<span class="w"> </span>outputs<span class="w"> </span><span class="k">in</span><span class="w"> </span>multiple<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>index.
+</code></pre></div>
 
-&lt;div<span class="w"> </span><span class="nv">class</span><span class="o">=</span><span class="s2">&quot;cpp tabcontent&quot;</span>&gt;
+</div>
 
-<span class="sb">```</span><span class="w">  </span>cpp
-<span class="c1">#include &lt;utk/utils/PointsetIO.hpp&gt;</span>
-<span class="c1">#include &lt;utk/utils/Pointset.hpp&gt;</span>
-<span class="c1">#include &lt;utk/samplers/SamplerNiederreiter.hpp&gt;</span>
+<div class="cpp tabcontent">
 
-int<span class="w"> </span>main<span class="o">()</span>
-<span class="o">{</span>
-<span class="w">    </span>utk::Pointset&lt;double&gt;<span class="w"> </span>pts<span class="p">;</span>
-<span class="w">    </span>utk::SamplerNRooks<span class="w"> </span>nrooks<span class="o">(</span><span class="m">2</span><span class="w"> </span>/*<span class="w"> </span>dimension<span class="w"> </span>*/<span class="o">)</span><span class="p">;</span>
-<span class="w">    </span>nrooks.setRandomSeed<span class="o">(</span>/*<span class="w"> </span>empty<span class="w"> </span>means<span class="w"> </span>random,<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>pass<span class="w"> </span>a<span class="w"> </span>number<span class="w"> </span>*/<span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/utils/PointsetIO.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/utils/Pointset.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/samplers/SamplerNiederreiter.hpp&gt;</span>
 
-<span class="w">    </span>//<span class="w"> </span>Check<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>errors
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(</span>nrooks.generateSamples<span class="o">(</span>pts,<span class="w"> </span><span class="m">1024</span><span class="w"> </span>/*<span class="w"> </span>Number<span class="w"> </span>of<span class="w"> </span>points<span class="w"> </span>*/<span class="o">))</span>
-<span class="w">    </span><span class="o">{</span>
-<span class="w">        </span>write_text_pointset<span class="o">(</span><span class="s2">&quot;nrooks2d.dat&quot;</span>,<span class="w"> </span>pts<span class="o">)</span><span class="p">;</span>
-<span class="w">    </span><span class="o">}</span>
-<span class="o">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">Pointset</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pts</span><span class="p">;</span>
+<span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">SamplerNRooks</span><span class="w"> </span><span class="n">nrooks</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="cm">/* dimension */</span><span class="p">);</span>
+<span class="w">    </span><span class="n">nrooks</span><span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="cm">/* empty means random, can also pass a number */</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Check for no errors</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nrooks</span><span class="p">.</span><span class="n">generateSamples</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="cm">/* Number of points */</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">write_text_pointset</span><span class="p">(</span><span class="s">&quot;nrooks2d.dat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 </div>

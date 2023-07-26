@@ -26,13 +26,14 @@ include/utk/metrics/UnanchoredL2.hpp
 
 ```bash
 UnanchoredL2Discrepancy calculator
-Usage: ./build/src/metrics/UnanchoredL2 [OPTIONS]
+Usage: ./UnanchoredL2 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
+
 ```
 
 </div>

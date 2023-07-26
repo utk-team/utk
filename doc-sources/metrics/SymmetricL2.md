@@ -26,12 +26,12 @@ include/utk/metrics/SymmetricL2.hpp
 
 ```bash
 SymmetricL2 calculator
-Usage: ./build/src/metrics/SymmetricL2 [OPTIONS]
+Usage: ./SymmetricL2 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
 ```
 

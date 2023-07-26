@@ -32,16 +32,18 @@ externals/Kronecker/*
 <div class="exe tabcontent">
 
 ```bash
-Faure sampler
-Usage: ./build/src/samplers/Kronecker [OPTIONS]
+Kronecker sampler
+Usage: ./Kronecker [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
   -d UINT REQUIRED            Dimensions
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --shifts TEXT               Shifts vectors. Supported [R2, R3, R4, K21_2, K21_3, K21_4, K21b_2, K21b_3, K21b_4, ]
+
 ```
 
 </div>

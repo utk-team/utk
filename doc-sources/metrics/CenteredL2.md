@@ -24,15 +24,14 @@ include/utk/metrics/CenteredL2.hpp
 <div class="exe tabcontent">
 
 ```bash
-GeneralizedL2 calculator
-Usage: ./build/src/metrics/GL2 [OPTIONS]
+CenteredL2Discrepancy calculator
+Usage: ./CenteredL2 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
-
 ```
 
 </div>

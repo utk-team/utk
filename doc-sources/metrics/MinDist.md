@@ -23,12 +23,12 @@ include/utk/metrics/MinDist.hpp
 
 ```bash
 MinDist calculator
-Usage: ./build/src/metrics/MinDist [OPTIONS]
+Usage: ./MinDist [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
   --euclidean [0]             Use euclidean distance (default is wrap around)
 ```

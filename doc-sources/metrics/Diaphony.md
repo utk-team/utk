@@ -28,12 +28,12 @@ include/utk/metrics/Diaphony.hpp
 
 ```bash
 Diaphony calculator
-Usage: ./build/src/metrics/Diaphony [OPTIONS]
+Usage: ./Diaphony [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
 ```
 

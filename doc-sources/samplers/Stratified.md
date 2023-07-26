@@ -25,14 +25,15 @@ include/utk/samplers/SamplerStratified.hpp
 
 ```bash
 Stratified sampler
-Usage: ./build/src/samplers/Stratified [OPTIONS]
+Usage: ./Stratified [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
   -d UINT REQUIRED            Dimensions
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
 ```
 
 </div>

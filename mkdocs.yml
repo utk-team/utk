@@ -52,6 +52,7 @@ nav:
   - Samplers:
     - AAPatterns: 'samplers/AAPatterns.md'
     - ART: 'samplers/ART.md'
+    - BNOT: 'samplers/BNOT.md'
     - CMJ: 'samplers/CMJ.md'
     - DartThrowing: 'samplers/DartThrowing.md'
     - FastPoisson: 'samplers/FastPoisson.md'

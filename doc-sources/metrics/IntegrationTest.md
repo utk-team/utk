@@ -53,7 +53,7 @@ src/metrics/GaussiansIntegrationTest.hpp
 
 ```bash
 Integrand database builder
-Usage: ./BuildGaussianIntegrandDatabase [OPTIONS]
+Usage: ./Integration/BuildGaussianIntegrandDatabase [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -67,12 +67,12 @@ Options:
   --sigmamax FLOAT [1]        Max value for variance
 
 Gaussian Integration calculator
-Usage: ./GaussianIntegrationTest [OPTIONS]
+Usage: ./Integration/GaussianIntegrationTest [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
   -f,--file,--integrands TEXT REQUIRED
                               Integrand File

@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../Penrose/">
+        <link rel="prev" href="../ART/">
       
       
-        <link rel="next" href="../ProjectiveBlueNoise/">
+        <link rel="next" href="../CMJ/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
-        <title>PMJ - Uni{form|corn} tool kit</title>
+        <title>BNOT - Uni{form|corn} tool kit</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sampler-pmj-pmj" class="md-skip">
+        <a href="#sampler-bnot-de-goes12" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PMJ
+              BNOT
             
           </span>
         </div>
@@ -363,11 +363,73 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../BNOT/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          BNOT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         BNOT
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -601,80 +663,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          PMJ
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../PMJ/" class="md-nav__link">
         PMJ
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#files" class="md-nav__link">
-    Files
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#results" class="md-nav__link">
-    Results
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    License
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1093,13 +1086,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#results" class="md-nav__link">
-    Results
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     License
   </a>
@@ -1121,20 +1107,23 @@
                   
 
 
-<h1 id="sampler-pmj-pmj">Sampler PMJ <a href="https://graphics.pixar.com/library ProgressiveMultiJitteredSampling/paper.pdf">[PMJ]</a></h1>
+<h1 id="sampler-bnot-de-goes12">Sampler BNOT <a href="http://www.geometry.caltech.edu/BlueNoise/">[de Goes12]</a></h1>
 <h2 id="description">Description</h2>
-<p>The Progressive Multi-Jittered sampler. This sampler is divided in 3 techniques, each giving better results than the previous one:  </p>
-<p>Progressive Jittered (PJ): Divides the unit square into 4 equal squares. Randomly throws a point into each subsquare. Then divide those subsquares into subsubsquares. Randomly throws points in them, and so on.  </p>
-<p>Progressive Multi-Jittered (PMJ): Adds to PJ one property: Using PJ, each sample falls into its own square subdivision. With PMJ, each sample falls into its own square subdivision AND its own strata. When throwing points, uses a best candidate algorithm.  </p>
-<p>Progressive Multi-Jittered(0,2) (PMJ02): Generalizes the previous techniques. If we subdivide the unit square into equal rectangles, each sample falls into its own rectangle.  </p>
-<p>C++ Implementation of <a href="https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/paper.pdf">[PMJ]</a></p>
-<p><code>PMJ02_Pharr</code> implements Matt Pharr&rsquo;s variant
-from the JCGT article &ldquo;Efficient Generation of Points that Satisfy
-Two-Dimensional Elementary Intervals&rdquo; focusing on fast PMJ02 sampling.</p>
+<p>Blue noise through Optimal Transport sampler. Two implementation are given : one in the preriodic
+domain and the other in the bounded domain. The source code is modified to work with latest versions of CGal (actually: 5.4-1).</p>
+<p>This sampler requires UTK to be linked against CGal and SuiteSparse. </p>
+<ul>
+<li>For executable: CMake option UTK_USE_CGAL=ON.</li>
+<li>For C++ library: CGal and SuiteSparse (AMD, CHOLMOD, SPQR) </li>
+<li>For python library : CMake option UTK_USE_CGAL=ON. See <code>setup.py</code> line 26.</li>
+</ul>
 <h2 id="files">Files</h2>
-<div class="highlight"><pre><span></span><code>src/samplers/PMJ.cpp  
-include/utk/samplers/PMJ.hpp
-externals/PMJ/*
+<div class="highlight"><pre><span></span><code>src/samplers/PeriodicBNOT.cpp  
+src/samplers/BoundedBNOT.cpp
+include/utk/samplers/BoundedBNOT.hpp
+include/utk/samplers/PeriodicBNOT.hpp
+externals/BoundedBNOT/*
+externals/PeriodicBNOT/*
 </code></pre></div>
 <h2 id="usage">Usage</h2>
 <p><button class="tablink exebutton" onclick="openCode('exe', this)" markdown="1">Exe</button> 
@@ -1143,8 +1132,8 @@ externals/PMJ/*
 <br/></p>
 <div class="exe tabcontent">
 
-<div class="highlight"><pre><span></span><code>PMJ<span class="w"> </span>sampler
-Usage:<span class="w"> </span>./PMJ<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>Sampler<span class="w"> </span>BoundedBNOT<span class="w"> </span>sampler
+Usage:<span class="w"> </span>./src/samplers/BoundedBNOT<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,--help<span class="w">                   </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -1153,8 +1142,18 @@ Options:
 <span class="w">  </span>-s,--seed<span class="w"> </span>UINT<span class="w">              </span>Seed<span class="w"> </span><span class="o">(</span>unspecified<span class="w"> </span>means<span class="w"> </span><span class="s1">&#39;random&#39;</span><span class="o">)</span>
 <span class="w">  </span>-m<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Number<span class="w"> </span>of<span class="w"> </span>pointsets
 <span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>format<span class="o">)</span>.<span class="w"> </span><span class="o">{</span>i<span class="o">}</span><span class="w"> </span>splits<span class="w"> </span>outputs<span class="w"> </span><span class="k">in</span><span class="w"> </span>multiple<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>index.
-<span class="w">  </span>--method<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>PMJ02<span class="o">]</span><span class="w">       </span>Method<span class="w"> </span>to<span class="w"> </span>use.<span class="w"> </span>Available<span class="w"> </span><span class="o">(</span>other<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>treaded<span class="w"> </span>as<span class="w"> </span>PMJ02<span class="o">)</span>:<span class="w"> </span>PJ,<span class="w"> </span>PMJ,<span class="w"> </span>PMJ02,<span class="w"> </span>PMJ02_Pharr,<span class="w"> </span>
-<span class="w">  </span>-c,--candidates<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">10</span><span class="o">]</span><span class="w">   </span>Number<span class="w"> </span>of<span class="w"> </span>candidates<span class="w"> </span><span class="k">for</span><span class="w"> </span>PMJ02*<span class="w"> </span>methods
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Sampler<span class="w"> </span>PeriodicBNOT<span class="w"> </span>sampler
+Usage:<span class="w"> </span>./src/samplers/PeriodicBNOT<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+
+Options:
+<span class="w">  </span>-h,--help<span class="w">                   </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>-n<span class="w"> </span>UINT<span class="w"> </span>REQUIRED<span class="w">            </span>Number<span class="w"> </span>of<span class="w"> </span>points
+<span class="w">  </span>-d<span class="w"> </span>UINT<span class="w">                     </span>UNUSED<span class="w"> </span>!<span class="w"> </span>Here<span class="w"> </span><span class="k">for</span><span class="w"> </span>compatibility<span class="w"> </span>with<span class="w"> </span>others.
+<span class="w">  </span>-s,--seed<span class="w"> </span>UINT<span class="w">              </span>Seed<span class="w"> </span><span class="o">(</span>unspecified<span class="w"> </span>means<span class="w"> </span><span class="s1">&#39;random&#39;</span><span class="o">)</span>
+<span class="w">  </span>-m<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Number<span class="w"> </span>of<span class="w"> </span>pointsets
+<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>format<span class="o">)</span>.<span class="w"> </span><span class="o">{</span>i<span class="o">}</span><span class="w"> </span>splits<span class="w"> </span>outputs<span class="w"> </span><span class="k">in</span><span class="w"> </span>multiple<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>index.
 </code></pre></div>
 
 </div>
@@ -1163,18 +1162,27 @@ Options:
 
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/utils/PointsetIO.hpp&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/utils/Pointset.hpp&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/samplers/SamplerPMJ.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/samplers/SamplerPeriodicBNOT.hpp&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utk/samplers/SamplerBoundedBNOT.hpp&gt;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">Pointset</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pts</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">SamplerPMJ</span><span class="w"> </span><span class="n">pmj</span><span class="p">(</span><span class="s">&quot;PMJ02&quot;</span><span class="w"> </span><span class="cm">/* method */</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="cm">/* Number of candidates */</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pmj</span><span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="cm">/* Or a seed */</span><span class="p">);</span>
+<span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">SamplerPeriodicBNOT</span><span class="w"> </span><span class="n">pbnot</span><span class="p">;</span>
+<span class="w">    </span><span class="n">utk</span><span class="o">::</span><span class="n">SamplerPeriodicBNOT</span><span class="w"> </span><span class="n">bbnot</span><span class="p">;</span>
+<span class="w">    </span><span class="n">pbnot</span><span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="cm">/* empty means random, can also pass a number */</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bbnot</span><span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="cm">/* empty means random, can also pass a number */</span><span class="p">);</span>
+
 <span class="w">    </span><span class="c1">// Check for no errors</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pmj</span><span class="p">.</span><span class="n">generateSamples</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="cm">/* Number of points */</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pbnot</span><span class="p">.</span><span class="n">generateSamples</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="cm">/* Number of points */</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">write_text_pointset</span><span class="p">(</span><span class="s">&quot;pmj02d.dat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pts</span><span class="p">);</span>
+<span class="w">        </span><span class="n">write_text_pointset</span><span class="p">(</span><span class="s">&quot;pbnotpatterns.dat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bbnot</span><span class="p">.</span><span class="n">generateSamples</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="cm">/* Number of points */</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">write_text_pointset</span><span class="p">(</span><span class="s">&quot;pbnotpatterns.dat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pts</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -1185,23 +1193,17 @@ Options:
 
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyutk</span>
 
-<span class="n">pmj</span> <span class="o">=</span> <span class="n">pyutk</span><span class="o">.</span><span class="n">PMJ</span><span class="p">(</span>
-    <span class="s2">&quot;PMJ02&quot;</span><span class="p">,</span> <span class="c1"># Method</span>
-    <span class="mi">10</span><span class="p">,</span>      <span class="c1"># Candidates for PMJ02* methods</span>
-<span class="p">)</span>
-<span class="n">samples</span> <span class="o">=</span> <span class="n">pmj</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># This is a numpy array !</span>
+<span class="n">pbnot</span> <span class="o">=</span> <span class="n">pyutk</span><span class="o">.</span><span class="n">PBNOT</span><span class="p">()</span>
+<span class="n">bbnot</span> <span class="o">=</span> <span class="n">pyutk</span><span class="o">.</span><span class="n">BBNOT</span><span class="p">()</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="n">pbnot</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># This is a numpy array !</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">bbnot</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c1"># This is a numpy array !</span>
 </code></pre></div>
 
 </div>
 
-<h2 id="results">Results</h2>
-<div class="results"></div>
-<script>
-  window.addEventListener('DOMContentLoaded', function() { show_results(); }); 
-</script>
-
 <h2 id="license">License</h2>
-<p>See Licence.md file. Licence may differ by methods. See corresponding author files. </p>
+<p>See Licence.md file. Author code from &lsquo;F. De Goes&rsquo; is provided under GPL license ((see <a href="http://www.geometry.caltech.edu/BlueNoise/">http://www.geometry.caltech.edu/BlueNoise/</a>)).</p>
 
 
 

@@ -25,7 +25,7 @@ include/utk/samplers/SamplerWhitenoise.hpp
 
 ```bash
 Whitenoise sampler
-Usage: ./build/src/samplers/Whitenoise [OPTIONS]
+Usage: ./Whitenoise [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -33,7 +33,7 @@ Options:
   -d UINT REQUIRED            Dimensions
   -s,--seed UINT              Seed (unspecified means 'random')
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
 ```
 
 </div>

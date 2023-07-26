@@ -33,8 +33,8 @@ Usage: ./RadialSpectrum [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
   -r,--res UINT [0]           Spectrum resolution (0 means automatic)
   --canceldc [0]              When set, cancel the DC peak

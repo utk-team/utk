@@ -15,7 +15,7 @@
         <link rel="next" href="../Faure/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -353,6 +353,20 @@
     <li class="md-nav__item">
       <a href="../ART/" class="md-nav__link">
         ART
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BNOT/" class="md-nav__link">
+        BNOT
       </a>
     </li>
   
@@ -1123,15 +1137,17 @@ externals/Fattal/*
 <br/></p>
 <div class="exe tabcontent">
 
-<div class="highlight"><pre><span></span><code>ART<span class="w"> </span>sampler
-Usage:<span class="w"> </span>./samplers/Fattal<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>Fattal<span class="w"> </span>sampler
+Usage:<span class="w"> </span>./Fattal<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,--help<span class="w">                   </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
 <span class="w">  </span>-n<span class="w"> </span>UINT<span class="w"> </span>REQUIRED<span class="w">            </span>Number<span class="w"> </span>of<span class="w"> </span>points
+<span class="w">  </span>-d<span class="w"> </span>UINT<span class="w">                     </span>UNUSED<span class="w"> </span>!<span class="w"> </span>Here<span class="w"> </span><span class="k">for</span><span class="w"> </span>compatibility<span class="w"> </span>with<span class="w"> </span>others.
+<span class="w">  </span>-s,--seed<span class="w"> </span>UINT<span class="w">              </span>UNUSED<span class="w"> </span>!<span class="w"> </span>Here<span class="w"> </span><span class="k">for</span><span class="w"> </span>compatibility<span class="w"> </span>with<span class="w"> </span>others.
 <span class="w">  </span>-m<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Number<span class="w"> </span>of<span class="w"> </span>pointsets
-<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file
-<span class="w">  </span>-t,--temperature<span class="w"> </span>FLOAT<span class="w"> </span><span class="o">[</span><span class="m">0</span>.5<span class="o">]</span>
+<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>format<span class="o">)</span>.<span class="w"> </span><span class="o">{</span>i<span class="o">}</span><span class="w"> </span>splits<span class="w"> </span>outputs<span class="w"> </span><span class="k">in</span><span class="w"> </span>multiple<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>index.
+<span class="w">  </span>-t,--temperature<span class="w"> </span>FLOAT<span class="w"> </span><span class="o">[</span><span class="m">0</span>.5<span class="o">]</span><span class="w"> </span>
 <span class="w">                              </span>Temperature
 <span class="w">  </span>-l,--level<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">         </span>Levels
 </code></pre></div>

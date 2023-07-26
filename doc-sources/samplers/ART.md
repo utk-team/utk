@@ -25,13 +25,15 @@ externals/ART/*
 
 ```bash
 ART sampler
-Usage: ./samplers/ART [OPTIONS]
+Usage: ./ART [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --tfile TEXT                Path to table file. Default (empty) is the one provided by the author.
 ```
 

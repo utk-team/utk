@@ -15,7 +15,7 @@
         <link rel="next" href="../FastPoisson/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
@@ -353,6 +353,20 @@
     <li class="md-nav__item">
       <a href="../ART/" class="md-nav__link">
         ART
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BNOT/" class="md-nav__link">
+        BNOT
       </a>
     </li>
   
@@ -1123,7 +1137,7 @@ include/utk/samplers/SamplerDartThrowing.hpp
 <div class="exe tabcontent">
 
 <div class="highlight"><pre><span></span><code>Dart<span class="w"> </span>Throwing<span class="w"> </span>sampler
-Usage:<span class="w"> </span>./samplers/DartThrowing<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+Usage:<span class="w"> </span>./DartThrowing<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,--help<span class="w">                   </span>Print<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -1131,7 +1145,7 @@ Options:
 <span class="w">  </span>-d<span class="w"> </span>UINT<span class="w"> </span>REQUIRED<span class="w">            </span>Dimensions
 <span class="w">  </span>-s,--seed<span class="w"> </span>UINT<span class="w">              </span>Seed<span class="w"> </span><span class="o">(</span>unspecified<span class="w"> </span>means<span class="w"> </span><span class="s1">&#39;random&#39;</span><span class="o">)</span>
 <span class="w">  </span>-m<span class="w"> </span>UINT<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Number<span class="w"> </span>of<span class="w"> </span>pointsets
-<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file
+<span class="w">  </span>-o,--out<span class="w"> </span>TEXT<span class="w"> </span><span class="o">[</span>out.dat<span class="o">]</span><span class="w">     </span>Output<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>format<span class="o">)</span>.<span class="w"> </span><span class="o">{</span>i<span class="o">}</span><span class="w"> </span>splits<span class="w"> </span>outputs<span class="w"> </span><span class="k">in</span><span class="w"> </span>multiple<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span>replaced<span class="w"> </span>by<span class="w"> </span>index.
 <span class="w">  </span>--relax<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">                 </span>Enable<span class="w"> </span>relaxation
 <span class="w">  </span>--euclidean<span class="w"> </span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w">             </span>Use<span class="w"> </span>euclidean<span class="w"> </span>distance<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>is<span class="w"> </span>wrap<span class="w"> </span>around<span class="o">)</span>
 <span class="w">  </span>--relax_factor<span class="w"> </span>FLOAT<span class="w"> </span><span class="o">[</span><span class="m">0</span>.9<span class="o">]</span><span class="w">  </span>Amount<span class="w"> </span>of<span class="w"> </span>relaxation<span class="w"> </span>applied<span class="w"> </span>after<span class="w"> </span>too<span class="w"> </span>many<span class="w"> </span>unsucessful<span class="w"> </span>trials

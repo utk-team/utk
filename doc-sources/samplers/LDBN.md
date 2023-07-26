@@ -35,14 +35,15 @@ externals/LutLDBN/*
 
 ```bash
 LDBN sampler
-Usage: ./samplers/LDBN [OPTIONS]
+Usage: ./LDBN [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
   -s,--seed UINT              Seed (unspecified means 'random')
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --tilesize UINT [128]       Tile size. WARNING: Other values than 128 might not be properly supported for random generation.
   --tileFile TEXT             File containing tiles. If empty a new one will be generated on the fly. Tilesize must be set accordingly.
 ```
@@ -95,13 +96,15 @@ int main()
 
 ```bash
 LDBN(Lut) sampler
-Usage: ./samplers/LutLDBN [OPTIONS]
+Usage: ./LutLDBN [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --target TEXT [BNOT]        Target to use. Available (other will be treaded as BNOT): BNOT, STEP,
 ```
 

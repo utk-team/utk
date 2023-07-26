@@ -25,13 +25,15 @@ include/utk/samplers/SamplerR1.hpp
 
 ```bash
 R1 sampler
-Usage: ./build/src/samplers/Rank1 [OPTIONS]
+Usage: ./Rank1 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   -e,--exhaustive [0]         Enable exhaustive search
   -f,--fibonacci [0]          Enable fibonnaci lattice
 ```

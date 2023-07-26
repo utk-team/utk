@@ -26,12 +26,12 @@ include/utk/metrics/PCF.hpp
 
 ```bash
 PCF calculator
-Usage: ./build/src/metrics/PCF [OPTIONS]
+Usage: ./PCF [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
   -t,--toroidal [0]           When set, use toroidal distance
   -b,--nbbins UINT [200]      Number of bins

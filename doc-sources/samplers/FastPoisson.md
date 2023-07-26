@@ -26,14 +26,16 @@ externals/FastPoisson/*
 
 ```bash
 FastPoisson sampler
-Usage: ./samplers/FastPoisson [OPTIONS]
+Usage: ./FastPoisson [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
+  -d UINT                     UNUSED ! Here for compatibility with others.
+  -s,--seed UINT              UNUSED ! Here for compatibility with others.
   -m UINT [1]                 Number of pointsets
-  -o,--out TEXT [out.dat]     Output file
-  --method TEXT [DartThrowing]
+  -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
+  --method TEXT [DartThrowing] 
                               Method. [DartThrowing, BestCandidate, BoundarySampler, Pure, LinearPure, Penrose, Uniform, ]
   -r,--radius FLOAT [0]       Radius in [0.0005, 0.2]. If outside the range, will attempt to find a radius given N.
   --throwMult UINT [1]        Multiplier for number of throw (for DartThrowing & BestCandidate methods)
@@ -41,6 +43,7 @@ Options:
   --maximize                  Enable maximization
   --tiled                     Enable tiling. Might be ignored for tiled-only methods
   --relaxCount [0]            Number of relaxation to perform
+
 ```
 
 </div>

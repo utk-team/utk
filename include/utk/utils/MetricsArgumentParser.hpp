@@ -85,7 +85,7 @@ namespace utk
     {
         MetricArguments* arguments = new MetricArguments;
 
-        app.add_option("-i,--input", arguments->inFile, "Input file")->required()->check(CLI::ExistingFile);
+        app.add_option("-i,--input", arguments->inFile, "Input file(s)")->required()->check(CLI::ExistingFile);
         app.add_option("-o,--output", arguments->outFile, "Output file (empty is stdout)")->default_val("");
 
         return arguments;

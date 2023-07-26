@@ -26,14 +26,13 @@ include/utk/metrics/GL2.hpp
 
 ```bash
 GeneralizedL2 calculator
-Usage: ./build/src/metrics/GL2 [OPTIONS]
+Usage: ./GL2 [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  -i,--input TEXT:FILE REQUIRED
-                              Input file
+  -i,--input TEXT:FILE ... REQUIRED
+                              Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
-
 ```
 
 </div>
