@@ -86,32 +86,34 @@ ELSE()
     message("Lloyd not compiled on Windows !")
 ENDIF()
 
+# BNOT
+IF (CGAL_FOUND AND SuiteSparse_FOUND)
+    IF(UTK_BUILD_EXE)
+        add_executable(BoundedBNOT  BoundedBNOT.cpp)
+        add_executable(PeriodicBNOT PeriodicBNOT.cpp)
 
-IF (CGAL_FOUND AND SuiteSparse_FOUND AND UTK_BUILD_EXE)
-    add_executable(BoundedBNOT  BoundedBNOT.cpp)
-    add_executable(PeriodicBNOT PeriodicBNOT.cpp)
+        target_include_directories(BoundedBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+        target_include_directories(BoundedBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+        target_link_libraries(BoundedBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+        target_link_libraries(BoundedBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)        
 
-    target_include_directories(BoundedBNOT PRIVATE "${UTK_INCLUDE_DIR}")
-    target_include_directories(BoundedBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-    target_link_libraries(BoundedBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
-    target_link_libraries(BoundedBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
-        
-
-    target_include_directories(PeriodicBNOT PRIVATE "${UTK_INCLUDE_DIR}")
-    target_include_directories(PeriodicBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-    target_link_libraries(PeriodicBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
-    target_link_libraries(PeriodicBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
-  
+        target_include_directories(PeriodicBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+        target_include_directories(PeriodicBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+        target_link_libraries(PeriodicBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+        target_link_libraries(PeriodicBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
     
-    install(TARGETS BoundedBNOT
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        
+        install(TARGETS BoundedBNOT
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
 
-    install(TARGETS PeriodicBNOT
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+        install(TARGETS PeriodicBNOT
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+    ENDIF()
+    LIST(APPEND pyutk_samplers_libs CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
 ELSE()
     # message("BNOT Not compiled")
 ENDIF()
@@ -123,6 +125,11 @@ IF (UTK_PYTHON)
         "python/ExternalSamplers.cpp"
         "python/Scrambling.cpp"
     )
+
+    IF(CGAL_FOUND AND SuiteSparse_FOUND)
+        add_definitions(-DPYUTK_BNOT)
+    ENDIF()
+    
     add_library(pyutkSamplers ${pyutk_samplers} ${pyutk_samplers_bindings})
 
     # Required by pybind

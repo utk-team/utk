@@ -52,7 +52,25 @@
 
     void init_BNOT(py::module& m)
     {
-        // TODO
+        using namespace utk;
+
+        py::class_<SamplerBoundedBNOT>(m, "BBNOT")
+            .def(py::init<uint32_t, uint32_t, double>(), py::arg("it") = 20, py::arg("newtonit") = 20, py::arg("eps") = 0.2)
+            .def("__repr__", [](const SamplerPeriodicBNOT& wn) { return "BBNOT()"; })
+            .def("setIterations", &SamplerBoundedBNOT::setIterations)
+            .def("setNewtonIterations", &SamplerBoundedBNOT::setNewtonIterations)
+            .def("setEpsilon", &SamplerBoundedBNOT::setEpsilon)
+            .def("setSeed", GetSetSeedFunction<SamplerBoundedBNOT>(), py::arg("seed") = NO_SEED)
+            .def("sample",  GetSampleFunction <SamplerBoundedBNOT>(), py::arg("N"));
+
+        py::class_<SamplerPeriodicBNOT>(m, "PBNOT")
+            .def(py::init<uint32_t, uint32_t, double>(), py::arg("it") = 20, py::arg("newtonit") = 20, py::arg("eps") = 0.2)
+            .def("__repr__", [](const SamplerPeriodicBNOT& wn) { return "BBNOT()"; })
+            .def("setIterations", &SamplerPeriodicBNOT::setIterations)
+            .def("setNewtonIterations", &SamplerPeriodicBNOT::setNewtonIterations)
+            .def("setEpsilon", &SamplerPeriodicBNOT::setEpsilon)
+            .def("setSeed", GetSetSeedFunction<SamplerPeriodicBNOT>(), py::arg("seed") = NO_SEED)
+            .def("sample",  GetSampleFunction <SamplerPeriodicBNOT>(), py::arg("N"));   
     }
 #else
     void init_BNOT(py::module& m)

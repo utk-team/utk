@@ -63,20 +63,20 @@ public:
 	{
 		std::uniform_real_distribution<double> unif(-0.5, 0.5);
 
-		Scene bnot_scene;
-		std::vector<Point> points;
-		std::vector<FT> weights(N, 0.0);
+		BBNOT::Scene bnot_scene;
+		std::vector<BBNOT::Point> points;
+		std::vector<BBNOT::FT> weights(N, 0.0);
 
 		points.reserve(N);
 		for (uint32_t i = 0; i < N; i++)
-			points.push_back(Point(unif(m_mersenneTwister), unif(m_mersenneTwister)));
+			points.push_back(BBNOT::Point(unif(m_mersenneTwister), unif(m_mersenneTwister)));
 		
 		bnot_scene.construct_triangulation(points, weights);
 		bnot_scene.optimize_all(0.0, 0.0, its, epsilon, nits, std::cout);
 
 		points.clear();
 
-		std::vector<Point> outPoints;
+		std::vector<BBNOT::Point> outPoints;
 		bnot_scene.collect_visible_points(outPoints);
 
 		arg_pts.Resize(outPoints.size(), 2);

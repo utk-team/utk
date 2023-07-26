@@ -34,6 +34,9 @@
 #define MAXN  1e100
 #define EPS   1e-15
 
+namespace PBNOT
+{
+
 template <class T>
 T compute_mean(const std::vector<T>& data)
 {
@@ -2603,3 +2606,5 @@ public:
         clear();
     }
 };
+
+}
