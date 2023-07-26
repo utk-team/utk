@@ -120,4 +120,24 @@ inline Pointset<T> read_text_pointset_stream(Stream& st)
     return pts;
 }
 
+template<class Stream, typename T>
+inline std::vector<Pointset<T>> read_text_pointsets_stream(Stream& st)
+{
+    std::vector<Pointset<T>> pointsets;
+    while (st.good())
+    {
+        Pointset<T> pointset = read_text_pointset_stream<decltype(st), T>(st);
+        if (pointset.Npts() > 0)
+            pointsets.push_back(pointset);
+    }
+    return pointsets;
+}
+
+template<typename T>
+inline std::vector<Pointset<T>> read_text_pointset(const char* filepath)
+{
+    std::ifstream file(filepath);
+    return read_text_pointsets_stream<decltype(file), T>(file);
+}
+
 };

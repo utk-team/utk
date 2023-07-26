@@ -48,20 +48,21 @@ namespace utk
     struct MetricArguments
     {
         std::string outFile;
-        std::string inFile;
+        std::vector<std::string> inFile;
 
         std::ofstream outputFileStream;
 
         std::vector<Pointset<double>> GetAllPointsets()
         {
-            std::ifstream file(inFile);
-
             std::vector<Pointset<double>> pointsets;
-            while (file.good())
+            for (const std::string& file : inFile)
             {
-                Pointset<double> pointset = read_text_pointset_stream<decltype(file), double>(file);
-                if (pointset.Npts() > 0)
-                    pointsets.push_back(pointset);
+                std::vector<Pointset<double>> ptsFile = read_text_pointset<double>(file.c_str());
+                pointsets.insert(
+                    std::end(pointsets), 
+                    std::begin(ptsFile), 
+                    std::end(ptsFile)
+                );
             }
             return pointsets;
         } 
