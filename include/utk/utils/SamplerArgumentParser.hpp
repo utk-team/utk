@@ -40,6 +40,7 @@
 #include <CLI/Formatter.hpp>
 #include <CLI/Config.hpp>
 
+#include <utk/utils/log.hpp>
 #include <utk/utils/PointsetIO.hpp>
 
 namespace utk
@@ -59,15 +60,34 @@ namespace utk
         uint64_t dumbS; 
         std::string outFile;
 
+        constexpr static const char TOKEN_INDEX[] = "{i}";
+
         std::vector<Pointset<Type>> GetPointsets()
         {
             std::vector<Pointset<Type>> pts(M, Pointset<Type>(N, D));
             return pts;
         }
 
+        std::string GetFileName(uint32_t i)
+        {
+            std::string filepath = outFile;
+            std::string to = std::to_string(i);
+
+            for(size_t pos = 0; (pos = filepath.find(TOKEN_INDEX, pos)) != std::string::npos; pos += to.size())
+                filepath.replace(pos, sizeof(TOKEN_INDEX), to);
+
+            return filepath;
+        }
+
         bool WritePointsets(const std::vector<Pointset<Type>>& pts)
         {
-            return write_text_pointsets(outFile, pts);
+            if (outFile.find(TOKEN_INDEX) == std::string::npos)
+                return write_text_pointsets(outFile, pts);
+                
+            bool ret = true;
+            for (uint32_t i = 0; i < pts.size(); i++)
+                ret = ret && write_text_pointset(GetFileName(i), pts[i]);
+            return ret;
         }
     };
 
@@ -82,7 +102,7 @@ namespace utk
 
         app.add_option("-n", args->N, "Number of points")->required();
 
-        if (force_dim == 0)
+        if (force_dim == SamplerArguments::ANY_DIM)
         {
             app.add_option("-d", args->D, "Dimensions")->required();
         }
@@ -103,7 +123,7 @@ namespace utk
         }
             
         app.add_option("-m", args->M, "Number of pointsets")->default_val(1);
-        app.add_option("-o,--out", args->outFile, "Output file")->default_val("out.dat");
+        app.add_option("-o,--out", args->outFile, "Output file (format). {i} splits outputs in multiple files and token is replaced by index.")->default_val("out.dat");
 
         return args;
     }
