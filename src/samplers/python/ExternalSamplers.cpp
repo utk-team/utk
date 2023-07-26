@@ -37,7 +37,13 @@
     
     void init_Lloyd(py::module& m)
     {
-        // TODO
+        py::class_<SamplerLloyd>(m, "Lloyd")
+            .def(py::init<uint32_t, bool>(), py::arg("nbsteps") = 100, py::arg("toroidal") = false)
+            .def("__repr__", [](const SamplerLloyd& wn) { return "Lloyd()"; })
+            .def("setNbSteps", &SamplerLloyd::setNbSteps)
+            .def("setToricity", &SamplerLloyd::setToricity)
+            .def("setSeed", GetSetSeedFunction<SamplerLloyd>(), py::arg("seed") = NO_SEED)
+            .def("sample",  GetSampleFunction <SamplerLloyd>(), py::arg("N"));
     }
 #else 
     void init_Lloyd(py::module& m)

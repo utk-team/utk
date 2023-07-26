@@ -67,18 +67,24 @@ ENDFOREACH(FILE)
 
 # Disable compilation on windows... GEOGRAM dllspec is problematic for an unknown reason...
 IF(NOT WIN32)
-    IF(OpenMP_FOUND AND UTK_BUILD_EXE)
-        # Lloyd
-        add_executable(Lloyd Lloyd.cpp  ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
-        
-        target_include_directories(Lloyd PRIVATE "${UTK_INCLUDE_DIR}")
-        target_include_directories(Lloyd PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-        target_link_libraries(Lloyd PRIVATE spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
+    IF(OpenMP_FOUND)
+        IF(UTK_BUILD_EXE)
+            # Lloyd
+            add_executable(Lloyd Lloyd.cpp  ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
+            
+            target_include_directories(Lloyd PRIVATE "${UTK_INCLUDE_DIR}")
+            target_include_directories(Lloyd PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+            target_link_libraries(Lloyd PRIVATE spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
 
-        install(TARGETS Lloyd
-            RUNTIME DESTINATION bin
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib)
+            install(TARGETS Lloyd
+                RUNTIME DESTINATION bin
+                LIBRARY DESTINATION lib
+                ARCHIVE DESTINATION lib)
+        ENDIF()
+        
+        LIST(APPEND pyutk_samplers_libs OpenMP::OpenMP_CXX)
+        LIST(APPEND pyutk_samplers ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
+        add_definitions(-DPYUTK_LLOYD)
     ELSE()
         # message("Lloyd not compiled.")
     ENDIF()
@@ -113,7 +119,9 @@ IF (CGAL_FOUND AND SuiteSparse_FOUND)
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)
     ENDIF()
+    
     LIST(APPEND pyutk_samplers_libs CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
+    add_definitions(-DPYUTK_BNOT)
 ELSE()
     # message("BNOT Not compiled")
 ENDIF()
@@ -125,10 +133,6 @@ IF (UTK_PYTHON)
         "python/ExternalSamplers.cpp"
         "python/Scrambling.cpp"
     )
-
-    IF(CGAL_FOUND AND SuiteSparse_FOUND)
-        add_definitions(-DPYUTK_BNOT)
-    ENDIF()
     
     add_library(pyutkSamplers ${pyutk_samplers} ${pyutk_samplers_bindings})
 

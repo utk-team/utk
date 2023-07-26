@@ -68,7 +68,10 @@ int main()
 <div class="py tabcontent">
 
 ``` python
-# No pyutk version supported
+import pyutk
+
+lloyd = pyutk.Lloyd()
+samples = lloyd.sample(1024)  # This is a numpy array !
 ```  
 
 </div>
