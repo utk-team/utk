@@ -33,22 +33,31 @@
 #include <utk/utils/MetricsArgumentParser.hpp>
 #include <utk/metrics/Spectrum.hpp>
 
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb_image_write.h>
+
 int main(int argc, char** argv)
 {
     CLI::App app { "Spectrum calculator" };
     utk::MetricArguments* margs = utk::add_arguments(app);
 
+    std::string imgFile = "";
     uint32_t res = 0;
     bool cancelDc = false; 
 
+
     app.add_option("-r,--res", res, "Spectrum resolution (0 means automatic)")->default_val(res);
     app.add_flag("--canceldc", cancelDc, "When set, cancel the DC peak")->default_val(cancelDc);
+    app.add_option("--img", imgFile, "When set, output image of spectrum. Only available in 2D.")->default_val(imgFile);
 
     CLI11_PARSE(app, argc, argv);
 
     std::vector<utk::Pointset<double>> ptss = margs->GetAllPointsets();
     if (!utk::CheckPointsets(ptss))
         return 1;
+
+    if (ptss.size() == 0)
+        return 0;
     
     auto rslts = utk::Spectrum(res, cancelDc).compute(ptss);
 
@@ -56,5 +65,43 @@ int main(int argc, char** argv)
     for (auto rslt : rslts)
         ostream << rslt << '\n';
 
+    // Write PNG image
+    if (!imgFile.empty())
+    {
+        res = std::round(std::sqrt(rslts.size()));
+        uint32_t D = ptss[0].Ndim();
+        if (D != 2)
+        {
+            UTK_WARN("Output image is only available for 2D pointsets. Found {}D pointsets", D);
+            return 0;
+        }
+
+        // Compute max value for normalization purposes
+        double maxval = rslts[0];
+        #pragma omp parallel for reduction(max: maxval)
+        for (auto rslt : rslts)
+            maxval = (rslt > maxval) ? rslt : maxval;
+        
+        unsigned char* data = new unsigned char[res * res];
+        
+        // Copy data to unsigned char buffer
+        #pragma omp parallel for
+        for (uint32_t y = 0; y < res; y++)
+        {
+            for (uint32_t x = 0; x < res; x++)
+            {
+                const uint32_t idx = x + y * res;
+
+                double value = rslts[idx] / maxval;
+                data[idx] = static_cast<unsigned char>(255 * value);
+            }
+        }
+
+        // Write image
+        stbi_write_png(imgFile.c_str(), res, res, 1, data, res * sizeof(unsigned char));
+
+        delete[] data;
+    }
+    
     delete margs;
 }

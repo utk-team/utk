@@ -26,6 +26,7 @@ set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(spdlog)
 include(cli11)
+include(stb)
 
 if (UTK_LOG)
     add_definitions(-DUTK_LOG)
