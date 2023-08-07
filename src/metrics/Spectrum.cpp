@@ -76,14 +76,32 @@ int main(int argc, char** argv)
             return 0;
         }
 
-        // Compute max value for normalization purposes
+        unsigned char* data = new unsigned char[res * res];    
         double maxval = rslts[0];
+
+        // PLS WINDOWS & CMake !!! ADD SUPPORT FOR REAL OPENMP CODE !!!
+#ifdef _WIN32 
+        // Compute max value for normalization purposes
+        for (auto rslt : rslts)
+            maxval = (rslt > maxval) ? rslt : maxval;
+
+        // Copy data to unsigned char buffer
+        for (uint32_t y = 0; y < res; y++)
+        {
+            for (uint32_t x = 0; x < res; x++)
+            {
+                const uint32_t idx = x + y * res;
+
+                double value = rslts[idx] / maxval;
+                data[idx] = static_cast<unsigned char>(255 * value);
+            }
+        }
+#else
+        // Compute max value for normalization purposes
         #pragma omp parallel for reduction(max: maxval)
         for (auto rslt : rslts)
             maxval = (rslt > maxval) ? rslt : maxval;
-        
-        unsigned char* data = new unsigned char[res * res];
-        
+
         // Copy data to unsigned char buffer
         #pragma omp parallel for
         for (uint32_t y = 0; y < res; y++)
@@ -96,7 +114,7 @@ int main(int argc, char** argv)
                 data[idx] = static_cast<unsigned char>(255 * value);
             }
         }
-
+#endif
         // Write image
         stbi_write_png(imgFile.c_str(), res, res, 1, data, res * sizeof(unsigned char));
 
