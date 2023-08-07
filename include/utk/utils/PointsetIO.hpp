@@ -41,6 +41,13 @@
 namespace utk
 {
 
+std::string rstrip(const std::string& s)
+{
+    std::string rslt = s;
+    rslt.erase(rslt.find_last_not_of (" \n\r\t") + 1);
+    return rslt;
+}
+
 template<class Stream, typename T>
 inline void write_text_pointset_stream(Stream& st, const Pointset<T>& pts)
 {
@@ -101,17 +108,17 @@ inline Pointset<T> read_text_pointset_stream(Stream& st)
     if (st.eof() || line.empty())
         return pts;
 
-    std::istringstream sstream(line);
+    std::istringstream sstream(rstrip(line));
     while(sstream.good()) sstream >> pts.PushBack();
-    
     uint32_t d = pts.Npts();
     
     while(std::getline(st, line))
     {
         if (line[0] == '#') break;
-        std::istringstream tmp(line);
-        while(tmp.good()) 
-            tmp >> pts.PushBack();
+        std::istringstream tmp(rstrip(line));
+
+        while(tmp.good()) tmp >> pts.PushBack();
+        
     }
 
     pts.Resize(pts.Npts() / d, d);
