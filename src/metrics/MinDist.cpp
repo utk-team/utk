@@ -36,14 +36,13 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "MinDist calculator" };
-    utk::MetricArguments* margs = utk::add_arguments(app);
-    
+    auto* margs = utk::add_arguments(app);    
     bool euclidean = false;
     app.add_flag("--euclidean", euclidean, "Use euclidean distance (default is wrap around)")->default_val(euclidean);
     
     CLI11_PARSE(app, argc, argv);
     
-    std::vector<utk::Pointset<double>> ptss = margs->GetAllPointsets();
+    auto ptss = margs->GetAllPointsets();
     utk::CheckPointsets(ptss);
     
     auto rslts = utk::MinDist(euclidean).compute(ptss);

@@ -69,8 +69,8 @@ namespace utk
             static constexpr T    PI = 3.1415926535897932;
             uint32_t N = pts.Npts();
 
-            T ra = rmin;
-            T rb = rmax;
+            T ra = static_cast<T>(rmin);
+            T rb = static_cast<T>(rmax);
 
             auto dist = toroidal ? &PCF::toricDistance<T> :
                                    &PCF::distance<T>;
@@ -87,7 +87,7 @@ namespace utk
                 {
                     for (uint32_t j = i + 1; j < N; j++)
                     {
-                        T val = gaussianKernel(smoothing, r - dist(pts.Ndim(), pts[i], pts[j]));
+                        T val = gaussianKernel(static_cast<T>(smoothing), r - dist(pts.Ndim(), pts[i], pts[j]));
                         estimator += val;
                         estimator += val;
                     }
@@ -117,8 +117,8 @@ namespace utk
             static constexpr T invPI = 0.3183098861837907;
             static constexpr T    PI = 3.1415926535897932;
 
-            T ra = rmin;
-            T rb = rmax;
+            T ra = static_cast<T>(rmin);
+            T rb = static_cast<T>(rmax);
 
             auto dist = toroidal ? &PCF::toricDistance<T> :
                                    &PCF::distance<T>;
@@ -139,7 +139,7 @@ namespace utk
                     {
                         for (uint32_t j = i + 1; j < N; j++)
                         {
-                            T val = gaussianKernel(smoothing, r - dist(D, ptss[k][i], ptss[k][j]));
+                            T val = gaussianKernel(static_cast<T>(smoothing), r - dist(D, ptss[k][i], ptss[k][j]));
                             estimator += val;
                             estimator += val;
                         }

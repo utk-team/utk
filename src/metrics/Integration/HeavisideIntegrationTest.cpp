@@ -41,13 +41,12 @@ int main(int argc, char** argv)
     
     std::string file;
     std::string sampler;
-    utk::MetricArguments* margs = utk::add_arguments(app);
-    
+    auto* margs = utk::add_arguments<double>(app);    
     app.add_option("-f,--file,--integrands", file, "Integrand File")->required();
 
     CLI11_PARSE(app, argc, argv);
 
-    std::vector<utk::Pointset<double>> ptss = margs->GetAllPointsets();
+    auto ptss = margs->GetAllPointsets();
     if (!utk::CheckPointsets(ptss))
         return 1;
 

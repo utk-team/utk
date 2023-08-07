@@ -36,8 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "RadialSpectrum calculator" };
-    utk::MetricArguments* margs = utk::add_arguments(app);
-    
+    auto* margs = utk::add_arguments(app);    
     uint32_t res = 0;
     bool cancelDc = false; 
     double scale = 0.5;
@@ -50,7 +49,7 @@ int main(int argc, char** argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    std::vector<utk::Pointset<double>> ptss = margs->GetAllPointsets();
+    auto ptss = margs->GetAllPointsets();
     if (!utk::CheckPointsets(ptss))
         return 1;
         

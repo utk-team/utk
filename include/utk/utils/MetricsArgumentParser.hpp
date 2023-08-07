@@ -45,6 +45,7 @@
 
 namespace utk
 {
+    template<typename Type = long double>
     struct MetricArguments
     {
         std::string outFile;
@@ -52,12 +53,12 @@ namespace utk
 
         std::ofstream outputFileStream;
 
-        std::vector<Pointset<double>> GetAllPointsets()
+        std::vector<Pointset<Type>> GetAllPointsets()
         {
-            std::vector<Pointset<double>> pointsets;
+            std::vector<Pointset<Type>> pointsets;
             for (const std::string& file : inFile)
             {
-                std::vector<Pointset<double>> ptsFile = read_text_pointset<double>(file.c_str());
+                std::vector<Pointset<Type>> ptsFile = read_text_pointset<Type>(file.c_str());
                 pointsets.insert(
                     std::end(pointsets), 
                     std::begin(ptsFile), 
@@ -81,9 +82,10 @@ namespace utk
         }
     };
 
-    MetricArguments* add_arguments(CLI::App& app)
+    template<typename Type = long double>
+    MetricArguments<Type>* add_arguments(CLI::App& app)
     {
-        MetricArguments* arguments = new MetricArguments;
+        MetricArguments<Type>* arguments = new MetricArguments<Type>;
 
         app.add_option("-i,--input", arguments->inFile, "Input file(s)")->required()->check(CLI::ExistingFile);
         app.add_option("-o,--output", arguments->outFile, "Output file (empty is stdout)")->default_val("");

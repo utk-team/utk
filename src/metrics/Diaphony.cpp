@@ -36,11 +36,10 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Diaphony calculator" };
-    utk::MetricArguments* margs = utk::add_arguments(app);
-
+    auto* margs = utk::add_arguments(app);
     CLI11_PARSE(app, argc, argv);
 
-    std::vector<utk::Pointset<double>> ptss = margs->GetAllPointsets();
+    auto ptss = margs->GetAllPointsets();
     utk::CheckPointsets(ptss);
     
     auto rslts = utk::Diaphony().compute(ptss);
