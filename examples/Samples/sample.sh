@@ -70,6 +70,7 @@ main()
         "AAPatterns"
         "CMJ"
         "NRooks"
+        "BNOT"
     )
 
     for i in "${samplers[@]}"
