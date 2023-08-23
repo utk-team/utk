@@ -27,6 +27,9 @@ might be ignored for samples that have fixed dimension (2D only) or are determin
 behaviour when multiples point sets are given is the same file might differ : `Spectrum` 
 will return an average of all point sets but `Discrepancy` a list of values for each one. 
 
+* UTK uses common names for most samplers and metrics. If that conflicts with other libraries,
+one can use `cmake -DUTK_EXE_PREFIX=utk_ ..` to add prefix to executable names. 
+
 * Silent option is not total : First, only utk logs are silenced. If the sampler or metrics
 depends on an external code, the output are not silenced... Still, there is one log that is
 not silenced : the failure of a sampler. 

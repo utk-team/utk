@@ -15,6 +15,8 @@ option(UTK_LOG "Enable utk logging" ON)
 option(UTK_PYTHON "Enable build of pyutk (see setup.py)" OFF)
 option(UTK_BUILD_EXE "Enable building of utk's executables" ON)
 
+set(UTK_EXE_PREFIX "" CACHE STRING "Prefix for UTK exe (eg. utk_). No spaces nor slash allowed!")
+
 option(UTK_USE_OPENMP "Enable USE of OpenMp" ON)
 # FFTW options
 option(UTK_USE_FFTW "Enable use of FFTW" ON)

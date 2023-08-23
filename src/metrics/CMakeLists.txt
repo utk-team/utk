@@ -24,19 +24,19 @@ ENDIF()
 
 FOREACH(FILE ${Metrics})
     IF(UTK_BUILD_EXE)
-        add_executable(${FILE} ${FILE}.cpp)
-        target_include_directories(${FILE} PRIVATE "${PROJECT_SOURCE_DIR}/include/")
-        target_link_libraries(${FILE} PRIVATE spdlog::spdlog CLI11::CLI11)
+        add_executable(${UTK_EXE_PREFIX}${FILE} ${FILE}.cpp)
+        target_include_directories(${UTK_EXE_PREFIX}${FILE} PRIVATE "${PROJECT_SOURCE_DIR}/include/")
+        target_link_libraries(${UTK_EXE_PREFIX}${FILE} PRIVATE spdlog::spdlog CLI11::CLI11)
         
         IF (OpenMP_FOUND)
-            target_link_libraries(${FILE} PRIVATE OpenMP::OpenMP_CXX)
+            target_link_libraries(${UTK_EXE_PREFIX}${FILE} PRIVATE OpenMP::OpenMP_CXX)
         ENDIF()
 
         IF (FFTW_FOUND)
-            target_link_libraries(${FILE} PRIVATE ${FFTW_LIBRARIES})
+            target_link_libraries(${UTK_EXE_PREFIX}${FILE} PRIVATE ${FFTW_LIBRARIES})
         ENDIF()
 
-        install(TARGETS ${FILE}
+        install(TARGETS ${UTK_EXE_PREFIX}${FILE}
             RUNTIME DESTINATION bin
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)

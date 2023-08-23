@@ -34,8 +34,8 @@ SET(pyutk_samplers_libs pybind11::module spdlog::spdlog)
 
 FOREACH(FILE ${Samplers})
     IF(UTK_BUILD_EXE)
-        add_executable(${FILE} ${FILE}.cpp)
-        target_include_directories(${FILE} PRIVATE "${UTK_INCLUDE_DIR}")
+        add_executable(${UTK_EXE_PREFIX}${FILE} ${FILE}.cpp)
+        target_include_directories(${UTK_EXE_PREFIX}${FILE} PRIVATE "${UTK_INCLUDE_DIR}")
     ENDIF()
 
     IF (EXISTS ${UTK_EXTERNALS_FOLDER}/${FILE})
@@ -46,15 +46,15 @@ FOREACH(FILE ${Samplers})
         LIST(APPEND pyutk_samplers ${ADDITIONNAL_CODE})
         
         IF (UTK_BUILD_EXE)
-            target_sources(${FILE} PRIVATE ${ADDITIONNAL_CODE})
-            target_include_directories(${FILE} PRIVATE ${UTK_EXTERNALS_FOLDER})
+            target_sources(${UTK_EXE_PREFIX}${FILE} PRIVATE ${ADDITIONNAL_CODE})
+            target_include_directories(${UTK_EXE_PREFIX}${FILE} PRIVATE ${UTK_EXTERNALS_FOLDER})
         ENDIF()
     ENDIF()
 
     IF(UTK_BUILD_EXE)
-        target_link_libraries(${FILE} PRIVATE spdlog::spdlog CLI11::CLI11)
+        target_link_libraries(${UTK_EXE_PREFIX}${FILE} PRIVATE spdlog::spdlog CLI11::CLI11)
 
-        install(TARGETS ${FILE}
+        install(TARGETS ${UTK_EXE_PREFIX}${FILE}
             RUNTIME DESTINATION bin
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)
@@ -70,13 +70,13 @@ IF(NOT WIN32)
     IF(OpenMP_FOUND)
         IF(UTK_BUILD_EXE)
             # Lloyd
-            add_executable(Lloyd Lloyd.cpp  ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
+            add_executable(${UTK_EXE_PREFIX}Lloyd Lloyd.cpp  ${UTK_EXTERNALS_FOLDER}/Lloyd/Delaunay_psm.cpp)
             
-            target_include_directories(Lloyd PRIVATE "${UTK_INCLUDE_DIR}")
-            target_include_directories(Lloyd PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-            target_link_libraries(Lloyd PRIVATE spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
+            target_include_directories(${UTK_EXE_PREFIX}Lloyd PRIVATE "${UTK_INCLUDE_DIR}")
+            target_include_directories(${UTK_EXE_PREFIX}Lloyd PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+            target_link_libraries(${UTK_EXE_PREFIX}Lloyd PRIVATE spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
 
-            install(TARGETS Lloyd
+            install(TARGETS ${UTK_EXE_PREFIX}Lloyd
                 RUNTIME DESTINATION bin
                 LIBRARY DESTINATION lib
                 ARCHIVE DESTINATION lib)
@@ -95,26 +95,26 @@ ENDIF()
 # BNOT
 IF (CGAL_FOUND AND SuiteSparse_FOUND)
     IF(UTK_BUILD_EXE)
-        add_executable(BoundedBNOT  BoundedBNOT.cpp)
-        add_executable(PeriodicBNOT PeriodicBNOT.cpp)
+        add_executable(${UTK_EXE_PREFIX}BoundedBNOT  BoundedBNOT.cpp)
+        add_executable(${UTK_EXE_PREFIX}PeriodicBNOT PeriodicBNOT.cpp)
 
-        target_include_directories(BoundedBNOT PRIVATE "${UTK_INCLUDE_DIR}")
-        target_include_directories(BoundedBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-        target_link_libraries(BoundedBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
-        target_link_libraries(BoundedBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)        
+        target_include_directories(${UTK_EXE_PREFIX}BoundedBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+        target_include_directories(${UTK_EXE_PREFIX}BoundedBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+        target_link_libraries(${UTK_EXE_PREFIX}BoundedBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+        target_link_libraries(${UTK_EXE_PREFIX}BoundedBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)        
 
-        target_include_directories(PeriodicBNOT PRIVATE "${UTK_INCLUDE_DIR}")
-        target_include_directories(PeriodicBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
-        target_link_libraries(PeriodicBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
-        target_link_libraries(PeriodicBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
+        target_include_directories(${UTK_EXE_PREFIX}PeriodicBNOT PRIVATE "${UTK_INCLUDE_DIR}")
+        target_include_directories(${UTK_EXE_PREFIX}PeriodicBNOT PRIVATE "${UTK_EXTERNALS_FOLDER}/")
+        target_link_libraries(${UTK_EXE_PREFIX}PeriodicBNOT PRIVATE spdlog::spdlog CLI11::CLI11)
+        target_link_libraries(${UTK_EXE_PREFIX}PeriodicBNOT PRIVATE CGAL::CGAL SuiteSparse::AMD SuiteSparse::CHOLMOD SuiteSparse::SPQR)
     
         
-        install(TARGETS BoundedBNOT
+        install(TARGETS ${UTK_EXE_PREFIX}BoundedBNOT
             RUNTIME DESTINATION bin
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)
 
-        install(TARGETS PeriodicBNOT
+        install(TARGETS ${UTK_EXE_PREFIX}PeriodicBNOT
             RUNTIME DESTINATION bin
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)
