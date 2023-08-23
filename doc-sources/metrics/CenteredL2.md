@@ -25,7 +25,7 @@ include/utk/metrics/CenteredL2.hpp
 
 ```bash
 CenteredL2Discrepancy calculator
-Usage: ./CenteredL2 [OPTIONS]
+Usage: ./CenteredL2Discrepancy [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit

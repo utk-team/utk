@@ -26,7 +26,7 @@ include/utk/metrics/UnanchoredL2.hpp
 
 ```bash
 UnanchoredL2Discrepancy calculator
-Usage: ./UnanchoredL2 [OPTIONS]
+Usage: ./UnanchoredL2Discrepancy [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit

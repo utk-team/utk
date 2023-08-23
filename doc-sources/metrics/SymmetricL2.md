@@ -25,8 +25,8 @@ include/utk/metrics/SymmetricL2.hpp
 <div class="exe tabcontent">
 
 ```bash
-SymmetricL2 calculator
-Usage: ./SymmetricL2 [OPTIONS]
+SymmetricL2Discrepancy calculator
+Usage: ./SymmetricL2Discrepancy [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit

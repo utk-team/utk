@@ -31,18 +31,18 @@
  * either expressed or implied, of the UTK project.
  */
 #include <utk/utils/MetricsArgumentParser.hpp>
-#include <utk/metrics/CenteredL2.hpp>
+#include <utk/metrics/SymmetricL2Discrepancy.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "CenteredL2Discrepancy calculator" };
+    CLI::App app { "SymmetricL2Discrepancy calculator" };
     auto* margs = utk::add_arguments(app);
     CLI11_PARSE(app, argc, argv);
 
     auto ptss = margs->GetAllPointsets();
     utk::CheckPointsets(ptss);
     
-    auto rslts = utk::CenteredL2Discrepancy().compute(ptss);
+    auto rslts = utk::SymmetricL2Discrepancy().compute(ptss);
 
     auto& ostream = margs->GetOutputStream();
     for (double rslt : rslts)

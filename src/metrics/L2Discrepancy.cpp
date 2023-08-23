@@ -31,7 +31,7 @@
  * either expressed or implied, of the UTK project.
  */
 #include <utk/utils/MetricsArgumentParser.hpp>
-#include <utk/metrics/L2.hpp>
+#include <utk/metrics/L2Discrepancy.hpp>
 
 int main(int argc, char** argv)
 {

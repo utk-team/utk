@@ -25,8 +25,8 @@ include/utk/metrics/GL2.hpp
 <div class="exe tabcontent">
 
 ```bash
-GeneralizedL2 calculator
-Usage: ./GL2 [OPTIONS]
+GeneralizedL2Discrepancy calculator
+Usage: ./GL2Discrepancy [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit

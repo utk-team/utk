@@ -2,13 +2,13 @@ SET(Metrics
     
     MinDist   
 
-    L2
-    CenteredL2
+    L2Discrepancy
+    CenteredL2Discrepancy
     Diaphony
-    GL2
-    UnanchoredL2
-    SymmetricL2
-    BoundariesStar
+    GL2Discrepancy
+    UnanchoredL2Discrepancy
+    SymmetricL2Discrepancy
+    BoundariesStarDiscrepancy
 
     Spectrum
     RadialSpectrum
