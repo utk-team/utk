@@ -1,3 +1,23 @@
+extract_data_until_hash() {
+    input_file="$1"
+    output_file="$2"
+    extract_data=false
+
+    while IFS= read -r line; do
+        if [[ "$line" == "#"* ]]; then
+            break
+        fi
+
+        if [ "$extract_data" = true ]; then
+            echo "$line" >> "$output_file"
+        fi
+
+        if [ "$extract_data" = false ]; then
+            extract_data=true
+        fi
+    done < "$input_file"
+}
+
 plot_pointset()
 {
     # Parameters :
@@ -17,10 +37,17 @@ plot_pointset()
     local pts="$out/$name.dat"
     local spect="$out/${name}_spectrum.dat"
     
-    $exec -n $N -m 64 -d 2 -s 20081976 -o $pts
+    $exec -n $N -m 256 -d 2 -s 20081976 -o $pts
     $spectra -i $pts --canceldc -o $spect
 
-    python plot.py $pts $spect
+    extract_data_until_hash $pts tmp.dat
+
+    python plot.py tmp.dat $spect
+    filename=$(basename -- "$fullfile")
+    extension="${filename##*.}"
+    filename="${filename%.*}"
+    mv tmp.png ${pts%.*}.png
+    rm tmp.dat    
 }
 
 main()
@@ -70,7 +97,8 @@ main()
         "AAPatterns"
         "CMJ"
         "NRooks"
-        "BNOT"
+        "PeriodicBNOT"
+        "BoundedBNOT"
     )
 
     for i in "${samplers[@]}"
