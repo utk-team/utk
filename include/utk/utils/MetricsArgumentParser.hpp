@@ -90,6 +90,7 @@ namespace utk
 
         app.add_option("-i,--input", arguments->inFile, "Input file(s)")->required()->check(CLI::ExistingFile);
         app.add_option("-o,--output", arguments->outFile, "Output file (empty is stdout)")->default_val("");
+        app.add_flag_callback("--silent", [](){UTK_LOG_DISABLE();}, "Silence UTK logs");
 
         return arguments;
     }

@@ -30,6 +30,7 @@ Options:
   -i,--input TEXT:FILE ... REQUIRED
                               Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
+  --silent                    Silence UTK logs
 ```
 
 </div>

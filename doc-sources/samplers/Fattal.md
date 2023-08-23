@@ -37,6 +37,7 @@ Options:
   -t,--temperature FLOAT [0.5] 
                               Temperature
   -l,--level UINT [2]         Levels
+  --silent                    Silence UTK logs
 ```
 
 </div>

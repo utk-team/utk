@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "ForcedRandom sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2, false);
+    auto* args = utk::add_arguments(app, 2, false);
     
     int sparsity = 8;
     uint32_t matrixSize = 512;

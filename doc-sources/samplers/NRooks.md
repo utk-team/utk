@@ -33,6 +33,7 @@ Options:
   -s,--seed UINT              Seed (unspecified means 'random')
   -m UINT [1]                 Number of pointsets
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
+  --silent                    Silence UTK logs
 ```
 
 </div>

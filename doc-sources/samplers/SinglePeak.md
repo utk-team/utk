@@ -40,6 +40,7 @@ Options:
   --smoothing FLOAT [8]       Smoothing
   --peakPower FLOAT [2]       Peak power
   --peakSmoothing FLOAT [2]   Peak smoothing
+  --silent                    Silence UTK logs
 
 ```
 

@@ -35,6 +35,7 @@ Options:
   -m UINT [1]                 Number of pointsets
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --tfile TEXT                Path to table file. Default (empty) is the one provided by the author.
+  --silent                    Silence UTK logs
 ```
 
 </div>

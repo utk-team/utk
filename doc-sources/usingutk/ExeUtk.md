@@ -26,3 +26,7 @@ might be ignored for samples that have fixed dimension (2D only) or are determin
 * All metrics have common parameters `-i` for the input file or `-o` for output. The 
 behaviour when multiples point sets are given is the same file might differ : `Spectrum` 
 will return an average of all point sets but `Discrepancy` a list of values for each one. 
+
+* Silent option is not total : First, only utk logs are silenced. If the sampler or metrics
+depends on an external code, the output are not silenced... Still, there is one log that is
+not silenced : the failure of a sampler. 

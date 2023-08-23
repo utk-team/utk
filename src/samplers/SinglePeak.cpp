@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "SinglePeak sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2);
+    auto* args = utk::add_arguments(app, 2);
     
     float criticalFrequency = 36.5f;
     float smoothing = 8.f;

@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Whitenoise sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app);
+    auto* args = utk::add_arguments(app);
 
     CLI11_PARSE(app, argc, argv);
 

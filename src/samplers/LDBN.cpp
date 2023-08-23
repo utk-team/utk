@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "LDBN sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2);
+    auto* args = utk::add_arguments(app, 2);
     
     std::string tileFile = "";
     uint32_t tileSize = 128;

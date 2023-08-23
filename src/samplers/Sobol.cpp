@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Sobol sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app);
+    auto* args = utk::add_arguments(app);
     
     uint32_t depth = 0;
     app.add_option("--depth", depth, "Owen depth (0: no randomness, 32: recommended).")->default_val(depth);

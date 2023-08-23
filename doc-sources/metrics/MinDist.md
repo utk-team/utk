@@ -31,6 +31,7 @@ Options:
                               Input file(s)
   -o,--output TEXT            Output file (empty is stdout)
   --euclidean [0]             Use euclidean distance (default is wrap around)
+  --silent                    Silence UTK logs
 ```
 
 </div>

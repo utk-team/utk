@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Lloyd sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 3);
+    auto* args = utk::add_arguments(app, 3);
     
     uint32_t nbSteps = 100;
     bool toroidal = false;

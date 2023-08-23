@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     CLI::App app { "FastPoisson sampler" };
     // NOTE : here no seed : but because the sampler does not parametrize it,
     // not because of the method
-    utk::SamplerArguments* args = utk::add_arguments(app, 2, false);
+    auto* args = utk::add_arguments(app, 2, false);
     
     auto methods = utk::SamplerFastPoisson::GetMethods();
     std::ostringstream helpMethod;

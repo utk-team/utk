@@ -76,6 +76,7 @@ Options:
   -o,--output TEXT            Output file (empty is stdout)
   -f,--file,--integrands TEXT REQUIRED
                               Integrand File
+  --silent                    Silence UTK logs
 ```
 
 </div>

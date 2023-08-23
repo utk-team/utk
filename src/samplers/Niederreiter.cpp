@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Niederreiter sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 0 /*any dim*/, false);
+    auto* args = utk::add_arguments(app, 0 /*any dim*/, false);
     
     uint32_t basis = 2;
     app.add_option("-b,--basis", basis, "Sampler basis")->default_val(2);

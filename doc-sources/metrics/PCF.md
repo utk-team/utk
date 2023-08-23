@@ -39,6 +39,7 @@ Options:
   --rmax FLOAT [0.01]         Maximal radius to consider
   -s,--smoothin FLOAT [0.001] 
                               Smoothing value
+  --silent                    Silence UTK logs
 ```
 
 </div>

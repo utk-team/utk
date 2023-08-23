@@ -48,6 +48,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --method TEXT [PMJ02]       Method to use. Available (other will be treaded as PMJ02): PJ, PMJ, PMJ02, PMJ02_Pharr, 
   -c,--candidates UINT [10]   Number of candidates for PMJ02* methods
+  --silent                    Silence UTK logs
 ```
 
 </div>

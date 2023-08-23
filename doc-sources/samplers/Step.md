@@ -38,6 +38,7 @@ Options:
   --criticalFreq FLOAT [0.606] 
                               Critical frequency
   --smoothing FLOAT [8]       Smoothing
+  --silent                    Silence UTK logs
 ```
 
 </div>

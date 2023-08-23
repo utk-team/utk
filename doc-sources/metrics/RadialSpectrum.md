@@ -40,6 +40,7 @@ Options:
   --canceldc [0]              When set, cancel the DC peak
   -s,--scale FLOAT [0.5]      Scale for distance to origin
   -b,--bins UINT [0]          Number of bins (0 means automatic)
+  --silent                    Silence UTK logs
 ```
 
 </div>

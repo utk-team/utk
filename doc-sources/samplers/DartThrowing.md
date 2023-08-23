@@ -38,6 +38,7 @@ Options:
   --relax_factor FLOAT [0.9]  Amount of relaxation applied after too many unsucessful trials
   --trials UINT [1000]        Number of trials before relaxation occurs
   --packing FLOAT [-1]        Set packing density to use. If negative use precomputed values (meaningfull only when D < 9)
+  --silent                    Silence UTK logs
 
 ```
 

@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "R1 sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2, false);
+    auto* args = utk::add_arguments(app, 2, false);
 
     bool exhaustiveSearch = false;
     bool fibonacci = false;

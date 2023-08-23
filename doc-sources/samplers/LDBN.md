@@ -46,6 +46,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --tilesize UINT [128]       Tile size. WARNING: Other values than 128 might not be properly supported for random generation.
   --tileFile TEXT             File containing tiles. If empty a new one will be generated on the fly. Tilesize must be set accordingly.
+  --silent                    Silence UTK logs
 ```
 
 </div>

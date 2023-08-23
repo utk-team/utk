@@ -38,6 +38,7 @@ Options:
   --euclidean [0]             Use euclidean distance (default is wrap around)
   --relax_factor FLOAT [0.9]  Amount of relaxation applied after too many unsucessful trials
   --trials UINT [1000]        Number of trials before relaxation occurs
+  --silent                    Silence UTK logs
 ```
 
 </div>

@@ -40,6 +40,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file
   --steps [100]               Number of steps to perform
   --toroidal [0]              When set, use toroidal version.
+  --silent                    Silence UTK logs
 ```
 
 </div>

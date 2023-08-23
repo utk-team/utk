@@ -38,6 +38,7 @@ Options:
   -m UINT [1]                 Number of pointsets
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --depth UINT [0]            Owen depth (0: no randomness, 32: recommended).
+  --silent                    Silence UTK logs
 ```
 
 </div>

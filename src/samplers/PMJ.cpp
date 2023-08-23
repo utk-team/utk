@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "PMJ sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2);
+    auto* args = utk::add_arguments(app, 2);
     
     const std::vector<std::string> methods = utk::SamplerPMJ::GetMethods();
     std::ostringstream helpMethod;

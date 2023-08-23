@@ -43,6 +43,7 @@ Options:
   --maximize                  Enable maximization
   --tiled                     Enable tiling. Might be ignored for tiled-only methods
   --relaxCount [0]            Number of relaxation to perform
+  --silent                    Silence UTK logs
 
 ```
 

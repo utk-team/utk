@@ -35,7 +35,7 @@ Options:
   -m UINT [1]                 Number of pointsets
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --vfile TEXT [blue]         Path to vector file, or use one of default [ blue, fpo-like, green, pink, step, ]
-
+  --silent                    Silence UTK logs
 ```
 
 </div>

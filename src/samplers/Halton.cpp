@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Halton sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 0 /*any dim*/, false);
+    auto* args = utk::add_arguments(app, 0 /*any dim*/, false);
     
     CLI11_PARSE(app, argc, argv);
     

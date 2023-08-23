@@ -45,11 +45,10 @@
 
 namespace utk
 {
+    template<typename Type = double>
     struct SamplerArguments
     {
         static constexpr uint32_t ANY_DIM = 0;
-
-        using Type = double;
 
         uint32_t N;
         uint32_t D;
@@ -91,18 +90,19 @@ namespace utk
         }
     };
 
-    inline SamplerArguments* add_arguments(
+    template<typename Type = double>
+    inline SamplerArguments<Type>* add_arguments(
         CLI::App& app,
-        uint32_t force_dim = SamplerArguments::ANY_DIM,
+        uint32_t force_dim = SamplerArguments<Type>::ANY_DIM,
         bool seedable = true
     )
     {
-        SamplerArguments* args = new SamplerArguments();
+        SamplerArguments<Type>* args = new SamplerArguments<Type>();
         args->seed = std::random_device{}();
 
         app.add_option("-n", args->N, "Number of points")->required();
 
-        if (force_dim == SamplerArguments::ANY_DIM)
+        if (force_dim == SamplerArguments<Type>::ANY_DIM)
         {
             app.add_option("-d", args->D, "Dimensions")->required();
         }
@@ -124,6 +124,7 @@ namespace utk
             
         app.add_option("-m", args->M, "Number of pointsets")->default_val(1);
         app.add_option("-o,--out", args->outFile, "Output file (format). {i} splits outputs in multiple files and token is replaced by index.")->default_val("out.dat");
+        app.add_flag_callback("--silent", [](){UTK_LOG_DISABLE();}, "Silence UTK logs");
 
         return args;
     }

@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Korobov sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 0, false);
+    auto* args = utk::add_arguments(app, 0, false);
     
     uint32_t generator = 3;
     app.add_option("-g,--gen", generator, "Generator (highly recommended to be prime with N)")->default_val(3);

@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "LDBN(Lut) sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2, false);
+    auto* args = utk::add_arguments(app, 2, false);
     
     const std::vector<std::string> targets = utk::SamplerLutLDBN::GetTargets();
     std::ostringstream helpTargets;

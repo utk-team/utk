@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "ART sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app, 2, false);
+    auto* args = utk::add_arguments(app, 2, false);
     
     std::string tableFile = "";
     app.add_option("--tfile", tableFile, "Path to table file. Default (empty) is the one provided by the author.")->default_val("");

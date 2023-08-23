@@ -36,6 +36,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --sparsity INT [8]          Sparsity coeff
   --matrixSize UINT [512]     Matrix Size (512, 1024, 2048. Other will be interpreted as 512)
+  --silent                    Silence UTK logs
 ```
 
 </div>

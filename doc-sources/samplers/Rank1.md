@@ -36,6 +36,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   -e,--exhaustive [0]         Enable exhaustive search
   -f,--fibonacci [0]          Enable fibonnaci lattice
+  --silent                    Silence UTK logs
 ```
 
 </div>

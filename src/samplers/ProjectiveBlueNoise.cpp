@@ -36,7 +36,7 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Projective Dart Throwing sampler" };
-    utk::SamplerArguments* args = utk::add_arguments(app);
+    auto* args = utk::add_arguments(app);
     
     bool relaxed = false;
     bool euclidean = true;
