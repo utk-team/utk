@@ -9,6 +9,20 @@ Examples may be found in :
 - include/utk/metrics/Integrands/Heaviside.hpp, src/metrics/BuildHeavisideDatabase.cpp, src/metrics/HeavisideIntegrationTest.hpp 
 - include/utk/metrics/Integrands/Gaussians.hpp, src/metrics/BuildGaussiansDatabase.cpp, src/metrics/GaussiansIntegrationTest.hpp
 
+### Performing Integration Test
+
+IntegrationTests have two main steps : creating a database and performing the test. First, 
+a database of integrant is built. This is a caching mecanism allowing for reusing same integrands
+with their integral already computated (this can be heavy if there is no close form and it should be approximated using MC methods with high sample count). Second, the database is read 
+and the test is performed as usual. 
+
+For each pointset tested against, an 'ErrorReport' is returned containing the following information : 
+
+* min  : minimum error among all integrands in database
+* max  : maximum error among all integrands in database
+* mean : average error among all integrands in database
+* var  : variance of error  among all integrands in database
+
 ### Creating Integrands
 
 Integrands must derive from `utk::Integrand` and must implements the folowing methods : 
@@ -39,6 +53,10 @@ src/metrics/HeavisideIntegrationTest.hpp
 include/utk/metrics/Integrands/Gaussians.hpp
 src/metrics/BuildGaussiansDatabase.cpp
 src/metrics/GaussiansIntegrationTest.hpp
+
+include/utk/metrics/Integrands/BlinnPhong.hpp
+src/metrics/BuildBlinnPhongDatabase.cpp
+src/metrics/BlinnPhongIntegrationTest.hpp
 ```
 
 ## Usage (For gaussians)
@@ -65,6 +83,7 @@ Options:
   -s UINT [0]                 Seed (0 means random)
   --sigmamin FLOAT [0.01]     Min value for variance
   --sigmamax FLOAT [1]        Max value for variance
+  --silent                    Silence UTK logs
 
 Gaussian Integration calculator
 Usage: ./Integration/GaussianIntegrationTest [OPTIONS]
@@ -116,6 +135,7 @@ int main()
       ptsGT           // Points to compute ground truth
     );
 
+    // (Note: if build is first called, read is not necessary, but it may require heavy computation)
     // Perform test
     // Reads the Database
     test.ReadDatabase<utk::GaussianIntegrand>(
@@ -124,7 +144,7 @@ int main()
     );
 
     // Compute the statistics
-    auto reports = test.compute(ptsWN);
+    auto report = test.compute(ptsWN);
     ostream << report.min << " " << report.mean << " " << report.var << " " << report.max << '\n';
 }
 ```  
@@ -134,7 +154,30 @@ int main()
 <div class="py tabcontent">
 
 ``` python
-# Not supported
+import pyutk 
+import numpy as np
+
+ptsGT = pyutk.Sobol(d=2, depth=32).sample(16384)
+
+test = pyutk.IntegrationTest()
+
+test.BuildGaussianDatabase(
+  "gaussians.db",              # Output file
+  2,                           # Dimension
+  128,                         # Number of Integrands
+  0,                           # Seed
+  {"smin": 0.01, "smax": 1.0}, # Parameters (variance min and max)
+  ptsGT                        # POints to compute ground truth
+)
+
+# Perform test :
+test.ReadGaussianDatabse(
+  "gaussians.db", # File to read
+  2               # Dimension
+)
+
+report = test.compute(np.random.uniform(0, 1, (1024, 2)))
+print(f"{report.min}, {report.mean}, {report.var}, {report.max}")
 ```  
 
 </div>
