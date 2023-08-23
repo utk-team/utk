@@ -32,6 +32,8 @@
  */
 #pragma once
 
+
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/log.hpp>
 #include <cstring> // memcpy
@@ -97,8 +99,8 @@ public:
 	void setDimension(uint32_t d) { D = d; }
     uint32_t GetDimension() const { return D; }
 	
-	void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	void setRelaxed(bool re) { relaxed = re; }
 	void setToroidal(bool trd) { toroidal = trd; }
@@ -133,7 +135,7 @@ public:
 			for (uint32_t it = 0; (it < numTrials) && !accept; it++)
 			{
 				for (uint32_t d = 0; d < D; d++)
-					pt[d] = dist(m_mersenneTwister);
+					pt[d] = dist(gen);
 
 				accept = true;
 				// For each size of projection
@@ -231,7 +233,7 @@ protected:
 	uint32_t numTrials;
 	double relaxedFactor;
 
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 };
 
 }

@@ -32,6 +32,7 @@
  */
 #pragma once
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <PeriodicBNOT/BNOT.hpp>
 #include <utk/utils/log.hpp>
@@ -55,8 +56,8 @@ public:
 	void setNewtonIterations(uint32_t i) { nits = i; }
 	void setEpsilon(double e) { epsilon = e; }
 
-	void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	template<typename T>
 	bool generateSamples(Pointset<T>& arg_pts, uint32_t N)
@@ -70,7 +71,7 @@ public:
 
 		points.reserve(N);
 		for (uint32_t i = 0; i < N; i++)
-			points.push_back(PBNOT::Point(unif(m_mersenneTwister), unif(m_mersenneTwister)));
+			points.push_back(PBNOT::Point(unif(gen), unif(gen)));
 		
 		bnot_scene.construct_triangulation(points, weights, noise);
 		bnot_scene.optimize_all(0.0, 0.0, its, epsilon, nits, std::cout, true);
@@ -94,7 +95,7 @@ public:
 	};
 
 protected:
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 
 	uint32_t its;
 	uint32_t nits;

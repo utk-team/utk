@@ -33,6 +33,7 @@
 #pragma once
 
 #include <Lloyd/Delaunay_psm.h>
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 
 #include <cstdlib>
@@ -63,8 +64,8 @@ public:
 
 	void setNbSteps(uint32_t nb) { nbSteps = nb; }
 
-	void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	void setToricity(bool isToric)
 	{
@@ -101,7 +102,7 @@ public:
 	}
 
 protected:
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 	uint32_t nbSteps;
 	bool periodic_;
     
@@ -134,7 +135,7 @@ protected:
 
 		for(GEO::index_t i = 0; i < 3 * nb_points; ++i)
 		{
-			arg_pts.Data()[i] = dist(m_mersenneTwister);
+			arg_pts.Data()[i] = dist(gen);
 		}
 		delaunay_->set_vertices(nb_points, arg_pts.Data());
 		delaunay_->compute();

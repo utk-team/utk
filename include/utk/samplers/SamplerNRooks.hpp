@@ -35,6 +35,7 @@
 
 #pragma once
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <random>
 #include <cmath>
@@ -50,8 +51,8 @@ namespace utk
         void setDimension(uint32_t d) { D = d; }
         uint32_t GetDimension() const { return D; }
         
-        void setRandomSeed(uint64_t arg_seed) { m_mersenneTwister.seed(arg_seed); }
-	    void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+        void setRandomSeed(uint64_t arg_seed) { gen.seed(arg_seed); }
+	    void setRandomSeed() { gen.seed(std::random_device{}()); }
 
         template <typename T>
         bool generateSamples(Pointset<T> &arg_pts, uint32_t N)
@@ -72,7 +73,7 @@ namespace utk
             {
                 for (uint32_t d = 0; d < D; d++)
                 {
-                    uint32_t j = dist(m_mersenneTwister);
+                    uint32_t j = dist(gen);
                     std::swap(arg_pts[i][d], arg_pts[j][d]);
                 }
             }
@@ -82,7 +83,7 @@ namespace utk
 
     protected:
         uint32_t D;
-        std::mt19937 m_mersenneTwister;
+        utk::PCG32 gen;
     };
 
 } // end namespace utk

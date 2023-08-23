@@ -32,6 +32,8 @@
  */
 #pragma once
 
+
+#include <utk/utils/FastPRNG.hpp>
 #include <AAPatterns/t191861r110771.h>
 #include <utk/utils/Pointset.hpp>
 #include <random>
@@ -58,7 +60,7 @@ TPoint *map = nullptr /* modified*/;
 double maxDisplacement;                                                         // A supremum for the shift in x or y directions.
 
 unsigned long aa(TPoint *list, int nxn, 										 // This function generates n x n points in the unit domain
-	/* added */ std::mt19937& gen
+	/* added */ utk::PCG32& gen
 ) {                 
 	/* added */ std::uniform_int_distribution<int> dist(0, aa_t - 1);
     double n = sqrt(nxn);                                                       // Average number of points in a single row
@@ -148,8 +150,8 @@ public:
 		return files;
     }
 
-	void setRandomSeed( unsigned long long int arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( unsigned long long int arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	void setVectorFile(const std::string& file) { m_vectorfile = file; }
 
@@ -161,7 +163,7 @@ public:
 		nsaapattern::loadVectors(m_vectorfile.c_str());
 		nsaapattern::TPoint* list = new nsaapattern::TPoint[(uint32_t)(1.1 * N)];   
 
-		N = std::min(static_cast<uint32_t>(nsaapattern::aa(list, N, m_mersenneTwister)), N);
+		N = std::min(static_cast<uint32_t>(nsaapattern::aa(list, N, gen)), N);
 		arg_pts.Resize(N, 2);
 		for (uint32_t i = 0; i < N; i++)
 		{
@@ -174,7 +176,7 @@ public:
 
 protected:
 	std::string m_vectorfile;
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 };
 
 }

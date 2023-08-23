@@ -37,6 +37,7 @@
 #include "PMJ/PMJ02SampleSequenceGenerator.h"
 #include "PMJ/PMJ02SampleSequenceGenerator_Pharr.h"
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/log.hpp>
 #include <random>
@@ -128,7 +129,7 @@ protected:
     uint32_t candidates;
     unsigned long long int seed;
     std::string method;
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 };
 
 }

@@ -78,8 +78,8 @@ namespace utk
                 directionFile = file;
         }
 
-        void setRandomSeed(uint64_t arg_seed) { m_mersenneTwister.seed(arg_seed); }
-        void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+        void setRandomSeed(uint64_t arg_seed) { gen.seed(arg_seed); }
+        void setRandomSeed() { gen.seed(std::random_device{}()); }
 
         template <typename T>
         bool generateSamples(Pointset<T> &arg_pts, IntegerType N)
@@ -93,7 +93,7 @@ namespace utk
                 
             std::vector<uint64_t> seeds(D);
             for (uint32_t d = 0; d < D; d++)
-                seeds[d] = m_mersenneTwister();
+                seeds[d] = gen();
 
             arg_pts.Resize(N, D);
             for (IntegerType i = 0; i < N; i++)
@@ -161,14 +161,14 @@ namespace utk
             std::bitset<MAX_BITS> digitsBase2 = i;
             std::bitset<MAX_BITS> newDigits = i;
 
-            RNG rng;
+            PCG32 rng;
             for (unsigned char idigit = 0; idigit < depth; idigit++)
             {
                 IntegerType indPermut = (1 << idigit) - 1 + (digitsBase2 >> (MAX_BITS - idigit)).to_ullong();
                 uint64_t seed = seeds[dim] + indPermut;
                 
                 rng.seed(seed);
-                int thisDigitPermut = rng.sample() & 1;
+                int thisDigitPermut = rng() & 1;
                 newDigits[(MAX_BITS - 1) - idigit] = (thisDigitPermut ^ digitsBase2[(MAX_BITS - 1) - idigit]);
             }
 
@@ -207,7 +207,7 @@ namespace utk
 
     protected:
         uint32_t D;
-        std::mt19937 m_mersenneTwister;
+        utk::PCG32 gen;
 
         unsigned char owenDepth;
         std::string directionFile;

@@ -67,9 +67,9 @@ namespace utk
         {
             if (index < permuts.size()) return permuts[index];
             
-            RNG rng;
+            PCG32 rng;
             rng.seed(seed + index);
-            return rng.sample() & 1;
+            return rng() & 1;
         }
 
         void FillRandom(unsigned char depth = 0)
@@ -81,10 +81,10 @@ namespace utk
                     permuts.resize(impliedDepth);
             }
             
-            RNG rng;
+            PCG32 rng;
             rng.seed(seed);
             for (uint32_t i = 0; i < permuts.size(); i++)
-                permuts[i] = rng.sample() & 1;
+                permuts[i] = rng() & 1;
         }
 
         void SetBitPattern(std::string pattern, bool value = true)
@@ -239,7 +239,6 @@ namespace utk
             std::bitset<MAX_BITS> digitsBase2 = i;
             std::bitset<MAX_BITS> newDigits = i;
 
-            RNG rng;
             for (uint32_t idigit = 0; idigit < depth; idigit++)
             {
                 IntegerType indPermut = (1 << idigit) - 1 + ConvertBitset(digitsBase2 >> (MAX_BITS - idigit));
@@ -253,6 +252,6 @@ namespace utk
     private:
         uint32_t depth;
         std::vector<OwenTree<IntegerType>> trees;
-        std::mt19937 mt;
+        utk::PCG32 mt;
     };
 };

@@ -33,6 +33,8 @@
 #pragma once
 
 #include <SinglePeak/common.hh>
+
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <cmath>
 #include <random>
@@ -242,8 +244,8 @@ public:
 	
 	uint32_t GetDimension() const { return 2; }
 
-	void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	void setCriticalFrequency(float cf) { critFrequency = cf; }
 	void setSmoothing(float sm) { smoothing = sm; }
@@ -261,8 +263,8 @@ public:
 
 		for (uint32_t i = 0; i < N; i++)
 		{
-			pts[i].x = dist(m_mersenneTwister);
-			pts[i].y = dist(m_mersenneTwister);
+			pts[i].x = dist(gen);
+			pts[i].y = dist(gen);
 		}
 
 		heck::nbins = pts.size();
@@ -289,7 +291,7 @@ public:
 	};
 
 protected:
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 	float critFrequency;
 	float smoothing;
 	float peakSmoothing;

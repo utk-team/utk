@@ -32,18 +32,64 @@
  */
 #pragma once
 
+#include <limits>
+
 namespace utk
 {
+    // PCG32 compatible with std::random ! 
+    struct PCG32
+    {
+        // Extracted from: https://github.com/wjakob/pcg32/blob/master/pcg32.h
+        constexpr static uint64_t DEFAULT_STATE  = 0x853c49e6748fea9bULL;
+        constexpr static uint64_t DEFAULT_STREAM = 0xda3e39cb94b95bdbULL;
+        constexpr static uint64_t MULT           = 0x5851f42d4c957f2dULL;
+        
+        using result_type = uint32_t;
+
+        constexpr static result_type min() { return 0; }
+        constexpr static result_type max() { return std::numeric_limits<result_type>::max(); }
+
+        PCG32() : state(PCG32::DEFAULT_STATE), inc(PCG32::DEFAULT_STREAM) 
+        { }
+
+        PCG32(uint64_t initstate, uint64_t initseq = 1u) 
+        { seed(initstate, initseq); }
+
+
+        void seed(uint64_t initstate, uint64_t initseq = 1) 
+        {
+            state = 0U;
+            inc = (initseq << 1u) | 1u;
+            (*this)();
+            state += initstate;
+            (*this)();
+        }
+
+        result_type operator()()
+        {
+            uint64_t oldstate = state;
+            state = oldstate * PCG32::MULT + inc;
+            uint32_t xorshifted = (uint32_t) (((oldstate >> 18u) ^ oldstate) >> 27u);
+            uint32_t rot = (uint32_t) (oldstate >> 59u);
+            return (xorshifted >> rot) | (xorshifted << ((~rot + 1u) & 31));
+        }
+
+        uint64_t state;
+        uint64_t inc;  
+    };
+
+    /*
+    
     // Simple Linear Congruential Generator. 
     // For some reason, even though this is (more or less) the same as GCC, 
     // using rand/srand is 100 times slower on my machine... 
     template<uint32_t rng_a, uint32_t rng_c, uint32_t rng_m>
-    struct FastRNGGenerator {
-        FastRNGGenerator() :
+    struct LCG {
+        LCG() :
                 mstate(1u), mseed(1u) {
         }
 
-        FastRNGGenerator(const uint32_t _seed) :
+        LCG(const uint32_t _seed) :
                 mstate(_seed), mseed(_seed) {
         }
 
@@ -123,5 +169,6 @@ namespace utk
         }
     };
 
-    typedef FastRNGGenerator<1103515245u, 12345u, 1u << 31> RNG;
+    typedef LCG<1103515245u, 12345u, 1u << 31> RNG;
+    */
 };

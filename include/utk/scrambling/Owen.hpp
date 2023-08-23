@@ -120,14 +120,14 @@ namespace utk
             std::bitset<MAX_BITS> digitsBase2 = i;
             std::bitset<MAX_BITS> newDigits = i;
 
-            RNG rng;
+            PCG32 rng;
             for (unsigned char idigit = 0; idigit < depth; idigit++)
             {
                 IntegerType indPermut = (1 << idigit) - 1 + ConvertBitset(digitsBase2 >> (MAX_BITS - idigit));
                 uint64_t seed = seeds[dim] + indPermut;
                 
                 rng.seed(seed);
-                int thisDigitPermut = rng.sample() & 1;
+                int thisDigitPermut = rng() & 1;
                 newDigits[(MAX_BITS - 1) - idigit] = (thisDigitPermut ^ digitsBase2[(MAX_BITS - 1) - idigit]);
             }
 
@@ -135,6 +135,6 @@ namespace utk
         }
     private:
         unsigned char depth;
-        std::mt19937 mt;
+        utk::PCG32 mt;
     };
 };

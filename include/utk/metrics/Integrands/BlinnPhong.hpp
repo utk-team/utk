@@ -33,6 +33,7 @@
 #pragma once
 
 #include <cmath>
+#include <utk/utils/FastPRNG.hpp>
 #include "../IntegrationTest.hpp"
 
 namespace utk
@@ -317,7 +318,7 @@ namespace utk
             ((void) dim); 
         }
 
-        double GetScalar(const GenerationParameter& params, const std::string& name, std::mt19937& gen, double dmin = -1.0, double dmax = 1.0)
+        double GetScalar(const GenerationParameter& params, const std::string& name, utk::PCG32& gen, double dmin = -1.0, double dmax = 1.0)
         {
             const std::string namemin = name + std::string("min");
             const std::string namemax = name + std::string("max");
@@ -334,7 +335,7 @@ namespace utk
             return std::uniform_real_distribution<double>(mmin, mmax)(gen);
         }
 
-        blinnphong::Point GetPosition(const GenerationParameter& params, std::mt19937& gen)
+        blinnphong::Point GetPosition(const GenerationParameter& params, utk::PCG32& gen)
         {
             double range = GetScalar(params, "p", gen);
             
@@ -351,7 +352,7 @@ namespace utk
 
         void GenerateRandom(const GenerationParameter& params, uint64_t seed) override
         {
-            std::mt19937 gen(seed);
+            utk::PCG32 gen(seed);
             p = GetPosition(params, gen);
 
             alpha = GetScalar(params, "alpha", gen, 10, 100);

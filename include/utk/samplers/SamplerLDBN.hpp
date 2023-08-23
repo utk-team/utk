@@ -32,6 +32,7 @@
  */
 #pragma once
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <array>
 #include <random>
@@ -50,8 +51,8 @@ public:
     uint32_t GetDimension() const { return 2; }
 
 	void setPermutFile(const std::string& file) { permutFile = file; }
-	void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-	void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+	void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+	void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 	void setTileSize(uint32_t tileSize)
 	{
@@ -137,7 +138,7 @@ protected:
 		{
 			int tab[16];
 			for(uint32_t n=0; n<16; n++) tab[n] = n;
-			for(uint32_t n=0; n<16; n++) std::swap(tab[dist(m_mersenneTwister)], tab[dist(m_mersenneTwister)]);
+			for(uint32_t n=0; n<16; n++) std::swap(tab[dist(gen)], tab[dist(gen)]);
 
 			for(uint32_t n=0; n<16; n++)
 			{
@@ -155,7 +156,7 @@ protected:
 		{
 			int tab[16];
 			for(uint32_t n=0; n<16; n++) tab[n] = n;
-			for(uint32_t n=0; n<16; n++) std::swap(tab[dist(m_mersenneTwister)], tab[dist(m_mersenneTwister)]);
+			for(uint32_t n=0; n<16; n++) std::swap(tab[dist(gen)], tab[dist(gen)]);
 
 			for(uint32_t n=0; n<16; n++)
 			{
@@ -226,7 +227,7 @@ protected:
 	unsigned mirror[1024];  // 10 bits
 
 
-    std::mt19937 m_mersenneTwister;
+    utk::PCG32 gen;
 
 	static float radicalInverse_VdC(uint32_t bits) {
 		bits = (bits << 16u) | (bits >> 16u);

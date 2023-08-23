@@ -32,6 +32,7 @@
  */
 #pragma once
 
+#include <utk/utils/FastPRNG.hpp>
 #include "../IntegrationTest.hpp"
 
 #include <vector>
@@ -213,7 +214,7 @@ namespace utk
         printf("\n");
     }
 
-    mat random_unitary_matrix(uint32_t D, std::mt19937& mt)
+    mat random_unitary_matrix(uint32_t D, utk::PCG32& mt)
     {
         std::normal_distribution<double> distribution(0, 1.0);
         
@@ -268,7 +269,7 @@ namespace utk
             if (params.find("smax") != params.end())
                 sigmaMax = std::get<double>(params.at("smax"));
 
-            std::mt19937 mt(seed);
+            utk::PCG32 mt(seed);
             mat rot = random_unitary_matrix(dim, mt);
             
             std::uniform_real_distribution<double> unifMu(0, 1);

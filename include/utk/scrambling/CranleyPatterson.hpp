@@ -31,6 +31,7 @@
  * either expressed or implied, of the UTK project.
  */
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/FastPRNG.hpp>
 #include <random>
@@ -106,6 +107,6 @@ namespace utk
     private:
         double domainSize;
         double maxDispacement;
-        std::mt19937 mt;
+        utk::PCG32 mt;
     };
 }

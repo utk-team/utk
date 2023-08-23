@@ -33,6 +33,8 @@
 #pragma once
 
 #include <cmath>
+
+#include <utk/utils/FastPRNG.hpp>
 #include "../IntegrationTest.hpp"
 
 namespace utk
@@ -50,7 +52,7 @@ namespace utk
     
         void GenerateRandom(const GenerationParameter& params, uint64_t seed) override
         {
-            std::mt19937 mt(seed);
+            utk::PCG32 mt(seed);
             std::uniform_real_distribution<double> posDist(0, 1);
             std::normal_distribution<double>    normalDist(0, 1);
 

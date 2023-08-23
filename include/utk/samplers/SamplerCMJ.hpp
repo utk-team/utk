@@ -32,6 +32,7 @@
  */
 #pragma once
 
+#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/log.hpp>
 #include <random>
@@ -49,8 +50,8 @@ namespace utk
         
         uint32_t GetDimension() const { return 2; }
 
-        void setRandomSeed( uint64_t arg_seed ) { m_mersenneTwister.seed(arg_seed); }
-        void setRandomSeed() { m_mersenneTwister.seed(std::random_device{}()); }
+        void setRandomSeed( uint64_t arg_seed ) { gen.seed(arg_seed); }
+        void setRandomSeed() { gen.seed(std::random_device{}()); }
 
 		template<typename T>
         bool generateSamples(Pointset<T>& arg_pts, uint32_t N)
@@ -81,7 +82,7 @@ namespace utk
             // Shuffle on x
             for (uint32_t j = 0; j < n; j++)
             {
-                const uint32_t k = static_cast<uint32_t>(j + dist(m_mersenneTwister) * (n - j));
+                const uint32_t k = static_cast<uint32_t>(j + dist(gen) * (n - j));
                 for (uint32_t i = 0; i < n; i++)
                 {
                     std::swap(arg_pts[j * n + i][0], arg_pts[k * n + i][0]);
@@ -91,7 +92,7 @@ namespace utk
             // Shuffle on y
             for (uint32_t i = 0; i < n; i++)
             {
-                const uint32_t k = static_cast<uint32_t>(i + dist(m_mersenneTwister) * (n - i));
+                const uint32_t k = static_cast<uint32_t>(i + dist(gen) * (n - i));
                 for (uint32_t j = 0; j < n; j++)
                 {
                     std::swap(arg_pts[j * n + i][1], arg_pts[j * n + k][1]);
@@ -102,7 +103,7 @@ namespace utk
         }
 
     protected:
-        std::mt19937 m_mersenneTwister;
+        utk::PCG32 gen;
 	};
 
 } 
