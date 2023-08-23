@@ -30,6 +30,7 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
+#include <utk/utils/Omp.hpp>
 #include <utk/utils/MetricsArgumentParser.hpp>
 #include <utk/metrics/Spectrum.hpp>
 
@@ -76,44 +77,21 @@ int main(int argc, char** argv)
         }
 
         unsigned char* data = new unsigned char[res * res];    
-        double maxval = rslts[0];
-
-        // PLS WINDOWS & CMake !!! ADD SUPPORT FOR REAL OPENMP CODE !!!
-#ifdef _WIN32 
-        // Compute max value for normalization purposes
-        for (auto rslt : rslts)
-            maxval = (rslt > maxval) ? rslt : maxval;
-
-        // Copy data to unsigned char buffer
-        for (uint32_t y = 0; y < res; y++)
-        {
-            for (uint32_t x = 0; x < res; x++)
-            {
-                const uint32_t idx = x + y * res;
-
-                double value = rslts[idx] / maxval;
-                data[idx] = static_cast<unsigned char>(255 * value);
-            }
-        }
-#else
-        // Compute max value for normalization purposes
-        #pragma omp parallel for reduction(max: maxval)
-        for (auto rslt : rslts)
-            maxval = (rslt > maxval) ? rslt : maxval;
+        double maxval = omp_parallel_max(rslts.data(), rslts.size());
 
         // Copy data to unsigned char buffer
         #pragma omp parallel for
-        for (uint32_t y = 0; y < res; y++)
+        for (OPENMP_UINT y = 0; y < res; y++)
         {
-            for (uint32_t x = 0; x < res; x++)
+            for (OPENMP_UINT x = 0; x < res; x++)
             {
-                const uint32_t idx = x + y * res;
+                const OPENMP_UINT idx = x + y * res;
 
                 double value = rslts[idx] / maxval;
                 data[idx] = static_cast<unsigned char>(255 * value);
             }
         }
-#endif
+
         // Write image
         stbi_write_png(imgFile.c_str(), res, res, 1, data, res * sizeof(unsigned char));
 

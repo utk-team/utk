@@ -40,9 +40,9 @@
     #include <fftw3.h>
 #endif
 
-#include <utk/utils/utk_types.hpp>
+#include <utk/utils/Omp.hpp>
 #include <utk/utils/Pointset.hpp>
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 
 #include <cmath>
 

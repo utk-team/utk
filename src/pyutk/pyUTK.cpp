@@ -30,7 +30,7 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 #include <pyutk/utils.hpp>
 
 void init_pyutkSampler(py::module& m);

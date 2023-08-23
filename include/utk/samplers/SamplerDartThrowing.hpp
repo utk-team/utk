@@ -34,7 +34,7 @@
 
 #include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 #include <cstring> // memcpy
 #include <random>
 #include <cmath>

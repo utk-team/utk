@@ -38,7 +38,7 @@
 
 #include <limits>
 #include <utk/utils/Pointset.hpp>
-#include <utk/utils/utk_types.hpp>
+#include <utk/utils/Omp.hpp>
 #include <cmath>
 
 namespace utk

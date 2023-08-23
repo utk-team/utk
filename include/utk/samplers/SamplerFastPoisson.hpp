@@ -33,7 +33,7 @@
 #pragma once
 
 #include <utk/utils/Pointset.hpp>
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 #include "FastPoisson/PDSampling.h"
 #include <random>
 

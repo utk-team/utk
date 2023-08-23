@@ -33,7 +33,7 @@
 #pragma once
 
 #include <utk/utils/Pointset.hpp>
-#include <utk/utils/utk_types.hpp>
+#include <utk/utils/Omp.hpp>
 #include <cmath>
 
 namespace utk
@@ -53,7 +53,7 @@ namespace utk
             T sumsumprod2 = 0.0;
             T sumsumprod3 = 0.0;
             
-            #pragma omp parallel for reduction(+:sumprod1) reduction(+:sumsumprod2) reduction(+:sumsumprod3)
+            #pragma omp parallel for reduction(+:sumprod1,sumsumprod2,sumsumprod3)
             for (OPENMP_UINT i = 0; i < N; i++)
             {
                 T prod1 = 1.0;

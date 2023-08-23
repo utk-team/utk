@@ -40,7 +40,7 @@
 #include <CLI/Formatter.hpp>
 #include <CLI/Config.hpp>
 
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 #include <utk/utils/PointsetIO.hpp>
 
 namespace utk

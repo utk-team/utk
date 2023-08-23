@@ -33,7 +33,7 @@
 #pragma once
 
 #include "Penrose/quasisampler_prototype.h"
-#include <utk/utils/log.hpp>
+#include <utk/utils/Log.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <random>
 
