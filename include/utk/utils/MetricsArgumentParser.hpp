@@ -42,6 +42,7 @@
 #include <iomanip>
 #include <vector>
 #include <fstream>
+#include <limits>
 
 namespace utk
 {
@@ -72,12 +73,12 @@ namespace utk
         {
             if (outFile.empty())
             {
-                std::cout << std::setprecision(17) << std::fixed;
+                std::cout << std::setprecision(std::numeric_limits<Type>::digits10 + 2) << std::fixed;
                 return std::cout;
             }
             
             outputFileStream.open(outFile);
-            outputFileStream << std::setprecision(17) << std::fixed;
+            outputFileStream << std::setprecision(std::numeric_limits<Type>::digits10 + 2) << std::fixed;
             return outputFileStream;
         }
     };

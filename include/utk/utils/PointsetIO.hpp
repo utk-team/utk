@@ -35,6 +35,7 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
+#include <limits>
 
 #include "Pointset.hpp"
 
@@ -69,7 +70,7 @@ inline bool write_text_pointset(const std::string& dest, const Pointset<T>& pts)
     
     if (!file.is_open()) return false;
 
-    file << std::setprecision(16) << std::fixed;
+    file << std::setprecision(std::numeric_limits<T>::digits10 + 2) << std::fixed;
     write_text_pointset_stream(file, pts);
     return true;
 }
@@ -80,7 +81,7 @@ inline bool write_text_pointsets(const std::string& dest, const std::vector<Poin
     std::ofstream file(dest);
     if (!file.is_open()) return false;
     
-    file << std::setprecision(16) << std::fixed;
+    file << std::setprecision(std::numeric_limits<T>::digits10 + 2) << std::fixed;
     for (uint32_t i = 0; i < pts.size() - 1; i++)
     {
         write_text_pointset_stream(file, pts[i]);
