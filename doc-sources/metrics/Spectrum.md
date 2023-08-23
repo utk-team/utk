@@ -39,7 +39,7 @@ Options:
   -o,--output TEXT            Output file (empty is stdout)
   -r,--res UINT [0]           Spectrum resolution (0 means automatic)
   --canceldc [0]              When set, cancel the DC peak
-  --img TEXT                  When set, output image of spectrum. Only available in 2D.
+  --img TEXT                  When set, output image PNG of spectrum. Only available in 2D.
   --silent                    Silence UTK logs
 ```
 

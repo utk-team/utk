@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 
     app.add_option("-r,--res", res, "Spectrum resolution (0 means automatic)")->default_val(res);
     app.add_flag("--canceldc", cancelDc, "When set, cancel the DC peak")->default_val(cancelDc);
-    app.add_option("--img", imgFile, "When set, output image of spectrum. Only available in 2D.")->default_val(imgFile);
+    app.add_option("--img", imgFile, "When set, output PNG image of spectrum. Only available in 2D.")->default_val(imgFile);
 
     CLI11_PARSE(app, argc, argv);
 
