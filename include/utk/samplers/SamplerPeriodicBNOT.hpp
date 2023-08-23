@@ -86,8 +86,8 @@ public:
 
 		for (uint32_t i = 0; i < outPoints.size(); i++)
 		{
-			arg_pts[i][0] = outPoints[i].x() + 0.5;
-			arg_pts[i][1] = outPoints[i].y() + 0.5;
+			arg_pts[i][0] = outPoints[i].x();
+			arg_pts[i][1] = outPoints[i].y();
 		}
 
 		return true;
