@@ -23,7 +23,7 @@ Victor Ostromoukhov <victor.Ostromoukhov@liris.cnrs.fr>
 
 # Citing UTK
 
-```
+```bibtex
 @Misc{UTK,
       title = {Uni(corn|form) tool kit},
       url = {https://utk-team.github.io/utk/},
