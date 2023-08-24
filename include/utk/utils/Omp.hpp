@@ -32,11 +32,52 @@
  */
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <limits>
 
 #ifdef _WIN32
-    // As windows definitely won't update OpenMP, a remapping is necessary 
-    using OPENMP_UINT = long int;
+    // As windows definitely won't update OpenMP...
+    using OPENMP_UINT = long int;         // Does not support unsigned int indexing...
+    using OPENMP_DOUBLE_DEFAULT = double; // Does not support long double reduction...
+
+    // Does not support max neither...
+    template<typename T>
+    T omp_parallel_max(const T* data, uint32_t size)
+    {
+        T max_val = std::numeric_limits<T>::max();
+
+        #pragma omp parallel
+        {
+            T max_private = max_val;
+
+            #pragma omp for nowait
+            for (OPENMP_UINT i = 0; i < size; i++)
+            {
+                max_private = std::max(max_private, data[i]);
+            }
+
+            #pragma omp critical 
+            {
+                max_val = std::max(max_val, max_private);
+            }
+        }
+
+        return max_val;
+    }
 #else
     using OPENMP_UINT = uint32_t;
+    using OPENMP_DOUBLE_DEFAULT = long double;
+
+    template<typename T>
+    T omp_parallel_max(const T* data, uint32_t size)
+    {
+        T maxval = std::numeric_limits<T>::max();
+        
+        #pragma omp parallel for reduction(max: maxval)
+        for (OPENMP_UINT i = 0; i < size; i++)
+            maxval = std::max(maxval, data[i]);
+        
+        return maxval;
+    }
 #endif

@@ -34,11 +34,11 @@
 
 #include <utk/metrics/Diaphony.hpp>
 #include <utk/metrics/BoundariesStarDiscrepancy.hpp>
-#include <utk/metrics/CenteredL2.hpp>
-#include <utk/metrics/GeneralizedL2.hpp>
-#include <utk/metrics/L2.hpp>
-#include <utk/metrics/SymmetricL2.hpp>
-#include <utk/metrics/UnanchoredL2.hpp>
+#include <utk/metrics/CenteredL2Discrepancy.hpp>
+#include <utk/metrics/GeneralizedL2Discrepancy.hpp>
+#include <utk/metrics/L2Discrepancy.hpp>
+#include <utk/metrics/SymmetricL2Discrepancy.hpp>
+#include <utk/metrics/UnanchoredL2Discrepancy.hpp>
 
 #include <utk/metrics/Spectrum.hpp>
 #include <utk/metrics/RadialSpectrum.hpp>

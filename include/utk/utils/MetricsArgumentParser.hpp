@@ -36,7 +36,8 @@
 #include <CLI/Formatter.hpp>
 #include <CLI/Config.hpp>
 
-#include <utk/utils/log.hpp>
+#include <utk/utils/Omp.hpp>
+#include <utk/utils/Log.hpp>
 #include <utk/utils/PointsetIO.hpp>
 
 #include <iomanip>
@@ -46,7 +47,7 @@
 
 namespace utk
 {
-    template<typename Type = long double>
+    template<typename Type = OPENMP_DOUBLE_DEFAULT>
     struct MetricArguments
     {
         std::string outFile;
@@ -83,7 +84,7 @@ namespace utk
         }
     };
 
-    template<typename Type = long double>
+    template<typename Type = OPENMP_DOUBLE_DEFAULT>
     MetricArguments<Type>* add_arguments(CLI::App& app)
     {
         MetricArguments<Type>* arguments = new MetricArguments<Type>;
