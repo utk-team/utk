@@ -267,10 +267,10 @@ public:
 			pts[i].y = dist(gen);
 		}
 
-		heck::nbins = pts.size();
+		heck::nbins = (int)pts.size();
 
 		Curve    tmp(heck::nbins, 0, N / 2);
-		heck::FunctionPeak(critFrequency, peakPower, tmp, pts.size());
+		heck::FunctionPeak(critFrequency, peakPower, tmp, (int)pts.size());
 		
 		if (peakSmoothing > 0.f)
 				tmp = FilterGauss(heck::nbins, tmp, peakSmoothing);

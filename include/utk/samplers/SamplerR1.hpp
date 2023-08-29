@@ -166,7 +166,7 @@ long long gaussian_basisReduction(int nb, int gx, int gy, Pair& b1, Pair& b2){
 			b2 = tmp;
 		}
 		double t = double(b1.x*b2.x + b1.y*b2.y) / double(b1.x*b1.x + b1.y*b1.y);
-		int mu = long(floor(t + 0.5));
+		long mu = long(floor(t + 0.5));
 		b2.x -= (mu*b1.x);
 		b2.y -= (mu*b1.y);
 

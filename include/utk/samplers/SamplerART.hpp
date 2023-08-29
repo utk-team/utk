@@ -52,7 +52,7 @@ inline Point getSample(unsigned tileID, unsigned sampleNo, Matrix m = IDENTITY) 
 }
 
 void generate(Points &samples) {
-    auto n = samples.size();
+    uint32_t n = static_cast<uint32_t>(samples.size());
     int tileID = rand() % tileCount;
     for (decltype(n) i = 0; i < n; i++) {
         samples[i] = getSample(tileID, i);

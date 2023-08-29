@@ -212,9 +212,9 @@ namespace utk
             for ( i = 1; i <= n; i++ )
                 superarbre[i].id = i - 1;
 
-            superarbre[0].id = n;
+            superarbre[0].id = (int)n;
 
-            quicksort ( superarbre, 0, 1, n );
+            quicksort ( superarbre, 0, 1, (int)n );
 
             return true;
         }

@@ -83,7 +83,7 @@ namespace utk
             return bits;
     	}
 
-        static uint32_t radicalInverse_VdC64(uint64_t bits) 
+        static uint64_t radicalInverse_VdC64(uint64_t bits) 
         {
             uint64_t n0 = radicalInverse_VdC((uint32_t) bits);
             uint64_t n1 = radicalInverse_VdC((uint32_t) (bits >> 32));

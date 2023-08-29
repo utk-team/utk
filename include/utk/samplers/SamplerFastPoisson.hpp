@@ -117,7 +117,7 @@ public:
         if (N != sampler->points.size())
             UTK_WARN("Sampler FastPoisson, returning {} samples when asked for {}", sampler->points.size(), N);
        
-        N = sampler->points.size();
+        N = static_cast<uint32_t>(sampler->points.size());
         arg_pts.Resize(N, 2);
         for (uint32_t i = 0; i < N; i++)
         {

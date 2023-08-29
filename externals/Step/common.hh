@@ -216,7 +216,7 @@ inline float j0f(float f) {
 }
 
 bool HasSuffix(const std::string &s, const std::string &suffix) {
-    int i = s.size() - suffix.size();
+    int i = (int)s.size() - (int)suffix.size();
     if (i >= 0)
         return s.substr(i) == suffix;
     return false;
@@ -374,8 +374,8 @@ float Curve::At(float x) const {
     int i = (int)floor(xx);
     int ii = i+1;
     float a = xx-i;
-    if (i >= (int)y.size()) i = y.size()-1;
-    if (ii >= (int)y.size()) ii = y.size()-1;
+    if (i >= (int)y.size()) i = (int)y.size()-1;
+    if (ii >= (int)y.size()) ii = (int)y.size()-1;
     return (1-a)*y[i] + a * y[ii];
 }
 
@@ -398,7 +398,7 @@ Curve Curve::Read(const std::string &fname) {
         exit(1);
     }
 
-    int n = x.size();
+    int n = (int)x.size();
     float dx = n > 1 ? x[1] - x[0] : 1;
     Curve c(n, x[0]-dx/2, x[n-1] + dx/2);
     for (int i=0; i<n; i++)
