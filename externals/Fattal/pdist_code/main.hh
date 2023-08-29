@@ -591,6 +591,8 @@ void snap_shot(Dot* dots, int ndots, int nx, int ny) {
       
       FFT2D(cpx, out_res, out_res, 1) ;
 
+      double spm = 0 ;
+      double spn = 0 ;
 
       SP *= 0.95 ;
       

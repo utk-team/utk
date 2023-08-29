@@ -251,12 +251,12 @@ bool WriteFloats(FILE *fp, const float *p, int n, Endianness endian) {
     return true;
 }
 
-bool ReadFloats(FILE *fp, float *p, int n, Endianness endian) {
+bool ReadFloats(FILE *fp, float *p, long n, Endianness endian) {
     Endianness sysEndian = SystemEndianness();
-    const int nbuf = 256;
+    const long nbuf = 256;
     uint8_t buf[nbuf*sizeof(float)];
     while (n > 0) {
-        int nn = std::min(n, nbuf);
+        long nn = std::min(n, nbuf);
         if (fread(buf, sizeof(float), nn, fp) != (size_t)nn)
             return false;
         if (endian != sysEndian)
@@ -288,7 +288,7 @@ void WritePFM(int width, int height, const float *data, const char *fname) {
 
 
 void LoadPoints(const std::string &fname, std::vector<heck_Point> &points) {
-    int npts = 0;
+    long npts = 0;
     if (HasSuffix(fname, ".rps")) {
         FILE *fp= fopen(fname.c_str(), "rb");
         if (!fp) {

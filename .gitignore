@@ -1,4 +1,6 @@
 ## GitHub gitignore C++
+.DS_Store
+
 
 # Prerequisites
 *.d

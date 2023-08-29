@@ -261,10 +261,10 @@ public:
 			pts[i].y = dist(gen);
 		}
 
-		heck::nbins = pts.size();
+		heck::nbins = (int)pts.size();
 
 		Curve target(heck::nbins, 0, 0.5f);
-		heck::FunctionJinc(critFrequency, target, pts.size());
+		heck::FunctionJinc(critFrequency, target, (int)pts.size());
 
 		Curve tmp(heck::nbins, 0, N / 2);
 		tmp = RDF2Power(N, target, heck::nbins, 0, N / 2);
