@@ -4,6 +4,8 @@
 
 UTK is a C++ library that implements a large variety of samplers and tools to analyze and compare them (discrepancy evaluation, spectral analysis, numerical integration tests...).
 
+![type:video](./figs/all.mp4)
+
 ## License
 
 The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (see the [samplers](samplers) page for details).

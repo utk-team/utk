@@ -16,6 +16,12 @@ extra:
   search:
     tokenizer: '[\s\-\.::]+'
 
+plugins:
+    - mkdocs-video:
+       is_video: True
+       video_loop: True
+       video_autoplay: True
+
 theme:
   name: 'material'
   palette:

@@ -20,8 +20,8 @@ jobs:
     - name: Building pages
       run: |
          pip install -U mkdocs
-         pip install mkdocs-material
-         python -m mkdocs build
+         pip install mkdocs-material mkdocs-video
+         python -m mkdocs build 
          
 
     - name: Deploy to GitHub Pages
