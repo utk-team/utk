@@ -141,7 +141,7 @@ namespace utk
                         // Count the number of point inside the box 
                         std::uint32_t count = 0;
                         #pragma omp parallel for reduction(+: count)
-                        for (std::uint32_t i = 0; i < pts.Npts(); i++)
+                        for (OPENMP_UINT i = 0; i < pts.Npts(); i++)
                         {
                             bool in_box = true;
                             for (std::uint32_t d = 0; d < pts.Ndim(); d++)
