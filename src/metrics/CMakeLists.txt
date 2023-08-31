@@ -2,6 +2,8 @@ SET(Metrics
     
     MinDist   
 
+    TValue
+
     L2Discrepancy
     CenteredL2Discrepancy
     Diaphony

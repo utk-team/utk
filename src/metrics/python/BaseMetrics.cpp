@@ -45,6 +45,8 @@
 #include <utk/metrics/PCF.hpp>
 #include <utk/metrics/MinDist.hpp>
 
+#include <utk/metrics/TValue.hpp>
+
 #include <utk/metrics/IntegrationTest.hpp>
 #include <utk/metrics/Integrands/GaussianIntegrands.hpp>
 #include <utk/metrics/Integrands/HeavisideIntegrands.hpp>
@@ -152,6 +154,10 @@ void init_Metrics(py::module& m)
     py::class_<MinDist>(m, "MinDistance")
         .def(py::init<double>(), py::arg("toroidal") = false)
         .def("compute", GetComputeFunction<MinDist, double>());
+
+    py::class_<TValue>(m, "TValue")
+        .def(py::init<std::uint8_t>(), py::arg("basis") = 2)
+        .def("compute", GetComputeFunction<TValue, double, std::uint32_t>());
 
     // Expose error reporting
     py::class_<IntegrationTest::ErrorReport>(m, "IntegrationErrorReport")

@@ -94,6 +94,7 @@ nav:
     - CenteredL2: 'metrics/CenteredL2.md'
     - Diaphony: 'metrics/Diaphony.md'
     - MinDist: 'metrics/MinDist.md'
+    - t-value: 'metrics/tvalue.md'
     - PCF: 'metrics/PCF.md'
     - Spectrum: 'metrics/Spectrum.md'
     - RadialSpectrum: 'metrics/RadialSpectrum.md'
