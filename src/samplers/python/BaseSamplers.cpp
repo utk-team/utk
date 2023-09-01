@@ -45,6 +45,7 @@
 #include <utk/samplers/SamplerLutLDBN.hpp>
 #include <utk/samplers/SamplerPMJ.hpp>
 #include <utk/samplers/SamplerDartThrowing.hpp>
+#include <utk/samplers/SamplerBridson.hpp>
 #include <utk/samplers/SamplerProjectiveBlueNoise.hpp>
 #include <utk/samplers/SamplerSobol.hpp>
 #include <utk/samplers/SamplerR1.hpp>
@@ -158,16 +159,31 @@ void init_BaseSampler(py::module& m)
                 uint32_t, double, double
             >(), 
                 py::arg("d"), py::arg("relaxed") = true, py::arg("toroidal") = true,
-                py::arg("trials") = 1000, py::arg("relaxedFactor") = 0.9, py::arg("spherePacking") = -1.0
+                py::arg("trials") = 1000, py::arg("relaxedFactor") = 0.9, py::arg("distance") = -1.0
         )
         .def("__repr__", [](const SamplerDartThrowing& wn) { return "DartThrowing(d=" + std::to_string(wn.GetDimension()) +")"; })
         .def("setRelaxed" ,      &SamplerDartThrowing::setRelaxed)
         .def("setToroidal",      &SamplerDartThrowing::setToroidal)
         .def("setMaxTrials",     &SamplerDartThrowing::setMaxIters)
         .def("setRelaxedFactor", &SamplerDartThrowing::setRelaxedFactor)
-        .def("setSpherePacking", &SamplerDartThrowing::setSpherePacking, py::arg("packing") = -1.0)
+        .def("setDistance"     , &SamplerDartThrowing::setDistance, py::arg("distance") = -1.0)
         .def("setSeed", GetSetSeedFunction<SamplerDartThrowing>(), py::arg("seed") = NO_SEED)
         .def("sample",  GetSampleFunction <SamplerDartThrowing>(), py::arg("N"));
+
+     py::class_<SamplerBridson>(m, "Bridson")
+        .def(py::init<
+                uint32_t, bool, 
+                uint32_t, double
+            >(), 
+                py::arg("d"), py::arg("toroidal") = true,
+                py::arg("candidates") = 30, py::arg("distance") = -1.0
+        )
+        .def("__repr__", [](const SamplerBridson& wn) { return "Bridson(d=" + std::to_string(wn.GetDimension()) +")"; })
+        .def("setToroidal"  , &SamplerBridson::setToroidal)
+        .def("setCandidates", &SamplerBridson::setCandidates)
+        .def("setDistance"  , &SamplerBridson::setDistance, py::arg("distance") = -1.0)
+        .def("setSeed", GetSetSeedFunction<SamplerBridson>(), py::arg("seed") = NO_SEED)
+        .def("sample",  GetSampleFunction <SamplerBridson>(), py::arg("N"));
 
     py::class_<SamplerProjectiveBlueNoise>(m, "ProjectiveBlueNoise")
         .def(py::init<

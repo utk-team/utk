@@ -58,7 +58,7 @@ public:
 		D(d), toroidal(toroidal_), relaxed(relaxed_),
 		numTrials(numTrials_), relaxedFactor(relaxedFactor_ * relaxedFactor_)	
 	{ 
-		setSpherePacking(spherePacking);
+		setDistance(spherePacking);
 		setRandomSeed(); 
 	}
 	
@@ -72,19 +72,22 @@ public:
 	void setToroidal(bool trd) { toroidal = trd; }
 	void setMaxIters(uint32_t its) { numTrials = its; }
 	void setRelaxedFactor(double factor) { relaxedFactor = factor * factor; /* we use square dist */}
-	void setSpherePacking(double packing) 
+	void setDistance(double distance) 
 	{
 		// I don't like maccros
 		static constexpr double PI = 3.14159265358979323846;
 	
-		if (packing < 0)
+		if (distance < 0)
+		{
+			// Use center density (ie. Number of sphere per unit cube in space)
+			// (1.5 * to match UTK's formula)	
 			initialDistanceSquared = GetPackingDistance(D);
+			initialDistanceSquared = 1.5 * std::pow(initialDistanceSquared * std::tgamma(D / 2. + 1) / std::pow(PI, D / 2.), 1. / D);
+		}
 		else
-			initialDistanceSquared = packing;
-
-		// Use center density (ie. Number of sphere per unit cube in space)
-		// (1.5 * to match UTK's formula)
-		initialDistanceSquared = 1.5 * std::pow(initialDistanceSquared * std::tgamma(D / 2 + 1) / std::pow(PI, D / 2), 1 / D);
+		{
+			initialDistanceSquared = distance;
+		}
 		// Keep it squared 
 		initialDistanceSquared *= initialDistanceSquared;
 	}
@@ -101,8 +104,9 @@ public:
 		auto dist_function = (toroidal) ? &SamplerDartThrowing::computeToroidalDistSquared<T> :
 		                                  &SamplerDartThrowing::computeDistSquared<T>;  
 
-		// Scale by N ^ (1/D) (squared)
-		T currentDist = static_cast<T>(initialDistanceSquared * std::pow(1. / (double)N, 2. / (double)D));
+		// Scale by N ^ (1/D) (squared because we only store squared distances...)
+		T currentDist = static_cast<T>(initialDistanceSquared * std::pow(1. / (T)N, 2. / (T)D));
+
         for (uint32_t i = 0; i < N; /* change i only when sample is accepted */)
 		{
 			bool accept = false;
