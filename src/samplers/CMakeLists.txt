@@ -12,6 +12,7 @@ SET(Samplers
     Korobov
     Kronecker
     DartThrowing
+    Bridson
     AAPatterns
     ART
     CMJ

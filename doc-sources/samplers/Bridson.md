@@ -1,15 +1,16 @@
-# Sampler Dart Throwing [[MF92]](http://www.dgp.toronto.edu/~elf/.misc/poissondisk.pdf)
+# Bridson Poisson Disk [[Bridson07]](https://dl.acm.org/doi/10.1145/1278780.1278807)
 
 ## Description
 
-A naive (relaxed) dart throwing algorithm.  
-For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
+Implementation of Bridson algorithm to generate Poisson Disc samples. Instead of a grid, a hash_map is used 
+to emulate the grid. Hence the algorithm does not use exponential amount of memory when generating samples. 
+The complexity is $O(2^d N log(N))$ (instead of $O(2^d N)$ if a grid is used.)
 
 ## Files
 
 ```
-src/samplers/DartThrowing.cpp  
-include/utk/samplers/SamplerDartThrowing.hpp
+src/samplers/Bridson.cpp  
+include/utk/samplers/SamplerBridson.hpp
 ```
 
 ## Usage
@@ -23,8 +24,8 @@ include/utk/samplers/SamplerDartThrowing.hpp
 <div class="exe tabcontent">
 
 ```bash
-Dart Throwing sampler
-Usage: ./src/samplers/DartThrowing [OPTIONS]
+Bridson algorithm for Poisson disk sampling
+Usage: ./src/samplers/Bridson [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -34,11 +35,9 @@ Options:
   -m UINT [1]                 Number of pointsets
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --silent                    Silence UTK logs
-  --relax [1]                 Enable relaxation
   --euclidean [0]             Use euclidean distance (default is wrap around)
-  --relax_factor FLOAT [0.9]  Amount of relaxation applied after too many unsucessful trials
-  --trials UINT [1000]        Number of trials before relaxation occurs
-  --distance FLOAT [-1]       Minimal distance to use (will be scaled by N^-D !). If negative use precomputed sphere packing values (meaningfull only when D < 9)
+  --trials UINT [30]          Number of trials candidates to try
+  --packing FLOAT [-1]        Set packing density to use. If negative use precomputed values (meaningfull only when D < 9)
 
 ```
 
@@ -49,19 +48,17 @@ Options:
 ```  cpp
 #include <utk/utils/PointsetIO.hpp>
 #include <utk/utils/Pointset.hpp>
-#include <utk/samplers/SamplerDartThrowing.hpp>
+#include <utk/samplers/SamplerBridson.hpp>
 
 int main()
 {
     utk::Pointset<double> pts;
 
-    utk::SamplerDartThrowing dt(
+    utk::SamplerBridson dt(
         2 /* dimension */
-        true,  /* true = relaxed, false = not relaxed */
         false, /* false = euclidean distance, true = toroidal*/
-        1000,  /* trials before relaxing distance */ 
-        0.9,   /* Relaxation factor */
-        -1     /* Distance (-1 = precomputed sphere packing values) */
+        30,    /* Number of candidates to use for each try */ 
+        -1     /* Distance (-1 = precomputed values) */
     );
     dt.setRandomSeed(/* Or a seed */);
     // Check for no errors
@@ -79,12 +76,10 @@ int main()
 ``` python
 import pyutk
 
-dt = pyutk.DartThrowing(
+dt = pyutk.Bridson(
     2,     # dimension, 
-    True,  # true = relaxed, false = not relaxed
     False, # false = euclidean distance, true = toroidal
-    1000,  # trials before relaxing distance 
-    0.9,   # Relaxation factor
+    30,    # Number of candidates 
     -1     # Distance (-1 = precomputed sphere packing values)
 
 )

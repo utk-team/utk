@@ -31,42 +31,37 @@
  * either expressed or implied, of the UTK project.
  */
 #include <utk/utils/SamplerArgumentParser.hpp>
-#include <utk/samplers/SamplerDartThrowing.hpp>
+#include <utk/samplers/SamplerBridson.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "Dart Throwing sampler" };
+    CLI::App app { "Bridson algorithm for Poisson disk sampling" };
     auto* args = utk::add_arguments(app);
     
-    bool relaxed = true;
     bool euclidean = true;
-    uint32_t trials = 1000;
-    double relaxedFactor = 0.9;
+    uint32_t trials = 30;
     double distance = -1.0;
 
-    app.add_flag("--relax", relaxed, "Enable relaxation")->default_val(true);
     app.add_flag("--euclidean", euclidean, "Use euclidean distance (default is wrap around)")->default_val(false);
-    app.add_option("--relax_factor", relaxedFactor, "Amount of relaxation applied after too many unsucessful trials")->default_val(0.9);
-    app.add_option("--trials", trials, "Number of trials before relaxation occurs")->default_val(1000);
+    app.add_option("--trials", trials, "Number of trials candidates to try")->default_val(30);
     app.add_option("--distance", distance, "Minimal distance to use (will be scaled by N^-D !). If negative use precomputed sphere packing values (meaningfull only when D < 9)")->default_val(-1.0);
 
     CLI11_PARSE(app, argc, argv);
     
     std::vector<utk::Pointset<double>> pts = args->GetPointsets();
     
-    utk::SamplerDartThrowing dt(
-        args->D, relaxed, !euclidean, 
-        trials, relaxedFactor, distance
+    utk::SamplerBridson brd(
+        args->D, !euclidean, trials, distance
     );
-    dt.setRandomSeed(args->seed);
+    brd.setRandomSeed(args->seed);
 
     for (uint32_t i = 0; i < pts.size(); i++)
     {
-        if(!dt.generateSamples(pts[i], args->N))
+        if(!brd.generateSamples(pts[i], args->N))
         {
             std::cerr << "Sampler returned non-zero output" << std::endl; // No log here, must be visible whatsoever
             return 1;
-            }
+        }
     }
 
     args->WritePointsets(pts);

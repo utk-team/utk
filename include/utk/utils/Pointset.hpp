@@ -211,8 +211,15 @@ namespace utk
         {
             uint32_t n = N;
             Resize(N + 1, D, C * 2);
-            return data[n];
+            return (*this)[n][0];
         }  
+
+        void PushBack(const T* src)
+        {
+            uint32_t n = N;
+            Resize(N + 1, D, C * 2);
+            std::memcpy((*this)[n], src, sizeof(T) * D);
+        }
 
         ~Pointset()
         {  }
