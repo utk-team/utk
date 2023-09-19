@@ -13,10 +13,11 @@
 #include "../Common/MathTypes.h"
 #include "../Common/Random.h"
 
-#ifdef WIN32
-#define NOMINMAX
-#include <Windows.h>
-#endif
+//These seem not to be needed and make pyutk compilation fail
+//#ifdef WIN32
+//#define NOMINMAX
+//#include <Windows.h>
+//#endif
 
 // Remove this definition to compile without the OpenCL code
 //#define USEOPENCL
