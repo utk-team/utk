@@ -63,7 +63,15 @@ namespace utk
 
         std::vector<Pointset<Type>> GetPointsets()
         {
-            std::vector<Pointset<Type>> pts(M, Pointset<Type>(N, D));
+            std::vector<Pointset<Type>> pts;
+
+            // Construct directly the object, so that there is no copy
+            // Hence, sampler 'Resize' does cause any allocation
+            // because it previously was a view through the copy...
+            pts.reserve(M);
+            for (uint32_t i = 0; i < M; i++)
+                pts.emplace_back(N, D);
+            
             return pts;
         }
 
@@ -109,7 +117,7 @@ namespace utk
         else
         {
             // Leave it here so all sampler have the same arguments !
-            app.add_option("-d", args->dumbD, "UNUSED ! Here for compatibility with others.");
+            app.add_option("-d", args->D, "UNUSED ! Here for compatibility with others.")->default_val(force_dim);
         }
 
         if (seedable)

@@ -109,6 +109,25 @@ namespace utk
             return *this;
         }
 
+        Pointset(Pointset&& other)
+        {
+            N = std::move(other.N);
+            D = std::move(other.D);
+            C = std::move(other.C);
+            isView = std::move(other.isView);
+            data = std::move(other.data); 
+        }
+
+        Pointset& operator=(Pointset&& other)
+        {
+            N = std::move(other.N);
+            D = std::move(other.D);
+            C = std::move(other.C);
+            isView = std::move(other.isView);
+            data = std::move(other.data); 
+            return *this;
+        }
+
         T* Data()
         {
             return data.get();
@@ -162,19 +181,20 @@ namespace utk
             // Always realloc if it previously was a view
             if (isView)
             {
-                D = d;
+                uint32_t old_n = N;
+                uint32_t old_d = D;
                 N = n;
+                D = d;
 
                 // At least N * D of memory
                 C = std::max(hint_Capacity, N * D);
-
                 isView = false;
 
                 // Obtain copy of ptr first to make sure it is not deleted
                 // by resetting data
                 std::shared_ptr<T[]> oldData = data;
                 data = std::shared_ptr<T[]>(new T[C]);
-                std::memcpy(data.get(), oldData.get(), N * D * sizeof(T));
+                std::memcpy(data.get(), oldData.get(), old_n * old_d * sizeof(T));
             }
             else
             {
