@@ -181,8 +181,7 @@ namespace utk
             // Always realloc if it previously was a view
             if (isView)
             {
-                uint32_t old_n = N;
-                uint32_t old_d = D;
+                const uint32_t oldC = C;
                 N = n;
                 D = d;
 
@@ -194,7 +193,7 @@ namespace utk
                 // by resetting data
                 std::shared_ptr<T[]> oldData = data;
                 data = std::shared_ptr<T[]>(new T[C]);
-                std::memcpy(data.get(), oldData.get(), old_n * old_d * sizeof(T));
+                std::memcpy(data.get(), oldData.get(), std::min(C, oldC) * sizeof(T));
             }
             else
             {
