@@ -32,43 +32,43 @@
  */
 #include <pyutk/utils.hpp>
 
-#include <utk/scrambling/Owen.hpp>
-#include <utk/scrambling/OwenTreeScrambling.hpp>
-#include <utk/scrambling/CranleyPatterson.hpp>
-#include <utk/scrambling/DigitalShift.hpp>
-#include <utk/scrambling/MicroJittering.hpp>
+#include <utk/scrambling/ScramblingOwen.hpp>
+#include <utk/scrambling/ScramblingOwenTree.hpp>
+#include <utk/scrambling/ScramblingCranleyPatterson.hpp>
+#include <utk/scrambling/ScramblingDigitalShift.hpp>
+#include <utk/scrambling/ScramblingMicroJittering.hpp>
 
 void init_Scrambling(py::module& m)
 {
     using IntegerType = uint32_t;
     using OwenScrambling = ScramblingOwen<IntegerType>;
     using OwenTreeScramblingI = OwenTreeScrambling<IntegerType>;
-    using DigitalShiftScramplingI = DigitalShift<IntegerType>;
+    using DigitalShiftScramplingI = ScramblingDigitalShift<IntegerType>;
 
-    py::class_<OwenScrambling>(m, "OwenScrambling")
+    py::class_<OwenScrambling>(m, "ScramblingOwen")
         .def(py::init<uint32_t>(), py::arg("depth") = 32)
         .def("setOwenDepth", &OwenScrambling::setOwenDepth)
         .def("setSeed", GetSetSeedFunction<OwenScrambling>(), py::arg("seed") = NO_SEED)
         .def("scramble",  GetScrambleFunction<OwenScrambling, IntegerType, double>())
         .def("iscramble", GetScrambleFunction<OwenScrambling, IntegerType, IntegerType>());
     
-    py::class_<CranleyPattersonScrambling>(m, "CranleyPattersonScrambling")
+    py::class_<ScramblingCranleyPatterson>(m, "ScramblingCranleyPatterson")
         .def(py::init<double, double>(), py::arg("max") = 1.0, py::arg("domain") = 1.0)
         .def("setSeed" ,  GetSetSeedFunction <CranleyPattersonScrambling>(), py::arg("seed") = NO_SEED)
         .def("scramble",  GetScrambleFunction<CranleyPattersonScrambling, double, double>());
 
-    py::class_<DigitalShiftScramplingI>(m, "DigitalShift")
+    py::class_<DigitalShiftScramplingI>(m, "ScramblingDigitalShift")
         .def(py::init<>())
         .def("setSeed" ,  GetSetSeedFunction <DigitalShiftScramplingI>(), py::arg("seed") = NO_SEED)
         .def("scramble",  GetScrambleFunction<DigitalShiftScramplingI, IntegerType, double>());
 
-    py::class_<MicroJittering>(m, "MicroJittering")
+    py::class_<MicroJittering>(m, "ScramblingMicroJittering")
         .def(py::init<double>(), py::arg("intensity") = -1.0)
         .def("setSeed" ,  GetSetSeedFunction <MicroJittering>(), py::arg("seed") = NO_SEED)
         .def("scramble",  GetScrambleFunction<MicroJittering, double, double>());
 
     
-    py::class_<OwenTreeScramblingI>(m, "OwenTreeScrambling")
+    py::class_<OwenTreeScramblingI>(m, "ScramblingOwen")
         .def(py::init<uint32_t>(), py::arg("depth") = 32)
         .def("setOwenDepth", &OwenTreeScramblingI::setOwenDepth)
         .def("setSeed", GetSetSeedFunction<OwenTreeScramblingI>(), py::arg("seed") = NO_SEED)

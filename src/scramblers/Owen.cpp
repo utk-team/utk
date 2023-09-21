@@ -30,33 +30,31 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <utk/utils/SamplerArgumentParser.hpp>
-#include <utk/samplers/SamplerSobol.hpp>
+#include <utk/utils/ScramblingArgumentParser.hpp>
+#include <utk/scrambling/ScramblingOwen.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "Sobol sampler" };
-    auto* args = utk::add_arguments<uint32_t>(app);
-    
-    uint32_t depth = 0;
-    app.add_option("--depth", depth, "Owen depth (0: no randomness, 32: recommended).")->default_val(depth);
+    CLI::App app { "Owen scrambler" };
+    auto* args = utk::add_arguments<uint32_t, double>(app);
 
+    uint32_t depth = 32;
+    app.add_option("--depth", depth, "Depth of scrambling")->default_val(depth);
     CLI11_PARSE(app, argc, argv);
     
-    std::vector<utk::Pointset<uint32_t>> pts = args->GetPointsets();
-        
-    utk::SamplerSobol sobol(args->D, depth);
-    sobol.setRandomSeed(args->seed);
-
-    for (uint32_t i = 0; i < pts.size(); i++)
+    std::vector<utk::Pointset<uint32_t>> pts = args->GetAllPointsets();
+    std::vector<utk::Pointset<double>> out;
+    
+    utk::ScramblingOwen scrambler(depth);
+    scrambler.setRandomSeed(args->seed);
+    
+    if (!scrambler.Scramble(pts, out))
     {
-        if(!sobol.generateSamples(pts[i], args->N))
-        {
-            std::cerr << "Sampler returned non-zero output" << std::endl; // No log here, must be visible whatsoever
-            return 1;
-        }
+        std::cerr << "Error : scramble failed" << std::endl; // No log here, must be visible whatsoever
+        return 1;
     }
-    args->WritePointsets(pts);
+
+    args->WritePointsets(out);
 
     delete args;
     return 0;

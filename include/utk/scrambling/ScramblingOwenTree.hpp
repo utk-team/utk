@@ -132,12 +132,12 @@ namespace utk
     };
 
     template <typename IntegerType = uint32_t>
-    class OwenTreeScrambling
+    class ScramblingOwenTree
     {
     public:
         static constexpr unsigned char MAX_BITS = (sizeof(IntegerType) * __CHAR_BIT__);
     
-        OwenTreeScrambling(uint32_t dp = MAX_BITS) : 
+        ScramblingOwenTree(uint32_t dp = MAX_BITS) : 
             depth(dp)
         { }
 
@@ -179,7 +179,7 @@ namespace utk
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
             if (trees.size() <= in.Ndim())
             {
@@ -197,10 +197,11 @@ namespace utk
                     in[i][d] = owen(in[i][d], d, depth);
                 }
             }
+            return true;
         }
 
         template<typename T, typename D>
-        void Scramble(const Pointset<T>& in, Pointset<D>& out)
+        bool Scramble(const Pointset<T>& in, Pointset<D>& out)
         {
             out.Resize(in.Npts(), in.Ndim());
             if (trees.size() <= in.Ndim())
@@ -219,6 +220,31 @@ namespace utk
                     out[i][d] = convertFullRadicalInverseBase2<D>(owen(in[i][d], d, depth));
                 }
             }
+            return true;
+        }
+
+        template<typename T>
+        bool Scramble(std::vector<Pointset<T>>& in)
+        {
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
+        }
+
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
         }
         
     private:

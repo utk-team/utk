@@ -31,19 +31,31 @@
  * either expressed or implied, of the UTK project.
  */
 
-#include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/FastPRNG.hpp>
+#include <utk/utils/RadicalInversion.hpp>
 #include <random>
+#include <bitset>
 
 namespace utk
 {
     template <typename IntegerType = uint32_t>
-    class DigitalShift
+    class ScramblingOwen
     {
     public:
-        DigitalShift()
+        static constexpr unsigned char MAX_BITS = (sizeof(IntegerType) * __CHAR_BIT__);
+    
+        ScramblingOwen(unsigned char dp = MAX_BITS) : 
+            depth(dp)
         { }
+
+        void setOwenDepth(unsigned char dp)
+        {
+            if (dp < MAX_BITS)
+                depth = dp;
+            else
+                depth = MAX_BITS;
+        }
 
         void setRandomSeed(uint64_t arg_seed) 
         { 
@@ -56,64 +68,99 @@ namespace utk
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
-            std::vector<IntegerType> shifts(in.Ndim());
+            std::vector<uint64_t> seeds(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
-                shifts[d] = mt() % std::numeric_limits<IntegerType>::max();
+                seeds[d] = mt();
             
-            for (uint32_t i = 0; i < in.Npts(); i++)
+            for (IntegerType i = 0; i < in.Npts(); i++)
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    in[i][d] = in[i][d] ^ shifts[d];
+                    in[i][d] = owen(in[i][d], d, depth, seeds.data());
                 }
             }
+            return true;
         }
 
         template<typename T, typename D>
-        void Scramble(const Pointset<T>& in, Pointset<D>& out)
+        bool Scramble(const Pointset<T>& in, Pointset<D>& out)
         {
             out.Resize(in.Npts(), in.Ndim());
 
-            std::vector<IntegerType> shifts(in.Ndim());
+            std::vector<uint64_t> seeds(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
-                shifts[d] = mt() % std::numeric_limits<IntegerType>::max();
+                seeds[d] = mt();
             
-            for (uint32_t i = 0; i < in.Npts(); i++)
+            for (IntegerType i = 0; i < in.Npts(); i++)
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    out[i][d] = convert<D>(in[i][d] ^ shifts[d]);
+                    out[i][d] = convertFullRadicalInverseBase2<D>(owen(in[i][d], d, depth, seeds.data()));
                 }
             }
+            return true;
+        }
 
+        template<typename T>
+        bool Scramble(std::vector<Pointset<T>>& in)
+        {
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
+        }
+
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
         }
         
     private:
-        template<typename T>
-        static T convert(IntegerType x)
+        static IntegerType ConvertBitset(const std::bitset<MAX_BITS>& in)
         {
-            if constexpr (std::is_integral_v<T>)
-            {
-                return static_cast<T>(x);
-            }
+            if constexpr (sizeof(IntegerType) == 4)
+                return in.to_ulong();
             else
+                return in.to_ullong();
+        }
+
+        static IntegerType owen(
+            IntegerType i,
+            uint32_t dim, 
+            unsigned char depth,
+            const uint64_t* seeds
+        )
+        {
+            std::bitset<MAX_BITS> digitsBase2 = i;
+            std::bitset<MAX_BITS> newDigits = i;
+
+            PCG32 rng;
+            for (unsigned char idigit = 0; idigit < depth; idigit++)
             {
-                T r = 0.0;
-                T b = 0.5;
-                while (x)
-                {
-                    r += (x & 1) * b;
-
-                    b *= 0.5;
-                    x >>= 1;
-                }
-
-                return r;
+                IntegerType indPermut = (1 << idigit) - 1 + ConvertBitset(digitsBase2 >> (MAX_BITS - idigit));
+                uint64_t seed = seeds[dim] + indPermut;
+                
+                rng.seed(seed);
+                int thisDigitPermut = rng() & 1;
+                newDigits[(MAX_BITS - 1) - idigit] = (thisDigitPermut ^ digitsBase2[(MAX_BITS - 1) - idigit]);
             }
+
+            return ConvertBitset(newDigits);
         }
     private:
+        unsigned char depth;
         utk::PCG32 mt;
     };
-}
+};

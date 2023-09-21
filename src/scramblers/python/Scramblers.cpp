@@ -30,34 +30,11 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <utk/utils/SamplerArgumentParser.hpp>
-#include <utk/samplers/SamplerSobol.hpp>
+#include <pyutk/utils.hpp>
 
-int main(int argc, char** argv)
+void init_Scrambling(py::module& m);
+
+void init_pyutkSampler(py::module& m)
 {
-    CLI::App app { "Sobol sampler" };
-    auto* args = utk::add_arguments<uint32_t>(app);
-    
-    uint32_t depth = 0;
-    app.add_option("--depth", depth, "Owen depth (0: no randomness, 32: recommended).")->default_val(depth);
-
-    CLI11_PARSE(app, argc, argv);
-    
-    std::vector<utk::Pointset<uint32_t>> pts = args->GetPointsets();
-        
-    utk::SamplerSobol sobol(args->D, depth);
-    sobol.setRandomSeed(args->seed);
-
-    for (uint32_t i = 0; i < pts.size(); i++)
-    {
-        if(!sobol.generateSamples(pts[i], args->N))
-        {
-            std::cerr << "Sampler returned non-zero output" << std::endl; // No log here, must be visible whatsoever
-            return 1;
-        }
-    }
-    args->WritePointsets(pts);
-
-    delete args;
-    return 0;
+    init_Scrambling(m);
 }

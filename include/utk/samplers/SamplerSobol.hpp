@@ -97,7 +97,7 @@ namespace utk
 
             arg_pts.Resize(N, D);
             for (IntegerType i = 0; i < N; i++)
-            {
+            { 
                 arg_pts[i][0] = convertFullRadicalInverseBase2<T>(owen(RadicalInverseBase2(i), 0, owenDepth, seeds.data()));
                 for (uint32_t d = 1; d < D; d++)
                     arg_pts[i][d] = convertFullRadicalInverseBase2<T>(owen(sobol_binary(i, sobol_mk[d].data()), d, owenDepth, seeds.data()));

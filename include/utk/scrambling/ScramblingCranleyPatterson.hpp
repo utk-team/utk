@@ -39,10 +39,10 @@
 
 namespace utk
 {
-    class CranleyPattersonScrambling
+    class ScramblingCranleyPatterson
     {
     public:
-        CranleyPattersonScrambling(double md = 1.0, double ds = 1.0) :
+        ScramblingCranleyPatterson(double md = 1.0, double ds = 1.0) :
             domainSize(ds), maxDispacement(md)
         { }
 
@@ -67,7 +67,7 @@ namespace utk
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
             std::uniform_real_distribution<T> dist(-maxDispacement, maxDispacement);
             std::vector<T> shift(in.Ndim());
@@ -82,10 +82,11 @@ namespace utk
                     in[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
                 }
             }
+            return true;
         }
 
         template<typename T>
-        void Scramble(const Pointset<T>& in, Pointset<T>& out)
+        bool Scramble(const Pointset<T>& in, Pointset<T>& out)
         {
             std::uniform_real_distribution<T> dist(-maxDispacement, maxDispacement);
             std::vector<T> shift(in.Ndim());
@@ -102,6 +103,31 @@ namespace utk
                     out[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
                 }
             }
+            return true;
+        }
+
+        template<typename T>
+        bool Scramble(std::vector<Pointset<T>>& in)
+        {
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
+        }
+
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
         }
 
     private:

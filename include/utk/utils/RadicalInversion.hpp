@@ -198,10 +198,11 @@ namespace utk
     template<typename T = double, typename IntegerType = uint32_t>
     inline T convertFullRadicalInverseBase2(IntegerType x)
     {
-        // Just forward integers
+        // Reverse the integers (they are in the range
+        // [0, INT_MAX], this put them in the range [0, N])
         if constexpr (std::is_integral_v<T>)
         {
-            return static_cast<T>(x);
+            return static_cast<T>(RadicalInverseBase2(x));
         }
         else
         {
