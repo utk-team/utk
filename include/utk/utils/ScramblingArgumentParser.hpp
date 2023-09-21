@@ -36,7 +36,6 @@
 #include <CLI/Formatter.hpp>
 #include <CLI/Config.hpp>
 
-#include <utk/utils/Omp.hpp>
 #include <utk/utils/Log.hpp>
 #include <utk/utils/PointsetIO.hpp>
 
@@ -48,7 +47,7 @@
 
 namespace utk
 {
-    template<typename INType = OPENMP_DOUBLE_DEFAULT, typename OUTType = OPENMP_DOUBLE_DEFAULT>
+    template<typename INType = double, typename OUTType = double>
     struct ScramblingArgument
     {
         // Provide access to 'ouside class'
@@ -101,7 +100,7 @@ namespace utk
         }
     };
 
-    template<typename INType = std::uint32_t, typename OUTType = OPENMP_DOUBLE_DEFAULT>
+    template<typename INType = double, typename OUTType = double>
     ScramblingArgument<INType, OUTType>* add_arguments(CLI::App& app)
     {
         ScramblingArgument<INType, OUTType>* args = new ScramblingArgument<INType, OUTType>;

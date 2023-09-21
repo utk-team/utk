@@ -41,7 +41,7 @@ namespace utk
     {
     public:
         ScramblingMicroJittering(double ip = -1.0) : intensityParam(ip)
-        { }
+        { setRandomSeed(); }
 
         void setRandomSeed(uint64_t arg_seed) 
         { 
@@ -57,7 +57,7 @@ namespace utk
         T getIntensity(uint32_t hint_N, uint32_t hint_D) const
         {
             if (intensityParam < 0.0)
-                return std::pow(std::max(hint_N, (uint32_t)1), -(T)hint_D);
+                return std::pow(std::max(hint_N, (uint32_t)1), -(T)hint_D) / 2;
             return intensityParam;
         }
 
@@ -74,7 +74,7 @@ namespace utk
                     in[i][d] = std::clamp(in[i][d] + dist(mt), (T)0.0, (T)1.0);
                 }
             }
-            retunr true;
+            return true;
         }
 
         template<typename T, typename D>

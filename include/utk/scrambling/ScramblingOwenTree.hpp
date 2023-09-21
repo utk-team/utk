@@ -139,7 +139,7 @@ namespace utk
     
         ScramblingOwenTree(uint32_t dp = MAX_BITS) : 
             depth(dp)
-        { }
+        { setRandomSeed(); }
 
         void setBitPattern(uint32_t d, const std::string& pattern, bool value = true)
         {

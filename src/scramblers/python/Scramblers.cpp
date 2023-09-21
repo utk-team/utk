@@ -34,7 +34,7 @@
 
 void init_Scrambling(py::module& m);
 
-void init_pyutkSampler(py::module& m)
+void init_pyutkScramblers(py::module& m)
 {
     init_Scrambling(m);
 }

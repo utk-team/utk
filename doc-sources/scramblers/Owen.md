@@ -5,7 +5,7 @@
 Perform owen scrambling on a given Pointset.
 
 * By it's very nature, it only operates on 'integer pointsets', meaning that
-points are not in [0, 1], but integers [[0, N]]. There are no check on the type
+points are not in [0, 1], but integers [[0, INT_MAX]]. There are no check on the type
 in the executable version and double are cast to integers.
 * This implementation does not store the full permutation tree. It is recomputed
 by seeding a PRNG. Hence, it is recommended to use a depth of 32
@@ -14,7 +14,7 @@ by seeding a PRNG. Hence, it is recommended to use a depth of 32
 
 ```
 src/scramblers/Owen.cpp  
-include/utk/scrambling/SamplerAAPatterns.hpp
+include/utk/scrambling/ScramblingOwen.hpp
 ```
 
 ## Usage
@@ -62,6 +62,8 @@ int main()
     if (sobol.generateSamples(pts, 1024 /* Number of points */))
     {
         utk::ScramblingOwen owen(32 /* depth */);
+        owen.setRandomSeed();
+        
         // In place:
         owen.Scramble(pts);
         // Results in another pointset. If double, it is converted appropriatly
@@ -77,10 +79,10 @@ int main()
 
 ``` python
 import pyutk
-
-scrambler = pyutk.ScramblingOwen()
-aa.setVectorFile("green")
-samples = aa.sample(1024) # This is a numpy array !
+samples = pyutk.Sobol(d=2, depth=0).isample(1024) # isample returns integers
+sc = pyutk.Owen(
+  depth = 32                      # Recommended. 0: means no scrambling, log2(N) is common, but 32 is even better !
+).scramble(samples)               # returns a double array
 ```  
 
 </div>

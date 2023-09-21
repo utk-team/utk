@@ -47,7 +47,7 @@ namespace utk
     
         ScramblingOwen(unsigned char dp = MAX_BITS) : 
             depth(dp)
-        { }
+        { setRandomSeed(); }
 
         void setOwenDepth(unsigned char dp)
         {
@@ -70,6 +70,8 @@ namespace utk
         template<typename T>
         bool Scramble(Pointset<T>& in)
         {
+            static_assert(std::is_same_v<T, IntegerType>);
+
             std::vector<uint64_t> seeds(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
                 seeds[d] = mt();

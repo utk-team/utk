@@ -41,7 +41,7 @@ ENDFOREACH(FILE)
 IF (UTK_PYTHON)
     SET(pyutk_scramblers_bindings 
         "python/BaseScrambling.cpp"
-        "python/Scrambling.cpp"
+        "python/Scramblers.cpp"
     )
     
     add_library(pyutkScramblers ${pyutk_scramblers} ${pyutk_scramblers_bindings})

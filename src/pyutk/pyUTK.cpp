@@ -35,6 +35,7 @@
 
 void init_pyutkSampler(py::module& m);
 void init_pyutkMetrics(py::module& m);
+void init_pyutkScramblers(py::module& m);
 
 PYBIND11_MODULE(pyutk, m) 
 {
@@ -63,4 +64,5 @@ PYBIND11_MODULE(pyutk, m)
 
     init_pyutkSampler(m);
     init_pyutkMetrics(m);
+    init_pyutkScramblers(m);
 };

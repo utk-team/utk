@@ -34,16 +34,17 @@
 #include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/FastPRNG.hpp>
+#include <utk/utils/RadicalInversion.hpp>
 #include <random>
 
 namespace utk
 {
     template <typename IntegerType = uint32_t>
-    class DigitalShift
+    class ScramblingDigitalShift
     {
     public:
-        DigitalShift()
-        { }
+        ScramblingDigitalShift()
+        { setRandomSeed(); }
 
         void setRandomSeed(uint64_t arg_seed) 
         { 
@@ -59,6 +60,7 @@ namespace utk
         template<typename T>
         bool Scramble(Pointset<T>& in)
         {
+            static_assert(std::is_same_v<T, IntegerType>());
             std::vector<IntegerType> shifts(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
                 shifts[d] = mt() % std::numeric_limits<IntegerType>::max();
@@ -67,7 +69,7 @@ namespace utk
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    in[i][d] = in[i][d] ^ shifts[d];
+                    in[i][d] = RadicalInverseBase2(in[i][d]) ^ shifts[d];
                 }
             }
             return true;
@@ -86,7 +88,7 @@ namespace utk
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    out[i][d] = convert<D>(in[i][d] ^ shifts[d]);
+                    out[i][d] = convert<D>(RadicalInverseBase2(in[i][d]) ^ shifts[d]);
                 }
             }
             return true;

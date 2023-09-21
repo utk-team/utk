@@ -141,8 +141,7 @@ int main()
 import pyutk
 
 ldbn = pyutk.LDBN()
-ldbn.setTarget("BNOT")
-samples = kron.sample(1024)  # This is a numpy array !
+samples = ldbn.sample(1024)  # This is a numpy array !
 ```  
 
 </div>

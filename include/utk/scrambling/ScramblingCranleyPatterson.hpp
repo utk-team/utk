@@ -44,7 +44,7 @@ namespace utk
     public:
         ScramblingCranleyPatterson(double md = 1.0, double ds = 1.0) :
             domainSize(ds), maxDispacement(md)
-        { }
+        { setRandomSeed(); }
 
         void setMaxDispacement(double mv = 1.0)
         {
@@ -79,7 +79,7 @@ namespace utk
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    in[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
+                    in[i][d] = std::abs(std::fmod(in[i][d] + shift[d], domainSize));
                 }
             }
             return true;
@@ -100,7 +100,7 @@ namespace utk
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    out[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
+                    out[i][d] = std::abs(std::fmod(in[i][d] + shift[d], domainSize));
                 }
             }
             return true;

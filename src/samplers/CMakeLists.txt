@@ -132,7 +132,6 @@ IF (UTK_PYTHON)
         "python/Samplers.cpp"
         "python/BaseSamplers.cpp"
         "python/ExternalSamplers.cpp"
-        "python/Scrambling.cpp"
     )
     
     add_library(pyutkSamplers ${pyutk_samplers} ${pyutk_samplers_bindings})
