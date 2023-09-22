@@ -36,14 +36,14 @@
 int main(int argc, char** argv)
 {
     CLI::App app { "Sobol sampler" };
-    auto* args = utk::add_arguments<uint32_t>(app);
+    auto* args = utk::add_arguments(app);
     
     uint32_t depth = 0;
     app.add_option("--depth", depth, "Owen depth (0: no randomness, 32: recommended).")->default_val(depth);
 
     CLI11_PARSE(app, argc, argv);
     
-    std::vector<utk::Pointset<uint32_t>> pts = args->GetPointsets();
+    std::vector<utk::Pointset<double>> pts = args->GetPointsets();
         
     utk::SamplerSobol sobol(args->D, depth);
     sobol.setRandomSeed(args->seed);
