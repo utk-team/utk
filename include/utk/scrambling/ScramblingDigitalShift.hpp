@@ -34,79 +34,114 @@
 #include <utk/utils/FastPRNG.hpp>
 #include <utk/utils/Pointset.hpp>
 #include <utk/utils/FastPRNG.hpp>
+#include <utk/utils/RadicalInversion.hpp>
 #include <random>
-#include <cmath>
 
 namespace utk
 {
-    class CranleyPattersonScrambling
+    template <typename IntegerType = uint32_t>
+    class ScramblingDigitalShift
     {
     public:
-        CranleyPattersonScrambling(double md = 1.0, double ds = 1.0) :
-            domainSize(ds), maxDispacement(md)
-        { }
+        ScramblingDigitalShift()
+        { setRandomSeed(); }
 
-        void setMaxDispacement(double mv = 1.0)
-        {
-            maxDispacement = mv;
+        void setRandomSeed(uint64_t arg_seed) 
+        { 
+            if (arg_seed == 0) setRandomSeed();
+            else mt.seed(arg_seed);
         }
 
-        void setDomainSize(double ds = 1.0)
-        {
-            domainSize = ds;
-        }
-
-        void setRandomSeed(uint64_t arg_seed)
-        {
-            mt.seed(arg_seed);
-        }
-
-        void setRandomSeed()
-        {
+        void setRandomSeed() 
+        { 
             setRandomSeed(std::random_device{}());
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
-            std::uniform_real_distribution<T> dist(-maxDispacement, maxDispacement);
-            std::vector<T> shift(in.Ndim());
-
+            static_assert(std::is_same_v<T, IntegerType>());
+            std::vector<IntegerType> shifts(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
-                shift[d] = dist(mt);
-
+                shifts[d] = mt() % std::numeric_limits<IntegerType>::max();
+            
             for (uint32_t i = 0; i < in.Npts(); i++)
             {
                 for (uint32_t d = 0; d < in.Ndim(); d++)
                 {
-                    in[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
+                    in[i][d] = RadicalInverseBase2(in[i][d]) ^ shifts[d];
                 }
             }
+            return true;
+        }
+
+        template<typename T, typename D>
+        bool Scramble(const Pointset<T>& in, Pointset<D>& out)
+        {
+            out.Resize(in.Npts(), in.Ndim());
+
+            std::vector<IntegerType> shifts(in.Ndim());
+            for (uint32_t d = 0; d < in.Ndim(); d++)
+                shifts[d] = mt() % std::numeric_limits<IntegerType>::max();
+            
+            for (uint32_t i = 0; i < in.Npts(); i++)
+            {
+                for (uint32_t d = 0; d < in.Ndim(); d++)
+                {
+                    out[i][d] = convert<D>(RadicalInverseBase2(in[i][d]) ^ shifts[d]);
+                }
+            }
+            return true;
         }
 
         template<typename T>
-        void Scramble(const Pointset<T>& in, Pointset<T>& out)
+        bool Scramble(std::vector<Pointset<T>>& in)
         {
-            std::uniform_real_distribution<T> dist(-maxDispacement, maxDispacement);
-            std::vector<T> shift(in.Ndim());
-
-            out.Resize(in.Npts(), in.Ndim());
-
-            for (uint32_t d = 0; d < in.Ndim(); d++)
-                shift[d] = dist(mt);
-
-            for (uint32_t i = 0; i < in.Npts(); i++)
-            {
-                for (uint32_t d = 0; d < in.Ndim(); d++)
-                {
-                    out[i][d] = std::fmod(in[i][d] + shift[d], domainSize);
-                }
-            }
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
         }
 
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
+        }
+        
     private:
-        double domainSize;
-        double maxDispacement;
+        template<typename T>
+        static T convert(IntegerType x)
+        {
+            if constexpr (std::is_integral_v<T>)
+            {
+                return static_cast<T>(x);
+            }
+            else
+            {
+                T r = 0.0;
+                T b = 0.5;
+                while (x)
+                {
+                    r += (x & 1) * b;
+
+                    b *= 0.5;
+                    x >>= 1;
+                }
+
+                return r;
+            }
+        }
+    private:
         utk::PCG32 mt;
     };
 }

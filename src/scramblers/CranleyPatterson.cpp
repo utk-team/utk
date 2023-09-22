@@ -30,39 +30,29 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <utk/utils/Log.hpp>
-#include <pyutk/utils.hpp>
+#include <utk/utils/ScramblingArgumentParser.hpp>
+#include <utk/scrambling/ScramblingCranleyPatterson.hpp>
 
-void init_pyutkSampler(py::module& m);
-void init_pyutkMetrics(py::module& m);
-void init_pyutkScramblers(py::module& m);
-
-PYBIND11_MODULE(pyutk, m) 
+int main(int argc, char** argv)
 {
-    m.doc() = "UTK python binding";
+    CLI::App app { "CranleyPatterson scrambler" };
+    auto* args = utk::add_arguments<double, double>(app);
+    CLI11_PARSE(app, argc, argv);
+    
+    std::vector<utk::Pointset<double>> pts = args->GetAllPointsets();
+    std::vector<utk::Pointset<double>> out;
+    
+    utk::ScramblingCranleyPatterson scrambler;
+    scrambler.setRandomSeed(args->seed);
+    
+    if (!scrambler.Scramble(pts, out))
+    {
+        std::cerr << "Error : scramble failed" << std::endl; // No log here, must be visible whatsoever
+        return 1;
+    }
 
-    m.def("disableLogs", [](){
-        UTK_LOG_DISABLE();
-    });
-    m.def("enableLogs", [](){
-        UTK_LOG_ENABLE();
-    });
-    m.def("hasLogs", [](){
-        #ifdef UTK_LOG
-            return true;
-        #else 
-            return false;
-        #endif
-    });
-    m.def("setLogFile", [](const std::string& file){
-        UTK_LOG_FILE(file);
-    });
+    args->WritePointsets(out);
 
-    m.def("setLogConsole", [](){
-        UTK_LOG_CONSOLE();
-    });
-
-    init_pyutkSampler(m);
-    init_pyutkMetrics(m);
-    init_pyutkScramblers(m);
-};
+    delete args;
+    return 0;
+}

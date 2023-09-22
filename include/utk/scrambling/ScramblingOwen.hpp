@@ -47,7 +47,7 @@ namespace utk
     
         ScramblingOwen(unsigned char dp = MAX_BITS) : 
             depth(dp)
-        { }
+        { setRandomSeed(); }
 
         void setOwenDepth(unsigned char dp)
         {
@@ -68,8 +68,10 @@ namespace utk
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
+            static_assert(std::is_same_v<T, IntegerType>);
+
             std::vector<uint64_t> seeds(in.Ndim());
             for (uint32_t d = 0; d < in.Ndim(); d++)
                 seeds[d] = mt();
@@ -81,10 +83,11 @@ namespace utk
                     in[i][d] = owen(in[i][d], d, depth, seeds.data());
                 }
             }
+            return true;
         }
 
         template<typename T, typename D>
-        void Scramble(const Pointset<T>& in, Pointset<D>& out)
+        bool Scramble(const Pointset<T>& in, Pointset<D>& out)
         {
             out.Resize(in.Npts(), in.Ndim());
 
@@ -99,6 +102,31 @@ namespace utk
                     out[i][d] = convertFullRadicalInverseBase2<D>(owen(in[i][d], d, depth, seeds.data()));
                 }
             }
+            return true;
+        }
+
+        template<typename T>
+        bool Scramble(std::vector<Pointset<T>>& in)
+        {
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
+        }
+
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
         }
         
     private:

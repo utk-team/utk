@@ -37,11 +37,11 @@
 
 namespace utk
 {
-    class MicroJittering
+    class ScramblingMicroJittering
     {
     public:
-        MicroJittering(double ip = -1.0) : intensityParam(ip)
-        { }
+        ScramblingMicroJittering(double ip = -1.0) : intensityParam(ip)
+        { setRandomSeed(); }
 
         void setRandomSeed(uint64_t arg_seed) 
         { 
@@ -57,12 +57,12 @@ namespace utk
         T getIntensity(uint32_t hint_N, uint32_t hint_D) const
         {
             if (intensityParam < 0.0)
-                return std::pow(std::max(hint_N, (uint32_t)1), -(T)hint_D);
+                return std::pow(std::max(hint_N, (uint32_t)1), -(T)hint_D) / 2;
             return intensityParam;
         }
 
         template<typename T>
-        void Scramble(Pointset<T>& in)
+        bool Scramble(Pointset<T>& in)
         {
             const T intensiy = getIntensity<T>(in.Npts(), in.Ndim());
             std::uniform_real_distribution<T> dist(-intensiy, intensiy);
@@ -74,10 +74,11 @@ namespace utk
                     in[i][d] = std::clamp(in[i][d] + dist(mt), (T)0.0, (T)1.0);
                 }
             }
+            return true;
         }
 
         template<typename T, typename D>
-        void Scramble(const Pointset<T>& in, Pointset<D>& out)
+        bool Scramble(const Pointset<T>& in, Pointset<D>& out)
         {
             out.Resize(in.Npts(), in.Ndim());
 
@@ -91,7 +92,31 @@ namespace utk
                     out[i][d] = std::clamp(in[i][d] + dist(mt), (T)0.0, (T)1.0);
                 }
             }
+            return true;
+        }
 
+        template<typename T>
+        bool Scramble(std::vector<Pointset<T>>& in)
+        {
+            bool result = true;
+            for (auto& i : in)
+                result = result && Scramble(i);
+            return result;
+        }
+
+
+        template<typename T, typename D>
+        bool Scramble(const std::vector<Pointset<T>>& in, std::vector<Pointset<D>>& out)
+        {
+            bool result = true;
+            out.resize(in.size());
+
+            for (std::size_t i = 0; i < in.size(); i++)
+            {
+                out[i].Resize(in[i].Npts(), in[i].Ndim());
+                result = result && Scramble(in[i], out[i]);
+            }
+            return result;
         }
     private:
         double intensityParam;

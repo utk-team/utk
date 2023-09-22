@@ -198,7 +198,6 @@ namespace utk
     template<typename T = double, typename IntegerType = uint32_t>
     inline T convertFullRadicalInverseBase2(IntegerType x)
     {
-        // Just forward integers
         if constexpr (std::is_integral_v<T>)
         {
             return static_cast<T>(x);
@@ -220,18 +219,6 @@ namespace utk
                 static constexpr T factor = std::pow(1.0 / 2.0, 8 * sizeof(IntegerType));
                 return x * factor;
             }
-            // Compute base 2 thing
-            // T r = 0.0;
-            // T b = static_cast<T>(0.5);
-            // while (x)
-            // {
-            //     r += (x & 1) * b;
-            // 
-            //     b *= static_cast<T>(0.5);
-            //     x >>= 1;
-            // }
-            // 
-            // return r;
         }
     }
 };

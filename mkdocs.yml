@@ -86,6 +86,12 @@ nav:
     - Stratified: 'samplers/Stratified.md'
     - VanDerCorput: 'samplers/VanDerCorput.md'
     - Whitenoise: 'samplers/Whitenoise.md'
+  - Scramblers:
+    - CranleyPatterson: 'scramblers/CranleyPatterson.md'
+    - MicroJittering: 'scramblers/MicroJittering.md'
+    - Owen: 'scramblers/Owen.md'
+    - OwenTree: 'scramblers/OwenTree.md'
+    - DigitalSHift: 'scramblers/DigitalShift.md'
   - Metrics:
     - BoundaryStars: 'metrics/BoundaryStar.md'
     - L2: 'metrics/L2.md'

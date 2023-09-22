@@ -36,6 +36,8 @@
 #include <cstdint>
 #include <limits>
 
+#define IF_OPENMP(x) x
+
 #ifdef _WIN32
     // As windows definitely won't update OpenMP...
     using OPENMP_UINT = long int;         // Does not support unsigned int indexing...
@@ -73,7 +75,7 @@
     T omp_parallel_max(const T* data, uint32_t size)
     {
         T maxval = std::numeric_limits<T>::max();
-        
+
         #pragma omp parallel for reduction(max: maxval)
         for (OPENMP_UINT i = 0; i < size; i++)
             maxval = std::max(maxval, data[i]);

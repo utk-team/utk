@@ -208,20 +208,20 @@ namespace utk
                         return;
                     }
 
+                    const uint32_t oldC = C;
                     // At least n * d of memory
                     C = std::max(hint_Capacity, n * d); 
-
+                    N = n;
+                    D = d;
+                    
                     // Obtain copy of ptr first to make sure it is not deleted
                     // by resetting data
                     std::shared_ptr<T[]> oldData = data;
                     data = std::shared_ptr<T[]>(new T[C]);
                 
                     if (oldData.get() != nullptr)
-                        std::memcpy(data.get(), oldData.get(), N * D * sizeof(T));
+                        std::memcpy(data.get(), oldData.get(), std::min(C, oldC) * sizeof(T));
 
-                    // Change size here as memcpy needs previous sizes
-                    N = n;
-                    D = d;
                 }
             }
         }
