@@ -91,7 +91,7 @@ nav:
     - MicroJittering: 'scramblers/MicroJittering.md'
     - Owen: 'scramblers/Owen.md'
     - OwenTree: 'scramblers/OwenTree.md'
-    - DigitalSHift: 'scramblers/DigitalShift.md'
+    - DigitalShift: 'scramblers/DigitalShift.md'
   - Metrics:
     - BoundaryStars: 'metrics/BoundaryStar.md'
     - L2: 'metrics/L2.md'
