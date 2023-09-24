@@ -2,7 +2,7 @@
 
 ## Descrition
 
-Apply small modular shift vector to all points. It perfors : $y_i = (x_i + v) mod 1.0$.
+Apply small modular shift vector to all points. It perfors : $y_i = (x_i + v) mod 1.0$, for some unfiorm random vector $v$
 
 * Shifts vector are uniformly selected in [-1, 1]. Hence, shift vector coordinates are uniform, 
   but the direction vector are not uniform in the sphere. 

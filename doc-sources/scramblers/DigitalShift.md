@@ -2,7 +2,7 @@
 
 ## Description 
 
-Perform DigitalShift scrambling on a given Pointset.
+Perform DigitalShift scrambling on a given Pointset. This is done by XORing the sample components by a random binary word.
 
 * By it's very nature, it only operates on 'integer pointsets', meaning that
 points are not in [0, 1], but integers [[0, INT_MAX]]. There are no check on 

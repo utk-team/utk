@@ -2,7 +2,7 @@
 
 ## Description 
 
-Perform owen scrambling on a given Pointset.
+Perform Owen's scrambling on a given Pointset.
 
 * By it's very nature, it only operates on 'integer pointsets', meaning that
 points are not in [0, 1], but integers [[0, INT_MAX]]. There are no check on the type

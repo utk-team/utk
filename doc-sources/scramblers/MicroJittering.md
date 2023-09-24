@@ -3,9 +3,9 @@
 ## Descrition
 
 Apply small modular shift vector to all points. Unlike Cranley Patterson, points are clamped if 
-not in their cells. Furthermore, the default displacement is N ^ (- 1 / D). 
+not in their regular strata (width $N ^ (- 1 / D)$ by default). 
 
-* Shifts vector are uniformly selected in [-N^(-1/D) / 2, N^(-1/D) / 2]. Hence, shift vector coordinates are uniform, 
+* Shifts vector are uniformly selected in $[-N^(-1/D) / 2, N^(-1/D) / 2]$. Hence, shift vector coordinates are uniform, 
   but the direction vector are not uniform in the sphere. 
 * The methods only operates on points in [0, 1].
 
