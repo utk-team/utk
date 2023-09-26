@@ -1,6 +1,5 @@
 /* Style the tab buttons */
 .tablink {
-    float: left;
     border: none;
     outline: none;
     cursor: pointer;
