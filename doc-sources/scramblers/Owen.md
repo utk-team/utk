@@ -1,14 +1,15 @@
-# Owen Scrambling [[Owen1996]](https://link.springer.com/chapter/10.1007/978-1-4612-2552-2_19)
+# Owen's Scrambling [[Owen1996]](https://link.springer.com/chapter/10.1007/978-1-4612-2552-2_19)
 
 ## Description 
 
-Perform owen scrambling on a given Pointset.
+Perform Owen's scrambling on a given Pointset.
 
 * By it's very nature, it only operates on 'integer pointsets', meaning that
 points are not in [0, 1], but integers [[0, INT_MAX]]. There are no check on the type
-in the executable version and double are cast to integers.
+in the executable version and double are cast to integers (and will likely be converted to 0).
 * This implementation does not store the full permutation tree. It is recomputed
-by seeding a PRNG. Hence, it is recommended to use a depth of 32
+by seeding a PRNG. Hence, it is recommended to use a depth of 32 which do not cause noticable
+memory allocation. 
 
 ## Files
 
