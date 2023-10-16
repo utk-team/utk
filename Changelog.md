@@ -1,5 +1,10 @@
 # CHANGELOG.md
 
+## Master
+
+- Adding a new option to Sobol' (c++) to load an alternative to [JK03] init table (David Coeurjolly, 2023-Oct).
+
+
 ## 2.0.0 
 
 - 2023-Jul 2.0 released : 

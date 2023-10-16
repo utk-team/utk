@@ -5,7 +5,7 @@
 
 The Sobol sequence. Samples are generated from a binary product between the binary representation of their index and a matrix, generated from primitive polynomials. By default, uses Juo & Kuo tables [[JK03]](http://web.maths.unsw.edu.au/~fkuo/sobol/).
 
-The sequence is scrambled with Owen permutation [[Owe95]](https://statistics.stanford.edu/sites/default/files/EFS%20NSF%20464.pdf).
+The sequence can be scrambled with Owen's permutation [[Owe95]](https://statistics.stanford.edu/sites/default/files/EFS%20NSF%20464.pdf).
 
 For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
 
@@ -39,6 +39,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --depth UINT [0]            Owen depth (0: no randomness, 32: recommended).
   --silent                    Silence UTK logs
+  --JoeAndKuo-filename TEXT   Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.
 ```
 
 </div>
