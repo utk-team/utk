@@ -53,7 +53,7 @@
 
 namespace utk
 {
-    using ParameterType = std::variant<int, double, std::string>;
+    using ParameterType = std::variant<int, uint32_t, double, std::string>;
     using GenerationParameter = std::map<std::string, ParameterType>;
 
     class Integrand

@@ -1,12 +1,15 @@
 SET(Metrics
-    
+    PlotIntegral   # Left for debug
+
     GaussianIntegrationTest
     HeavisideIntegrationTest
     BlinnPhongIntegrationTest
-
+    ClippedGaussianMixtureIntegrationTest
+    
     BuildGaussianIntegrandDatabase
     BuildHeavisideIntegrandDatabase
     BuildBlinnPhongIntegrandDatabase
+    BuildClippedGaussianMixtureIntegrandDatabase
 )
 
 
