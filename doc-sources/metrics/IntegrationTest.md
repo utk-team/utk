@@ -48,7 +48,7 @@ When `hasCloseForm() == false`, the ground truth will be computed using QMC samp
 * Gaussian: Gaussian density on the unit cube. The position is random in the hypercube, and the orientation is sampled uniformly in the space of rotations. 
 * BlinnPhong: Rendering-based test. The scene is a simple rectangle that reflects light with the BlinnPhong model. The light source is randomly sampled while the rectangle isn't. 
 * ClippedGaussianMixture : Multiple boxes are sampled in the unit square. A gaussian density is put inside each of the boxes. The integrand is 0 outside the boxes. If a point belong to multiple boxes, the sum of each corresponding gaussian is performed. 
-
+  
 ## Files
 
 ```
