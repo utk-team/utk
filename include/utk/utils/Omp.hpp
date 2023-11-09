@@ -47,7 +47,7 @@
     template<typename T>
     T omp_parallel_max(const T* data, uint32_t size)
     {
-        T max_val = std::numeric_limits<T>::max();
+        T max_val = std::numeric_limits<T>::min();
 
         #pragma omp parallel
         {
@@ -74,7 +74,7 @@
     template<typename T>
     T omp_parallel_max(const T* data, uint32_t size)
     {
-        T maxval = std::numeric_limits<T>::max();
+        T maxval = std::numeric_limits<T>::min();
 
         #pragma omp parallel for reduction(max: maxval)
         for (OPENMP_UINT i = 0; i < size; i++)
