@@ -39,12 +39,12 @@ int main(int argc, char** argv)
     auto* margs = utk::add_arguments(app);    
     uint32_t res = 0;
     bool cancelDc = false; 
-    double scale = 0.5;
+    double scale = 1.0;
     uint32_t bins = 0;
 
     app.add_option("-r,--res", res, "Spectrum resolution (0 means automatic)")->default_val(res);
     app.add_flag("--canceldc", cancelDc, "When set, cancel the DC peak")->default_val(cancelDc);
-    app.add_option("-s,--scale", scale, "Scale for distance to origin")->default_val(0.5);
+    app.add_option("-s,--scale", scale, "Scale for distance to origin")->default_val(1.0);
     app.add_option("-b,--bins", bins, "Number of bins (0 means automatic)")->default_val(bins);
 
     CLI11_PARSE(app, argc, argv);
@@ -55,9 +55,11 @@ int main(int argc, char** argv)
         
     auto rslts = utk::RadialSpectrum(bins, scale, res, cancelDc).compute(ptss);
 
+    auto N = rslts.first.size();
+
     auto& ostream = margs->GetOutputStream();
-    for (auto rslt : rslts)
-        ostream << rslt << '\n';
+    for (decltype(N) i = 0; i < N; i++)
+        ostream << rslts.first[i] << " " << rslts.second[i] << '\n';
 
     delete margs;
 }

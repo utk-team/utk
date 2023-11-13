@@ -95,6 +95,7 @@ void init_Metrics(py::module& m)
         .def("setCancelDC", &Spectrum::setCancelDC)
         .def("compute", GetComputeFunction<Spectrum, double, std::vector<double>, std::vector<double>>());
 
+    using RadialOutput = std::pair<std::vector<double>, std::vector<double>>;
     py::class_<RadialSpectrum>(m, "RadialSpectrum")
         .def(py::init<uint32_t, double, uint32_t, bool>(), 
             py::arg("nbins") = 0, py::arg("scale") = 0.5, py::arg("resolution") = 0, py::arg("cancelDC") = true
@@ -103,7 +104,7 @@ void init_Metrics(py::module& m)
         .def("setScale", &RadialSpectrum::setScale)
         .def("setCancelDC", &RadialSpectrum::setCancelDC)
         .def("setBins", &RadialSpectrum::setBins)
-        .def("compute", GetComputeFunction<RadialSpectrum, double, std::vector<double>, std::vector<double>>());
+        .def("compute", GetComputeFunction<RadialSpectrum, double, RadialOutput, RadialOutput>());
     
     py::class_<PCF>(m, "PCF")
         .def(py::init<bool, double, double, uint32_t, double>(), 
