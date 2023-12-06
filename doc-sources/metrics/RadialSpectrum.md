@@ -69,7 +69,7 @@ int main()
     );
     if (wn.generateSamples(pts, 1024 /* Number of points */))
     {
-        auto rslt = rad.compute(pts);
+        auto rslt = rad.compute(pts); // Pair of vectors (frequencies, values)
     }
 }
 ```  
@@ -88,7 +88,7 @@ rad = pyutk.RadialSpectrum(
   101, # Resolution for underlying fourier spectrum, only odd number. If even will use res - 1
   True # Cancel DC
 )
-rad = rad.compute(np.random.uniform(0, 1, (128, 2)))
+rad = rad.compute(np.random.uniform(0, 1, (128, 2))) # Tuple of arrays (frequencies, values)
 ```  
 
 </div>

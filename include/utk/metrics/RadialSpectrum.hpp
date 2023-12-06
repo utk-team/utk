@@ -41,13 +41,13 @@ namespace utk
     class RadialSpectrum
     {
     public:
-        RadialSpectrum(uint32_t nb = 0, double s = 0.5, uint32_t w = 0, bool cd = true) : 
-            scale(s), paramNBins(nb), spectrum(w, cd) 
+        RadialSpectrum(uint32_t nb = 0, double s = 1.0, uint32_t w = 0, bool cd = true) : 
+            scale(s / 2.0), paramNBins(nb), spectrum(w, cd) 
         { }
 
         void setResolution(uint32_t nw) { spectrum.setResolution(nw); }
         void setCancelDC(bool cdc)      { spectrum.setCancelDC(cdc); }
-        void setScale(double s)         { scale = s; }
+        void setScale(double s)         { scale = s / 2.0; }
         void setBins(uint32_t b)        { paramNBins = b; }
 
         uint32_t getNBBins(uint32_t hintN = 0) const
@@ -62,7 +62,7 @@ namespace utk
         }
 
         template<typename T>
-        std::vector<T> fromSpectrum(const std::vector<T>& spectra, uint32_t N, uint32_t D)
+        std::pair<std::vector<T>, std::vector<T>> fromSpectrum(const std::vector<T>& spectra, uint32_t N, uint32_t D)
         {
             const uint32_t width  = spectrum.getWidth(N);
             const uint32_t Origin = width >> 1;
@@ -91,25 +91,32 @@ namespace utk
                 }
             }
 
-            // Normalize
-            for (uint32_t i = 0; i < nbins; i++)
+            std::vector<T> freqs;   freqs.reserve(nbins);
+            std::vector<T> values; values.reserve(nbins);
+
+            T gridSize = std::pow(N, -1. / D);
+            for (unsigned int i = 0; i < nbins; i++)
             {
-                if (hits[i]) rp[i] /= hits[i];
+                if (hits[i])
+                {
+                    freqs.push_back(i * gridSize / scale); 
+                    values.push_back(rp[i] / hits[i]);
+                }
             }
 
-            return rp;
+            return std::make_pair(freqs, values);
         }
 
         template<typename T>
-        std::vector<T> compute(const Pointset<T>& pts)
+        std::pair<std::vector<T>, std::vector<T>> compute(const Pointset<T>& pts)
         {
             return fromSpectrum(spectrum.compute(pts), pts.Npts(), pts.Ndim());
         }
 
         template<typename T>
-        std::vector<T> compute(const std::vector<Pointset<T>>& ptss)
+        std::pair<std::vector<T>, std::vector<T>> compute(const std::vector<Pointset<T>>& ptss)
         {
-            if (ptss.size() == 0) return std::vector<T>();
+            if (ptss.size() == 0) return std::pair<std::vector<T>, std::vector<T>>();
             
             const uint32_t N = ptss[0].Npts();
             const uint32_t D = ptss[0].Ndim();

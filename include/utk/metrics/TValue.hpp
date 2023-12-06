@@ -112,6 +112,7 @@ namespace utk
 
                 std::vector<std::uint32_t> parts(pts.Ndim(), 0);
                 std::vector<std::uint32_t> coord(pts.Ndim(), 0);
+                std::vector<std::uint32_t> powers(pts.Ndim(), 0);
                 std::vector<T> invParts(pts.Ndim(), 0);
                 
                 // Good if partition have the correct number of points
@@ -123,7 +124,8 @@ namespace utk
                     std::uint32_t box_count = 1.;
                     for (std::uint32_t i = 0; i < pts.Ndim(); i++)
                     {
-                        std::uint32_t bpower = std::pow(basis, parts[i]);
+                        const std::uint32_t bpower = std::pow(basis, parts[i]);
+                        powers[i] = bpower;
                         box_count *= bpower;
                         
                         if constexpr (std::is_integral_v<T>) // Integer dyadic interval base^(m - q_i)
@@ -136,7 +138,7 @@ namespace utk
                     for (std::uint32_t k = 0; k < box_count; k++)
                     {
                         // Get b-adic intervall coordinates
-                        GetCoords(k, parts, coord);
+                        GetCoords(k, powers, coord);
                         
                         // Count the number of point inside the box 
                         std::uint32_t count = 0;

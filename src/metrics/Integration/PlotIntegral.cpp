@@ -30,56 +30,45 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#pragma once
+#include <utk/metrics/IntegrationTest.hpp>
+#include <utk/metrics/Integrands/ClippedGaussianMixture.hpp>
 
-#include <algorithm>
-#include <cstdint>
-#include <limits>
+#include <utk/utils/MetricsArgumentParser.hpp>
 
-#define IF_OPENMP(x) x
+int main(int argc, char** argv)
+{
+    // This is a developpent file, it is not meant to be part of main API ! 
+    // It is left as a tool to plot UTK integrands.
+    CLI::App app { "Integrand grid evaluator" };
 
-#ifdef _WIN32
-    // As windows definitely won't update OpenMP...
-    using OPENMP_UINT = long int;         // Does not support unsigned int indexing...
-    using OPENMP_DOUBLE_DEFAULT = double; // Does not support long double reduction...
-
-    // Does not support max neither...
-    template<typename T>
-    T omp_parallel_max(const T* data, uint32_t size)
+    for (unsigned int i = 0; i < 16; i++)
     {
-        T max_val = std::numeric_limits<T>::min();
+        utk::ClippedGaussianMixture integrand(2);
+        integrand.GenerateRandom({
+            {"smin" , utk::ParameterType(0.01)},
+            {"smax" , utk::ParameterType(0.05)},
+            {"nbmin", utk::ParameterType((uint32_t)10)},
+            {"nbmax", utk::ParameterType((uint32_t)40)},
+        }, std::random_device{}());
 
-        #pragma omp parallel
+        unsigned int n = 100;
+
+        std::vector<double> values(n * n, 0.);
+
+        double nstep = 1. / static_cast<double>(n);
+        for (unsigned int i = 0; i < n; i++)
         {
-            T max_private = max_val;
-
-            #pragma omp for nowait
-            for (OPENMP_UINT i = 0; i < size; i++)
+            for (unsigned int j = 0; j < n; j++)
             {
-                max_private = std::max(max_private, data[i]);
-            }
-
-            #pragma omp critical 
-            {
-                max_val = std::max(max_val, max_private);
+                double arr[2] = {i * nstep, j * nstep};
+                values[j + i * n] = integrand.eval(arr);
             }
         }
 
-        return max_val;
+        std::ofstream stream("values_" + std::to_string(i) + ".dat");
+        for (unsigned int k = 0; k < values.size(); k++)
+            stream << values[k] << "\n";
     }
-#else
-    using OPENMP_UINT = uint32_t;
-    using OPENMP_DOUBLE_DEFAULT = long double;
 
-    template<typename T>
-    T omp_parallel_max(const T* data, uint32_t size)
-    {
-        T maxval = std::numeric_limits<T>::min();
-
-        #pragma omp parallel for reduction(max: maxval)
-        for (OPENMP_UINT i = 0; i < size; i++)
-            maxval = std::max(maxval, data[i]);
-        
-        return maxval;
-    }
-#endif
+    return 0;
+}

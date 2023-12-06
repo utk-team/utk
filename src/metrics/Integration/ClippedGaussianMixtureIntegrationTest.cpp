@@ -30,56 +30,37 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#pragma once
+#include <utk/metrics/IntegrationTest.hpp>
+#include <utk/metrics/Integrands/ClippedGaussianMixture.hpp>
 
-#include <algorithm>
-#include <cstdint>
-#include <limits>
+#include <utk/utils/MetricsArgumentParser.hpp>
 
-#define IF_OPENMP(x) x
+int main(int argc, char** argv)
+{
+    CLI::App app { "Heaviside Integration calculator" };
+    
+    std::string file;
+    std::string sampler;
+    auto* margs = utk::add_arguments<double>(app);    
+    app.add_option("-f,--file,--integrands", file, "Integrand File")->required();
 
-#ifdef _WIN32
-    // As windows definitely won't update OpenMP...
-    using OPENMP_UINT = long int;         // Does not support unsigned int indexing...
-    using OPENMP_DOUBLE_DEFAULT = double; // Does not support long double reduction...
+    CLI11_PARSE(app, argc, argv);
 
-    // Does not support max neither...
-    template<typename T>
-    T omp_parallel_max(const T* data, uint32_t size)
-    {
-        T max_val = std::numeric_limits<T>::min();
+    auto ptss = margs->GetAllPointsets();
+    if (!utk::CheckPointsets(ptss))
+        return 1;
 
-        #pragma omp parallel
-        {
-            T max_private = max_val;
+    if (ptss.size() == 0)
+        return 0;
 
-            #pragma omp for nowait
-            for (OPENMP_UINT i = 0; i < size; i++)
-            {
-                max_private = std::max(max_private, data[i]);
-            }
+    utk::IntegrationTest test;
+    test.ReadDatabase<utk::ClippedGaussianMixture>(file, ptss[0].Ndim());
 
-            #pragma omp critical 
-            {
-                max_val = std::max(max_val, max_private);
-            }
-        }
+    auto reports = test.compute(ptss);
+    
+    auto& ostream = margs->GetOutputStream();
+    for (const auto& report : reports)
+        ostream << report.min << " " << report.mean << " " << report.var << " " << report.max << '\n';
 
-        return max_val;
-    }
-#else
-    using OPENMP_UINT = uint32_t;
-    using OPENMP_DOUBLE_DEFAULT = long double;
-
-    template<typename T>
-    T omp_parallel_max(const T* data, uint32_t size)
-    {
-        T maxval = std::numeric_limits<T>::min();
-
-        #pragma omp parallel for reduction(max: maxval)
-        for (OPENMP_UINT i = 0; i < size; i++)
-            maxval = std::max(maxval, data[i]);
-        
-        return maxval;
-    }
-#endif
+    return 0;
+}

@@ -7,7 +7,8 @@ provides some basic test but one may design its own test.
 
 Examples may be found in :
 - include/utk/metrics/Integrands/Heaviside.hpp, src/metrics/BuildHeavisideDatabase.cpp, src/metrics/HeavisideIntegrationTest.hpp 
-- include/utk/metrics/Integrands/Gaussians.hpp, src/metrics/BuildGaussiansDatabase.cpp, src/metrics/GaussiansIntegrationTest.hpp
+- include/utk/metrics/Integrands/Gaussians.hpp, src/metrics/BuildGaussiansDatabase.cpp, src/metrics/GaussiansIntegrationTest.hpp 
+- include/utk/metrics/Integrands/ClippedGaussianMixture.hpp, src/metrics/BuildClippedGaussianMixtureDatabase.cpp, src/metrics/ClippedGaussianMixtureIntegrationTest.hpp
 
 ### Performing Integration Test
 
@@ -41,6 +42,13 @@ Additionnal method may also be derived controlling the computation of ground tru
 
 When `hasCloseForm() == false`, the ground truth will be computed using QMC samples (likely from Sobol' + Owen).
 
+### UTK's integrand
+
+* Heaviside : The unit cube is clipped by an hyperplane
+* Gaussian: Gaussian density on the unit cube. The position is random in the hypercube, and the orientation is sampled uniformly in the space of rotations. 
+* BlinnPhong: Rendering-based test. The scene is a simple rectangle that reflects light with the BlinnPhong model. The light source is randomly sampled while the rectangle isn't. 
+* ClippedGaussianMixture : Multiple boxes are sampled in the unit square. A gaussian density is put inside each of the boxes. The integrand is 0 outside the boxes. If a point belong to multiple boxes, the sum of each corresponding gaussian is performed. 
+  
 ## Files
 
 ```
@@ -57,6 +65,11 @@ src/metrics/GaussiansIntegrationTest.hpp
 include/utk/metrics/Integrands/BlinnPhong.hpp
 src/metrics/BuildBlinnPhongDatabase.cpp
 src/metrics/BlinnPhongIntegrationTest.hpp
+
+
+include/utk/metrics/Integrands/ClippedGaussianMixture.hpp
+src/metrics/BuildClippedGaussianMixtureDatabase.cpp
+src/metrics/ClippedGaussianMixtureIntegrationTest.hpp
 ```
 
 ## Usage (For gaussians)

@@ -30,36 +30,59 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
+#include <utk/metrics/IntegrationTest.hpp>
+#include <utk/metrics/Integrands/ClippedGaussianMixture.hpp>
+#include <utk/samplers/SamplerSobol.hpp>
+
 #include <utk/utils/MetricsArgumentParser.hpp>
-#include <utk/metrics/RadialSpectrum.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "RadialSpectrum calculator" };
-    auto* margs = utk::add_arguments(app);    
-    uint32_t res = 0;
-    bool cancelDc = false; 
-    double scale = 1.0;
-    uint32_t bins = 0;
+    CLI::App app { "Integrand database builder" };
+    
+    std::string output;
+    std::string target;
+    uint32_t dimension;
+    uint32_t npts;
+    uint32_t m;
+    uint64_t seed;
 
-    app.add_option("-r,--res", res, "Spectrum resolution (0 means automatic)")->default_val(res);
-    app.add_flag("--canceldc", cancelDc, "When set, cancel the DC peak")->default_val(cancelDc);
-    app.add_option("-s,--scale", scale, "Scale for distance to origin")->default_val(1.0);
-    app.add_option("-b,--bins", bins, "Number of bins (0 means automatic)")->default_val(bins);
+    app.add_option("-o,--output", output, "Output file")->required();
+    app.add_option("-d,--dimension", dimension, "Dimension")->required();
+    app.add_option("-n,--npts", npts, "Number of points for integral computation.")->required();
+    app.add_option("-m", m, "Number of integrands to compute")->required();
+    app.add_option("-s", seed, "Seed (0 means random)")->default_val(0);
+
+    double sigmamin;
+    double sigmamax;
+    uint32_t nbmin;
+    uint32_t nbmax;
+
+    app.add_option("--sigmamin", sigmamin, "Min value for variance")->default_val(0.01);
+    app.add_option("--sigmamax", sigmamax, "Max value for variance")->default_val(1.00);
+    app.add_option("--nboxmin", nbmin, "Min number of boxes. If both 0: 2 * d")->default_val(0);
+    app.add_option("--nboxmax", nbmax, "Max number of boxes. If both 0: 2 * d^2")->default_val(0);
 
     CLI11_PARSE(app, argc, argv);
 
-    auto ptss = margs->GetAllPointsets();
-    if (!utk::CheckPointsets(ptss))
-        return 1;
-        
-    auto rslts = utk::RadialSpectrum(bins, scale, res, cancelDc).compute(ptss);
+    if (seed == 0)
+        seed = std::random_device{}();
 
-    auto N = rslts.first.size();
+    utk::SamplerSobol<uint32_t> sampler(dimension);
+    sampler.setRandomSeed(seed);
 
-    auto& ostream = margs->GetOutputStream();
-    for (decltype(N) i = 0; i < N; i++)
-        ostream << rslts.first[i] << " " << rslts.second[i] << '\n';
+    utk::Pointset<double> pts;
+    sampler.generateSamples(pts, npts);
 
-    delete margs;
+    if (nbmin == 0 && nbmax == 0) { nbmin = 2 * dimension; nbmax = 2 * dimension * dimension; }
+    
+    utk::IntegrationTest test;
+    test.BuildDatabase<utk::ClippedGaussianMixture>(output, dimension, m, seed, {
+        {"smin" , utk::ParameterType(sigmamin)}, 
+        {"smax" , utk::ParameterType(sigmamax)},
+        {"nbmin", utk::ParameterType(nbmin)}, 
+        {"nbmax", utk::ParameterType(nbmax)}
+    }, pts);
+
+    return 0;
 }

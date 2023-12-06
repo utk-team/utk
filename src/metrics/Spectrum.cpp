@@ -77,7 +77,7 @@ int main(int argc, char** argv)
         }
 
         unsigned char* data = new unsigned char[res * res];    
-        double maxval = omp_parallel_max(rslts.data(), rslts.size());
+        const double maxval = omp_parallel_max(rslts.data(), rslts.size());
 
         // Copy data to unsigned char buffer
         #pragma omp parallel for
@@ -87,7 +87,8 @@ int main(int argc, char** argv)
             {
                 const OPENMP_UINT idx = x + y * res;
 
-                double value = rslts[idx] / maxval;
+                // Common scaling to enhance visibility
+                double value = std::sqrt(rslts[idx] / maxval);
                 data[idx] = static_cast<unsigned char>(255 * value);
             }
         }
