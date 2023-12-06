@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     app.add_option("--depth", depth, "Owen's scrambling depth (0: no scrambling, 32: recommended).")->default_val(depth);
 
     std::string JoeAndKuo_filename = "";
-    app.add_option("--JoeAndKuo-filename", JoeAndKuo_filename, "Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.");
+    app.add_option("--table", JoeAndKuo_filename, "Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.");
   
     CLI11_PARSE(app, argc, argv);
     
