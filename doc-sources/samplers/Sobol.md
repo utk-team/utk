@@ -39,7 +39,7 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --depth UINT [0]            Owen depth (0: no randomness, 32: recommended).
   --silent                    Silence UTK logs
-  --JoeAndKuo-filename TEXT   Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.
+  --table TEXT   Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.
 ```
 
 </div>
