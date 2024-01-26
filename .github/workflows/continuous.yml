@@ -3,7 +3,8 @@ name: CI (linux/macOS/windows)
 on:
   push:
     branches: [ master ]
-
+  pull_request:
+    branches: [ master ]
 env:
   # if needed
   CONFIG_GLOBAL:
