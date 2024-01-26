@@ -28,6 +28,7 @@ SET(Samplers
     LDBN
     LutLDBN
     Sobol
+    CascadedSobol
 )
 
 SET(pyutk_samplers)

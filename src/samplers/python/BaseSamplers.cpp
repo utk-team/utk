@@ -48,6 +48,7 @@
 #include <utk/samplers/SamplerBridson.hpp>
 #include <utk/samplers/SamplerProjectiveBlueNoise.hpp>
 #include <utk/samplers/SamplerSobol.hpp>
+#include <utk/samplers/SamplerCascadedSobol.hpp>
 #include <utk/samplers/SamplerR1.hpp>
 #include <utk/samplers/SamplerKronecker.hpp>
 #include <utk/samplers/SamplerKorobov.hpp>
@@ -328,4 +329,18 @@ void init_BaseSampler(py::module& m)
         .def("setSeed", GetSetSeedFunction<SobolSampler>()              , py::arg("seed") = NO_SEED)
         .def("sample",  GetSampleFunction <SobolSampler>()              , py::arg("N"))
         .def("isample", GetSampleFunction <SobolSampler, uint32_t>(), py::arg("N"));
+
+    
+    using CascadedSobolSampler = SamplerCascadedSobol<uint32_t>; 
+    py::class_<CascadedSobolSampler>(m, "CascadedSobol")
+        .def(
+            py::init<uint32_t, uint32_t>(),
+            py::arg("d"), py::arg("depth") = 32
+        )
+        .def("__repr__", [](const CascadedSobolSampler& wn) { return "CascadedSobolSampler(d=" + std::to_string(wn.GetDimension()) +")"; })
+        .def("setDirectionFile", &CascadedSobolSampler::setDirectionFile)
+        .def("setOwenDepth",     &CascadedSobolSampler::setOwenDepth)
+        .def("setSeed", GetSetSeedFunction<CascadedSobolSampler>()          , py::arg("seed") = NO_SEED)
+        .def("sample",  GetSampleFunction <CascadedSobolSampler>()          , py::arg("N"))
+        .def("isample", GetSampleFunction <CascadedSobolSampler, uint32_t>(), py::arg("N"));
 }

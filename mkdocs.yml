@@ -82,6 +82,7 @@ nav:
     - RegularGrid: 'samplers/RegularGrid.md'
     - SinglePeak: 'samplers/SinglePeak.md'
     - Sobol: 'samplers/Sobol.md'
+    - CascadedSobol: 'samplers/CascadedSobol.md'
     - Step: 'samplers/Step.md'
     - Stratified: 'samplers/Stratified.md'
     - VanDerCorput: 'samplers/VanDerCorput.md'

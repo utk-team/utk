@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+### 2.0.1
+
+- 2024 Janv:
+    - Cascaded Sobol'
+    - SamplerFromMatrix
+    - SOT
+
 ## 2.0.0 
 
 - 2023-Jul 2.0 released : 
