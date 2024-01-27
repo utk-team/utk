@@ -29,6 +29,7 @@ SET(Samplers
     LutLDBN
     Sobol
     CascadedSobol
+    GenerativeMatrices
 )
 
 SET(pyutk_samplers)

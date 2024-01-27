@@ -43,7 +43,7 @@ namespace utk
 
 // Inherit to save code. But functions are not virtual, so it can't be used 
 // with pointer to SamplerSobol !
-template<typename IntegerType>
+template<typename IntegerType = uint32_t>
 class SamplerCascadedSobol : public SamplerSobol<IntegerType>
 {
 protected:
