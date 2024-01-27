@@ -3,9 +3,9 @@
 ### 2.0.1
 
 - 2024 Janv:
-    - Cascaded Sobol'
-    - SamplerFromMatrix
-    - SOT
+    - Cascaded Sobol' sampler
+    - Sampler from Generative Matrix (arbitrary base + Owen)
+    - Sliced Optimal Transport Sampling 
 
 ## 2.0.0 
 
