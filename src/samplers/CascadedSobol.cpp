@@ -31,23 +31,21 @@
  * either expressed or implied, of the UTK project.
  */
 #include <utk/utils/SamplerArgumentParser.hpp>
-#include <utk/samplers/SamplerSobol.hpp>
+#include <utk/samplers/SamplerCascadedSobol.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "Sobol sampler" };
+    CLI::App app { "CascadedSobol sampler" };
     auto* args = utk::add_arguments(app);
     
     uint32_t depth = 0;
-    app.add_option("--depth", depth, "Owen's scrambling depth (0: no scrambling, 32: recommended).")->default_val(depth);
+    app.add_option("--depth", depth, "Owen depth (0: no randomness, 32: recommended).")->default_val(depth);
 
-    std::string JoeAndKuo_filename = "";
-    app.add_option("--table", JoeAndKuo_filename, "Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.");
-  
     CLI11_PARSE(app, argc, argv);
     
     std::vector<utk::Pointset<double>> pts = args->GetPointsets();
-    utk::SamplerSobol sobol(args->D, depth,JoeAndKuo_filename);
+    utk::SamplerCascadedSobol<uint32_t> sobol(args->D, depth);
+
     sobol.setRandomSeed(args->seed);
 
     for (uint32_t i = 0; i < pts.size(); i++)

@@ -30,36 +30,62 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <utk/utils/SamplerArgumentParser.hpp>
+#pragma once
+
 #include <utk/samplers/SamplerSobol.hpp>
+#include <random>
+#include <tuple> // std::ignore
+#include <cmath>
+#include <map>
 
-int main(int argc, char** argv)
+namespace utk
 {
-    CLI::App app { "Sobol sampler" };
-    auto* args = utk::add_arguments(app);
-    
-    uint32_t depth = 0;
-    app.add_option("--depth", depth, "Owen's scrambling depth (0: no scrambling, 32: recommended).")->default_val(depth);
 
-    std::string JoeAndKuo_filename = "";
-    app.add_option("--table", JoeAndKuo_filename, "Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.");
-  
-    CLI11_PARSE(app, argc, argv);
-    
-    std::vector<utk::Pointset<double>> pts = args->GetPointsets();
-    utk::SamplerSobol sobol(args->D, depth,JoeAndKuo_filename);
-    sobol.setRandomSeed(args->seed);
+// Inherit to save code. But functions are not virtual, so it can't be used 
+// with pointer to SamplerSobol !
+template<typename IntegerType = uint32_t>
+class SamplerCascadedSobol : public SamplerSobol<IntegerType>
+{
+protected:
+public:
+    SamplerCascadedSobol(
+            uint32_t d,
+            unsigned char owenDepth = 32
+    ) : SamplerSobol<IntegerType>(d, owenDepth, std::string(UTK_DATA_PATH) + "/Sobol/cascaded_sobol_init_tab.dat")
+    { }
 
-    for (uint32_t i = 0; i < pts.size(); i++)
+    template <typename T>
+    bool generateSamples(Pointset<T> &arg_pts, IntegerType N)
     {
-        if(!sobol.generateSamples(pts[i], args->N))
+        this->sobol_mk.resize(this->D);
+        if (!this->load_mk(this->directionFile))
         {
-            std::cerr << "Sampler returned non-zero output" << std::endl; // No log here, must be visible whatsoever
-            return 1;
+            UTK_ERROR("SamplerCascadedSobol : no such file or directory {}", this->directionFile);
+            return false;
         }
-    }
-    args->WritePointsets(pts);
+        
+        IntegerType nbits = (IntegerType) ((double) log((double) N) / (double) log((double) 2));
 
-    delete args;
-    return 0;
+        std::vector<uint64_t> seeds(this->D);
+        for (uint32_t d = 0; d < this->D; d++)
+            seeds[d] = this->gen();
+
+        arg_pts.Resize(N, this->D);
+        for (IntegerType i = 0; i < N; i++)
+        { 
+            IntegerType index = RadicalInverseBase2(i);
+            arg_pts[i][0] = convertFullRadicalInverseBase2<T>(this->owen(index, 0, this->owenDepth, seeds.data()));
+            
+            for (uint32_t d = 1; d < this->D; d++)
+            {
+                index = (index >> (SamplerSobol<IntegerType>::MAX_BITS - nbits));
+                index = this->sobol_binary(index, this->sobol_mk[d].data());
+                arg_pts[i][d] = convertFullRadicalInverseBase2<T>(this->owen(index, d, this->owenDepth, seeds.data()));
+            }
+        }
+
+        return true;
+    };
+};
+
 }

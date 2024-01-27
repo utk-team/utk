@@ -31,34 +31,36 @@
  * either expressed or implied, of the UTK project.
  */
 #include <utk/utils/SamplerArgumentParser.hpp>
-#include <utk/samplers/SamplerSobol.hpp>
+#include <utk/samplers/SamplerSOT.hpp>
 
 int main(int argc, char** argv)
 {
-    CLI::App app { "Sobol sampler" };
+    CLI::App app { "SOT sampler" };
     auto* args = utk::add_arguments(app);
-    
-    uint32_t depth = 0;
-    app.add_option("--depth", depth, "Owen's scrambling depth (0: no scrambling, 32: recommended).")->default_val(depth);
 
-    std::string JoeAndKuo_filename = "";
-    app.add_option("--table", JoeAndKuo_filename, "Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.");
-  
-    CLI11_PARSE(app, argc, argv);
+    uint32_t its;
+    uint32_t batch;
+    app.add_option("-p,--projections", batch, "Number of slices (projection) to use.")->default_val(64);
+    app.add_option("-i,--iterations", its, "Number of iterations.")->default_val(4096);
     
+    CLI11_PARSE(app, argc, argv);
     std::vector<utk::Pointset<double>> pts = args->GetPointsets();
-    utk::SamplerSobol sobol(args->D, depth,JoeAndKuo_filename);
-    sobol.setRandomSeed(args->seed);
+
+    utk::SamplerSOT sot(args->D, its, batch);
+    sot.setRandomSeed(args->seed);
 
     for (uint32_t i = 0; i < pts.size(); i++)
     {
-        if(!sobol.generateSamples(pts[i], args->N))
+        if(!sot.generateSamples(pts[i], args->N))
         {
             std::cerr << "Sampler returned non-zero output" << std::endl; // No log here, must be visible whatsoever
             return 1;
         }
     }
+
     args->WritePointsets(pts);
+
+
 
     delete args;
     return 0;

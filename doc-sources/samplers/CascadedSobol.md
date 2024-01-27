@@ -1,19 +1,15 @@
-# Sampler Sobol [[JK03]](http://web.maths.unsw.edu.au/~fkuo/sobol/) [[Owe95]](https://statistics.stanford.edu/sites/default/files/EFS%20NSF%20464.pdf)
+# Cascaded Sobol Sampling with owen permutation [[Paulin21]](https://projet.liris.cnrs.fr/cascaded/)
 
 
 ## Description
 
-The Sobol sequence. Samples are generated from a binary product between the binary representation of their index and a matrix, generated from primitive polynomials. By default, uses Juo & Kuo tables [[JK03]](http://web.maths.unsw.edu.au/~fkuo/sobol/).
-
-The sequence can be scrambled with Owen's permutation [[Owe95]](https://statistics.stanford.edu/sites/default/files/EFS%20NSF%20464.pdf).
-
-For a more precise description of this sampler and its performances in terms of aliasing and discrepancy, please refer to the following web bundle [https://liris.cnrs.fr/ldbn/HTML_bundle/index.html](https://liris.cnrs.fr/ldbn/HTML_bundle/index.html).
+The Cascaded Sobol' construction from [[Paulin21]](https://projet.liris.cnrs.fr/cascaded/).
 
 ## Files
 
 ```
-src/samplers/Sobol.cpp  
-include/utk/samplers/SamplerSobol.hpp
+src/samplers/CascadedSobol.cpp  
+include/utk/samplers/SamplerCascadedSobol.hpp
 ```
 
 ## Usage
@@ -27,8 +23,8 @@ include/utk/samplers/SamplerSobol.hpp
 <div class="exe tabcontent">
 
 ```bash
-Sobol sampler
-Usage: ./Sobol [OPTIONS]
+CascadedSobol sampler
+Usage: ./CascadedSobol [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
@@ -39,7 +35,6 @@ Options:
   -o,--out TEXT [out.dat]     Output file (format). {i} splits outputs in multiple files and token is replaced by index.
   --depth UINT [0]            Owen depth (0: no randomness, 32: recommended).
   --silent                    Silence UTK logs
-  --table TEXT   Sobol init table file (Joe&Kuo format). If not specified  the [JK03] table is used.
 ```
 
 </div>
@@ -49,14 +44,14 @@ Options:
 ```  cpp
 #include <utk/utils/PointsetIO.hpp>
 #include <utk/utils/Pointset.hpp>
-#include <utk/samplers/SamplerStep.hpp>
+#include <utk/samplers/SamplerCascadedSobol.hpp>
 
 int main()
 {
     utk::Pointset<double> pts;
 
     // If needed, can add template to use 64bits integers
-    utk::SamplerSobol sobol(2 /* dimension */, 32 /* depth */);
+    utk::SamplerCascadedSobol<uint32_t> sobol(2 /* dimension */, 32 /* depth */);
     sobol.setRandomSeed(args->seed);
     // Check for no errors
     if (sobol.generateSamples(pts, 1024 /* Number of points */))
@@ -74,7 +69,7 @@ int main()
 import pyutk
 
 # Only 32 bits integers supported
-sobol = pyutk.Sobol(d=2, depth=32) 
+sobol = pyutk.CascadedSobol(d=2, depth=32) 
 samples = sobol.sample(1024) # This is a numpy array !
 ```  
 
