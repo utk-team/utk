@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d03e51d..00d468b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,17 +12,19 @@ find_package(GSL REQUIRED)
+ include_directories(${GSL_INCLUDE_DIRS})
+ 
+ 
+-ADD_LIBRARY(SOURCES
++ADD_LIBRARY(SOT_LIB
+         Transport/NBallRadonManager.cpp
+         Tools/mapping.cpp
+         Tools/my_utility.cpp
+         Math/myMath.cpp
+         Tools/iopointset.cpp
+         )
+-target_link_libraries(SOURCES GSL::gsl)
+-
+-add_executable(sot Mains/slicedOptimNDBall.cpp)
+-target_link_libraries(sot SOURCES OpenMP::OpenMP_CXX)
+-
+-add_executable(projsot Mains/slicedOptimMultiProj.cpp)
+-target_link_libraries(projsot SOURCES OpenMP::OpenMP_CXX)
+\ No newline at end of file
++target_link_libraries(SOT_LIB GSL::gsl)
++set_property(TARGET SOT_LIB PROPERTY POSITION_INDEPENDENT_CODE ON)
++target_include_directories(SOT_LIB PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
++
++# add_executable(sot Mains/slicedOptimNDBall.cpp)
++# target_link_libraries(sot SOURCES OpenMP::OpenMP_CXX)
++# 
++# add_executable(projsot Mains/slicedOptimMultiProj.cpp)
++# target_link_libraries(projsot SOURCES OpenMP::OpenMP_CXX)
+\ No newline at end of file

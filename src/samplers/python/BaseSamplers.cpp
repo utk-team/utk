@@ -49,7 +49,7 @@
 #include <utk/samplers/SamplerProjectiveBlueNoise.hpp>
 #include <utk/samplers/SamplerSobol.hpp>
 #include <utk/samplers/SamplerCascadedSobol.hpp>
-#include <utk/samplers/SamplerFromGenerativeMatrix.hpp>
+#include <utk/samplers/SamplerGenerativeMatrices.hpp>
 #include <utk/samplers/SamplerR1.hpp>
 #include <utk/samplers/SamplerKronecker.hpp>
 #include <utk/samplers/SamplerKorobov.hpp>
@@ -345,7 +345,7 @@ void init_BaseSampler(py::module& m)
         .def("sample",  GetSampleFunction <CascadedSobolSampler>()          , py::arg("N"))
         .def("isample", GetSampleFunction <CascadedSobolSampler, uint32_t>(), py::arg("N"));
 
-    using GenerativeMatrices = GenerativeMatrices<uint32_t>; 
+    using GenerativeMatrices = SamplerGenerativeMatrices<uint32_t>; 
     py::class_<GenerativeMatrices>(m, "GenerativeMatrices")
         .def(
             py::init<std::string, uint8_t, uint8_t, uint8_t, bool>(),

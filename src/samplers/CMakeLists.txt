@@ -129,6 +129,26 @@ ELSE()
     # message("BNOT Not compiled")
 ENDIF()
 
+# SOT
+IF (GSL_FOUND)
+    IF(UTK_BUILD_EXE)
+        # SOT
+        add_executable(${UTK_EXE_PREFIX}SOT SOT.cpp)
+        target_include_directories(${UTK_EXE_PREFIX}SOT PRIVATE "${UTK_INCLUDE_DIR}")
+
+
+        target_link_libraries(${UTK_EXE_PREFIX}SOT PRIVATE SOT_LIB spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
+
+        install(TARGETS ${UTK_EXE_PREFIX}SOT
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+    ENDIF()
+
+    LIST(APPEND pyutk_samplers_libs SOT_LIB OpenMP::OpenMP_CXX)
+    add_definitions(-DPYUTK_SOT)       
+ENDIF()
+
 IF (UTK_PYTHON)
     SET(pyutk_samplers_bindings 
         "python/Samplers.cpp"
