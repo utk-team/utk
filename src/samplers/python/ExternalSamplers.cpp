@@ -85,8 +85,31 @@
     }
 #endif
 
+#ifdef PYUTK_SOT
+    #include <utk/samplers/SamplerSOT.hpp>
+
+    void init_SOT(py::module& m)
+    {
+        using namespace utk;
+
+        py::class_<SamplerSOT>(m, "SOT")
+            .def(py::init<uint32_t, uint32_t, double>(), py::arg("dim"), py::arg("its") = 4096, py::arg("batch") = 64)
+            .def("__repr__", [](const SamplerSOT& sot) { return "SOT()"; })
+            .def("setIterations", &SamplerSOT::setIterations)
+            .def("setBatchSize" , &SamplerSOT::setBatchSize)
+            .def("setSeed", GetSetSeedFunction<SamplerSOT>(), py::arg("seed") = NO_SEED)
+            .def("sample",  GetSampleFunction <SamplerSOT>(), py::arg("N"));
+    }
+#else
+    void init_SOT(py::module& m)
+    {
+        // Empty, do not compile anything
+    }
+#endif
+
 void init_Externals(py::module& m)
 {
     init_Lloyd(m);
     init_BNOT(m);
+    init_SOT(m);
 }

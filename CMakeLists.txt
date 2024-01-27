@@ -21,7 +21,7 @@ option(UTK_USE_OPENMP "Enable USE of OpenMp" ON)
 # FFTW options
 option(UTK_USE_FFTW "Enable use of FFTW" ON)
 # CGal options
-option(UTK_USE_CGAL "Enable projects depending on CGAL. " OFF)
+option(UTK_USE_CGAL "Enable projects depending on CGAL. " OFF    )
  
 # Finding libraries
 set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -29,6 +29,8 @@ set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(spdlog)
 include(cli11)
 include(stb)
+
+include(externals)
 
 if (UTK_LOG)
     add_definitions(-DUTK_LOG)

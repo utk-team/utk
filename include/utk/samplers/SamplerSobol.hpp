@@ -116,14 +116,7 @@ namespace utk
             for (unsigned char k = 0; k < MAX_BITS; ++k) 
             {
                 x <<= 1;
-                if (i & 1) 
-                {
-                    x ^= *(mk++);
-                } 
-                else 
-                {
-                    mk++;
-                }
+                x ^= (i & 1) * mk[k];
                 i >>= 1;
             }
             return x;
@@ -177,11 +170,11 @@ namespace utk
     protected:
 
         bool load_mk(const std::string& filename)
-        {            
+        {
             std::ifstream file(filename);
             if (!file.is_open())
                 return false;
-            
+
             // JKheader_flag : skip header, otherwise continue loading file in Joe & Kuo format
             file.ignore(256, '\n');
     
