@@ -2,10 +2,13 @@
 
 ### 2.0.1
 
-- 2024 Janv:
+- 2024 Janv (Bastien DOIGNIES):
     - Cascaded Sobol' sampler
     - Sampler from Generative Matrix (arbitrary base + Owen)
     - Sliced Optimal Transport Sampling 
+
+- 2023 Oct: 
+    - Adding a new option to Sobol' (c++) to load an alternative to [JK03] init table (David Coeurjolly, 2023-Oct).
 
 ## 2.0.0 
 

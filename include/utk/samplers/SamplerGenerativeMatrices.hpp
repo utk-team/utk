@@ -161,15 +161,15 @@ protected:
         if (depth == 0) return i;
 
         utk::PCG32 gen(seed);
-        std::uniform_int_distribution<uint8_t> unif(0, P - 1);
+        std::uniform_int_distribution<IntegerType> unif(0, P - 1);
 
         IntegerType res = 0;
         IntegerType current = static_cast<IntegerType>(round(pow(P, M - 1)));
 
         for (uint8_t k = 0; k < depth; k++)
         {
-            uint8_t permut = unif(gen);
-            uint8_t digit = (i / current) % P;
+            IntegerType permut = unif(gen);
+            IntegerType digit = (i / current) % P;
 
             res += ((digit + permut) % P) * current;
 
