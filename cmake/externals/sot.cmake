@@ -1,6 +1,6 @@
 include(FetchContent)
 
-find_package(GSL REQUIRED)
+find_package(GSL)
 
 if (GSL_FOUND)
     set(sot_patch git apply ${CMAKE_CURRENT_SOURCE_DIR}/cmake/externals/sot.patch)
