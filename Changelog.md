@@ -5,7 +5,8 @@
 - 2024 Janv (Bastien DOIGNIES):
     - Cascaded Sobol' sampler
     - Sampler from Generative Matrix (arbitrary base + Owen)
-    - Sliced Optimal Transport Sampling 
+    - Sliced Optimal Transport Sampling
+    - Fix GaussianIntegrands to generate proper SPD matrix.
 
 - 2023 Oct: 
     - Adding a new option to Sobol' (c++) to load an alternative to [JK03] init table (David Coeurjolly, 2023-Oct).
