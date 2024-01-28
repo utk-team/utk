@@ -292,7 +292,7 @@ namespace utk
                     invSigma[j + i * dim] = 0.0;
                     for (uint32_t k = 0; k < dim; k++)
                     {
-                        invSigma[j + i * dim] += rot->v[i][k] * sigmas[k] * rot->v[k][j];
+                        invSigma[j + i * dim] += rot->v[i][k] * sigmas[k] * rot->v[j][k];
                     }
                 }
             }
