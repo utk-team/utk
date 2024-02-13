@@ -25,7 +25,6 @@ option(UTK_USE_CGAL "Enable projects depending on CGAL. " OFF    )
  
 # Finding libraries
 set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
 include(spdlog)
 include(cli11)
 include(stb)

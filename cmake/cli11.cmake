@@ -14,14 +14,11 @@ if(TARGET CLI11::CLI11)
 endif()
 
 message(STATUS "Third-party (external): creating target 'CLI11::CLI11'")
-
-include(FetchContent)
-FetchContent_Declare(
-    cli11
-    GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+include(CPM)
+CPMAddPackage(
+    NAME cli11
+    GITHUB_REPOSITORY CLIUtils/CLI11
     GIT_TAG v2.3.2
-    GIT_SHALLOW TRUE
 )
-FetchContent_MakeAvailable(cli11)
 
 # set_target_properties(CLI11 PROPERTIES third_party)
