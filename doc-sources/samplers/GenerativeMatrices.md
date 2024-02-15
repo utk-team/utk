@@ -94,11 +94,13 @@ samples = sobol.sample(1024) # This is a numpy array !
 
 </div>
 
-## Results
+## Results ([[Larcher and Pillichshammer 2003]](https://eudml.org/doc/278839))
+
+Matrices: [matrices.txt](../figs/samplers/LP_matrices.txt)
 
 <div class="results"></div>
 <script>
-  window.addEventListener('DOMContentLoaded', function() { show_results(); }); 
+  window.addEventListener('DOMContentLoaded', function() { show_results("LP"); }); 
 </script>
 
 ## License

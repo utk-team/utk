@@ -84,6 +84,7 @@ nav:
     - Sobol: 'samplers/Sobol.md'
     - SOT: 'samplers/SOT.md'
     - CascadedSobol: 'samplers/CascadedSobol.md'
+    - GenerativeMatrices: 'samplers/GenerativeMatrices.md'
     - Step: 'samplers/Step.md'
     - Stratified: 'samplers/Stratified.md'
     - VanDerCorput: 'samplers/VanDerCorput.md'
@@ -109,4 +110,4 @@ nav:
     - RadialSpectrum: 'metrics/RadialSpectrum.md'
     - IntegrationTest: 'metrics/IntegrationTest.md'
   - Changelog: 'changelog.md'
-  - License: 'license.md'
+  - License: 'License.md'

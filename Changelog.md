@@ -2,7 +2,10 @@
 
 ### 2.0.1
 
-- 2024 Feb: cmake CPM instead of `FETCH_CONTENT` for dependencies (David Coeurjolly)
+- 2024 Feb (David Coeurjolly)
+    - cmake CPM instead of `FETCH_CONTENT` for dependencies 
+- 2024 Fev (Bastien DOIGNIES):
+    - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
     - Cascaded Sobol' sampler

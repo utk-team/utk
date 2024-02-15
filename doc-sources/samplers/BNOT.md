@@ -109,6 +109,14 @@ samples = bbnot.sample(1024) # This is a numpy array !
 
 </div>
 
+## Results
+
+<div class="results"></div>
+<script>
+  window.addEventListener('DOMContentLoaded', function() { show_results("BoundedBNOT"); }); 
+</script>
+
+
 ## License
 
 See Licence.md file. Author code from 'F. De Goes' is provided under GPL license ((see [http://www.geometry.caltech.edu/BlueNoise/](http://www.geometry.caltech.edu/BlueNoise/))).
