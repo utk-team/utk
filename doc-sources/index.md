@@ -8,11 +8,11 @@ UTK is a C++ library that implements a large variety of samplers and tools to an
 
 ## License
 
-The core of the library is available under the [BSD](license) license. For some samplers, the library is just a wrapper on some codes with specific license (see the [samplers](samplers) page for details).
+The core of the library is available under the [BSD](license.md) license. For some samplers, the library is just a wrapper on some codes with specific license (see the [samplers](samplers) page for details).
 
 ## Clone and Build
 
-UTK is hosted on a git repository. To install it, the first step is to clone the repository on your computer. This can be done using the following command line:
+UTK is hosted on a git repository. To install it, the first step is to clone the repository on your     computer. This can be done using the following command line:
 
     git clone https://github.com/utk-team/utk.git
 

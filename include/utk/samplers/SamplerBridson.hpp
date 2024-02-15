@@ -154,7 +154,7 @@ public:
                         norm += tmpPoints[d] * tmpPoints[d]; 
                     }
 
-                    T rad = std::pow(radius(gen), 1. / D) + r;
+                    T rad = std::pow(radius(gen) + r, 1. / D);
                     norm  = std::sqrt(norm);
                     for (std::uint32_t d = 0; d < D; d++)
                     {   

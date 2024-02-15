@@ -2,6 +2,9 @@
 
 ### 2.0.1
 
+- 2024 Fev (Bastien DOIGNIES):
+    - Updated documentation
+
 - 2024 Janv (Bastien DOIGNIES):
     - Cascaded Sobol' sampler
     - Sampler from Generative Matrix (arbitrary base + Owen)
