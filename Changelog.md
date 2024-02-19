@@ -3,6 +3,7 @@
 ### 2.0.1
 
 - 2024 Fev (Bastien DOIGNIES):
+    - Binary file format support
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
