@@ -255,6 +255,7 @@ inline Pointset<T> read_bin_pointset_stream(Stream& st, uint32_t N, uint32_t d)
         for (uint32_t i = 0; i < N; i++)
             for (uint32_t j = 0; j < d; j++)
                 pts[i][j] = static_cast<T>(data[j + d * i]);
+        delete[] data; 
     }
     return pts;
 }
