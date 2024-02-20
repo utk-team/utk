@@ -18,7 +18,7 @@ Executable will be located in `src/samplers` and `src/metrics folders` and, if
 
 ## File formats
 
-Currently, two differents file format are supported : text and binary. 
+Currently, two differents file formats are supported : text and binary. 
 
 * Text files: No header. Each line represents a point, and coordinates are separated by spaces. 
 Pointsets are separated by '#'.
