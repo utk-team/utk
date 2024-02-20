@@ -21,7 +21,7 @@ Executable will be located in `src/samplers` and `src/metrics folders` and, if
 Currently, two differents file formats are supported : text and binary. 
 
 * Text files: No header. Each line represents a point, and coordinates are separated by spaces. 
-Pointsets are separated by '#'.
+Pointsets (eg. realizations of the same point process) are separated by '#'.
 * Binary files: The first 20 bytes are the header: 4 bytes for the magic number, 4 bytes 
 for the meta data, 4 bytes for the number of pointsets, 4 bytes for the number of points in each 
 pointset and 4 bytes for the number of dimensions. After the header, data is stored consecutively. 
