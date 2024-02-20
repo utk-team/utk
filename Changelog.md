@@ -2,6 +2,8 @@
 
 ### 2.0.1
 
+- 2024 Feb (David Coeurjolly)
+    - cmake CPM instead of `FETCH_CONTENT` for dependencies 
 - 2024 Fev (Bastien DOIGNIES):
     - Updated documentation
 
