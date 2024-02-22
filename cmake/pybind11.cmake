@@ -15,26 +15,15 @@ endif()
 
 message(STATUS "Third-party (external): creating target 'pybind11::pybind11'")
 
-include(FetchContent)
-FetchContent_Declare(
-    pybind11
-    GIT_REPOSITORY https://github.com/pybind/pybind11
+include(CPM)
+CPMAddPackage(
+    NAME pybind11
+    GITHUB_REPOSITORY pybind/pybind11
     GIT_TAG v2.10.0
-    GIT_SHALLOW TRUE
 )
 
-# Pybind11 still uses the deprecated FindPythonInterp. So let's call CMake's
-# new FindPython module and set PYTHON_EXECUTABLE for Pybind11 to pick up.
-# This works well with conda environments.
 
-# This will be set by CMAKE 
-# find_package(Python REQUIRED COMPONENTS Interpreter Development)
-# set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})
-
-# FetchContent_MakeAvailable(pybind11)
-FetchContent_GetProperties(pybind11)
-
-if(NOT pybind11_POPULATED)
-    FetchContent_Populate(pybind11)
-    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
-endif()
+#if(NOT pybind11_POPULATED)
+#    FetchContent_Populate(pybind11)
+#    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
+#endif()
