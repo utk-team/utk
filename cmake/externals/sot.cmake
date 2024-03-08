@@ -7,6 +7,7 @@ if (GSL_FOUND)
      NAME SOT
      GITHUB_REPOSITORY loispaulin/Sliced-Optimal-Transport-Sampling
      GIT_TAG e1a9aadabd0594291c0aa6131efc930c1f855102    
+     UPDATE_DISCONNECTED 1 
      PATCH_COMMAND ${sot_patch}
     )
 else()
