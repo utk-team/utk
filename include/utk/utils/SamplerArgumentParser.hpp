@@ -89,11 +89,11 @@ namespace utk
         bool WritePointsets(const std::vector<Pointset<Type>>& pts)
         {
             if (outFile.find(TOKEN_INDEX) == std::string::npos)
-                return write_text_pointsets(outFile, pts);
+                return write_pointsets(outFile.c_str(), pts);
                 
             bool ret = true;
             for (uint32_t i = 0; i < pts.size(); i++)
-                ret = ret && write_text_pointset(GetFileName(i), pts[i]);
+                ret = ret && write_pointset(GetFileName(i).c_str(), pts[i]);
             return ret;
         }
     };

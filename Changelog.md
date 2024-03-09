@@ -5,6 +5,7 @@
 - 2024 Feb (David Coeurjolly)
     - cmake CPM instead of `FETCH_CONTENT` for dependencies 
 - 2024 Fev (Bastien DOIGNIES):
+    - Binary file format support
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
