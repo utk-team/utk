@@ -32,11 +32,27 @@
  */
 #include <pyutk/utils.hpp>
 
-void init_Metrics(py::module& m);
-void init_ExternalsMMetrics(py::module& m);
 
-void init_pyutkMetrics(py::module& m)
+#ifdef UTK_EXTERNALS_SEMIDISCRETE_OT
+    #include <utk/metrics/SemidiscreteOT.hpp>
+    
+    void BindSemidiscreteOT(py::module& m)
+    {
+        using namespace utk;
+        
+        py::class_<SemidiscreteOT>(m, "SemidiscreteOT")
+            .def(py::init<>())
+            .def("setMaxNewtonIter", &SemidiscreteOT::setMaxNewtonIter)
+            .def("compute", GetComputeFunction<SemidiscreteOT, double>());
+    }
+#else
+    void BindSemidiscreteOT(py::module& m)
+    {
+        
+    }
+#endif
+
+void init_ExternalsMMetrics(py::module& m)
 {
-    init_Metrics(m);
-    init_ExternalsMMetrics(m);
+    BindSemidiscreteOT(m);
 }

@@ -1,7 +1,6 @@
 /*
- * Coded by Hélène Perrier helene.perrier@liris.cnrs.fr
- * and Bastien Doignies bastien.doignies@liris.cnrs.fr 
- * and David Coeurjolly David.coeurjolly@liris.cnrs.fr
+ * Coded by Nicolas Bonneel nicolas.bonneel@liris.cnrs.fr 
+ *  and Bastien Doignies bastien.doignies@liris.cnrs.fr 
  *
  * Copyright (c) 2023 CNRS Université de Lyon
  * All rights reserved.
@@ -30,13 +29,23 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the UTK project.
  */
-#include <pyutk/utils.hpp>
+#include <utk/utils/MetricsArgumentParser.hpp>
+#include <utk/metrics/SemidiscreteOT.hpp>
 
-void init_Metrics(py::module& m);
-void init_ExternalsMMetrics(py::module& m);
-
-void init_pyutkMetrics(py::module& m)
+int main(int argc, char** argv)
 {
-    init_Metrics(m);
-    init_ExternalsMMetrics(m);
+    CLI::App app { "Semidiscrete Optimal Transport to uniform distribution calculator (2D)" };
+    auto* margs = utk::add_arguments(app);    
+    CLI11_PARSE(app, argc, argv);
+    
+    auto ptss = margs->GetAllPointsets();
+    utk::CheckPointsets(ptss);
+    
+    auto rslts = utk::SemidiscreteOT().compute(ptss);
+
+    auto& ostream = margs->GetOutputStream();
+    for (double rslt : rslts)
+        ostream << rslt << '\n';
+
+    delete margs;
 }

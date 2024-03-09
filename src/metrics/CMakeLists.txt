@@ -17,7 +17,8 @@ SET(Metrics
     PCF
 )
 
-SET(pyutk_metrics)
+SET(pytuk_metrics)
+SET(pyutk_metrics_includes)
 SET(pyutk_metrics_libs pybind11::module spdlog::spdlog)
 
 IF (OpenMP_FOUND)
@@ -45,6 +46,25 @@ FOREACH(FILE ${Metrics})
     ENDIF()
 ENDFOREACH(FILE)
 
+# Semidiscrete optimal transport
+IF (UTK_EXTERNALS_SEMIDISCRETE_OT)
+    IF (UTK_BUILD_EXE)
+        add_executable(${UTK_EXE_PREFIX}SemidiscreteOT SemidiscreteOT.cpp)
+        target_include_directories(${UTK_EXE_PREFIX}SemidiscreteOT PRIVATE "${PROJECT_SOURCE_DIR}/include/")
+        target_include_directories(${UTK_EXE_PREFIX}SemidiscreteOT PRIVATE "${semidiscrete_ot_2d_SOURCE_DIR}/")
+
+        target_link_libraries(${UTK_EXE_PREFIX}SemidiscreteOT PRIVATE semidiscrete_ot_2d spdlog::spdlog CLI11::CLI11 OpenMP::OpenMP_CXX)
+
+        install(TARGETS ${UTK_EXE_PREFIX}SemidiscreteOT
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
+    ENDIF()
+
+    LIST(APPEND pyutk_metrics_libs semidiscrete_ot_2d OpenMP::OpenMP_CXX)
+    LIST(APPEND pyutk_metrics_includes "${semidiscrete_ot_2d_SOURCE_DIR}/")
+ENDIF()
+
 IF(UTK_BUILD_EXE)
     add_subdirectory(Integration)
 ENDIF()
@@ -53,6 +73,7 @@ IF (UTK_PYTHON)
     # TODO : OpenMP !!!
     SET(pyutk_metrics_bindings 
         "python/Metrics.cpp"
+        "python/ExternalsMetrics.cpp"
         "python/BaseMetrics.cpp"
     )
     add_library(pyutkMetrics ${pyutk_metrics} ${pyutk_metrics_bindings})
@@ -68,4 +89,5 @@ IF (UTK_PYTHON)
 
     target_include_directories(pyutkMetrics PRIVATE "${UTK_INCLUDE_DIR}")
     target_link_libraries(pyutkMetrics PRIVATE ${pyutk_metrics_libs})
+    target_include_directories(pyutkMetrics PRIVATE ${pyutk_metrics_includes})
 ENDIF()

@@ -52,7 +52,6 @@
 #include <utk/metrics/Integrands/HeavisideIntegrands.hpp>
 #include <utk/metrics/Integrands/BlinnPhong.hpp>
 
-
 template<typename InputType, typename IntegrandType>
 auto GetBuildComputeFunction()
 {
@@ -83,7 +82,6 @@ auto GetBuildComputeFunction()
         throw std::runtime_error("Only 2D array are supported");
     };
 }
-
 
 void init_Metrics(py::module& m)
 {
