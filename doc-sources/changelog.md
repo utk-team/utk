@@ -5,6 +5,7 @@
 - 2024 March (Bastien DOIGNIES):
     - Added semidiscrete optimal transport 2D 
 - 2024 Fev (Bastien DOIGNIES):
+    - Binary file format support
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):

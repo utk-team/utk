@@ -16,6 +16,25 @@ make install -j 8 # Or whatever number of threads you want
 Executable will be located in `src/samplers` and `src/metrics folders` and, if 
 `make install` is run, to the specified directory (without distinction). 
 
+## File formats
+
+Currently, two differents file formats are supported : text and binary. 
+
+* Text files: No header. Each line represents a point, and coordinates are separated by spaces. 
+Pointsets (eg. realizations of the same point process) are separated by '#'.
+* Binary files: The first 20 bytes are the header: 4 bytes for the magic number, 4 bytes 
+for the meta data, 4 bytes for the number of pointsets, 4 bytes for the number of points in each 
+pointset and 4 bytes for the number of dimensions. After the header, data is stored consecutively. 
+
+Executables identifies file formats by their extension: ".bin" for binary and everything else will
+be treated as text files.
+
+### Details for binary file format:
+
+* Magic number is : 0x214B5455 ("UTK!" in binary)
+* Metadata is composed of 4 bytes : 0: data type code, 1: unused, 2: unused, 3: unused
+* Data type codes are : 0: int, 1: long int, 2: uint, 3: long uint, 4: float, 5: double  
+
 ## Miscellaneous notes
 
 * All samplers have common parameters `-n` for number of points, `-d` for dimension, 

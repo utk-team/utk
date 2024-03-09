@@ -60,7 +60,7 @@ namespace utk
             std::vector<Pointset<Type>> pointsets;
             for (const std::string& file : inFile)
             {
-                std::vector<Pointset<Type>> ptsFile = read_text_pointset<Type>(file.c_str());
+                std::vector<Pointset<Type>> ptsFile = read_pointsets<Type>(file.c_str());
                 pointsets.insert(
                     std::end(pointsets), 
                     std::begin(ptsFile), 

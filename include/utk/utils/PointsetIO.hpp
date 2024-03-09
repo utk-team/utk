@@ -37,6 +37,7 @@
 #include <string>
 #include <limits>
 
+#include "Log.hpp"
 #include "Pointset.hpp"
 
 namespace utk
@@ -52,7 +53,6 @@ std::string rstrip(const std::string& s)
 template<class Stream, typename T>
 inline void write_text_pointset_stream(Stream& st, const Pointset<T>& pts)
 {
-    
     for (uint32_t i = 0; i < pts.Npts(); i++)
     {
         for (uint32_t d = 0; d < pts.Ndim() - 1; d++)
@@ -146,6 +146,200 @@ inline std::vector<Pointset<T>> read_text_pointset(const char* filepath)
 {
     std::ifstream file(filepath);
     return read_text_pointsets_stream<decltype(file), T>(file);
+}
+
+const uint32_t UTK_MAGIC_NUMBER = 0x214B5455; // "UTK!" in binary
+
+enum class DATATYPE : uint8_t
+{
+    INT32  = 0,
+    INT64  = 1,
+    UINT32 = 2,
+    UINT64 = 3,
+    FLOAT  = 4, 
+    DOUBLE = 5
+};
+
+struct MetaData
+{
+    uint8_t dtype      = 0;
+    uint8_t reserved_1 = 0;
+    uint8_t reserved_2 = 0;
+    uint8_t reserved_3 = 0;
+};
+
+template <typename T> struct DATATYPE_FROM_TYPE { static constexpr DATATYPE CODE = DATATYPE::DOUBLE; };
+template <> struct DATATYPE_FROM_TYPE<int32_t>  { static constexpr DATATYPE CODE = DATATYPE::INT32;  };
+template <> struct DATATYPE_FROM_TYPE<int64_t>  { static constexpr DATATYPE CODE = DATATYPE::INT64;  };
+template <> struct DATATYPE_FROM_TYPE<uint32_t> { static constexpr DATATYPE CODE = DATATYPE::UINT32; };
+template <> struct DATATYPE_FROM_TYPE<uint64_t> { static constexpr DATATYPE CODE = DATATYPE::UINT64; };
+template <> struct DATATYPE_FROM_TYPE<float>    { static constexpr DATATYPE CODE = DATATYPE::FLOAT;  };
+template <> struct DATATYPE_FROM_TYPE<double>   { static constexpr DATATYPE CODE = DATATYPE::DOUBLE; };
+
+
+template<class Stream, typename T>
+inline void write_bin_pointset_stream(Stream& st, const Pointset<T>& pts)
+{
+    st.write(reinterpret_cast<const char*>(pts.Data()), sizeof(T) * pts.Ndim() * pts.Npts());
+}
+
+template<typename T>
+inline bool write_bin_pointset(const char* dest, const Pointset<T>& pts)
+{
+    std::ofstream file(dest, std::ios::binary); 
+
+    if (!file.is_open()) return false;
+
+    uint32_t m = 1;
+    uint32_t n = pts.Npts();
+    uint32_t d = pts.Ndim();
+
+    MetaData meta; 
+    meta.dtype = static_cast<uint32_t>(DATATYPE_FROM_TYPE<T>::CODE); 
+    
+    file.write(reinterpret_cast<const char*>(&UTK_MAGIC_NUMBER), sizeof(UTK_MAGIC_NUMBER));
+    file.write(reinterpret_cast<const char*>(&meta), sizeof(MetaData));
+
+    file.write(reinterpret_cast<const char*>(&m), sizeof(uint32_t));
+    file.write(reinterpret_cast<const char*>(&n), sizeof(uint32_t));
+    file.write(reinterpret_cast<const char*>(&d), sizeof(uint32_t));
+    write_bin_pointset_stream(file, pts);
+
+    return true;
+}
+
+template<typename T>
+inline bool write_bin_pointsets(const char* dest, const std::vector<Pointset<T>>& ptss)
+{
+    std::ofstream file(dest, std::ios::binary); 
+
+    if (!file.is_open()) return false;
+    if (ptss.size() == 0) return true;
+
+    MetaData meta; 
+    meta.dtype = static_cast<uint32_t>(DATATYPE_FROM_TYPE<T>::CODE); 
+    
+    uint32_t m = ptss.size();
+    uint32_t n = ptss[0].Npts();
+    uint32_t d = ptss[0].Ndim();
+
+    file.write(reinterpret_cast<const char*>(&UTK_MAGIC_NUMBER), sizeof(UTK_MAGIC_NUMBER));
+    file.write(reinterpret_cast<const char*>(&meta), sizeof(MetaData));
+
+    file.write(reinterpret_cast<const char*>(&m), sizeof(uint32_t));
+    file.write(reinterpret_cast<const char*>(&n), sizeof(uint32_t));
+    file.write(reinterpret_cast<const char*>(&d), sizeof(uint32_t));
+    
+    for (uint32_t i = 0; i < ptss.size(); i++)
+        write_bin_pointset_stream(file, ptss[0]);
+    
+    return true;
+}
+
+template<class Stream, typename Source, typename T>
+inline Pointset<T> read_bin_pointset_stream(Stream& st, uint32_t N, uint32_t d)
+{
+    Pointset<T> pts(N, d);
+
+    if constexpr (std::is_same_v<Source, T>)
+    {
+        // Read directly to pointset
+        st.read(reinterpret_cast<char*>(pts.Data()), N * d * sizeof(T));
+    }
+    else
+    {
+        // Type mismatch, read to tmp buffer and convert.
+        Source* data = new Source[N * d];
+        st.read(reinterpret_cast<char*>(data), N * d * sizeof(Source));
+    
+        for (uint32_t i = 0; i < N; i++)
+            for (uint32_t j = 0; j < d; j++)
+                pts[i][j] = static_cast<T>(data[j + d * i]);
+        delete[] data; 
+    }
+    return pts;
+}
+
+template<class Stream, typename Source, typename T>
+inline std::vector<Pointset<T>> read_bin_pointsets_stream(Stream& st, uint32_t m, uint32_t n, uint32_t d)
+{
+    std::vector<Pointset<T>> pointsets;
+    for (uint32_t i = 0; i < m; i++)
+        pointsets.push_back(read_bin_pointset_stream<Stream, Source, T>(st, n, d));
+    return pointsets;
+}
+
+template<typename T>
+inline std::vector<Pointset<T>> read_bin_pointsets(const char* filename)
+{
+    std::ifstream file(filename, std::ios::binary);
+
+    if (!file.is_open()) return {};
+    
+    MetaData meta;
+    uint32_t magic, m, N, d;
+
+    file.read(reinterpret_cast<char*>(&magic), sizeof(uint32_t));
+    if (magic != UTK_MAGIC_NUMBER)
+    {
+        UTK_ERROR("Error, incorrect magic number in file {} ({}, expected {})", filename, magic, UTK_MAGIC_NUMBER);
+        return {};
+    }
+
+    file.read(reinterpret_cast<char*>(&meta), sizeof(MetaData));
+    file.read(reinterpret_cast<char*>(&m), sizeof(uint32_t));
+    file.read(reinterpret_cast<char*>(&N), sizeof(uint32_t));
+    file.read(reinterpret_cast<char*>(&d), sizeof(uint32_t));
+
+    switch (static_cast<DATATYPE>(meta.dtype))
+    {
+    case DATATYPE::INT32:
+        return read_bin_pointsets_stream<decltype(file), int32_t, T>(file, m, N, d);
+    case DATATYPE::INT64:
+        return read_bin_pointsets_stream<decltype(file), int64_t, T>(file, m, N, d);
+    case DATATYPE::UINT32:
+        return read_bin_pointsets_stream<decltype(file), uint32_t, T>(file, m, N, d);
+    case DATATYPE::UINT64:
+        return read_bin_pointsets_stream<decltype(file), uint64_t, T>(file, m, N, d);
+    case DATATYPE::FLOAT:
+        return read_bin_pointsets_stream<decltype(file), float, T>(file, m, N, d);
+    case DATATYPE::DOUBLE:
+        return read_bin_pointsets_stream<decltype(file), double, T>(file, m, N, d);
+    default:
+        break;
+    }
+
+    return {};
+}
+
+template<typename T>
+inline std::vector<Pointset<T>> read_pointsets(const char* filename)
+{
+    uint32_t length = strlen(filename);
+    if (length > 4 && !strcmp(filename + length - 4, ".bin"))
+        return read_bin_pointsets<T>(filename);
+    else
+        return read_text_pointset<T>(filename);
+}
+
+template<typename T>
+inline bool write_pointset(const char* filename, const Pointset<T>& pts)
+{
+    uint32_t length = strlen(filename);
+    if (length > 4 && !strcmp(filename + length - 4, ".bin"))
+        return write_bin_pointset<T>(filename, pts);
+    else
+        return write_text_pointset<T>(filename, pts);
+}
+
+template<typename T>
+inline bool write_pointsets(const char* filename, const std::vector<Pointset<T>>& ptss)
+{
+    uint32_t length = strlen(filename);
+    if (length > 4 && !strcmp(filename + length - 4, ".bin"))
+        return write_bin_pointsets<T>(filename, ptss);
+    else
+        return write_text_pointsets<T>(filename, ptss);
 }
 
 };
