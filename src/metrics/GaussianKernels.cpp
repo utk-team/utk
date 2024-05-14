@@ -41,7 +41,7 @@ int main(int argc, char** argv)
     bool euclidean = false;
     double sigma = 1.0;
     app.add_flag("--euclidean", euclidean, "Use euclidean distance (default is wrap around)")->default_val(euclidean);
-    app.add_flag("--sigma", sigma, "Variance of gaussians (relative to nominal grid N^(1/D))")->default_val(sigma);
+    app.add_option("--sigma", sigma, "Variance of gaussians (relative to nominal grid N^(1/D))")->default_val(sigma);
     
     CLI11_PARSE(app, argc, argv);
     

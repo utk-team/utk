@@ -63,10 +63,10 @@ namespace utk
             const double PI = 3.141592653589793238462;
             const unsigned int N  = pts.Npts();
             const unsigned int D  = pts.Ndim();
-            const double scaledSigma = sigma * std::pow(N, 1.0 / D);
-            const double invSigma = - 1.0 / (2.0 * scaledSigma * scaledSigma); 
-            const double norm     = PI * scaledSigma * scaledSigma / (2.0 * N);
-            const double invN     = 1.0 / N;
+            const double scaledSigma = sigma * std::pow(N, -1.0 / D);
+            const double invSigma = - 1.0 / (4.0 * scaledSigma * scaledSigma); 
+            const double norm     = PI * scaledSigma * scaledSigma / N;
+            // const double invN     = 1.0 / N;
             
             double value = 0.;
 
@@ -76,11 +76,11 @@ namespace utk
                 for (OPENMP_UINT l = 0; l < N; l++)
                 {
                     const double weight = std::exp(invSigma * dist(pts.Ndim(), pts[k], pts[l]));
-                    value += weight * norm * invN;
+                    value += weight * norm;
                 }   
             }
             
-            return value;
+            return value - 4 * PI * PI * scaledSigma * scaledSigma * scaledSigma * scaledSigma;
         }
 
         template<typename T>
