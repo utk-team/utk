@@ -64,8 +64,8 @@ namespace utk
             const unsigned int N  = pts.Npts();
             const unsigned int D  = pts.Ndim();
             const double scaledSigma = sigma * std::pow(N, -1.0 / D);
-            const double invSigma = - 1.0 / (4.0 * scaledSigma * scaledSigma); 
-            const double norm     = PI * scaledSigma * scaledSigma / N;
+            const double invSigma = - 1.0 / (2.0 * scaledSigma * scaledSigma); 
+            const double norm     = PI * scaledSigma * scaledSigma / (2 * N);
             // const double invN     = 1.0 / N;
             
             double value = 0.;
@@ -80,7 +80,7 @@ namespace utk
                 }   
             }
             
-            return value - 4 * PI * PI * scaledSigma * scaledSigma * scaledSigma * scaledSigma;
+            return value;
         }
 
         template<typename T>
