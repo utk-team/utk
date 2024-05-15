@@ -44,6 +44,7 @@
 #include <utk/metrics/RadialSpectrum.hpp>
 #include <utk/metrics/PCF.hpp>
 #include <utk/metrics/MinDist.hpp>
+#include <utk/metrics/GaussianKernels.hpp>
 
 #include <utk/metrics/TValue.hpp>
 
@@ -151,8 +152,13 @@ void init_Metrics(py::module& m)
         .def("compute", GetComputeFunction<BoundariesStarDiscrepancy, double, std::pair<double, double>>());
 
     py::class_<MinDist>(m, "MinDistance")
-        .def(py::init<double>(), py::arg("toroidal") = false)
+        .def(py::init<bool>(), py::arg("toroidal") = false)
         .def("compute", GetComputeFunction<MinDist, double>());
+
+    py::class_<GaussianKernels>(m, "GaussianKernels")
+        .def(py::init<bool, double>(), py::arg("toroidal") = false, py::arg("sigma") = 1.0)
+        .def("compute", GetComputeFunction<GaussianKernels, double>());
+
 
     py::class_<TValue>(m, "TValue")
         .def(py::init<std::uint8_t>(), py::arg("basis") = 2)
