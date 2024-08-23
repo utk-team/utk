@@ -33,7 +33,7 @@ jobs:
 
      - name: Install macOS deps
        if: matrix.os == 'macOS-latest'
-       run: echo "nothing to install with brew"
+       run: brew install libomp
 
      - name: Create Build Environment
        run: cmake -E make_directory build
