@@ -31,4 +31,3 @@ Victor Ostromoukhov <victor.Ostromoukhov@liris.cnrs.fr>
       authors= {H. Perrier,  D. Coeurjolly and V.  Ostromoukhov}
 }
 ```
-
