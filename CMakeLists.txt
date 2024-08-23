@@ -17,10 +17,13 @@ option(UTK_BUILD_EXE "Enable building of utk's executables" ON)
 
 set(UTK_EXE_PREFIX "" CACHE STRING "Prefix for UTK exe (eg. utk_). No spaces nor slash allowed!")
 
+# OpenMP option
 option(UTK_USE_OPENMP "Enable USE of OpenMp" ON)
-# FFTW options
+
+# FFTW option
 option(UTK_USE_FFTW "Enable use of FFTW" ON)
-# CGal options
+
+# CGal option
 option(UTK_USE_CGAL "Enable projects depending on CGAL. " OFF    )
  
 # Finding libraries
