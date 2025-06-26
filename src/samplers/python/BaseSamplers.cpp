@@ -49,6 +49,7 @@
 #include <utk/samplers/SamplerProjectiveBlueNoise.hpp>
 #include <utk/samplers/SamplerSobol.hpp>
 #include <utk/samplers/SamplerCascadedSobol.hpp>
+#include <utk/samplers/SamplerQuadOptimizedLDS.hpp>
 #include <utk/samplers/SamplerGenerativeMatrices.hpp>
 #include <utk/samplers/SamplerR1.hpp>
 #include <utk/samplers/SamplerKronecker.hpp>
@@ -356,4 +357,9 @@ void init_BaseSampler(py::module& m)
         .def("sample",  GetSampleFunction <GenerativeMatrices>()          , py::arg("N"))
         .def("isample", GetSampleFunction <GenerativeMatrices, uint32_t>(), py::arg("N"));
 
+    py::class_<QuadOptimizedLDS>(m, "QuadOptimizedLDS")
+        .def(py::init<uint32_t, std::string>(), py::arg("d"), py::arg("initFile") = "")
+        .def("__repr__", [](const QuadOptimizedLDS& wn) { return "QuadOptimizedLDS(")"; })
+        .def("setSeed", GetSetSeedFunction<QuadOptimizedLDS>(), py::arg("seed") = NO_SEED)
+        .def("sample",  GetSampleFunction <QuadOptimizedLDS>(), py::arg("N"));
 }
