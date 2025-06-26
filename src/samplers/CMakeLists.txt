@@ -30,6 +30,7 @@ SET(Samplers
     Sobol
     CascadedSobol
     QuadOptimizedLDS
+    OneTwoSobol
     GenerativeMatrices
 )
 

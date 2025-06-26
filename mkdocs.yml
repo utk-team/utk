@@ -85,6 +85,7 @@ nav:
     - SOT: 'samplers/SOT.md'
     - CascadedSobol: 'samplers/CascadedSobol.md'
     - QuadOptimizedLDS: 'samplers/QuadOptimizedLDS.md'
+    - OneTwoSobol: 'samplers/OneTwoSobol.md'
     - GenerativeMatrices: 'samplers/GenerativeMatrices.md'
     - Step: 'samplers/Step.md'
     - Stratified: 'samplers/Stratified.md'

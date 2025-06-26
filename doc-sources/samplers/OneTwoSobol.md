@@ -1,14 +1,12 @@
-# Sampler Quad Optimized LDS [OBCI24](https://perso.liris.cnrs.fr/david.coeurjolly/publication/quadquad-24/)
+# Sampler OneTwoSobol [BCIO25](https://perso.liris.cnrs.fr/david.coeurjolly/publication/one-two-seq-25/)
 
-A base 3 Sobol'-based sampler that provides optimized table for quadruplet of consecutive dimensions. 
-Samples are scrambled using Owen scrambling at depth log(N). This sampler only works if N is a
-power of 3.
+A sobol sequence with guarenteed quality 2D projections. 
 
 ## Files
 
 ```
-src/samplers/QuadOptimizedLDS.cpp  
-include/utk/samplers/QuadOptimizedLDS.hpp
+src/samplers/OneTwoSobol.cpp  
+include/utk/samplers/OneTwoSobol.hpp
 ```
 
 ## Usage
@@ -23,14 +21,13 @@ include/utk/samplers/QuadOptimizedLDS.hpp
 
 ```bash
 Sobol sampler
-Usage: ./QuadOptimizedLDS [OPTIONS]
+Usage: ./OneTwoSobol [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
   -n UINT REQUIRED            Number of points
   -d UINT REQUIRED            Dimensions
   -s,--seed UINT              Seed (unspecified means 'random')
-  --table TEXT                Init file (Joe&Kuo format). If not specified the [VO24] table is used
 ```
 
 </div>
@@ -40,14 +37,14 @@ Options:
 ```  cpp
 #include <utk/utils/PointsetIO.hpp>
 #include <utk/utils/Pointset.hpp>
-#include <utk/samplers/SamplerQuadOptimized.hpp>
+#include <utk/samplers/SamplerOneTwoSobol.hpp>
 
 int main()
 {
     utk::Pointset<double> pts;
 
     // If needed, can add template to use 64bits integers
-    utk::QuadOptimized sobol(2 /* dimension */);
+    utk::OneTwoSobol sobol(2 /* dimension */);
     sobol.setRandomSeed(args->seed);
     // Check for no errors
     if (sobol.generateSamples(pts, 1024 /* Number of points */))
@@ -65,8 +62,8 @@ int main()
 import pyutk
 
 # Only 32 bits integers supported
-sobol = pyutk.QuadOptimizedLDS(d=2) 
-samples = sobol.sample(2187) # This is a numpy array !
+sobol = pyutk.OneTwoSobol(d=2) 
+samples = sobol.sample(1024) # This is a numpy array !
 ```  
 
 </div>
