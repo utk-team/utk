@@ -1,6 +1,9 @@
 # CHANGELOG.md
 
 ### 2.0.1
+- 2025 June (Bastien DOIGNIES):
+    - Added QuadOptimized LDS (OCIB24)
+    - Added OneTwoSobol (BCIO25)
 
 - 2024 March (Bastien DOIGNIES):
     - Added semidiscrete optimal transport 2D 

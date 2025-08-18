@@ -29,6 +29,8 @@ SET(Samplers
     LutLDBN
     Sobol
     CascadedSobol
+    QuadOptimizedLDS
+    OneTwoSobol
     GenerativeMatrices
 )
 
