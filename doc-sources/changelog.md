@@ -1,7 +1,9 @@
 # CHANGELOG.md
 
 ### 2.0.1
-
+- 2025 July (Bastien DOIGNIES)
+    - Added "Sobol’ Sequences with Guaranteed-Quality 2D Projections" (siggraph 2025)
+    - Added "Quad-Optimized Low-Discrepancy Sequences" (siggraph 2024)
 - 2024 March (Bastien DOIGNIES):
     - Added semidiscrete optimal transport 2D 
 - 2024 Fev (Bastien DOIGNIES):
