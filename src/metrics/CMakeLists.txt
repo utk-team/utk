@@ -1,6 +1,7 @@
 SET(Metrics
     
     MinDist   
+    GaussianKernels
 
     TValue
 
