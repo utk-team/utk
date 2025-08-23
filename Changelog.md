@@ -1,25 +1,20 @@
 # CHANGELOG.md
 
-## 2.1.0
-- 2025 June (Bastien DOIGNIES):
-    - Added QuadOptimized LDS (OCIB24)
-    - Added OneTwoSobol (BCIO25)
-
+- 2025 July (Bastien DOIGNIES)
+    - Added "Sobol’ Sequences with Guaranteed-Quality 2D Projections" (siggraph 2025)
+    - Added "Quad-Optimized Low-Discrepancy Sequences" (siggraph 2024)
 - 2024 March (Bastien DOIGNIES):
     - Added semidiscrete optimal transport 2D 
-
-- 2024 Feb (David Coeurjolly)
-    - cmake CPM instead of `FETCH_CONTENT` for dependencies 
 - 2024 Fev (Bastien DOIGNIES):
     - Binary file format support
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
-    - Cascaded Sobol' sampler
+    - Added Cascaded Sobol' sampler (siggraph 2021)
     - Sampler from Generative Matrix (arbitrary base + Owen)
-    - Sliced Optimal Transport Sampling
+    - Added Sliced Optimal Transport Sampling (siggraph 2020)
     - Fix GaussianIntegrands to generate proper SPD matrix.
-
+    
 - 2023 Oct: 
     - Adding a new option to Sobol' (c++) to load an alternative to [JK03] init table (David Coeurjolly, 2023-Oct).
 

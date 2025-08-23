@@ -12,11 +12,11 @@
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
-    - Cascaded Sobol' sampler (siggraph 2021)
+    - Added Cascaded Sobol' sampler (siggraph 2021)
     - Sampler from Generative Matrix (arbitrary base + Owen)
-    - Sliced Optimal Transport Sampling (siggraph 2020)
+    - Added Sliced Optimal Transport Sampling (siggraph 2020)
     - Fix GaussianIntegrands to generate proper SPD matrix.
-
+    
 - 2023 Oct: 
     - Adding a new option to Sobol' (c++) to load an alternative to [JK03] init table (David Coeurjolly, 2023-Oct).
 
