@@ -49,6 +49,8 @@
 #include <utk/samplers/SamplerProjectiveBlueNoise.hpp>
 #include <utk/samplers/SamplerSobol.hpp>
 #include <utk/samplers/SamplerCascadedSobol.hpp>
+#include <utk/samplers/SamplerQuadOptimizedLDS.hpp>
+#include <utk/samplers/SamplerOneTwoSobol.hpp>
 #include <utk/samplers/SamplerGenerativeMatrices.hpp>
 #include <utk/samplers/SamplerR1.hpp>
 #include <utk/samplers/SamplerKronecker.hpp>
@@ -356,4 +358,16 @@ void init_BaseSampler(py::module& m)
         .def("sample",  GetSampleFunction <GenerativeMatrices>()          , py::arg("N"))
         .def("isample", GetSampleFunction <GenerativeMatrices, uint32_t>(), py::arg("N"));
 
+    py::class_<SamplerQuadOptimizedLDS>(m, "QuadOptimizedLDS")
+        .def(py::init<uint32_t, std::string>(), py::arg("d"), py::arg("initFile") = "")
+        .def("__repr__", [](const SamplerQuadOptimizedLDS& wn) { return "QuadOptimizedLDS()"; })
+        .def("setSeed", GetSetSeedFunction<SamplerQuadOptimizedLDS>(), py::arg("seed") = NO_SEED)
+        .def("sample",  GetSampleFunction <SamplerQuadOptimizedLDS>(), py::arg("N"));
+    
+    py::class_<SamplerOneTwoSobol>(m, "OneTwoSobol")
+        .def(py::init<uint32_t>(), py::arg("d"))
+        .def("__repr__", [](const SamplerOneTwoSobol& wn) { return "OneTwoSobol()"; })
+        .def("setSeed", GetSetSeedFunction<SamplerOneTwoSobol>(), py::arg("seed") = NO_SEED)
+        .def("sample",  GetSampleFunction <SamplerOneTwoSobol>(), py::arg("N"))
+        .def("isample", GetSampleFunction <SamplerOneTwoSobol, uint32_t>(), py::arg("N"));
 }
