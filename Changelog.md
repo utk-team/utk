@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 2.1
+## 2.1.0
 - 2025 June (Bastien DOIGNIES):
     - Added QuadOptimized LDS (OCIB24)
     - Added OneTwoSobol (BCIO25)

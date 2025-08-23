@@ -1,6 +1,6 @@
 # CHANGELOG.md
 
-## 2.1
+## 2.1.0
 
 - 2025 July (Bastien DOIGNIES)
     - Added "Sobol’ Sequences with Guaranteed-Quality 2D Projections" (siggraph 2025)
