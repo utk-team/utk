@@ -12,9 +12,9 @@
     - Updated documentation
 
 - 2024 Janv (Bastien DOIGNIES):
-    - Cascaded Sobol' sampler
+    - Cascaded Sobol' sampler (siggraph 2021)
     - Sampler from Generative Matrix (arbitrary base + Owen)
-    - Sliced Optimal Transport Sampling
+    - Sliced Optimal Transport Sampling (siggraph 2020)
     - Fix GaussianIntegrands to generate proper SPD matrix.
 
 - 2023 Oct: 
