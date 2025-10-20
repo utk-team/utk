@@ -22,7 +22,8 @@ elaborate example may be find in the `examples/` directory.
 * Metrics uses parallel code. Number of thread might be controlled by setting `OMP_NUM_THREADS` 
 this can be done by setting `os.environ['OMP_NUM_THREADS']`
 
-* Documentation is not exhaustive. Use `help(pyutk)` to have access to available functions 
+* Documentation is not exhaustive. Use `help(pyutk)` or `help(class)` to learn about available functions
+(such as seeding, or setting a parameter).
 
 * Logs can be enabled and disabled with the functions `pyutk.disableLogs()`, `pyutk.enableLogs()`, 
 `pyutk.setLogConsole()` (which set log destination to standard output) and `pyutk.setLogFile(filepath)` 

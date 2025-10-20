@@ -273,12 +273,12 @@ void init_BaseSampler(py::module& m)
     py::class_<SamplerART>(m, "ART")
         .def(py::init<>())
         .def("__repr__", [](const SamplerART& wn) { return "ART()"; })
-        .def("sample",  GetSampleFunction <SamplerAAPatterns>(), py::arg("N"));
+        .def("sample",  GetSampleFunction <SamplerART>(), py::arg("N"));
 
     py::class_<SamplerPenrose>(m, "Penrose")
         .def(py::init<>())
         .def("__repr__", [](const SamplerPenrose& wn) { return "Penrose()"; })
-        .def("sample",  GetSampleFunction <SamplerAAPatterns>(), py::arg("N"));
+        .def("sample",  GetSampleFunction <SamplerPenrose>(), py::arg("N"));
 
     
     py::class_<SamplerFattal>(m, "Fattal")
